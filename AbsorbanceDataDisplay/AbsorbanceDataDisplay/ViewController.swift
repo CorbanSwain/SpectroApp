@@ -53,5 +53,11 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func bar2Touched(_ sender: UIButton) {
+        print("touched")
+        bar2Height.constant = bar2Height.constant + CGFloat(5)
+    }
+    
+
 }
 

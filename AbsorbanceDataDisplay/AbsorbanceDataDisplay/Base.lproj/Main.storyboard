@@ -139,6 +139,9 @@
                                 <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="bar2Touched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tdv-5s-xgC"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sfd-8N-Jhh" userLabel="Bar 3">
                                 <rect key="frame" x="259.5" y="598" width="71.5" height="150"/>
