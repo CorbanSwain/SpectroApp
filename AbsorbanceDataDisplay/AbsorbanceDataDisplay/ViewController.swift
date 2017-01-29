@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    
     @IBOutlet weak var bar1Height: NSLayoutConstraint!
     @IBOutlet weak var bar2Height: NSLayoutConstraint!
     @IBOutlet weak var bar3Height: NSLayoutConstraint!
@@ -21,7 +20,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var bar8Height: NSLayoutConstraint!
     @IBOutlet weak var bar9Height: NSLayoutConstraint!
     @IBOutlet weak var bar10Height: NSLayoutConstraint!
-    @IBOutlet weak var bar1: UILabel!
     
     @IBOutlet weak var barSection: UILabel!
     var barHeights: [NSLayoutConstraint?] = []
