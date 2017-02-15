@@ -43,20 +43,76 @@ class ViewController: UIViewController {
     }
     
     func slopeBars() {
-        print("runngin slopeBars()")
+        print("runnging slopeBars()...")
         var i = 0
         for h in barHeights.enumerated() {
             i = h.offset
-            h.element?.constant = CGFloat(i) * maxHeight / 10.0
-            print("Bar \(i) h: \(h.element?.constant)")
+            h.element?.constant = ( CGFloat(i) * (maxHeight - 50) / 10.0 ) + 50
+            print("Bar \(i) height: \(h.element?.constant)")
         }
     }
 
-
-    @IBAction func bar2Touched(_ sender: UIButton) {
-        bar2Height.constant += CGFloat(5)
+    
+    @IBAction func bar1Touched(_ sender: UIButton) {
+        changeBarHeight(ofBar: 1, by: 10)
     }
     
+    @IBAction func bar2Touched(_ sender: UIButton) {
+        changeBarHeight(ofBar: 2, by: 10)
+    }
+    
+    @IBAction func bar3Touched(_ sender: UIButton) {
+        changeBarHeight(ofBar: 3, by: 10)
+    }
+    
+    @IBAction func bar4Touched(_ sender: UIButton) {
+        changeBarHeight(ofBar: 4, by: 10)
+    }
+    
+    @IBAction func bar5Touched(_ sender: UIButton) {
+        changeBarHeight(ofBar: 5, by: 10)
+    }
 
+    func changeBarHeight(ofBar barNum: Int, by delta: CGFloat) {
+        print("running changeBarHeight(barNum:delta:)...")
+        if barNum <= 0 {
+            print("barNum too small")
+            return
+        } else if barNum > barHeights.count {
+            print("barNum too large")
+            return
+        }
+        var newHeight = (barHeights[barNum - 1]?.constant ?? 0.0) + delta
+        if newHeight < 0 {
+            print("delta too small")
+            newHeight = 0
+        }
+        else if newHeight > maxHeight {
+            print("delta too large")
+            newHeight = 0
+        }
+        barHeights[barNum - 1]?.constant = newHeight
+    }
+    
+    func setBarHeight(ofBar barNum: Int, toPercent percent: CGFloat) {
+        print("running changeBarHeight(barNum:percent:)...")
+        if barNum <= 0 {
+            print("barNum too small")
+            return
+        } else if barNum > barHeights.count {
+            print("barNum too large")
+            return
+        }
+        var newHeight = percent * maxHeight
+        if newHeight < 0 {
+            print("percent too small")
+            newHeight = 0
+        }
+        else if newHeight > maxHeight {
+            print("delta too large")
+            newHeight = maxHeight
+        }
+        barHeights[barNum - 1]?.constant = newHeight
+    }
 }
 
