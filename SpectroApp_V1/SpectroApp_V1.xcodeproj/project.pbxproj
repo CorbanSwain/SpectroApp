@@ -15,6 +15,8 @@
 		1C7E714D1E78CA390073799D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C7E714B1E78CA390073799D /* LaunchScreen.storyboard */; };
 		1C7E71581E78CA390073799D /* SpectroApp_V1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E71571E78CA390073799D /* SpectroApp_V1Tests.swift */; };
 		1C7E71631E78CA390073799D /* SpectroApp_V1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E71621E78CA390073799D /* SpectroApp_V1UITests.swift */; };
+		1C7E71711E78D6C80073799D /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E71701E78D6C80073799D /* ProjectTableViewCell.swift */; };
+		1C7E71731E78D6F50073799D /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E71721E78D6F50073799D /* ProjectViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		1C7E715E1E78CA390073799D /* SpectroApp_V1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpectroApp_V1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C7E71621E78CA390073799D /* SpectroApp_V1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectroApp_V1UITests.swift; sourceTree = "<group>"; };
 		1C7E71641E78CA390073799D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C7E71701E78D6C80073799D /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
+		1C7E71721E78D6F50073799D /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				1C7E713F1E78CA390073799D /* AppDelegate.swift */,
 				1C7E71411E78CA390073799D /* ViewController.swift */,
 				1C7E71431E78CA390073799D /* Main.storyboard */,
+				1C7E71721E78D6F50073799D /* ProjectViewController.swift */,
+				1C7E71701E78D6C80073799D /* ProjectTableViewCell.swift */,
 				1C7E71491E78CA390073799D /* Assets.xcassets */,
 				1C7E714B1E78CA390073799D /* LaunchScreen.storyboard */,
 				1C7E714E1E78CA390073799D /* Info.plist */,
@@ -265,9 +271,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C7E71731E78D6F50073799D /* ProjectViewController.swift in Sources */,
 				1C7E71421E78CA390073799D /* ViewController.swift in Sources */,
 				1C7E71401E78CA390073799D /* AppDelegate.swift in Sources */,
 				1C7E71481E78CA390073799D /* SpectroApp_V1.xcdatamodeld in Sources */,
+				1C7E71711E78D6C80073799D /* ProjectTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +433,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "CorbanSwain.SpectroApp-V1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -438,6 +447,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "CorbanSwain.SpectroApp-V1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
