@@ -12,15 +12,17 @@ import Darwin
 struct AbsorbanceKit {
     
     enum ExperimentType {
-        case bradford, cellDensity, nuecleicAcid
-        var wavelength: String {
+        case bradford
+        case cellDensity
+        case nuecleicAcid
+        var wavelength: Wavelength {
             switch self {
             case .bradford:
-                return "560"
+                return ._595
             case .cellDensity:
-                return "560"
+                return ._560
             case .nuecleicAcid:
-                return "260 & 280"
+                return ._280
             }
         }
     }
@@ -29,7 +31,14 @@ struct AbsorbanceKit {
         case control, unknown
     }
     
-    public static func average(of points: Set<DataPoint>) -> CGFloat? {
+    enum Wavelength: Int {
+        case _260 = 260 // nucleic acid
+        case _280 = 280 // protein
+        case _560 = 560 // cell density
+        case _595 = 595 // bradford
+    }
+    
+    public static func average(of points: [DataPoint]) -> CGFloat? {
         let count = points.count
         guard count > 0 else {
             return nil
@@ -39,7 +48,7 @@ struct AbsorbanceKit {
         return average / CGFloat(count)
     }
     
-    public static func stdev(of points: Set<DataPoint>) -> CGFloat? {
+    public static func stdev(of points: [DataPoint]) -> CGFloat? {
         let count = points.count
         guard count > 1 else { return nil }
         guard let u = average(of: points) else { return nil }
@@ -51,5 +60,4 @@ struct AbsorbanceKit {
         }
         return sqrt(sumsq / CGFloat(count - 1))
     }
-    
 }

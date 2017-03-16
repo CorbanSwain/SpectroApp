@@ -40,7 +40,11 @@
                                     <constraint firstAttribute="height" constant="44" id="RMr-eL-QIv"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="Instrument" id="b3a-Or-61N"/>
+                                    <barButtonItem title="Instrument" id="b3a-Or-61N">
+                                        <connections>
+                                            <action selector="instrumentButtonPressed:" destination="gHL-hd-Aeh" id="qRL-fQ-okc"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="SYv-X5-2wf"/>
                                     <barButtonItem width="25" style="plain" systemItem="fixedSpace" id="Gc4-qb-fMj"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Hvv-Vf-dz6"/>

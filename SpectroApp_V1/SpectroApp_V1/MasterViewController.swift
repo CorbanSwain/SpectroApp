@@ -80,6 +80,8 @@ class MasterViewController: UIViewController {
         updateContainerView(from: lastIndex)
     }
     
+    @IBAction func instrumentButtonPressed(_ sender: UIBarButtonItem) {
+    }
     
     /// Adds a view controller to the master view's container view 
     /// and sets that view controller to be a child of the master 

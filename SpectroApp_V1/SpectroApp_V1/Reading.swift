@@ -9,11 +9,17 @@
 import UIKit
 
 struct Reading {
-    var sampleName: String
+    var readingName: String
+    var timestamp: Date
+    var hashValue: Int
     var experimentType: AbsorbanceKit.ExperimentType
     var readingType: AbsorbanceKit.ReadingType
-    var timestamp: Date
-    var dataPoints: Set<DataPoint>
+    
+    var dataPoints: [DataPoint] = []
+    var wavelength: AbsorbanceKit.Wavelength?
+    var calibrationPoints: [DataPoint] = []
+    var calibrationWavelength: AbsorbanceKit.Wavelength?
+    
     var isEmpty: Bool { return dataPoints.count < 1 }
     var hasRepeats: Bool { return dataPoints.count > 1 }
     var absorbanceValue: CGFloat? { return AbsorbanceKit.average(of: dataPoints) }
