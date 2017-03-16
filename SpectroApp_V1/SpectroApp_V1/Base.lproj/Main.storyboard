@@ -21,10 +21,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sE7-Ba-F23">
-                                <rect key="frame" x="0.0" y="20" width="1024" height="44"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sE7-Ba-F23" userLabel="Upper Toolbar">
+                                <rect key="frame" x="0.0" y="20" width="1024" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="ww4-2I-5HF"/>
+                                    <constraint firstAttribute="height" constant="55" id="ww4-2I-5HF"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem title="Project Name" id="5Iq-5H-j7e">
@@ -34,7 +34,7 @@
                                     <barButtonItem systemItem="add" id="JuL-B9-O2y"/>
                                 </items>
                             </toolbar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cig-2t-PT0">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cig-2t-PT0" userLabel="Lower Toolbar">
                                 <rect key="frame" x="0.0" y="724" width="1024" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="RMr-eL-QIv"/>
@@ -52,14 +52,21 @@
                                     <barButtonItem title="Item" id="rNA-2m-gbH"/>
                                 </items>
                             </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Tk-Ju-ewP" userLabel="FillerToolbar">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="9UX-61-SOf"/>
+                                </constraints>
+                                <items/>
+                            </toolbar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XrQ-i1-t0d">
-                                <rect key="frame" x="387" y="28" width="250" height="29"/>
+                                <rect key="frame" x="387" y="33.5" width="250" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="2mX-gT-Ufm"/>
                                     <constraint firstAttribute="width" constant="250" id="Giy-vA-KV1"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="Project"/>
+                                    <segment title="Overview"/>
                                     <segment title="Data"/>
                                     <segment title="Plots"/>
                                 </segments>
@@ -68,12 +75,14 @@
                                 </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ss1-BV-WWC">
-                                <rect key="frame" x="0.0" y="64" width="1024" height="660"/>
+                                <rect key="frame" x="0.0" y="75" width="1024" height="649"/>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="cig-2t-PT0" secondAttribute="trailing" id="JdQ-xq-fyd"/>
+                            <constraint firstItem="4Tk-Ju-ewP" firstAttribute="top" secondItem="gR9-lv-ZEG" secondAttribute="top" id="MFL-UZ-3AK"/>
+                            <constraint firstAttribute="trailing" secondItem="4Tk-Ju-ewP" secondAttribute="trailing" id="Msa-zr-RNe"/>
                             <constraint firstItem="ss1-BV-WWC" firstAttribute="top" secondItem="sE7-Ba-F23" secondAttribute="bottom" id="NG4-9T-U5l"/>
                             <constraint firstItem="sE7-Ba-F23" firstAttribute="centerX" secondItem="gR9-lv-ZEG" secondAttribute="centerX" id="Q0t-DZ-3Xd"/>
                             <constraint firstItem="XrQ-i1-t0d" firstAttribute="centerX" secondItem="gR9-lv-ZEG" secondAttribute="centerX" id="Rnq-O5-7dF"/>
@@ -86,83 +95,95 @@
                             <constraint firstItem="sE7-Ba-F23" firstAttribute="leading" secondItem="gR9-lv-ZEG" secondAttribute="leading" id="nh7-GS-YTO"/>
                             <constraint firstItem="cig-2t-PT0" firstAttribute="top" secondItem="ss1-BV-WWC" secondAttribute="bottom" id="o9S-pP-ubA"/>
                             <constraint firstItem="XrQ-i1-t0d" firstAttribute="centerY" secondItem="sE7-Ba-F23" secondAttribute="centerY" id="sbA-ed-c9V"/>
+                            <constraint firstItem="4Tk-Ju-ewP" firstAttribute="leading" secondItem="gR9-lv-ZEG" secondAttribute="leading" id="u5X-he-Evh"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="containerView" destination="ss1-BV-WWC" id="hKX-uE-Nl3"/>
+                        <outlet property="experimentName" destination="5Iq-5H-j7e" id="sUi-Mi-qPO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MNt-DM-G9a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1482.421875" y="914.84375"/>
-        </scene>
-        <!--Data View Controller-->
-        <scene sceneID="10w-Fj-A6I">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4um-ko-cwu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="DataViewController" id="XaZ-RJ-7Ig" customClass="DataViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="FOr-s6-4ho"/>
-                        <viewControllerLayoutGuide type="bottom" id="Squ-3Z-YpA"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="geT-He-5qE">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1d7-AH-k3O">
-                                <rect key="frame" x="464" y="373.5" width="96" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="96" id="7Gj-1b-R4G"/>
-                                    <constraint firstAttribute="height" constant="21" id="pPF-BO-Ged"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="1d7-AH-k3O" firstAttribute="centerY" secondItem="geT-He-5qE" secondAttribute="centerY" id="7pV-xk-ZWA"/>
-                            <constraint firstItem="1d7-AH-k3O" firstAttribute="centerX" secondItem="geT-He-5qE" secondAttribute="centerX" id="t4E-eb-TwY"/>
-                        </constraints>
-                    </view>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="1482" y="1709"/>
+            <point key="canvasLocation" x="1036.5234375" y="867.96875"/>
         </scene>
         <!--Project View Controller-->
-        <scene sceneID="B3V-bS-OoA">
+        <scene sceneID="dAd-sd-NB4">
             <objects>
-                <viewController storyboardIdentifier="ProjectViewController" id="vkP-kq-7bI" customClass="ProjectViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProjectViewController" id="bjC-Cs-m32" customClass="ProjectViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="NCq-f7-fdz"/>
-                        <viewControllerLayoutGuide type="bottom" id="bjy-OE-guf"/>
+                        <viewControllerLayoutGuide type="top" id="XDl-B3-J4A"/>
+                        <viewControllerLayoutGuide type="bottom" id="r2s-ty-PTL"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="OzX-Ep-WtZ">
+                    <view key="view" contentMode="scaleToFill" id="js4-V1-cVt">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KkQ-46-Mpo">
-                                <rect key="frame" x="464" y="373.5" width="96" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="hCn-pO-Tar"/>
-                                    <constraint firstAttribute="width" constant="96" id="vz0-j6-n1t"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="KkQ-46-Mpo" firstAttribute="centerY" secondItem="OzX-Ep-WtZ" secondAttribute="centerY" id="5zg-uB-g7e"/>
-                            <constraint firstItem="KkQ-46-Mpo" firstAttribute="centerX" secondItem="OzX-Ep-WtZ" secondAttribute="centerX" id="llb-li-jzg"/>
-                        </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0hi-wl-KQk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PuW-9e-JA1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="821" y="1709"/>
+            <point key="canvasLocation" x="2213" y="-178"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="hCK-5x-ifF">
+            <objects>
+                <viewController id="gyG-Iw-cR8" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="R1b-Gd-udg"/>
+                        <viewControllerLayoutGuide type="bottom" id="cte-oa-6Oc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wKd-vM-Syp">
+                        <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Olv-IH-z5B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3203" y="1261"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="YFm-PF-QVK">
+            <objects>
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="4Lf-HI-bWV" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="VUo-aG-80Q">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell.data.attribute" id="rcn-py-ezS">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rcn-py-ezS" id="yUK-bP-ydW">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="4Lf-HI-bWV" id="hjW-E3-cJv"/>
+                            <outlet property="delegate" destination="4Lf-HI-bWV" id="pKo-qW-fCc"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="lNu-Gn-REM"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FKk-dd-Gdb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3203" y="535"/>
+        </scene>
+        <!--Data View Controller-->
+        <scene sceneID="1Jh-d2-VhI">
+            <objects>
+                <splitViewController storyboardIdentifier="DataViewController" id="oWL-gx-tdI" customClass="DataViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="gyG-Iw-cR8" kind="relationship" relationship="detailViewController" id="i2t-YO-dNZ"/>
+                        <segue destination="4Lf-HI-bWV" kind="relationship" relationship="masterViewController" id="fRz-XI-R4D"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uIo-fl-b27" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2213" y="868"/>
         </scene>
         <!--Plot View Controller-->
         <scene sceneID="4wY-yy-HAd">
@@ -178,7 +199,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plot View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bD-rB-ziY">
-                                <rect key="frame" x="464" y="374" width="96" height="21"/>
+                                <rect key="frame" x="464" y="373.5" width="96" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="X2d-X2-CZq"/>
                                     <constraint firstAttribute="width" constant="96" id="YLu-PN-k4d"/>
@@ -196,7 +217,7 @@
                     </view>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2199" y="1709"/>
+            <point key="canvasLocation" x="2213" y="1829"/>
         </scene>
     </scenes>
 </document>

@@ -8,12 +8,12 @@
 
 import UIKit
 
-class DataViewController: UIViewController {
+class DataViewController: UISplitViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        preferredPrimaryColumnWidthFraction = 0.7
+        maximumPrimaryColumnWidth = 700
     }
 
     override func didReceiveMemoryWarning() {
