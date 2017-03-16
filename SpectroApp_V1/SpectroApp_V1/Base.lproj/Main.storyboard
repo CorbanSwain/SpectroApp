@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Master View Controller-->
         <scene sceneID="yjX-bK-uUK">
             <objects>
-                <viewController id="gHL-hd-Aeh" sceneMemberID="viewController">
+                <viewController id="gHL-hd-Aeh" customClass="MasterViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="53P-Uy-CHe"/>
                         <viewControllerLayoutGuide type="bottom" id="v5U-6W-TNi"/>
@@ -63,12 +63,12 @@
                                     <segment title="Data"/>
                                     <segment title="Plots"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentedControllChanged:" destination="gHL-hd-Aeh" eventType="valueChanged" id="njR-J9-2E9"/>
+                                </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ss1-BV-WWC">
                                 <rect key="frame" x="0.0" y="64" width="1024" height="660"/>
-                                <connections>
-                                    <segue destination="vkP-kq-7bI" kind="embed" id="nhK-rX-jmY"/>
-                                </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -88,21 +88,62 @@
                             <constraint firstItem="XrQ-i1-t0d" firstAttribute="centerY" secondItem="sE7-Ba-F23" secondAttribute="centerY" id="sbA-ed-c9V"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="containerView" destination="ss1-BV-WWC" id="hKX-uE-Nl3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MNt-DM-G9a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1482.421875" y="914.84375"/>
         </scene>
+        <!--Data View Controller-->
+        <scene sceneID="10w-Fj-A6I">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4um-ko-cwu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="DataViewController" id="XaZ-RJ-7Ig" customClass="DataViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FOr-s6-4ho"/>
+                        <viewControllerLayoutGuide type="bottom" id="Squ-3Z-YpA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="geT-He-5qE">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1d7-AH-k3O">
+                                <rect key="frame" x="464" y="373.5" width="96" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="96" id="7Gj-1b-R4G"/>
+                                    <constraint firstAttribute="height" constant="21" id="pPF-BO-Ged"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1d7-AH-k3O" firstAttribute="centerY" secondItem="geT-He-5qE" secondAttribute="centerY" id="7pV-xk-ZWA"/>
+                            <constraint firstItem="1d7-AH-k3O" firstAttribute="centerX" secondItem="geT-He-5qE" secondAttribute="centerX" id="t4E-eb-TwY"/>
+                        </constraints>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1482" y="1709"/>
+        </scene>
         <!--Project View Controller-->
         <scene sceneID="B3V-bS-OoA">
             <objects>
-                <viewController id="vkP-kq-7bI" customClass="ProjectViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProjectViewController" id="vkP-kq-7bI" customClass="ProjectViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NCq-f7-fdz"/>
+                        <viewControllerLayoutGuide type="bottom" id="bjy-OE-guf"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OzX-Ep-WtZ">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="660"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KkQ-46-Mpo">
-                                <rect key="frame" x="464" y="320" width="96" height="21"/>
+                                <rect key="frame" x="464" y="373.5" width="96" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="hCn-pO-Tar"/>
                                     <constraint firstAttribute="width" constant="96" id="vz0-j6-n1t"/>
@@ -121,7 +162,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0hi-wl-KQk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1482" y="1648"/>
+            <point key="canvasLocation" x="821" y="1709"/>
+        </scene>
+        <!--Plot View Controller-->
+        <scene sceneID="4wY-yy-HAd">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xsD-fj-seL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="PlotViewController" id="kk4-mf-4TY" customClass="PlotViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lGk-4U-qnO"/>
+                        <viewControllerLayoutGuide type="bottom" id="4qa-cX-okq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="O88-CX-hWx">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plot View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bD-rB-ziY">
+                                <rect key="frame" x="464" y="374" width="96" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="X2d-X2-CZq"/>
+                                    <constraint firstAttribute="width" constant="96" id="YLu-PN-k4d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0bD-rB-ziY" firstAttribute="centerX" secondItem="O88-CX-hWx" secondAttribute="centerX" id="ZCy-Rn-uOy"/>
+                            <constraint firstItem="0bD-rB-ziY" firstAttribute="centerY" secondItem="O88-CX-hWx" secondAttribute="centerY" id="iu3-9q-9hZ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2199" y="1709"/>
         </scene>
     </scenes>
 </document>
