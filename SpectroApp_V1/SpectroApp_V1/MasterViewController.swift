@@ -14,11 +14,13 @@ class MasterViewController: UIViewController {
     /// controllers will be presented
     @IBOutlet weak var containerView: UIView!
 
-    /// outlet to a toolbar button item serving as a label 
-    /// to indicate the current experiment
+    /// outlet to a label used to indicate the current experiment name
     @IBOutlet weak var experimentTitleLabel: UILabel!
+    
+    /// outlet to a label used to indicate details about the current experiment
     @IBOutlet weak var experimentSubtitleLabel: UILabel!
     
+    /// outler to a toolbar at the top of the master view controler
     @IBOutlet weak var upperToolbar: UIToolbar!
     
     /// instance of the project view controller; view controllers are
@@ -73,6 +75,9 @@ class MasterViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM dd, YYYY"
         experimentSubtitleLabel.text = formatter.string(from: Date())
+        
+        // remove top line from upper toolbar
+        upperToolbar.clipsToBounds = true
     }
 
     override func didReceiveMemoryWarning() {
