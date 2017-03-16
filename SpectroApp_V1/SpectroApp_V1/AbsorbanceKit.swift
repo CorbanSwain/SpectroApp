@@ -27,8 +27,13 @@ struct AbsorbanceKit {
         }
     }
     
-    enum ReadingType {
-        case control, unknown
+    enum ReadingType: String {
+        case control
+        case standard
+        case unknown
+        case wildType
+        case mutant
+        case custom
     }
     
     enum Wavelength: Int {

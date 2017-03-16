@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Experiment {
+struct Project {
     var readings: [Reading]
     var title: String
     var timeStamp: Date

@@ -22,16 +22,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sE7-Ba-F23" userLabel="Upper Toolbar">
-                                <rect key="frame" x="0.0" y="20" width="1024" height="55"/>
+                                <rect key="frame" x="0.0" y="20" width="1024" height="65"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="ww4-2I-5HF"/>
+                                    <constraint firstAttribute="height" constant="65" id="ww4-2I-5HF"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="Project Name" id="5Iq-5H-j7e">
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="JxA-U9-Xtr"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Yal-1q-gyP"/>
-                                    <barButtonItem systemItem="add" id="JuL-B9-O2y"/>
+                                    <barButtonItem systemItem="add" id="JuL-B9-O2y">
+                                        <connections>
+                                            <segue destination="8Yi-r4-228" kind="popoverPresentation" popoverAnchorBarButtonItem="JuL-B9-O2y" id="Aq7-ZG-QBF">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cig-2t-PT0" userLabel="Lower Toolbar">
@@ -43,12 +47,21 @@
                                     <barButtonItem title="Instrument" id="b3a-Or-61N">
                                         <connections>
                                             <action selector="instrumentButtonPressed:" destination="gHL-hd-Aeh" id="qRL-fQ-okc"/>
+                                            <segue destination="bM4-Qr-ahZ" kind="popoverPresentation" identifier="popover.instrument" popoverAnchorBarButtonItem="b3a-Or-61N" id="MXi-9w-xYl">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="SYv-X5-2wf"/>
                                     <barButtonItem width="25" style="plain" systemItem="fixedSpace" id="Gc4-qb-fMj"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Hvv-Vf-dz6"/>
-                                    <barButtonItem title="Projects" id="GUW-BU-jhE"/>
+                                    <barButtonItem title="Projects" id="GUW-BU-jhE">
+                                        <connections>
+                                            <segue destination="InD-Bl-IXN" kind="popoverPresentation" popoverAnchorBarButtonItem="GUW-BU-jhE" id="04p-xP-sHB">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="571-wm-bnx"/>
                                     <barButtonItem width="25" style="plain" systemItem="fixedSpace" id="ieF-ZL-2h5"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="IRi-n8-V1B"/>
@@ -64,7 +77,7 @@
                                 <items/>
                             </toolbar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XrQ-i1-t0d">
-                                <rect key="frame" x="387" y="33.5" width="250" height="29"/>
+                                <rect key="frame" x="387" y="38.5" width="250" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="2mX-gT-Ufm"/>
                                     <constraint firstAttribute="width" constant="250" id="Giy-vA-KV1"/>
@@ -79,17 +92,36 @@
                                 </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ss1-BV-WWC">
-                                <rect key="frame" x="0.0" y="75" width="1024" height="649"/>
+                                <rect key="frame" x="0.0" y="85" width="1024" height="639"/>
                             </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Cool Experiment Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9aN-aT-7ry">
+                                <rect key="frame" x="15" y="25.5" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="5aS-cY-Mgw"/>
+                                    <constraint firstAttribute="width" constant="300" id="tN0-Pq-9rj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CS-X-45 - March 5, 2015" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6EV-GC-nqN">
+                                <rect key="frame" x="15" y="60.5" width="140" height="14"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="9aN-aT-7ry" firstAttribute="leading" secondItem="gR9-lv-ZEG" secondAttribute="leading" constant="15" id="0dY-8A-FvC"/>
+                            <constraint firstItem="6EV-GC-nqN" firstAttribute="top" secondItem="9aN-aT-7ry" secondAttribute="bottom" constant="-5" id="94H-iZ-S1a"/>
                             <constraint firstAttribute="trailing" secondItem="cig-2t-PT0" secondAttribute="trailing" id="JdQ-xq-fyd"/>
                             <constraint firstItem="4Tk-Ju-ewP" firstAttribute="top" secondItem="gR9-lv-ZEG" secondAttribute="top" id="MFL-UZ-3AK"/>
                             <constraint firstAttribute="trailing" secondItem="4Tk-Ju-ewP" secondAttribute="trailing" id="Msa-zr-RNe"/>
                             <constraint firstItem="ss1-BV-WWC" firstAttribute="top" secondItem="sE7-Ba-F23" secondAttribute="bottom" id="NG4-9T-U5l"/>
                             <constraint firstItem="sE7-Ba-F23" firstAttribute="centerX" secondItem="gR9-lv-ZEG" secondAttribute="centerX" id="Q0t-DZ-3Xd"/>
                             <constraint firstItem="XrQ-i1-t0d" firstAttribute="centerX" secondItem="gR9-lv-ZEG" secondAttribute="centerX" id="Rnq-O5-7dF"/>
+                            <constraint firstItem="9aN-aT-7ry" firstAttribute="centerY" secondItem="sE7-Ba-F23" secondAttribute="centerY" constant="-7" id="Sfh-HA-ymC"/>
                             <constraint firstItem="sE7-Ba-F23" firstAttribute="top" secondItem="53P-Uy-CHe" secondAttribute="bottom" id="ZPa-ic-x3P"/>
                             <constraint firstAttribute="trailing" secondItem="sE7-Ba-F23" secondAttribute="trailing" id="ale-DT-KhP"/>
                             <constraint firstAttribute="trailing" secondItem="ss1-BV-WWC" secondAttribute="trailing" id="bis-la-KNz"/>
@@ -98,18 +130,60 @@
                             <constraint firstItem="v5U-6W-TNi" firstAttribute="top" secondItem="cig-2t-PT0" secondAttribute="bottom" id="kXP-mV-s9l"/>
                             <constraint firstItem="sE7-Ba-F23" firstAttribute="leading" secondItem="gR9-lv-ZEG" secondAttribute="leading" id="nh7-GS-YTO"/>
                             <constraint firstItem="cig-2t-PT0" firstAttribute="top" secondItem="ss1-BV-WWC" secondAttribute="bottom" id="o9S-pP-ubA"/>
+                            <constraint firstItem="6EV-GC-nqN" firstAttribute="leading" secondItem="9aN-aT-7ry" secondAttribute="leading" id="rrw-Dh-AmI"/>
                             <constraint firstItem="XrQ-i1-t0d" firstAttribute="centerY" secondItem="sE7-Ba-F23" secondAttribute="centerY" id="sbA-ed-c9V"/>
                             <constraint firstItem="4Tk-Ju-ewP" firstAttribute="leading" secondItem="gR9-lv-ZEG" secondAttribute="leading" id="u5X-he-Evh"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="containerView" destination="ss1-BV-WWC" id="hKX-uE-Nl3"/>
-                        <outlet property="experimentName" destination="5Iq-5H-j7e" id="sUi-Mi-qPO"/>
+                        <outlet property="experimentSubtitleLabel" destination="6EV-GC-nqN" id="BIX-Es-8YT"/>
+                        <outlet property="experimentTitleLabel" destination="9aN-aT-7ry" id="0w9-xe-l8F"/>
+                        <outlet property="upperToolbar" destination="sE7-Ba-F23" id="9Ix-UW-5FM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MNt-DM-G9a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1036.5234375" y="867.96875"/>
+        </scene>
+        <!--Instrument Popover View Controller-->
+        <scene sceneID="7GW-mi-Thn">
+            <objects>
+                <viewController storyboardIdentifier="InstrumentPopover" id="bM4-Qr-ahZ" customClass="InstrumentPopoverViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qbI-nQ-Tnw"/>
+                        <viewControllerLayoutGuide type="bottom" id="X3i-Uy-otB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uqO-19-kLW">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instrument Setup" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6af-rg-Tfw">
+                                <rect key="frame" x="59" y="111.5" width="133" height="77"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="77" id="MV6-O4-7uS"/>
+                                    <constraint firstAttribute="width" constant="133" id="QDI-fr-e6U"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6af-rg-Tfw" firstAttribute="centerX" secondItem="uqO-19-kLW" secondAttribute="centerX" id="CvS-S1-OvF"/>
+                            <constraint firstItem="6af-rg-Tfw" firstAttribute="centerY" secondItem="uqO-19-kLW" secondAttribute="centerY" id="MeN-jh-Xn1"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="250" height="300"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AZA-yM-D1c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="810" y="1444"/>
         </scene>
         <!--Project View Controller-->
         <scene sceneID="dAd-sd-NB4">
@@ -160,7 +234,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rcn-py-ezS" id="yUK-bP-ydW">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -192,7 +266,6 @@
         <!--Plot View Controller-->
         <scene sceneID="4wY-yy-HAd">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xsD-fj-seL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="PlotViewController" id="kk4-mf-4TY" customClass="PlotViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lGk-4U-qnO"/>
@@ -220,8 +293,87 @@
                         </constraints>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xsD-fj-seL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2213" y="1829"/>
+        </scene>
+        <!--Instrument Popover View Controller-->
+        <scene sceneID="Lek-fZ-9pe">
+            <objects>
+                <viewController id="InD-Bl-IXN" customClass="InstrumentPopoverViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HOm-7X-j7O"/>
+                        <viewControllerLayoutGuide type="bottom" id="NbG-xw-PKT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tS9-Pb-OgB">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Project" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XiZ-9X-qZn">
+                                <rect key="frame" x="59" y="112" width="133" height="77"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="133" id="IWY-bI-rv5"/>
+                                    <constraint firstAttribute="height" constant="77" id="RYn-fy-yOC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XiZ-9X-qZn" firstAttribute="centerX" secondItem="tS9-Pb-OgB" secondAttribute="centerX" id="gz9-3Q-oCJ"/>
+                            <constraint firstItem="XiZ-9X-qZn" firstAttribute="centerY" secondItem="tS9-Pb-OgB" secondAttribute="centerY" id="vlZ-A7-9cp"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="250" height="300"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6tW-IA-2Lk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1037" y="1444"/>
+        </scene>
+        <!--Add Popover View Controller-->
+        <scene sceneID="zgr-Cj-WMh">
+            <objects>
+                <viewController id="8Yi-r4-228" customClass="AddPopoverViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MCr-sc-lrV"/>
+                        <viewControllerLayoutGuide type="bottom" id="qfv-BF-sGm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3sf-jO-frW" customClass="A">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Someting" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IcA-ji-blg">
+                                <rect key="frame" x="59" y="112" width="133" height="77"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="77" id="GAP-lt-VpV"/>
+                                    <constraint firstAttribute="width" constant="133" id="YXt-gd-Z76"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IcA-ji-blg" firstAttribute="centerX" secondItem="3sf-jO-frW" secondAttribute="centerX" id="VGe-1S-caX"/>
+                            <constraint firstItem="IcA-ji-blg" firstAttribute="centerY" secondItem="3sf-jO-frW" secondAttribute="centerY" id="xW9-ar-Cc6"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="250" height="300"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1bR-9E-LL4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1484" y="685"/>
         </scene>
     </scenes>
 </document>

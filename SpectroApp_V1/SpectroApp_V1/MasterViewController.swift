@@ -16,7 +16,10 @@ class MasterViewController: UIViewController {
 
     /// outlet to a toolbar button item serving as a label 
     /// to indicate the current experiment
-    @IBOutlet weak var experimentName: UIBarButtonItem!
+    @IBOutlet weak var experimentTitleLabel: UILabel!
+    @IBOutlet weak var experimentSubtitleLabel: UILabel!
+    
+    @IBOutlet weak var upperToolbar: UIToolbar!
     
     /// instance of the project view controller; view controllers are
     /// implemented with lazy loading to prevent the costs of set up
@@ -64,6 +67,12 @@ class MasterViewController: UIViewController {
         
         // begin by loading the project view controller
         add(asChildViewController: projectViewController)
+        
+        // set experiment title and subtitle
+        experimentTitleLabel.text = "A Dope Experiment Title"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM dd, YYYY"
+        experimentSubtitleLabel.text = formatter.string(from: Date())
     }
 
     override func didReceiveMemoryWarning() {
