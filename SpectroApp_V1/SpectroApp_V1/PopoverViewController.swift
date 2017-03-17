@@ -1,15 +1,17 @@
 //
-//  ExportPopoverViewController.swift
+//  PopoverViewController.swift
 //  SpectroApp_V1
 //
-//  Created by Corban Swain on 3/16/17.
+//  Created by Corban Swain on 3/17/17.
 //  Copyright © 2017 CorbanSwain. All rights reserved.
 //
 
 import UIKit
 
-class ExportPopoverViewController: UIViewController {
+class PopoverViewController: UIViewController {
 
+    var passThroughViews: [UIView]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,8 +23,5 @@ class ExportPopoverViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let id = segue.identifier
-    }
 
 }

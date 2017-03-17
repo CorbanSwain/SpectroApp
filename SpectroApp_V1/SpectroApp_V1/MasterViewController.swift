@@ -9,7 +9,7 @@
 import UIKit
 import CoreBluetooth
 
-class MasterViewController: UIViewController {
+class MasterViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
     /// Outlet to the container view in which the various view 
     /// controllers will be presented
@@ -23,6 +23,9 @@ class MasterViewController: UIViewController {
     
     /// outler to a toolbar at the top of the master view controler
     @IBOutlet weak var upperToolbar: UIToolbar!
+    
+    @IBOutlet weak var instrumentButton: UIBarButtonItem!
+    @IBOutlet weak var instrumentAlertView: InstrumentAlertView!
     
     /// instance of the project view controller; view controllers are
     /// implemented with lazy loading to prevent the costs of set up
@@ -53,6 +56,7 @@ class MasterViewController: UIViewController {
         self.add(asChildViewController: viewController)
         return viewController
     }()
+
     
     /// an array of closures that each return the primary view controllers
     var viewControllers: [()->UIViewController] = []
@@ -73,6 +77,12 @@ class MasterViewController: UIViewController {
         // begin by loading the project view controller
         add(asChildViewController: projectViewController)
         
+        // instantiate bluetooth manager
+        BLEManager = InstrumentBluetoothManager(withDelegate: instrumentAlertView)
+        
+        // setup instrument alert view
+        instrumentAlertView.setup()
+        
         // set experiment title and subtitle
         experimentTitleLabel.text = "A Dope Experiment Title"
         let formatter = DateFormatter()
@@ -82,8 +92,8 @@ class MasterViewController: UIViewController {
         // remove top line from upper toolbar
         upperToolbar.clipsToBounds = true
         
-        BLEManager = InstrumentBluetoothManager()
-        print(BLEManager.checkIfOn() ? "BT powered on" : "BT NOT powered on")
+        // search for UART peripherals
+        print(BLEManager.isOn() ? "BT powered on" : "BT NOT powered on")
         print("central manager state: \(BLEManager.centralManager.state.rawValue)")
     }
 
@@ -99,6 +109,41 @@ class MasterViewController: UIViewController {
         let lastIndex = segmentedControlIndex
         segmentedControlIndex = sender.selectedSegmentIndex
         updateContainerView(from: lastIndex)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        presentedViewController?.dismiss(animated: false, completion: nil)
+        instrumentAlertView.isGrayedOut = false
+        let newVC = segue.destination
+        newVC.popoverPresentationController?.delegate = self
+        
+        guard let id = segue.identifier else {
+            print("No segue ID, cannot prepare for segue.")
+                    return
+        }
+        print("Segue ID: \(id)")
+        
+        switch id {
+        case "master.segue.instrumentPop1",
+             "master.segue.instrumentPop2":
+            let specificVC = segue.destination as! InstrumentPopoverViewController
+            specificVC.bleResponder = BLEManager
+            instrumentAlertView.isGrayedOut = true
+        case "master.segue.projectsPop":
+            break
+        case "master.segue.addPop":
+            break
+        case "master.segue.exportPop":
+            break
+        default:
+            break
+        }
+    }
+    
+    
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        instrumentAlertView.isGrayedOut = false
     }
     
     @IBAction func instrumentButtonPressed(_ sender: UIBarButtonItem) {

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -46,7 +47,7 @@
                                         </connections>
                                     </segmentedControl>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="61Z-0B-PYF">
-                                        <rect key="frame" x="682" y="8.5" width="342" height="44"/>
+                                        <rect key="frame" x="682" y="9" width="342" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="xrb-77-K1j"/>
                                         </constraints>
@@ -54,7 +55,7 @@
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="DeK-wy-Zs4"/>
                                             <barButtonItem systemItem="add" id="Cw7-Xx-fQw">
                                                 <connections>
-                                                    <segue destination="8Yi-r4-228" kind="popoverPresentation" popoverAnchorBarButtonItem="Cw7-Xx-fQw" id="a9U-mV-357">
+                                                    <segue destination="8Yi-r4-228" kind="popoverPresentation" identifier="master.segue.addPop" popoverAnchorBarButtonItem="Cw7-Xx-fQw" id="a9U-mV-357">
                                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                     </segue>
                                                 </connections>
@@ -62,7 +63,7 @@
                                         </items>
                                     </toolbar>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DJV-Rr-pN1">
-                                        <rect key="frame" x="10" y="10.5" width="332" height="40"/>
+                                        <rect key="frame" x="10" y="11" width="332" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CS-X-45 - March 5, 2015" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6EV-GC-nqN">
                                                 <rect key="frame" x="0.0" y="26" width="300" height="14"/>
@@ -112,17 +113,76 @@
                                     <barButtonItem title="Instrument" id="b3a-Or-61N">
                                         <connections>
                                             <action selector="instrumentButtonPressed:" destination="gHL-hd-Aeh" id="qRL-fQ-okc"/>
-                                            <segue destination="bM4-Qr-ahZ" kind="popoverPresentation" identifier="popover.instrument" popoverAnchorBarButtonItem="b3a-Or-61N" id="MXi-9w-xYl">
+                                            <segue destination="bM4-Qr-ahZ" kind="popoverPresentation" identifier="master.segue.instrumentPop1" popoverAnchorBarButtonItem="b3a-Or-61N" id="MXi-9w-xYl">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                             </segue>
                                         </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="TCR-Wn-yuR">
+                                        <view key="customView" contentMode="scaleToFill" id="rse-Qf-Bns" customClass="InstrumentAlertView" customModule="SpectroApp_V1" customModuleProvider="target">
+                                            <rect key="frame" x="113" y="11.5" width="21" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsH-YK-G8z">
+                                                    <rect key="frame" x="0.0" y="0.0" width="21" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkMarkImage" translatesAutoresizingMaskIntoConstraints="NO" id="jr0-VE-ZBu">
+                                                    <rect key="frame" x="3" y="3" width="15" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="jr0-VE-ZBu" secondAttribute="height" multiplier="1:1" id="hxl-Ry-HUH"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="lcJ-vq-C4c">
+                                                    <rect key="frame" x="0.5" y="0.5" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="47D-RQ-bDh"/>
+                                                        <constraint firstAttribute="height" constant="20" id="OVK-U3-yND"/>
+                                                    </constraints>
+                                                </activityIndicatorView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ne4-1e-CPi">
+                                                    <rect key="frame" x="0.0" y="0.0" width="21" height="21"/>
+                                                    <connections>
+                                                        <segue destination="bM4-Qr-ahZ" kind="popoverPresentation" identifier="master.segue.instrumentPop2" popoverAnchorView="ne4-1e-CPi" id="pmj-h8-XrZ">
+                                                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                        </segue>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="jr0-VE-ZBu" firstAttribute="centerY" secondItem="rse-Qf-Bns" secondAttribute="centerY" id="4YP-JX-7QS"/>
+                                                <constraint firstAttribute="width" secondItem="rse-Qf-Bns" secondAttribute="height" multiplier="1:1" id="4rO-PV-lzu"/>
+                                                <constraint firstItem="QsH-YK-G8z" firstAttribute="leading" secondItem="rse-Qf-Bns" secondAttribute="leading" id="AwP-qU-rfo"/>
+                                                <constraint firstItem="QsH-YK-G8z" firstAttribute="top" secondItem="rse-Qf-Bns" secondAttribute="top" id="C57-Vi-MaN"/>
+                                                <constraint firstItem="lcJ-vq-C4c" firstAttribute="centerY" secondItem="rse-Qf-Bns" secondAttribute="centerY" id="GFM-3d-l2M"/>
+                                                <constraint firstAttribute="bottom" secondItem="QsH-YK-G8z" secondAttribute="bottom" id="NvN-pI-rHR"/>
+                                                <constraint firstItem="jr0-VE-ZBu" firstAttribute="top" secondItem="rse-Qf-Bns" secondAttribute="top" constant="3.5" id="O03-eq-ZOt"/>
+                                                <constraint firstAttribute="trailing" secondItem="ne4-1e-CPi" secondAttribute="trailing" id="QrJ-Ff-mr7"/>
+                                                <constraint firstAttribute="trailing" secondItem="QsH-YK-G8z" secondAttribute="trailing" id="Sl8-MO-PMF"/>
+                                                <constraint firstItem="jr0-VE-ZBu" firstAttribute="centerX" secondItem="rse-Qf-Bns" secondAttribute="centerX" id="diX-DN-2Zz"/>
+                                                <constraint firstAttribute="bottom" secondItem="ne4-1e-CPi" secondAttribute="bottom" id="hB8-oC-Sbp"/>
+                                                <constraint firstItem="lcJ-vq-C4c" firstAttribute="centerX" secondItem="rse-Qf-Bns" secondAttribute="centerX" id="ox2-cy-Hu7"/>
+                                                <constraint firstItem="ne4-1e-CPi" firstAttribute="leading" secondItem="rse-Qf-Bns" secondAttribute="leading" id="rfz-ii-y4g"/>
+                                                <constraint firstItem="ne4-1e-CPi" firstAttribute="top" secondItem="rse-Qf-Bns" secondAttribute="top" id="uPR-tP-uNx"/>
+                                                <constraint firstAttribute="height" constant="21" id="wj6-A8-j8f"/>
+                                            </constraints>
+                                            <connections>
+                                                <outlet property="activityIndicator" destination="lcJ-vq-C4c" id="x87-lG-bRE"/>
+                                                <outlet property="button" destination="ne4-1e-CPi" id="2nc-hP-EIY"/>
+                                                <outlet property="checkMark" destination="jr0-VE-ZBu" id="bYS-5K-MQw"/>
+                                                <outlet property="label" destination="QsH-YK-G8z" id="RaK-pR-ZYk"/>
+                                            </connections>
+                                        </view>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="SYv-X5-2wf"/>
                                     <barButtonItem width="25" style="plain" systemItem="fixedSpace" id="Gc4-qb-fMj"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Hvv-Vf-dz6"/>
                                     <barButtonItem title="Projects" id="GUW-BU-jhE">
                                         <connections>
-                                            <segue destination="InD-Bl-IXN" kind="popoverPresentation" popoverAnchorBarButtonItem="GUW-BU-jhE" id="04p-xP-sHB">
+                                            <segue destination="InD-Bl-IXN" kind="popoverPresentation" identifier="master.segue.projectsPop" popoverAnchorBarButtonItem="GUW-BU-jhE" id="04p-xP-sHB">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                             </segue>
                                         </connections>
@@ -130,10 +190,10 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="571-wm-bnx"/>
                                     <barButtonItem width="25" style="plain" systemItem="fixedSpace" id="ieF-ZL-2h5"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="IRi-n8-V1B"/>
-                                    <barButtonItem width="36" style="plain" systemItem="fixedSpace" id="XmA-I3-wM1"/>
+                                    <barButtonItem width="64" style="plain" systemItem="fixedSpace" id="XmA-I3-wM1"/>
                                     <barButtonItem title="Export" id="rNA-2m-gbH">
                                         <connections>
-                                            <segue destination="A9Y-9Q-rTs" kind="popoverPresentation" popoverAnchorBarButtonItem="rNA-2m-gbH" id="g1u-FU-2fg">
+                                            <segue destination="A9Y-9Q-rTs" kind="popoverPresentation" identifier="master.segue.exportPop" popoverAnchorBarButtonItem="rNA-2m-gbH" id="g1u-FU-2fg">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                             </segue>
                                         </connections>
@@ -142,6 +202,7 @@
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="HjT-9X-3Ge" firstAttribute="bottom" secondItem="kxR-uV-oWg" secondAttribute="bottom" id="A1P-lD-hcq"/>
                             <constraint firstItem="ss1-BV-WWC" firstAttribute="top" secondItem="kxR-uV-oWg" secondAttribute="bottom" id="E7c-gU-ufB"/>
@@ -163,6 +224,8 @@
                         <outlet property="containerView" destination="ss1-BV-WWC" id="hKX-uE-Nl3"/>
                         <outlet property="experimentSubtitleLabel" destination="6EV-GC-nqN" id="BIX-Es-8YT"/>
                         <outlet property="experimentTitleLabel" destination="9aN-aT-7ry" id="0w9-xe-l8F"/>
+                        <outlet property="instrumentAlertView" destination="rse-Qf-Bns" id="zwO-Xc-e8U"/>
+                        <outlet property="instrumentButton" destination="b3a-Or-61N" id="OSF-vK-pQI"/>
                         <outlet property="upperToolbar" destination="61Z-0B-PYF" id="6MV-9t-OsX"/>
                     </connections>
                 </viewController>
@@ -173,7 +236,7 @@
         <!--Instrument Popover View Controller-->
         <scene sceneID="7GW-mi-Thn">
             <objects>
-                <viewController storyboardIdentifier="InstrumentPopover" id="bM4-Qr-ahZ" customClass="InstrumentPopoverViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InstrumentPopoverVC" id="bM4-Qr-ahZ" customClass="InstrumentPopoverViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qbI-nQ-Tnw"/>
                         <viewControllerLayoutGuide type="bottom" id="X3i-Uy-otB"/>
@@ -182,32 +245,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instrument Setup" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6af-rg-Tfw">
-                                <rect key="frame" x="59" y="111.5" width="133" height="77"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="77" id="MV6-O4-7uS"/>
-                                    <constraint firstAttribute="width" constant="133" id="QDI-fr-e6U"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="23"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bo9-JA-OKx">
+                                <rect key="frame" x="58" y="135" width="135" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Rescan For Devices"/>
+                                <connections>
+                                    <action selector="scanButtonPressed:" destination="bM4-Qr-ahZ" eventType="touchUpInside" id="dtr-Va-IA7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="6af-rg-Tfw" firstAttribute="centerX" secondItem="uqO-19-kLW" secondAttribute="centerX" id="CvS-S1-OvF"/>
-                            <constraint firstItem="6af-rg-Tfw" firstAttribute="centerY" secondItem="uqO-19-kLW" secondAttribute="centerY" id="MeN-jh-Xn1"/>
-                        </constraints>
                     </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="250" height="300"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="250" height="300"/>
+                    <connections>
+                        <outlet property="scanButton" destination="Bo9-JA-OKx" id="1ds-v0-qPG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AZA-yM-D1c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="662" y="1444"/>
+            <point key="canvasLocation" x="669" y="1526"/>
         </scene>
         <!--Project View Controller-->
         <scene sceneID="dAd-sd-NB4">
@@ -258,7 +317,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rcn-py-ezS" id="yUK-bP-ydW">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -321,10 +380,10 @@
             </objects>
             <point key="canvasLocation" x="2213" y="1829"/>
         </scene>
-        <!--Instrument Popover View Controller-->
+        <!--Projects Popover View Controller-->
         <scene sceneID="Lek-fZ-9pe">
             <objects>
-                <viewController id="InD-Bl-IXN" customClass="InstrumentPopoverViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="InD-Bl-IXN" customClass="ProjectsPopoverViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HOm-7X-j7O"/>
                         <viewControllerLayoutGuide type="bottom" id="NbG-xw-PKT"/>
@@ -397,7 +456,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1bR-9E-LL4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1352" y="1444"/>
+            <point key="canvasLocation" x="1354" y="1526"/>
         </scene>
         <!--Export Popover View Controller-->
         <scene sceneID="7f2-ur-Mr5">
@@ -439,4 +498,10 @@
             <point key="canvasLocation" x="1165" y="1526"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="checkMarkImage" width="25" height="25"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="pmj-h8-XrZ"/>
+    </inferredMetricsTieBreakers>
 </document>

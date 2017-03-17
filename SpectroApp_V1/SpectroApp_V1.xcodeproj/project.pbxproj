@@ -12,6 +12,7 @@
 		1C0BFEE91E7A77BA00408A28 /* AddPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0BFEE81E7A77BA00408A28 /* AddPopoverViewController.swift */; };
 		1C1944661E7B02DC002FB321 /* ExportPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1944651E7B02DC002FB321 /* ExportPopoverViewController.swift */; };
 		1C1944691E7B42EA002FB321 /* InstrumentBluetoothManagert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1944681E7B42EA002FB321 /* InstrumentBluetoothManagert.swift */; };
+		1C19446B1E7B7D9D002FB321 /* InstrumentAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19446A1E7B7D9C002FB321 /* InstrumentAlertView.swift */; };
 		1C569FF41E79AA5E00A9FAD4 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C569FF31E79AA5E00A9FAD4 /* DataViewController.swift */; };
 		1C569FF71E7A138C00A9FAD4 /* PlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C569FF61E7A138C00A9FAD4 /* PlotViewController.swift */; };
 		1C7E71401E78CA390073799D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E713F1E78CA390073799D /* AppDelegate.swift */; };
@@ -32,6 +33,7 @@
 		1C7E71871E79035E0073799D /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E71861E79035E0073799D /* Reading.swift */; };
 		1C7E71891E7903790073799D /* DataPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E71881E7903790073799D /* DataPoint.swift */; };
 		1C7E718B1E7904120073799D /* AbsorbanceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E718A1E7904120073799D /* AbsorbanceKit.swift */; };
+		1CBE942E1E7BDB3E00F3C8F3 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBE942D1E7BDB3E00F3C8F3 /* PopoverViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,7 @@
 		1C0BFEE81E7A77BA00408A28 /* AddPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPopoverViewController.swift; sourceTree = "<group>"; };
 		1C1944651E7B02DC002FB321 /* ExportPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportPopoverViewController.swift; sourceTree = "<group>"; };
 		1C1944681E7B42EA002FB321 /* InstrumentBluetoothManagert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentBluetoothManagert.swift; sourceTree = "<group>"; };
+		1C19446A1E7B7D9C002FB321 /* InstrumentAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentAlertView.swift; sourceTree = "<group>"; };
 		1C569FF31E79AA5E00A9FAD4 /* DataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
 		1C569FF61E7A138C00A9FAD4 /* PlotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotViewController.swift; sourceTree = "<group>"; };
 		1C7E713C1E78CA390073799D /* SpectroApp_V1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpectroApp_V1.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +86,7 @@
 		1C7E71861E79035E0073799D /* Reading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reading.swift; sourceTree = "<group>"; };
 		1C7E71881E7903790073799D /* DataPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPoint.swift; sourceTree = "<group>"; };
 		1C7E718A1E7904120073799D /* AbsorbanceKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsorbanceKit.swift; sourceTree = "<group>"; };
+		1CBE942D1E7BDB3E00F3C8F3 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				1C1944651E7B02DC002FB321 /* ExportPopoverViewController.swift */,
+				1CBE942D1E7BDB3E00F3C8F3 /* PopoverViewController.swift */,
 				1C0BFEE61E7A77A400408A28 /* ProjectsPopoverViewController.swift */,
 				1C0BFEE81E7A77BA00408A28 /* AddPopoverViewController.swift */,
 				1C0BFEE31E7A759900408A28 /* InstrumentPopoverViewController.swift */,
@@ -205,6 +210,7 @@
 			children = (
 				1C7E71811E78E7270073799D /* Cells */,
 				1C7E717E1E78E6890073799D /* Storyboards */,
+				1C19446A1E7B7D9C002FB321 /* InstrumentAlertView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -393,6 +399,7 @@
 				1C7E718B1E7904120073799D /* AbsorbanceKit.swift in Sources */,
 				1C0BFEE41E7A759900408A28 /* InstrumentPopoverViewController.swift in Sources */,
 				1C7E71771E78E5AC0073799D /* ProteinDataTableViewCell.swift in Sources */,
+				1C19446B1E7B7D9D002FB321 /* InstrumentAlertView.swift in Sources */,
 				1C569FF71E7A138C00A9FAD4 /* PlotViewController.swift in Sources */,
 				1C7E71871E79035E0073799D /* Reading.swift in Sources */,
 				1C7E71731E78D6F50073799D /* ProjectViewController.swift in Sources */,
@@ -405,6 +412,7 @@
 				1C7E71851E78F7600073799D /* Project.swift in Sources */,
 				1C7E71481E78CA390073799D /* SpectroApp_V1.xcdatamodeld in Sources */,
 				1C7E71791E78E5C30073799D /* DensityDataTableViewCell.swift in Sources */,
+				1CBE942E1E7BDB3E00F3C8F3 /* PopoverViewController.swift in Sources */,
 				1C0BFEE71E7A77A400408A28 /* ProjectsPopoverViewController.swift in Sources */,
 				1C7E71711E78D6C80073799D /* ProjectTableViewCell.swift in Sources */,
 				1C1944691E7B42EA002FB321 /* InstrumentBluetoothManagert.swift in Sources */,
