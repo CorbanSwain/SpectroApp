@@ -92,7 +92,9 @@ class InstrumentAlertView: UIView, InstrumentBluetoothManagerReporter {
         didSet {
             print("did set isGrayedOut to: \(isGrayedOut)")
             if isGrayedOut {
-                self.backgroundColor = .gray
+                if self.backgroundColor != .clear {
+                    self.backgroundColor = .gray
+                }
                 self.button.isUserInteractionEnabled = false
             } else {
                 self.backgroundColor = status.color

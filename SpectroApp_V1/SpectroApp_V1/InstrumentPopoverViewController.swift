@@ -12,7 +12,7 @@ protocol BluetoothResponder {
     func rescanForDevices()
 }
 
-class InstrumentPopoverViewController: UIViewController {
+class InstrumentPopoverViewController: PopoverViewController {
 
     @IBOutlet weak var scanButton: UIButton!
     var bleResponder: BluetoothResponder!
@@ -20,9 +20,6 @@ class InstrumentPopoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
     }
     
     override func didReceiveMemoryWarning() {

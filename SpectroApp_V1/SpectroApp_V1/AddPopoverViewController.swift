@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddPopoverViewController: UIViewController {
+class AddPopoverViewController: PopoverViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,6 @@ class AddPopoverViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 

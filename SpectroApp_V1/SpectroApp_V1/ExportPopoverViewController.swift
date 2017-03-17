@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExportPopoverViewController: UIViewController {
+class ExportPopoverViewController: PopoverViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,14 @@ class ExportPopoverViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let id = segue.identifier
+        let newVC = segue.destination as! MasterViewController
+        newVC.instrumentAlertView.isGrayedOut = false
+        
+        guard let id = segue.identifier else {
+            print("no segue ID")
+            return
+        }
+        print("segueID: \(id)")
     }
 
 }

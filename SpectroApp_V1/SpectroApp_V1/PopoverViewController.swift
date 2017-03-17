@@ -12,16 +12,23 @@ class PopoverViewController: UIViewController {
 
     var passThroughViews: [UIView]?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        guard let passThroughViews = passThroughViews else {
+            print("self.passThroughViews is nil")
+            return
+        }
+        popoverPresentationController?.passthroughViews = passThroughViews
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let newVC = segue.destination as! MasterViewController
+        newVC.instrumentAlertView.isGrayedOut = false
+        
+        guard let id = segue.identifier else {
+            print("no segue ID")
+            return
+        }
+        print("segueID: \(id)")
+    }
+    
 }
