@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreBluetooth
 
 class MasterViewController: UIViewController {
     
@@ -59,6 +60,8 @@ class MasterViewController: UIViewController {
     /// index of the current segmented control selection
     var segmentedControlIndex = 0
     
+    var BLEManager: InstrumentBluetoothManager!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -78,6 +81,10 @@ class MasterViewController: UIViewController {
         
         // remove top line from upper toolbar
         upperToolbar.clipsToBounds = true
+        
+        BLEManager = InstrumentBluetoothManager()
+        print(BLEManager.checkIfOn() ? "BT powered on" : "BT NOT powered on")
+        print("central manager state: \(BLEManager.centralManager.state.rawValue)")
     }
 
     override func didReceiveMemoryWarning() {
