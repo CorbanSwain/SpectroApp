@@ -9,39 +9,53 @@
 import UIKit
 import Darwin
 
-struct AbsorbanceKit {
-    
-    enum ExperimentType {
-        case bradford
-        case cellDensity
-        case nuecleicAcid
-        var wavelength: Wavelength {
-            switch self {
-            case .bradford:
-                return ._595
-            case .cellDensity:
-                return ._560
-            case .nuecleicAcid:
-                return ._280
-            }
+enum ExperimentType {
+    case bradford
+    case cellDensity
+    case nuecleicAcid
+    var wavelength: Wavelength {
+        switch self {
+        case .bradford:
+            return ._595
+        case .cellDensity:
+            return ._560
+        case .nuecleicAcid:
+            return ._280
         }
     }
+}
+
+enum ReadingType: String {
+    case control
+    case standard
+    case unknown
+    case wildType
+    case mutant
+    case custom
+    case noType
     
-    enum ReadingType: String {
-        case control
-        case standard
-        case unknown
-        case wildType
-        case mutant
-        case custom
+    static var allTypes: Set<ReadingType> {
+        return [.control, .standard, .unknown, .wildType, .mutant, .custom]
     }
     
-    enum Wavelength: Int {
-        case _260 = 260 // nucleic acid
-        case _280 = 280 // protein
-        case _560 = 560 // cell density
-        case _595 = 595 // bradford
+    static func get(fromString string: String) -> ReadingType {
+        for type in allTypes {
+            if string == type.rawValue {
+                return type
+            }
+        }
+        return .noType
     }
+}
+
+enum Wavelength: Int {
+    case _260 = 260 // nucleic acid
+    case _280 = 280 // protein
+    case _560 = 560 // cell density
+    case _595 = 595 // bradford
+}
+
+struct AbsorbanceKit {
     
     public static func average(of points: [DataPoint]) -> CGFloat? {
         let count = points.count

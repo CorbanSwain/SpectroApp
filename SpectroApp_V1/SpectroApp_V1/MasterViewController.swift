@@ -27,6 +27,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     @IBOutlet weak var instrumentButton: UIBarButtonItem!
     @IBOutlet weak var instrumentAlertView: InstrumentAlertView!
     
+    @IBOutlet weak var instrumentButtonToAlertViewFixedSpace: UIBarButtonItem!
     /// instance of the project view controller; view controllers are
     /// implemented with lazy loading to prevent the costs of set up
     /// if a particular view controller is never used
@@ -89,6 +90,9 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         formatter.dateFormat = "MMMM dd, YYYY"
         experimentSubtitleLabel.text = formatter.string(from: Date())
         
+        // move instrument alert view a bit closer to instrument button
+        instrumentButtonToAlertViewFixedSpace.width = -5
+        
         // remove top line from upper toolbar
         upperToolbar.clipsToBounds = true
         
@@ -115,7 +119,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         
         presentedViewController?.dismiss(animated: false, completion: nil)
         instrumentAlertView.isGrayedOut = false
-        let newVC = segue.destination
+        let newVC = segue.destination as! PopoverViewController
         newVC.popoverPresentationController?.delegate = self
         
         guard let id = segue.identifier else {
@@ -144,6 +148,11 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         instrumentAlertView.isGrayedOut = false
+    }
+    
+    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        instrumentAlertView.isGrayedOut = false
+        return true
     }
     
     @IBAction func instrumentButtonPressed(_ sender: UIBarButtonItem) {

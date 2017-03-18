@@ -118,9 +118,10 @@
                                             </segue>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="fixedSpace" id="b7b-3R-veY"/>
                                     <barButtonItem style="plain" id="TCR-Wn-yuR">
                                         <view key="customView" contentMode="scaleToFill" id="rse-Qf-Bns" customClass="InstrumentAlertView" customModule="SpectroApp_V1" customModuleProvider="target">
-                                            <rect key="frame" x="113" y="11.5" width="21" height="21"/>
+                                            <rect key="frame" x="113" y="12" width="21" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsH-YK-G8z">
@@ -226,6 +227,7 @@
                         <outlet property="experimentTitleLabel" destination="9aN-aT-7ry" id="0w9-xe-l8F"/>
                         <outlet property="instrumentAlertView" destination="rse-Qf-Bns" id="zwO-Xc-e8U"/>
                         <outlet property="instrumentButton" destination="b3a-Or-61N" id="OSF-vK-pQI"/>
+                        <outlet property="instrumentButtonToAlertViewFixedSpace" destination="b7b-3R-veY" id="Emo-Tg-UAq"/>
                         <outlet property="upperToolbar" destination="61Z-0B-PYF" id="6MV-9t-OsX"/>
                     </connections>
                 </viewController>
@@ -317,7 +319,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rcn-py-ezS" id="yUK-bP-ydW">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>

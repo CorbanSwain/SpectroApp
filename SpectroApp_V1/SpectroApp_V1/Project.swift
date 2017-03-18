@@ -12,5 +12,5 @@ struct Project {
     var readings: [Reading]
     var title: String
     var timeStamp: Date
-    var experimentType: AbsorbanceKit.ExperimentType
+    var experimentType: ExperimentType
 }

@@ -8,6 +8,8 @@
 
 import UIKit
 
+fileprivate let _UIBlue = UIColor(21, 126, 251)
+
 enum InstrumentStatus {
     case good
     case warning
@@ -21,7 +23,7 @@ enum InstrumentStatus {
     }
     var color: UIColor {
         switch self {
-        case .good: return InstrumentAlertView._CNSBlue
+        case .good: return _UIBlue
         case .busy: return .clear
         case.warning: return .red
         }
@@ -34,8 +36,6 @@ class InstrumentAlertView: UIView, InstrumentBluetoothManagerReporter {
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var label: UILabel!
     @IBOutlet private weak var button: UIButton!
-    
-    fileprivate static let _CNSBlue = UIColor(21, 126, 251)
     
     var status: InstrumentStatus = .busy {
         didSet {
@@ -57,7 +57,7 @@ class InstrumentAlertView: UIView, InstrumentBluetoothManagerReporter {
         self.activityIndicator.stopAnimating()
         UIView.animate(withDuration: 0.5, animations: {
             if self.isGrayedOut { self.backgroundColor = .gray }
-            else { self.backgroundColor = InstrumentAlertView._CNSBlue }
+            else { self.backgroundColor = _UIBlue }
             self.checkMark.isHidden = false
             self.label.isHidden = true
         })
@@ -90,6 +90,9 @@ class InstrumentAlertView: UIView, InstrumentBluetoothManagerReporter {
     
     var isGrayedOut: Bool = false {
         didSet {
+            guard isGrayedOut != oldValue else {
+                return
+            }
             print("did set isGrayedOut to: \(isGrayedOut)")
             if isGrayedOut {
                 if self.backgroundColor != .clear {

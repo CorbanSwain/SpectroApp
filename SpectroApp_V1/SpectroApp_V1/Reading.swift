@@ -8,17 +8,21 @@
 
 import UIKit
 
+
+
 struct Reading {
+    var project: Project
+    
     var readingName: String
     var timestamp: Date
     var hashValue: Int
-    var experimentType: AbsorbanceKit.ExperimentType
-    var readingType: AbsorbanceKit.ReadingType
+    var experimentType: ExperimentType
+    var readingType: ReadingType
     
     var dataPoints: [DataPoint] = []
-    var wavelength: AbsorbanceKit.Wavelength?
+    var wavelength: Wavelength?
     var calibrationPoints: [DataPoint] = []
-    var calibrationWavelength: AbsorbanceKit.Wavelength?
+    var calibrationWavelength: Wavelength?
     
     var isEmpty: Bool { return dataPoints.count < 1 }
     var hasRepeats: Bool { return dataPoints.count > 1 }

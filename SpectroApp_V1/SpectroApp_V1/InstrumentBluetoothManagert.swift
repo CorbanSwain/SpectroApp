@@ -69,10 +69,20 @@ class InstrumentBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripher
             print("BLE On!, scanning for peripherals")
             DispatchQueue.main.async {
                 self.centralManager.scanForPeripherals(withServices: serviceUUIDs, options: nil)
+                Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(self.stopScanningForPeripherals), userInfo: nil, repeats: false)
             }
         }
     }
  
+    
+    func stopScanningForPeripherals() {
+        guard centralManager.isScanning else {
+            return
+        }
+        centralManager.stopScan()
+        alertReporter.setStatusTo(.warning)
+    }
+    
     internal func centralManagerDidUpdateState(_ central: CBCentralManager) {
         print("Core Bluetooth Central Manager state changed!")
         if isOn() {
@@ -120,6 +130,7 @@ class InstrumentBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripher
         print("peripheral disconnected!")
         connectedPeripheral = nil
         alertReporter.setStatusTo(.warning)
+        scanForPeripherals(withServices: [uartServiceUUID])
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
