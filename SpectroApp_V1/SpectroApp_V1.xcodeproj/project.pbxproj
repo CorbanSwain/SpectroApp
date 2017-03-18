@@ -236,14 +236,11 @@
 		1C7E71801E78E6C10073799D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1CBE942F1E7CC65A00F3C8F3 /* Absorbance Data */,
 				1C1944671E7B42D0002FB321 /* Bluetooth */,
 				1C7E71461E78CA390073799D /* SpectroApp_V1.xcdatamodeld */,
 				1C7E714E1E78CA390073799D /* Info.plist */,
 				1C7E71491E78CA390073799D /* Assets.xcassets */,
-				1C7E71841E78F7600073799D /* Project.swift */,
-				1C7E71861E79035E0073799D /* Reading.swift */,
-				1C7E718A1E7904120073799D /* AbsorbanceKit.swift */,
-				1C7E71881E7903790073799D /* DataPoint.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -255,6 +252,17 @@
 				1C7E717C1E78E64D0073799D /* Data Cells */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		1CBE942F1E7CC65A00F3C8F3 /* Absorbance Data */ = {
+			isa = PBXGroup;
+			children = (
+				1C7E71841E78F7600073799D /* Project.swift */,
+				1C7E71861E79035E0073799D /* Reading.swift */,
+				1C7E718A1E7904120073799D /* AbsorbanceKit.swift */,
+				1C7E71881E7903790073799D /* DataPoint.swift */,
+			);
+			name = "Absorbance Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

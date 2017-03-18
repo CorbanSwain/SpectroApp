@@ -8,15 +8,20 @@
 
 import UIKit
 
-struct DataPoint: Hashable {
+struct DataPoint {
+    
+    var dataPointID: String
     
     var value: CGFloat
     var timeStamp: Date
-    var measurementID: String
     var pointLabel: String
-    var hashValue: Int
-    static func == (lhs: DataPoint, rhs: DataPoint) -> Bool {
-        return lhs.measurementID == rhs.measurementID
-    }
+    var reading: Reading
+    var project: Project
     
+    
+    
+    var instrumentValue: Int
+    var instrumentIsBlank: Bool
+    var instrumentID: UUID
+    var instrumentTag: (type: AbsorbanceKit.ReadingType, index: Int)
 }
