@@ -16,12 +16,12 @@ protocol InstrumentBluetoothManagerReporter: class {
 class InstrumentBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BluetoothResponder {
     var centralManager: CBCentralManager
     private let bleQueue = DispatchQueue.init(label: "bleQueue", qos: .utility)
+    
     let uartServiceUUID = CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")
     let uartTXCharID = CBUUID(string:    "6E400002-B5A3-F393-E0A9-E50E24DCCA9E")
     let uartRXCharID = CBUUID(string:    "6E400003-B5A3-F393-E0A9-E50E24DCCA9E")
-    
-
     let legoSpecID = UUID(uuidString: "EF520BC5-9EF2-4801-B395-DA0D146A4B65")
+    
     var uartPeripherals: [UUID: CBPeripheral] = [:]
     var alertReporter: InstrumentBluetoothManagerReporter
     var connectedPeripheral: CBPeripheral? {
@@ -33,7 +33,6 @@ class InstrumentBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripher
         }
     }
     
-    var uartService: CBService?
     var tryPeripheralID: UUID?
     var dataString = ""
     var canAppendChars = false
@@ -161,7 +160,6 @@ class InstrumentBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripher
         for service in services {
             if service.uuid == uartServiceUUID {
                 print("sucessfully connected to UART service")
-                uartService = service
                 peripheral.discoverCharacteristics([uartRXCharID], for: service)
                 print("attemting to discover charachteristics...")
             }
@@ -228,13 +226,9 @@ class InstrumentBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripher
     }
     
     func peripheral(_ peripheral: CBPeripheral, didRecieveDataString string: String, fromCharachteristic characteristic: CBCharacteristic) {
-        print("Redieved Data String -> \(string)")
+        print("Redieved Data String -> \"\(string)\"")
         print("Converting to InstrumentDataPoint object...")
-        guard let data = string.data(using: .utf8) else {
-            print("ERROR: Could not convert string to data!")
-            return
-        }
-        let instrumentDP = JSON(data: data).instrumentDataPointValue
+        let instrumentDP = JSON(parseJSON: string).instrumentDataPointValue
         print("Conversion Successful! -> \(instrumentDP)")
         
     }
