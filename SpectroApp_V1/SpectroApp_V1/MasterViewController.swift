@@ -134,6 +134,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             let specificVC = segue.destination as! InstrumentPopoverViewController
             specificVC.bleResponder = BLEManager
             instrumentAlertView.isGrayedOut = true
+            // fix me!
         case "master.segue.projectsPop":
             break
         case "master.segue.addPop":
@@ -150,10 +151,6 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         instrumentAlertView.isGrayedOut = false
     }
     
-    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
-        instrumentAlertView.isGrayedOut = false
-        return true
-    }
     
     @IBAction func instrumentButtonPressed(_ sender: UIBarButtonItem) {
     }
@@ -193,7 +190,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         viewController.removeFromParentViewController()
     }
     
-    
+
     /// Transitions the container view from the old interface 
     /// to a new interface
     ///

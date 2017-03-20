@@ -25,7 +25,7 @@ enum ExperimentType {
     }
 }
 
-enum ReadingType: String {
+enum ReadingType: String, CustomStringConvertible {
     case control
     case standard
     case unknown
@@ -45,6 +45,17 @@ enum ReadingType: String {
             }
         }
         return .noType
+    }
+    
+    var description: String {
+        switch self {
+        case .wildType:
+            return "Wild_Type"
+        case .noType:
+            return "[no type]"
+        default:
+            return self.rawValue.capitalized(with: nil)
+        }
     }
 }
 

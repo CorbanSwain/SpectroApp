@@ -8,7 +8,7 @@
 
 import UIKit
 
-public let dataPointJSONExample = JSON(data: "{\"Index\":\"4\", \"Value\":\"2776\", \"Tag\":\"control\", \"TagNumber\":\"2\", \"ID\":\"24566781\"}".data(using: .utf8)!)
+public let dataPointJSONExample = JSON(data: "{\"Index\":\"4\", \"Value\":\"2776\", \"Tag\":\"control\", \"TagNumber\":\"2\", \"Identifier\":\"24566781\"}".data(using: .utf8)!)
 
 struct DataPoint {
     
@@ -27,13 +27,14 @@ struct InstrumentDataPoint: CustomStringConvertible {
     var index: Int
     var value: Int
     var tag: (type: ReadingType, index: Int)
+    var identifier: String
     
     var description: String {
         if tag.type == .noType {
-            return "<Data Point #\(index), [no tag] : \(value)>"
+            return "Data Point <Number: \(index), Tagged: [no tag], ID: \(identifier), Value: \(value)>"
         }
         else {
-            return "<Data Point #\(index), \(tag.type)-\(tag.index) : \(value)>"
+            return "Data Point <Number: \(index), Tagged: \(tag.type)-\(tag.index), ID: \(identifier), Value: \(value)>"
         }
     }
 }
@@ -44,7 +45,8 @@ extension JSON {
         let value = self["Value"].intValue
         let tagNum = self["TagNumber"].intValue
         let tagID = self["Tag"].stringValue
+        let ID = self["Identifier"].stringValue
         let tagType = ReadingType.get(fromString: tagID)
-        return InstrumentDataPoint(index: index, value: value, tag: (tagType, tagNum))
+        return InstrumentDataPoint(index: index, value: value, tag: (tagType, tagNum), identifier: ID)
     }
 }

@@ -463,6 +463,7 @@
         <!--Export Popover View Controller-->
         <scene sceneID="7f2-ur-Mr5">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fhi-RZ-hXC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="A9Y-9Q-rTs" customClass="ExportPopoverViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LvN-a6-TsA"/>
@@ -495,7 +496,6 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="250" height="300"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fhi-RZ-hXC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1165" y="1526"/>
         </scene>
@@ -504,6 +504,6 @@
         <image name="checkMarkImage" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pmj-h8-XrZ"/>
+        <segue reference="MXi-9w-xYl"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -35,6 +35,8 @@ class InstrumentBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripher
     
     var uartService: CBService?
     var tryPeripheralID: UUID?
+    var dataString = ""
+    var canAppendChars = false
     
     init(withDelegate delegate: InstrumentBluetoothManagerReporter) {
         self.alertReporter = delegate
@@ -201,8 +203,39 @@ class InstrumentBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripher
             print("no data found for \(characteristic.uuid)")
             return
         }
-        let string = String(data: data, encoding: String.Encoding.utf8)
-        print((string ?? "[nil]"), terminator: "")
+        let oString = String(data: data, encoding: String.Encoding.utf8)
+        guard var string = oString else {
+            print("string could not be paresed from incoming data")
+            return
+        }
+        
+        for char in string.characters {
+            switch char {
+            case "<":
+                dataString = ""
+                canAppendChars = true
+                // FIX ME add timing structure to prevent canAppendChars from staying true indefinately...
+            case ">":
+                self.peripheral(peripheral, didRecieveDataString: dataString, fromCharachteristic: characteristic)
+                canAppendChars = false
+            default:
+                if canAppendChars {
+                    dataString.characters.append(char)
+                }
+            }
+        }
+        
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didRecieveDataString string: String, fromCharachteristic characteristic: CBCharacteristic) {
+        print("Redieved Data String -> \(string)")
+        print("Converting to InstrumentDataPoint object...")
+        guard let data = string.data(using: .utf8) else {
+            print("ERROR: Could not convert string to data!")
+            return
+        }
+        let instrumentDP = JSON(data: data).instrumentDataPointValue
+        print("Conversion Successful! -> \(instrumentDP)")
         
     }
     
