@@ -196,6 +196,8 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     private func updateContainerView(from index: Int) {
         let newController = viewControllers[segmentedControlIndex]
         let oldController = viewControllers[index]
+        oldController().beginAppearanceTransition(false, animated: true)
+        newController().beginAppearanceTransition(true, animated: true)
         remove(asChildViewController: oldController())
         add(asChildViewController: newController())
     }

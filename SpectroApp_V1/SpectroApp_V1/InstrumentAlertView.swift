@@ -11,9 +11,9 @@ import UIKit
 fileprivate let _UIBlue = UIColor(21, 126, 251)
 
 enum InstrumentStatus: String, CustomStringConvertible {
-    case good
-    case warning
-    case busy = "connected"
+    case good = "Connected"
+    case warning = "Not connected"
+    case busy
     case unknown
     func show(with view: InstrumentAlertView) {
         switch self {

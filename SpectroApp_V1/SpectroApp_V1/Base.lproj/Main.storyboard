@@ -11,6 +11,30 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="07C-Kg-kwI">
+            <objects>
+                <viewController id="AaW-l2-ZbG" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="77p-9v-9Qp"/>
+                        <viewControllerLayoutGuide type="bottom" id="gOa-31-nVi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lh7-MB-3Dk">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vpi-45-yQ1">
+                                <rect key="frame" x="510" y="477" width="150" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4zT-8o-sJ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2234" y="203"/>
+        </scene>
         <!--Master View Controller-->
         <scene sceneID="yjX-bK-uUK">
             <objects>
@@ -130,15 +154,15 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CS-X-45 - March 5, 2015" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6EV-GC-nqN">
-                                        <rect key="frame" x="0.0" y="26" width="300" height="14"/>
+                                        <rect key="frame" x="0.0" y="22" width="300" height="14"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Cool Experiment Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9aN-aT-7ry">
-                                        <rect key="frame" x="0.0" y="-9" width="300" height="40"/>
+                                        <rect key="frame" x="0.0" y="-3" width="300" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="5aS-cY-Mgw"/>
+                                            <constraint firstAttribute="height" constant="25" id="5aS-cY-Mgw"/>
                                             <constraint firstAttribute="width" constant="300" id="tN0-Pq-9rj"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="26"/>
@@ -148,10 +172,10 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="6EV-GC-nqN" firstAttribute="leading" secondItem="DJV-Rr-pN1" secondAttribute="leading" id="5DB-gf-9IS"/>
-                                    <constraint firstAttribute="bottom" secondItem="6EV-GC-nqN" secondAttribute="bottom" id="BNC-i2-Z2Z"/>
                                     <constraint firstAttribute="height" constant="40" id="ED0-OU-Wmc"/>
-                                    <constraint firstItem="6EV-GC-nqN" firstAttribute="top" secondItem="9aN-aT-7ry" secondAttribute="bottom" constant="-5" id="HVu-xq-rLC"/>
+                                    <constraint firstItem="6EV-GC-nqN" firstAttribute="top" secondItem="9aN-aT-7ry" secondAttribute="bottom" id="HVu-xq-rLC"/>
                                     <constraint firstItem="9aN-aT-7ry" firstAttribute="leading" secondItem="DJV-Rr-pN1" secondAttribute="leading" id="f29-sx-Bno"/>
+                                    <constraint firstItem="9aN-aT-7ry" firstAttribute="top" secondItem="DJV-Rr-pN1" secondAttribute="top" constant="-3" id="sAz-HD-nF8"/>
                                     <constraint firstItem="6EV-GC-nqN" firstAttribute="trailing" secondItem="9aN-aT-7ry" secondAttribute="trailing" id="saJ-5h-cWG"/>
                                 </constraints>
                                 <connections>
@@ -174,9 +198,7 @@
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Cw7-Xx-fQw">
                             <connections>
-                                <segue destination="8Yi-r4-228" kind="popoverPresentation" identifier="master.segue.addPop" popoverAnchorBarButtonItem="Cw7-Xx-fQw" id="a9U-mV-357">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
+                                <segue destination="AaW-l2-ZbG" kind="show" id="3b5-GW-2PG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -589,7 +611,7 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bx8-zU-Ppq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bx8-zU-Ppq" customClass="MasterNavigationBar" customModule="SpectroApp_V1" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
