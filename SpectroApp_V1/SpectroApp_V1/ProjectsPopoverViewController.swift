@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProjectsPopoverViewController: PopoverViewController {
+class ProjectsPopoverViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

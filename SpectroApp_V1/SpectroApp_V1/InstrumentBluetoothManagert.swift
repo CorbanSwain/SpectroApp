@@ -10,20 +10,27 @@ import UIKit
 import CoreBluetooth
 
 protocol InstrumentBluetoothManagerReporter: class {
-    func setStatusTo(_ status: InstrumentStatus)
+    func setStatus(to status: InstrumentStatus)
+    func setStatusMessage(to message: String?)
 }
+
+fileprivate let uartServiceUUID = CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")
+fileprivate let uartTXCharID = CBUUID(string:    "6E400002-B5A3-F393-E0A9-E50E24DCCA9E")
+fileprivate let uartRXCharID = CBUUID(string:    "6E400003-B5A3-F393-E0A9-E50E24DCCA9E")
+fileprivate let legoSpecID = UUID(uuidString: "EF520BC5-9EF2-4801-B395-DA0D146A4B65")
 
 class InstrumentBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, BluetoothResponder {
     var centralManager: CBCentralManager
+    
+    var alertReporters: [InstrumentBluetoothManagerReporter] = []
+    
     private let bleQueue = DispatchQueue.init(label: "bleQueue", qos: .utility)
     
-    let uartServiceUUID = CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")
-    let uartTXCharID = CBUUID(string:    "6E400002-B5A3-F393-E0A9-E50E24DCCA9E")
-    let uartRXCharID = CBUUID(string:    "6E400003-B5A3-F393-E0A9-E50E24DCCA9E")
-    let legoSpecID = UUID(uuidString: "EF520BC5-9EF2-4801-B395-DA0D146A4B65")
-    
     var uartPeripherals: [UUID: CBPeripheral] = [:]
-    var alertReporter: InstrumentBluetoothManagerReporter
+    
+    var requiredServices = [uartServiceUUID]
+    var knownInstruments = [legoSpecID]
+    
     var connectedPeripheral: CBPeripheral? {
         willSet {
             guard let peripheral = connectedPeripheral else { return }
@@ -32,13 +39,18 @@ class InstrumentBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripher
             }
         }
     }
-    
-    var tryPeripheralID: UUID?
+ 
     var dataString = ""
     var canAppendChars = false
     
+    var status: (status: InstrumentStatus, message: String?) = (.busy, "Initializing…") {
+        didSet {
+            echoStatus()
+        }
+    }
+    
     init(withDelegate delegate: InstrumentBluetoothManagerReporter) {
-        self.alertReporter = delegate
+        alertReporters.append(delegate)
         centralManager = CBCentralManager(delegate: nil, queue: bleQueue)
         super.init()
         centralManager.delegate = self
@@ -56,8 +68,9 @@ class InstrumentBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripher
         scanForPeripherals(withServices: [uartServiceUUID])
     }
     
-    func scanForPeripherals(withServices serviceUUIDs: [CBUUID]) {
-        alertReporter.setStatusTo(.busy)
+    func scanForPeripherals(withServices serviceUUIDs: [CBUUID]? = nil) {
+        let uuids = serviceUUIDs ?? requiredServices
+        status = (.busy, "Scanning for instruments … ")
         bleQueue.async {
             let startTime = Date()
             while !self.isOn() && startTime.timeIntervalSinceNow > -10 {
@@ -65,11 +78,12 @@ class InstrumentBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripher
             }
             guard self.isOn() else {
                 print("time up!, BLE not powered on, scan again after turning bluetooth on")
+                self.status =  (.warning, "Bluetooth off, please turn on.")
                 return
             }
             print("BLE On!, scanning for peripherals")
             DispatchQueue.main.async {
-                self.centralManager.scanForPeripherals(withServices: serviceUUIDs, options: nil)
+                self.centralManager.scanForPeripherals(withServices: uuids, options: nil)
                 Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(self.stopScanningForPeripherals), userInfo: nil, repeats: false)
             }
         }
@@ -81,16 +95,16 @@ class InstrumentBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripher
             return
         }
         centralManager.stopScan()
-        alertReporter.setStatusTo(.warning)
+        status = (.warning, "Could not find any instruments.")
     }
     
     internal func centralManagerDidUpdateState(_ central: CBCentralManager) {
         print("Core Bluetooth Central Manager state changed!")
         if isOn() {
-            scanForPeripherals(withServices: [uartServiceUUID])
+            scanForPeripherals(withServices: requiredServices)
         } else {
             uartPeripherals = [:]
-            alertReporter.setStatusTo(.warning)
+            status = (.warning, "Bluetooth off, please turn on.")
         }
         return
     }
@@ -102,108 +116,82 @@ class InstrumentBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripher
             print("peripherial already found")
             return
         }
-        print("new perepherial -> \(peripheral)")
+        print("new perepherial found!")
         uartPeripherals[id] = peripheral
         
-        if id == legoSpecID {
-            print("LEGO-spec found!")
+        if knownInstruments.contains(where: { $0 == id }) && connectedPeripheral == nil {
+            print("A known instrument was found!")
             centralManager.stopScan()
-            connectToPeripheral(withID: id)
+            centralManager.connect(peripheral)
+            status.message = "Connecting to instrument …"
         }
     }
     
-    func connectToPeripheral(withID id: UUID) {
-        guard let peripheral = uartPeripherals[id] else {
-            print("Expected a peripheral, but it cannot be found")
-            alertReporter.setStatusTo(.warning)
-            return
-        }
-        tryPeripheralID = id
-        centralManager.connect(peripheral)
-    }
-    
-    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
+    internal func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         print("Failed to connect to a peripheral")
-        alertReporter.setStatusTo(.warning)
+        status = (.warning, "Could not connect to instrument.")
     }
     
-    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+    internal func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("peripheral disconnected!")
         connectedPeripheral = nil
-        alertReporter.setStatusTo(.warning)
-        scanForPeripherals(withServices: [uartServiceUUID])
+        status = (.warning, "Instrument disconected.")
+        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(scanForPeripherals), userInfo: nil, repeats: false)
     }
     
-    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        guard let id = tryPeripheralID, peripheral.identifier == id else {
-            print("Expected to connect to a different instrument!")
-            alertReporter.setStatusTo(.warning)
-            central.cancelPeripheralConnection(peripheral)
-            return
-        }
+    internal func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("Connected to a peripheral!")
         connectedPeripheral = peripheral
         peripheral.delegate = self
-        tryPeripheralID = nil
         peripheral.discoverServices([uartServiceUUID])
         print("searcing for services....")
     }
     
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-        guard let services = peripheral.services else {
+    internal func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+        guard let services = peripheral.services, services.count > 0 else {
             print("Error no services found")
-            alertReporter.setStatusTo(.warning)
+            status = (.warning, "Instrument configured incorrectly.")
             return
         }
         print("Found a Service!")
-        alertReporter.setStatusTo(.busy)
+  
         for service in services {
             if service.uuid == uartServiceUUID {
                 print("sucessfully connected to UART service")
                 peripheral.discoverCharacteristics([uartRXCharID], for: service)
-                print("attemting to discover charachteristics...")
+                print("attemting to discover charachteristics …")
             }
         }
     }
     
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
-        guard let charachteristics = service.characteristics,
-            charachteristics.count > 0 else {
+    internal func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+        guard let charachteristics = service.characteristics, charachteristics.count > 0 else {
                 
             print("Error no charachteristics found")
-            alertReporter.setStatusTo(.warning)
+            status = (.warning, "Instrument configured incorrectly.")
             return
         }
         
         print("\(charachteristics.count) charachteristic(s) found!")
-        alertReporter.setStatusTo(.busy)
+        status = (.busy, "Subscibing to instrument data …")
         
         for c in charachteristics {
-            if c.uuid == uartRXCharID {
-                print("Sucessfully found UART RX charachteristics")
-                subscribe(toCharachteristic: c, onPeripheral: peripheral)
-                alertReporter.setStatusTo(.good)
+            switch c.uuid {
+            case uartRXCharID:
+                print("Sucessfully found UART RX charachteristic...subscribing")
+                peripheral.setNotifyValue(true, for: c)
+                status = (.good, "Connected to instrument, waiting for incoming data.")
+                
+            default:
+                break
             }
         }
     }
     
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverIncludedServicesFor service: CBService, error: Error?) {
-        print("service.includedServices: \(service.includedServices)")
-    }
     
-    func subscribe(toCharachteristic charachteristic: CBCharacteristic, onPeripheral peripheral: CBPeripheral) {
-        print("Subscribing to a charachteristic...")
-        peripheral.setNotifyValue(true, for: charachteristic)
-    }
-    
-    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        guard let data = characteristic.value else {
-            print("no data found for \(characteristic.uuid)")
-            return
-        }
-        let oString = String(data: data, encoding: String.Encoding.utf8)
-        guard var string = oString else {
-            print("string could not be paresed from incoming data")
+    internal func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+        guard let data = characteristic.value, let string = String(data: data, encoding: .utf8) else {
+            print("Charachteristic's value updated, but no data could be extracted.")
             return
         }
         
@@ -212,10 +200,12 @@ class InstrumentBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripher
             case "<":
                 dataString = ""
                 canAppendChars = true
+                status = (.good, "Recieving data …")
                 // FIX ME add timing structure to prevent canAppendChars from staying true indefinately...
             case ">":
                 self.peripheral(peripheral, didRecieveDataString: dataString, fromCharachteristic: characteristic)
                 canAppendChars = false
+                status = (.good, "Connected to instrument, waiting for incoming data.")
             default:
                 if canAppendChars {
                     dataString.characters.append(char)
@@ -225,12 +215,26 @@ class InstrumentBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripher
         
     }
     
-    func peripheral(_ peripheral: CBPeripheral, didRecieveDataString string: String, fromCharachteristic characteristic: CBCharacteristic) {
-        print("Redieved Data String -> \"\(string)\"")
-        print("Converting to InstrumentDataPoint object...")
+    internal func peripheral(_ peripheral: CBPeripheral, didRecieveDataString string: String, fromCharachteristic characteristic: CBCharacteristic) {
         let instrumentDP = JSON(parseJSON: string).instrumentDataPointValue
-        print("Conversion Successful! -> \(instrumentDP)")
+        print("Recieved: \(instrumentDP)")
         
+    }
+    
+    func addReporter(_ newReporter: InstrumentBluetoothManagerReporter) {
+        alertReporters.append(newReporter)
+        print("num reporters: \(alertReporters.count)")
+    }
+    
+    func popReporter() {
+        alertReporters.removeLast()
+    }
+    
+    func echoStatus() {
+        for reporter in alertReporters {
+            reporter.setStatus(to: status.status)
+            reporter.setStatusMessage(to: status.message)
+        }
     }
     
 }

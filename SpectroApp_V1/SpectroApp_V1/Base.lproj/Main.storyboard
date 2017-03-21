@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gHL-hd-Aeh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7q6-yb-OqE">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,252 +24,173 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ss1-BV-WWC">
-                                <rect key="frame" x="0.0" y="81" width="1024" height="643"/>
+                                <rect key="frame" x="0.0" y="64" width="1024" height="660"/>
                             </containerView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kxR-uV-oWg">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="81"/>
-                            </navigationBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HjT-9X-3Ge">
-                                <rect key="frame" x="0.0" y="20" width="1024" height="61"/>
-                                <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XrQ-i1-t0d">
-                                        <rect key="frame" x="362" y="16" width="300" height="29"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="28" id="2mX-gT-Ufm"/>
-                                            <constraint firstAttribute="width" constant="300" id="Giy-vA-KV1"/>
-                                        </constraints>
-                                        <segments>
-                                            <segment title="Overview"/>
-                                            <segment title="Data"/>
-                                            <segment title="Plots"/>
-                                        </segments>
-                                        <connections>
-                                            <action selector="segmentedControllChanged:" destination="gHL-hd-Aeh" eventType="valueChanged" id="njR-J9-2E9"/>
-                                        </connections>
-                                    </segmentedControl>
-                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="61Z-0B-PYF">
-                                        <rect key="frame" x="682" y="9" width="342" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="xrb-77-K1j"/>
-                                        </constraints>
-                                        <items>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="DeK-wy-Zs4"/>
-                                            <barButtonItem systemItem="add" id="Cw7-Xx-fQw">
-                                                <connections>
-                                                    <segue destination="8Yi-r4-228" kind="popoverPresentation" identifier="master.segue.addPop" popoverAnchorBarButtonItem="Cw7-Xx-fQw" id="a9U-mV-357">
-                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                                    </segue>
-                                                </connections>
-                                            </barButtonItem>
-                                        </items>
-                                    </toolbar>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DJV-Rr-pN1">
-                                        <rect key="frame" x="10" y="11" width="332" height="40"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CS-X-45 - March 5, 2015" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6EV-GC-nqN">
-                                                <rect key="frame" x="0.0" y="26" width="300" height="14"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Cool Experiment Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9aN-aT-7ry">
-                                                <rect key="frame" x="0.0" y="-9" width="300" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="5aS-cY-Mgw"/>
-                                                    <constraint firstAttribute="width" constant="300" id="tN0-Pq-9rj"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="26"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="6EV-GC-nqN" firstAttribute="leading" secondItem="DJV-Rr-pN1" secondAttribute="leading" id="5DB-gf-9IS"/>
-                                            <constraint firstAttribute="bottom" secondItem="6EV-GC-nqN" secondAttribute="bottom" id="BNC-i2-Z2Z"/>
-                                            <constraint firstAttribute="height" constant="40" id="ED0-OU-Wmc"/>
-                                            <constraint firstItem="6EV-GC-nqN" firstAttribute="top" secondItem="9aN-aT-7ry" secondAttribute="bottom" constant="-5" id="HVu-xq-rLC"/>
-                                            <constraint firstItem="9aN-aT-7ry" firstAttribute="leading" secondItem="DJV-Rr-pN1" secondAttribute="leading" id="f29-sx-Bno"/>
-                                            <constraint firstItem="6EV-GC-nqN" firstAttribute="trailing" secondItem="9aN-aT-7ry" secondAttribute="trailing" id="saJ-5h-cWG"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="61Z-0B-PYF" firstAttribute="leading" secondItem="XrQ-i1-t0d" secondAttribute="trailing" constant="20" id="0mU-kk-KLx"/>
-                                    <constraint firstItem="XrQ-i1-t0d" firstAttribute="centerY" secondItem="HjT-9X-3Ge" secondAttribute="centerY" id="G7J-a0-SUV"/>
-                                    <constraint firstItem="XrQ-i1-t0d" firstAttribute="centerX" secondItem="HjT-9X-3Ge" secondAttribute="centerX" id="VkV-Cl-lnV"/>
-                                    <constraint firstAttribute="height" constant="61" id="W4h-VR-j3z"/>
-                                    <constraint firstItem="DJV-Rr-pN1" firstAttribute="centerY" secondItem="HjT-9X-3Ge" secondAttribute="centerY" id="ZQn-ze-Sb5"/>
-                                    <constraint firstItem="XrQ-i1-t0d" firstAttribute="leading" secondItem="DJV-Rr-pN1" secondAttribute="trailing" constant="20" id="gYr-Hw-z9Y"/>
-                                    <constraint firstAttribute="trailing" secondItem="61Z-0B-PYF" secondAttribute="trailing" id="hxm-2k-dc7"/>
-                                    <constraint firstItem="DJV-Rr-pN1" firstAttribute="leading" secondItem="HjT-9X-3Ge" secondAttribute="leading" constant="10" id="kg0-pn-Soy"/>
-                                    <constraint firstItem="61Z-0B-PYF" firstAttribute="centerY" secondItem="HjT-9X-3Ge" secondAttribute="centerY" id="tMm-ec-l2P"/>
-                                </constraints>
-                            </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cig-2t-PT0" userLabel="Lower Toolbar">
-                                <rect key="frame" x="0.0" y="724" width="1024" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="RMr-eL-QIv"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem title="Instrument" id="b3a-Or-61N">
-                                        <connections>
-                                            <action selector="instrumentButtonPressed:" destination="gHL-hd-Aeh" id="qRL-fQ-okc"/>
-                                            <segue destination="bM4-Qr-ahZ" kind="popoverPresentation" identifier="master.segue.instrumentPop1" popoverAnchorBarButtonItem="b3a-Or-61N" id="MXi-9w-xYl">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="fixedSpace" id="b7b-3R-veY"/>
-                                    <barButtonItem style="plain" id="TCR-Wn-yuR">
-                                        <view key="customView" contentMode="scaleToFill" id="rse-Qf-Bns" customClass="InstrumentAlertView" customModule="SpectroApp_V1" customModuleProvider="target">
-                                            <rect key="frame" x="113" y="12" width="21" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsH-YK-G8z">
-                                                    <rect key="frame" x="0.0" y="0.0" width="21" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="14"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkMarkImage" translatesAutoresizingMaskIntoConstraints="NO" id="jr0-VE-ZBu">
-                                                    <rect key="frame" x="3" y="3" width="15" height="15"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="jr0-VE-ZBu" secondAttribute="height" multiplier="1:1" id="hxl-Ry-HUH"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="lcJ-vq-C4c">
-                                                    <rect key="frame" x="0.5" y="0.5" width="20" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="20" id="47D-RQ-bDh"/>
-                                                        <constraint firstAttribute="height" constant="20" id="OVK-U3-yND"/>
-                                                    </constraints>
-                                                </activityIndicatorView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ne4-1e-CPi">
-                                                    <rect key="frame" x="0.0" y="0.0" width="21" height="21"/>
-                                                    <connections>
-                                                        <segue destination="bM4-Qr-ahZ" kind="popoverPresentation" identifier="master.segue.instrumentPop2" popoverAnchorView="ne4-1e-CPi" id="pmj-h8-XrZ">
-                                                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                                        </segue>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstItem="jr0-VE-ZBu" firstAttribute="centerY" secondItem="rse-Qf-Bns" secondAttribute="centerY" id="4YP-JX-7QS"/>
-                                                <constraint firstAttribute="width" secondItem="rse-Qf-Bns" secondAttribute="height" multiplier="1:1" id="4rO-PV-lzu"/>
-                                                <constraint firstItem="QsH-YK-G8z" firstAttribute="leading" secondItem="rse-Qf-Bns" secondAttribute="leading" id="AwP-qU-rfo"/>
-                                                <constraint firstItem="QsH-YK-G8z" firstAttribute="top" secondItem="rse-Qf-Bns" secondAttribute="top" id="C57-Vi-MaN"/>
-                                                <constraint firstItem="lcJ-vq-C4c" firstAttribute="centerY" secondItem="rse-Qf-Bns" secondAttribute="centerY" id="GFM-3d-l2M"/>
-                                                <constraint firstAttribute="bottom" secondItem="QsH-YK-G8z" secondAttribute="bottom" id="NvN-pI-rHR"/>
-                                                <constraint firstItem="jr0-VE-ZBu" firstAttribute="top" secondItem="rse-Qf-Bns" secondAttribute="top" constant="3.5" id="O03-eq-ZOt"/>
-                                                <constraint firstAttribute="trailing" secondItem="ne4-1e-CPi" secondAttribute="trailing" id="QrJ-Ff-mr7"/>
-                                                <constraint firstAttribute="trailing" secondItem="QsH-YK-G8z" secondAttribute="trailing" id="Sl8-MO-PMF"/>
-                                                <constraint firstItem="jr0-VE-ZBu" firstAttribute="centerX" secondItem="rse-Qf-Bns" secondAttribute="centerX" id="diX-DN-2Zz"/>
-                                                <constraint firstAttribute="bottom" secondItem="ne4-1e-CPi" secondAttribute="bottom" id="hB8-oC-Sbp"/>
-                                                <constraint firstItem="lcJ-vq-C4c" firstAttribute="centerX" secondItem="rse-Qf-Bns" secondAttribute="centerX" id="ox2-cy-Hu7"/>
-                                                <constraint firstItem="ne4-1e-CPi" firstAttribute="leading" secondItem="rse-Qf-Bns" secondAttribute="leading" id="rfz-ii-y4g"/>
-                                                <constraint firstItem="ne4-1e-CPi" firstAttribute="top" secondItem="rse-Qf-Bns" secondAttribute="top" id="uPR-tP-uNx"/>
-                                                <constraint firstAttribute="height" constant="21" id="wj6-A8-j8f"/>
-                                            </constraints>
-                                            <connections>
-                                                <outlet property="activityIndicator" destination="lcJ-vq-C4c" id="x87-lG-bRE"/>
-                                                <outlet property="button" destination="ne4-1e-CPi" id="2nc-hP-EIY"/>
-                                                <outlet property="checkMark" destination="jr0-VE-ZBu" id="bYS-5K-MQw"/>
-                                                <outlet property="label" destination="QsH-YK-G8z" id="RaK-pR-ZYk"/>
-                                            </connections>
-                                        </view>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="SYv-X5-2wf"/>
-                                    <barButtonItem width="25" style="plain" systemItem="fixedSpace" id="Gc4-qb-fMj"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Hvv-Vf-dz6"/>
-                                    <barButtonItem title="Projects" id="GUW-BU-jhE">
-                                        <connections>
-                                            <segue destination="InD-Bl-IXN" kind="popoverPresentation" identifier="master.segue.projectsPop" popoverAnchorBarButtonItem="GUW-BU-jhE" id="04p-xP-sHB">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="571-wm-bnx"/>
-                                    <barButtonItem width="25" style="plain" systemItem="fixedSpace" id="ieF-ZL-2h5"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="IRi-n8-V1B"/>
-                                    <barButtonItem width="64" style="plain" systemItem="fixedSpace" id="XmA-I3-wM1"/>
-                                    <barButtonItem title="Export" id="rNA-2m-gbH">
-                                        <connections>
-                                            <segue destination="A9Y-9Q-rTs" kind="popoverPresentation" identifier="master.segue.exportPop" popoverAnchorBarButtonItem="rNA-2m-gbH" id="g1u-FU-2fg">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="HjT-9X-3Ge" firstAttribute="bottom" secondItem="kxR-uV-oWg" secondAttribute="bottom" id="A1P-lD-hcq"/>
-                            <constraint firstItem="ss1-BV-WWC" firstAttribute="top" secondItem="kxR-uV-oWg" secondAttribute="bottom" id="E7c-gU-ufB"/>
-                            <constraint firstAttribute="trailing" secondItem="cig-2t-PT0" secondAttribute="trailing" id="JdQ-xq-fyd"/>
-                            <constraint firstItem="kxR-uV-oWg" firstAttribute="top" secondItem="gR9-lv-ZEG" secondAttribute="top" id="LcV-jz-EXx"/>
-                            <constraint firstItem="kxR-uV-oWg" firstAttribute="leading" secondItem="gR9-lv-ZEG" secondAttribute="leading" id="OIh-Pd-rSh"/>
-                            <constraint firstAttribute="trailing" secondItem="HjT-9X-3Ge" secondAttribute="trailing" id="W9G-w3-gvL"/>
-                            <constraint firstItem="HjT-9X-3Ge" firstAttribute="top" secondItem="53P-Uy-CHe" secondAttribute="bottom" id="bRp-vh-FgI"/>
+                            <constraint firstItem="v5U-6W-TNi" firstAttribute="top" secondItem="ss1-BV-WWC" secondAttribute="bottom" id="7r8-qo-CJ2"/>
                             <constraint firstAttribute="trailing" secondItem="ss1-BV-WWC" secondAttribute="trailing" id="bis-la-KNz"/>
-                            <constraint firstItem="cig-2t-PT0" firstAttribute="leading" secondItem="gR9-lv-ZEG" secondAttribute="leading" id="hlY-2s-mS3"/>
+                            <constraint firstItem="ss1-BV-WWC" firstAttribute="top" secondItem="53P-Uy-CHe" secondAttribute="bottom" id="dmR-pD-dxx"/>
                             <constraint firstItem="ss1-BV-WWC" firstAttribute="leading" secondItem="gR9-lv-ZEG" secondAttribute="leading" id="iD6-bl-ZVS"/>
-                            <constraint firstAttribute="trailing" secondItem="kxR-uV-oWg" secondAttribute="trailing" id="jjJ-Fn-CFJ"/>
-                            <constraint firstItem="v5U-6W-TNi" firstAttribute="top" secondItem="cig-2t-PT0" secondAttribute="bottom" id="kXP-mV-s9l"/>
-                            <constraint firstItem="cig-2t-PT0" firstAttribute="top" secondItem="ss1-BV-WWC" secondAttribute="bottom" id="o9S-pP-ubA"/>
-                            <constraint firstItem="HjT-9X-3Ge" firstAttribute="leading" secondItem="gR9-lv-ZEG" secondAttribute="leading" id="w8B-Ac-OE9"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Instrument" id="b3a-Or-61N">
+                            <connections>
+                                <action selector="instrumentButtonPressed:" destination="gHL-hd-Aeh" id="qRL-fQ-okc"/>
+                                <segue destination="gTw-rf-UqO" kind="popoverPresentation" identifier="master.segue.instrumentPop1" popoverAnchorBarButtonItem="b3a-Or-61N" id="MXi-9w-xYl">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="fixedSpace" id="b7b-3R-veY"/>
+                        <barButtonItem style="plain" id="TCR-Wn-yuR">
+                            <view key="customView" contentMode="scaleToFill" id="rse-Qf-Bns" customClass="InstrumentAlertView" customModule="SpectroApp_V1" customModuleProvider="target">
+                                <rect key="frame" x="113" y="12" width="21" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsH-YK-G8z">
+                                        <rect key="frame" x="0.0" y="0.0" width="21" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkMarkImage" translatesAutoresizingMaskIntoConstraints="NO" id="jr0-VE-ZBu">
+                                        <rect key="frame" x="3" y="3" width="15" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="jr0-VE-ZBu" secondAttribute="height" multiplier="1:1" id="hxl-Ry-HUH"/>
+                                        </constraints>
+                                    </imageView>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="lcJ-vq-C4c">
+                                        <rect key="frame" x="0.5" y="0.5" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="47D-RQ-bDh"/>
+                                            <constraint firstAttribute="height" constant="20" id="OVK-U3-yND"/>
+                                        </constraints>
+                                    </activityIndicatorView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ne4-1e-CPi">
+                                        <rect key="frame" x="0.0" y="0.0" width="21" height="21"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="jr0-VE-ZBu" firstAttribute="centerY" secondItem="rse-Qf-Bns" secondAttribute="centerY" id="4YP-JX-7QS"/>
+                                    <constraint firstAttribute="width" secondItem="rse-Qf-Bns" secondAttribute="height" multiplier="1:1" id="4rO-PV-lzu"/>
+                                    <constraint firstItem="QsH-YK-G8z" firstAttribute="leading" secondItem="rse-Qf-Bns" secondAttribute="leading" id="AwP-qU-rfo"/>
+                                    <constraint firstItem="QsH-YK-G8z" firstAttribute="top" secondItem="rse-Qf-Bns" secondAttribute="top" id="C57-Vi-MaN"/>
+                                    <constraint firstItem="lcJ-vq-C4c" firstAttribute="centerY" secondItem="rse-Qf-Bns" secondAttribute="centerY" id="GFM-3d-l2M"/>
+                                    <constraint firstAttribute="bottom" secondItem="QsH-YK-G8z" secondAttribute="bottom" id="NvN-pI-rHR"/>
+                                    <constraint firstItem="jr0-VE-ZBu" firstAttribute="top" secondItem="rse-Qf-Bns" secondAttribute="top" constant="3.5" id="O03-eq-ZOt"/>
+                                    <constraint firstAttribute="trailing" secondItem="ne4-1e-CPi" secondAttribute="trailing" id="QrJ-Ff-mr7"/>
+                                    <constraint firstAttribute="trailing" secondItem="QsH-YK-G8z" secondAttribute="trailing" id="Sl8-MO-PMF"/>
+                                    <constraint firstItem="jr0-VE-ZBu" firstAttribute="centerX" secondItem="rse-Qf-Bns" secondAttribute="centerX" id="diX-DN-2Zz"/>
+                                    <constraint firstAttribute="bottom" secondItem="ne4-1e-CPi" secondAttribute="bottom" id="hB8-oC-Sbp"/>
+                                    <constraint firstItem="lcJ-vq-C4c" firstAttribute="centerX" secondItem="rse-Qf-Bns" secondAttribute="centerX" id="ox2-cy-Hu7"/>
+                                    <constraint firstItem="ne4-1e-CPi" firstAttribute="leading" secondItem="rse-Qf-Bns" secondAttribute="leading" id="rfz-ii-y4g"/>
+                                    <constraint firstItem="ne4-1e-CPi" firstAttribute="top" secondItem="rse-Qf-Bns" secondAttribute="top" id="uPR-tP-uNx"/>
+                                    <constraint firstAttribute="height" constant="21" id="wj6-A8-j8f"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="activityIndicator" destination="lcJ-vq-C4c" id="x87-lG-bRE"/>
+                                    <outlet property="button" destination="ne4-1e-CPi" id="2nc-hP-EIY"/>
+                                    <outlet property="checkMark" destination="jr0-VE-ZBu" id="bYS-5K-MQw"/>
+                                    <outlet property="label" destination="QsH-YK-G8z" id="RaK-pR-ZYk"/>
+                                </connections>
+                            </view>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Hvv-Vf-dz6"/>
+                        <barButtonItem width="25" style="plain" systemItem="fixedSpace" id="Gc4-qb-fMj"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="SYv-X5-2wf"/>
+                        <barButtonItem title="Projects" id="GUW-BU-jhE">
+                            <connections>
+                                <segue destination="mRl-yS-SZ2" kind="popoverPresentation" identifier="master.segue.projectsPop" popoverAnchorBarButtonItem="GUW-BU-jhE" id="04p-xP-sHB">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="571-wm-bnx"/>
+                        <barButtonItem width="25" style="plain" systemItem="fixedSpace" id="ieF-ZL-2h5"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="IRi-n8-V1B"/>
+                        <barButtonItem width="64" style="plain" systemItem="fixedSpace" id="XmA-I3-wM1"/>
+                        <barButtonItem title="Export" id="rNA-2m-gbH">
+                            <connections>
+                                <segue destination="A9Y-9Q-rTs" kind="popoverPresentation" identifier="master.segue.exportPop" popoverAnchorBarButtonItem="rNA-2m-gbH" id="g1u-FU-2fg">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="g71-PS-IXR">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" id="1fW-Dc-1pv">
+                            <view key="customView" contentMode="scaleToFill" id="DJV-Rr-pN1" userLabel="Experiment Header View" customClass="ExperimentHeaderView" customModule="SpectroApp_V1" customModuleProvider="target">
+                                <rect key="frame" x="20" y="2" width="332" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CS-X-45 - March 5, 2015" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6EV-GC-nqN">
+                                        <rect key="frame" x="0.0" y="26" width="300" height="14"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Cool Experiment Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9aN-aT-7ry">
+                                        <rect key="frame" x="0.0" y="-9" width="300" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="5aS-cY-Mgw"/>
+                                            <constraint firstAttribute="width" constant="300" id="tN0-Pq-9rj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="26"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="6EV-GC-nqN" firstAttribute="leading" secondItem="DJV-Rr-pN1" secondAttribute="leading" id="5DB-gf-9IS"/>
+                                    <constraint firstAttribute="bottom" secondItem="6EV-GC-nqN" secondAttribute="bottom" id="BNC-i2-Z2Z"/>
+                                    <constraint firstAttribute="height" constant="40" id="ED0-OU-Wmc"/>
+                                    <constraint firstItem="6EV-GC-nqN" firstAttribute="top" secondItem="9aN-aT-7ry" secondAttribute="bottom" constant="-5" id="HVu-xq-rLC"/>
+                                    <constraint firstItem="9aN-aT-7ry" firstAttribute="leading" secondItem="DJV-Rr-pN1" secondAttribute="leading" id="f29-sx-Bno"/>
+                                    <constraint firstItem="6EV-GC-nqN" firstAttribute="trailing" secondItem="9aN-aT-7ry" secondAttribute="trailing" id="saJ-5h-cWG"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="mainLabel" destination="9aN-aT-7ry" id="58p-eT-uAu"/>
+                                    <outlet property="subLabel" destination="6EV-GC-nqN" id="W1F-N4-huc"/>
+                                </connections>
+                            </view>
+                        </barButtonItem>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="XrQ-i1-t0d">
+                            <rect key="frame" x="361" y="7" width="302" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Overview" width="100"/>
+                                <segment title="Data" width="100"/>
+                                <segment title="Plots" width="100"/>
+                            </segments>
+                            <connections>
+                                <action selector="segmentedControllChanged:" destination="gHL-hd-Aeh" eventType="valueChanged" id="njR-J9-2E9"/>
+                            </connections>
+                        </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Cw7-Xx-fQw">
+                            <connections>
+                                <segue destination="8Yi-r4-228" kind="popoverPresentation" identifier="master.segue.addPop" popoverAnchorBarButtonItem="Cw7-Xx-fQw" id="a9U-mV-357">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="ss1-BV-WWC" id="hKX-uE-Nl3"/>
-                        <outlet property="experimentSubtitleLabel" destination="6EV-GC-nqN" id="BIX-Es-8YT"/>
-                        <outlet property="experimentTitleLabel" destination="9aN-aT-7ry" id="0w9-xe-l8F"/>
+                        <outlet property="headerView" destination="DJV-Rr-pN1" id="c13-1M-r1f"/>
                         <outlet property="instrumentAlertView" destination="rse-Qf-Bns" id="zwO-Xc-e8U"/>
                         <outlet property="instrumentButton" destination="b3a-Or-61N" id="OSF-vK-pQI"/>
                         <outlet property="instrumentButtonToAlertViewFixedSpace" destination="b7b-3R-veY" id="Emo-Tg-UAq"/>
-                        <outlet property="upperToolbar" destination="61Z-0B-PYF" id="6MV-9t-OsX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MNt-DM-G9a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1036.5234375" y="867.96875"/>
-        </scene>
-        <!--Instrument Popover View Controller-->
-        <scene sceneID="7GW-mi-Thn">
-            <objects>
-                <viewController storyboardIdentifier="InstrumentPopoverVC" id="bM4-Qr-ahZ" customClass="InstrumentPopoverViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qbI-nQ-Tnw"/>
-                        <viewControllerLayoutGuide type="bottom" id="X3i-Uy-otB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="uqO-19-kLW">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bo9-JA-OKx">
-                                <rect key="frame" x="58" y="135" width="135" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Rescan For Devices"/>
-                                <connections>
-                                    <action selector="scanButtonPressed:" destination="bM4-Qr-ahZ" eventType="touchUpInside" id="dtr-Va-IA7"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="250" height="300"/>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="scanButton" destination="Bo9-JA-OKx" id="1ds-v0-qPG"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AZA-yM-D1c" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="669" y="1526"/>
+            <point key="canvasLocation" x="1521" y="868"/>
         </scene>
         <!--Project View Controller-->
         <scene sceneID="dAd-sd-NB4">
@@ -286,7 +208,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PuW-9e-JA1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2213" y="-178"/>
+            <point key="canvasLocation" x="2736" y="-518"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hCK-5x-ifF">
@@ -304,7 +226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Olv-IH-z5B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3203" y="1261"/>
+            <point key="canvasLocation" x="4000" y="1368"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="YFm-PF-QVK">
@@ -329,11 +251,10 @@
                             <outlet property="delegate" destination="4Lf-HI-bWV" id="pKo-qW-fCc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="lNu-Gn-REM"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FKk-dd-Gdb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3203" y="535"/>
+            <point key="canvasLocation" x="4000" y="451"/>
         </scene>
         <!--Data View Controller-->
         <scene sceneID="1Jh-d2-VhI">
@@ -346,7 +267,7 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uIo-fl-b27" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2213" y="868"/>
+            <point key="canvasLocation" x="2736" y="868"/>
         </scene>
         <!--Plot View Controller-->
         <scene sceneID="4wY-yy-HAd">
@@ -380,46 +301,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xsD-fj-seL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2213" y="1829"/>
-        </scene>
-        <!--Projects Popover View Controller-->
-        <scene sceneID="Lek-fZ-9pe">
-            <objects>
-                <viewController id="InD-Bl-IXN" customClass="ProjectsPopoverViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="HOm-7X-j7O"/>
-                        <viewControllerLayoutGuide type="bottom" id="NbG-xw-PKT"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tS9-Pb-OgB">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="300"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Project" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XiZ-9X-qZn">
-                                <rect key="frame" x="133.5" y="112" width="133" height="77"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="133" id="IWY-bI-rv5"/>
-                                    <constraint firstAttribute="height" constant="77" id="RYn-fy-yOC"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="23"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="XiZ-9X-qZn" firstAttribute="centerX" secondItem="tS9-Pb-OgB" secondAttribute="centerX" id="gz9-3Q-oCJ"/>
-                            <constraint firstItem="XiZ-9X-qZn" firstAttribute="centerY" secondItem="tS9-Pb-OgB" secondAttribute="centerY" id="vlZ-A7-9cp"/>
-                        </constraints>
-                    </view>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="400" height="300"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6tW-IA-2Lk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="893" y="1526"/>
+            <point key="canvasLocation" x="2736" y="2256"/>
         </scene>
         <!--Add Popover View Controller-->
         <scene sceneID="zgr-Cj-WMh">
@@ -458,12 +340,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1bR-9E-LL4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1354" y="1526"/>
+            <point key="canvasLocation" x="2008" y="1653"/>
         </scene>
         <!--Export Popover View Controller-->
         <scene sceneID="7f2-ur-Mr5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fhi-RZ-hXC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="A9Y-9Q-rTs" customClass="ExportPopoverViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LvN-a6-TsA"/>
@@ -496,14 +377,237 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="250" height="300"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fhi-RZ-hXC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1165" y="1526"/>
+            <point key="canvasLocation" x="1724" y="1653"/>
+        </scene>
+        <!--Popover Navigation Controller-->
+        <scene sceneID="RUU-Kd-FAp">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gTw-rf-UqO" customClass="PopoverNavigationController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <value key="contentSizeForViewInPopover" type="size" width="350" height="450"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="350" height="450"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qiA-IR-Naj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="LCR-ly-pbl">
+                        <rect key="frame" x="0.0" y="406" width="350" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="SgN-cq-ryh" kind="show" identifier="popover.segue.instrument" id="ZoC-Ua-MDd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="itk-Gz-1dR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1017" y="1728"/>
+        </scene>
+        <!--Instrument Popover View Controller-->
+        <scene sceneID="LX4-F0-gCT">
+            <objects>
+                <viewController id="SgN-cq-ryh" customClass="InstrumentPopoverViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Am7-kN-8hi"/>
+                        <viewControllerLayoutGuide type="bottom" id="nXD-xf-gdM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PWs-dS-8sp">
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="450"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b81-Fl-uXY" customClass="InstrumentAlertView" customModule="SpectroApp_V1" customModuleProvider="target">
+                                <rect key="frame" x="14.5" y="72" width="319.5" height="33"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zf7-Oq-qdK">
+                                        <rect key="frame" x="0.0" y="5" width="23" height="23"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIa-yh-ntW">
+                                                <rect key="frame" x="0.0" y="0.0" width="23" height="23"/>
+                                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="16"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkMarkImage" translatesAutoresizingMaskIntoConstraints="NO" id="BXo-45-sdG">
+                                                <rect key="frame" x="3" y="3" width="17" height="17"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="BXo-45-sdG" secondAttribute="height" multiplier="1:1" id="u52-QE-gH5"/>
+                                                </constraints>
+                                            </imageView>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="X3a-ew-l0b">
+                                                <rect key="frame" x="1.5" y="1.5" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="1uS-sl-Yf9"/>
+                                                    <constraint firstAttribute="height" constant="20" id="Pb6-7p-6uD"/>
+                                                </constraints>
+                                            </activityIndicatorView>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CVR-Bo-439">
+                                                <rect key="frame" x="0.0" y="0.0" width="23" height="23"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="nIa-yh-ntW" secondAttribute="trailing" id="82M-We-w2m"/>
+                                            <constraint firstItem="CVR-Bo-439" firstAttribute="leading" secondItem="zf7-Oq-qdK" secondAttribute="leading" id="9tM-bN-OvR"/>
+                                            <constraint firstItem="CVR-Bo-439" firstAttribute="top" secondItem="zf7-Oq-qdK" secondAttribute="top" id="JSE-m9-9CN"/>
+                                            <constraint firstItem="BXo-45-sdG" firstAttribute="centerY" secondItem="zf7-Oq-qdK" secondAttribute="centerY" id="N6A-N7-fqE"/>
+                                            <constraint firstItem="X3a-ew-l0b" firstAttribute="centerY" secondItem="zf7-Oq-qdK" secondAttribute="centerY" id="Zcc-Iu-5FW"/>
+                                            <constraint firstItem="nIa-yh-ntW" firstAttribute="top" secondItem="zf7-Oq-qdK" secondAttribute="top" id="aG8-fb-9Ro"/>
+                                            <constraint firstAttribute="bottom" secondItem="nIa-yh-ntW" secondAttribute="bottom" id="bXK-eR-Yfd"/>
+                                            <constraint firstItem="BXo-45-sdG" firstAttribute="top" secondItem="zf7-Oq-qdK" secondAttribute="top" constant="3.25" id="cno-UD-WHR"/>
+                                            <constraint firstAttribute="width" secondItem="zf7-Oq-qdK" secondAttribute="height" multiplier="1:1" id="gAT-h5-Etj"/>
+                                            <constraint firstItem="nIa-yh-ntW" firstAttribute="leading" secondItem="zf7-Oq-qdK" secondAttribute="leading" id="hL8-Uv-KJG"/>
+                                            <constraint firstAttribute="bottom" secondItem="CVR-Bo-439" secondAttribute="bottom" id="jCW-iQ-mo7"/>
+                                            <constraint firstAttribute="height" constant="23" id="jmt-0G-FWs"/>
+                                            <constraint firstItem="CVR-Bo-439" firstAttribute="top" secondItem="zf7-Oq-qdK" secondAttribute="top" id="ksZ-oS-dG2"/>
+                                            <constraint firstItem="CVR-Bo-439" firstAttribute="leading" secondItem="zf7-Oq-qdK" secondAttribute="leading" id="oKF-t0-J2t"/>
+                                            <constraint firstItem="X3a-ew-l0b" firstAttribute="centerX" secondItem="zf7-Oq-qdK" secondAttribute="centerX" id="pqz-41-mxc"/>
+                                            <constraint firstItem="BXo-45-sdG" firstAttribute="centerX" secondItem="zf7-Oq-qdK" secondAttribute="centerX" id="u70-H3-bCf"/>
+                                            <constraint firstAttribute="trailing" secondItem="CVR-Bo-439" secondAttribute="trailing" id="zud-CM-SS5"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bluetooth Status ok ok ok ok ok ok ok ok ok ok ok ok ok ok ok " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCO-SR-o1g">
+                                        <rect key="frame" x="28" y="0.0" width="291.5" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="zf7-Oq-qdK" firstAttribute="centerY" secondItem="b81-Fl-uXY" secondAttribute="centerY" id="46B-UU-bl0"/>
+                                    <constraint firstAttribute="bottom" secondItem="RCO-SR-o1g" secondAttribute="bottom" id="DlE-QD-rg6"/>
+                                    <constraint firstAttribute="trailing" secondItem="RCO-SR-o1g" secondAttribute="trailing" id="JSl-cx-jTq"/>
+                                    <constraint firstItem="RCO-SR-o1g" firstAttribute="top" secondItem="b81-Fl-uXY" secondAttribute="top" id="ezK-K9-ksC"/>
+                                    <constraint firstItem="zf7-Oq-qdK" firstAttribute="leading" secondItem="b81-Fl-uXY" secondAttribute="leading" id="hnK-x4-6LS"/>
+                                    <constraint firstAttribute="height" constant="33" id="lNR-nM-sCO"/>
+                                    <constraint firstItem="RCO-SR-o1g" firstAttribute="leading" secondItem="zf7-Oq-qdK" secondAttribute="trailing" constant="5" id="udp-9G-gQD"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="activityIndicator" destination="X3a-ew-l0b" id="R4W-wG-CaF"/>
+                                    <outlet property="backgroundView" destination="zf7-Oq-qdK" id="0xM-9b-PEe"/>
+                                    <outlet property="button" destination="CVR-Bo-439" id="rVj-B8-TQ4"/>
+                                    <outlet property="checkMark" destination="BXo-45-sdG" id="MUe-IK-PjC"/>
+                                    <outlet property="label" destination="nIa-yh-ntW" id="3rB-Yw-AV3"/>
+                                    <outlet property="messageLabel" destination="RCO-SR-o1g" id="lXv-ib-9ww"/>
+                                </connections>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VUG-4p-lQO">
+                                <rect key="frame" x="0.0" y="115" width="350" height="335"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="b81-Fl-uXY" secondAttribute="trailing" id="1xf-L9-LdF"/>
+                            <constraint firstAttribute="trailing" secondItem="VUG-4p-lQO" secondAttribute="trailing" id="6Cu-Xz-RJC"/>
+                            <constraint firstItem="nXD-xf-gdM" firstAttribute="top" secondItem="VUG-4p-lQO" secondAttribute="bottom" id="Kpb-8G-Xl2"/>
+                            <constraint firstItem="b81-Fl-uXY" firstAttribute="leading" secondItem="PWs-dS-8sp" secondAttribute="leadingMargin" constant="-1.5" id="Ycz-p1-maG"/>
+                            <constraint firstItem="VUG-4p-lQO" firstAttribute="leading" secondItem="PWs-dS-8sp" secondAttribute="leading" id="onh-dj-oxU"/>
+                            <constraint firstItem="b81-Fl-uXY" firstAttribute="top" secondItem="Am7-kN-8hi" secondAttribute="bottom" constant="8" id="qbF-uU-vMP"/>
+                            <constraint firstItem="VUG-4p-lQO" firstAttribute="top" secondItem="b81-Fl-uXY" secondAttribute="bottom" constant="10" id="xsO-Lj-B4u"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="abe-ve-rGW">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="xpe-9z-HgO">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="SgN-cq-ryh" id="8T0-Yc-jBl"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Scan for Instruments" id="Mcm-Qv-KJW">
+                            <connections>
+                                <action selector="scanButtonPressed:" destination="SgN-cq-ryh" id="kk9-eS-j6C"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="instrumentAlertView" destination="b81-Fl-uXY" id="IK7-bC-lTH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zTr-34-9WT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1017" y="2297"/>
+        </scene>
+        <!--Popover Navigation Controller-->
+        <scene sceneID="H9N-IF-qYa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mRl-yS-SZ2" customClass="PopoverNavigationController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <value key="contentSizeForViewInPopover" type="size" width="350" height="500"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="350" height="500"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dcU-bv-QqW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ukr-Ns-5Y3" kind="show" identifier="popover.segue.projects" id="koy-19-Ji5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n6Q-KP-CgQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1390" y="1753"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="8qh-kc-ZFI">
+            <objects>
+                <viewController id="Ukr-Ns-5Y3" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bVe-ww-5EO"/>
+                        <viewControllerLayoutGuide type="bottom" id="zQ8-ZP-b3O"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gNV-PZ-bjH">
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="500"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="8WA-V9-vMe">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="gun-q8-wTR"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="a5M-fr-vZ6">
+                            <rect key="frame" x="105" y="7" width="140" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="New"/>
+                                <segment title="Existing"/>
+                            </segments>
+                        </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="aZd-8e-tPZ"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jd3-fW-aho" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1390" y="2316"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DxY-j8-Rvo">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="7q6-yb-OqE" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bx8-zU-Ppq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Xi1-32-Kzf">
+                        <rect key="frame" x="0.0" y="724" width="1024" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="gHL-hd-Aeh" kind="relationship" relationship="rootViewController" id="Les-CI-xWQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vh8-nT-xXm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="362" y="868"/>
         </scene>
     </scenes>
     <resources>
         <image name="checkMarkImage" width="25" height="25"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="MXi-9w-xYl"/>
-    </inferredMetricsTieBreakers>
 </document>

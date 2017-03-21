@@ -35,6 +35,7 @@
 		1C7E718B1E7904120073799D /* AbsorbanceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E718A1E7904120073799D /* AbsorbanceKit.swift */; };
 		1CBE942E1E7BDB3E00F3C8F3 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBE942D1E7BDB3E00F3C8F3 /* PopoverViewController.swift */; };
 		1CBE94311E7CF74B00F3C8F3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBE94301E7CF74B00F3C8F3 /* SwiftyJSON.swift */; };
+		1CBE94EB1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBE94EA1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		1C7E718A1E7904120073799D /* AbsorbanceKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsorbanceKit.swift; sourceTree = "<group>"; };
 		1CBE942D1E7BDB3E00F3C8F3 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		1CBE94301E7CF74B00F3C8F3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		1CBE94EA1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +215,7 @@
 				1C7E71811E78E7270073799D /* Cells */,
 				1C7E717E1E78E6890073799D /* Storyboards */,
 				1C19446A1E7B7D9C002FB321 /* InstrumentAlertView.swift */,
+				1CBE94EA1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 			files = (
 				1C7E71891E7903790073799D /* DataPoint.swift in Sources */,
 				1C7E71751E78E58E0073799D /* NucDataTableViewCell.swift in Sources */,
+				1CBE94EB1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift in Sources */,
 				1C7E718B1E7904120073799D /* AbsorbanceKit.swift in Sources */,
 				1C0BFEE41E7A759900408A28 /* InstrumentPopoverViewController.swift in Sources */,
 				1C7E71771E78E5AC0073799D /* ProteinDataTableViewCell.swift in Sources */,

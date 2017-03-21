@@ -9,20 +9,18 @@
 import UIKit
 import CoreBluetooth
 
+
+
+
 class MasterViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
     /// Outlet to the container view in which the various view 
     /// controllers will be presented
     @IBOutlet weak var containerView: UIView!
 
-    /// outlet to a label used to indicate the current experiment name
-    @IBOutlet weak var experimentTitleLabel: UILabel!
-    
-    /// outlet to a label used to indicate details about the current experiment
-    @IBOutlet weak var experimentSubtitleLabel: UILabel!
-    
-    /// outler to a toolbar at the top of the master view controler
-    @IBOutlet weak var upperToolbar: UIToolbar!
+    /// outlet to a view containing a label used to indicate the current experiment name and 
+    /// a label used to indicate details about the current experiment
+    @IBOutlet weak var headerView: ExperimentHeaderView!
     
     @IBOutlet weak var instrumentButton: UIBarButtonItem!
     @IBOutlet weak var instrumentAlertView: InstrumentAlertView!
@@ -85,16 +83,13 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         instrumentAlertView.setup()
         
         // set experiment title and subtitle
-        experimentTitleLabel.text = "A Dope Experiment Title"
+        headerView.mainText = "A Dope Experiment Title"
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM dd, YYYY"
-        experimentSubtitleLabel.text = formatter.string(from: Date())
+        headerView.subText = formatter.string(from: Date())
         
         // move instrument alert view a bit closer to instrument button
         instrumentButtonToAlertViewFixedSpace.width = -5
-        
-        // remove top line from upper toolbar
-        upperToolbar.clipsToBounds = true
         
         // search for UART peripherals
         print(BLEManager.isOn() ? "BT powered on" : "BT NOT powered on")
@@ -119,7 +114,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         
         presentedViewController?.dismiss(animated: false, completion: nil)
         instrumentAlertView.isGrayedOut = false
-        let newVC = segue.destination as! PopoverViewController
+        let newVC = segue.destination
         newVC.popoverPresentationController?.delegate = self
         
         guard let id = segue.identifier else {
@@ -131,10 +126,12 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         switch id {
         case "master.segue.instrumentPop1",
              "master.segue.instrumentPop2":
-            let specificVC = segue.destination as! InstrumentPopoverViewController
-            specificVC.bleResponder = BLEManager
+            let popoverVC = segue.destination as! PopoverNavigationController
+            popoverVC.delegates[bleResponderKey] = BLEManager as BluetoothResponder
+            popoverVC.performSegue(withIdentifier: "popover.segue.instrument", sender: popoverVC)
             instrumentAlertView.isGrayedOut = true
             // fix me!
+            break
         case "master.segue.projectsPop":
             break
         case "master.segue.addPop":
@@ -214,6 +211,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         
         // instantiate view controller
         return storyboard.instantiateViewController(withIdentifier: identifier)
+        
     }
  }
 

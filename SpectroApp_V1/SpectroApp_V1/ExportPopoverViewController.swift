@@ -8,23 +8,19 @@
 
 import UIKit
 
-class ExportPopoverViewController: PopoverViewController {
+class ExportPopoverViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let newVC = segue.destination as! MasterViewController
         newVC.instrumentAlertView.isGrayedOut = false
-        
         guard let id = segue.identifier else {
             print("no segue ID")
             return

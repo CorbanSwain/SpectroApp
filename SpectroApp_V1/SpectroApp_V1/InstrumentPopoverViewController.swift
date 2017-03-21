@@ -8,27 +8,39 @@
 
 import UIKit
 
+public let bleResponderKey = "BLE"
+
 protocol BluetoothResponder {
     func rescanForDevices()
+    func addReporter(_ newReporter: InstrumentBluetoothManagerReporter)
+    func popReporter()
+    func echoStatus()
 }
 
-class InstrumentPopoverViewController: PopoverViewController {
-
-    @IBOutlet weak var scanButton: UIButton!
-    var bleResponder: BluetoothResponder!
+class InstrumentPopoverViewController: UIViewController {
     
+    var bleResponder: BluetoothResponder!
+    @IBOutlet weak var instrumentAlertView: InstrumentAlertView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        instrumentAlertView.setup(isFirstTime: false)
+        bleResponder.addReporter(instrumentAlertView)
+        bleResponder.echoStatus()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func scanButtonPressed(_ sender: UIButton) {
+    @IBAction func scanButtonPressed(_ sender: UIBarButtonItem) {
         bleResponder.rescanForDevices()
     }
+    
+    @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        bleResponder.popReporter()
+    }
+    
 
 }

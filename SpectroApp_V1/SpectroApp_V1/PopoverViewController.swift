@@ -8,27 +8,37 @@
 
 import UIKit
 
-class PopoverViewController: UIViewController {
+class PopoverNavigationController: UINavigationController {
 
-    var passThroughViews: [UIView]?
-    
-    override func viewWillAppear(_ animated: Bool) {
-        guard let passThroughViews = passThroughViews else {
-            print("self.passThroughViews is nil")
-            return
+    var passThroughViews: [UIView]? {
+        didSet {
+            guard let views = passThroughViews else {
+                return
+            }
+            popoverPresentationController?.passthroughViews = views
         }
-        popoverPresentationController?.passthroughViews = passThroughViews
     }
     
+    var delegates: [String:Any] = [:]
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let newVC = segue.destination as! MasterViewController
-        newVC.instrumentAlertView.isGrayedOut = false
+        print("In segue: \(segue.identifier ?? "[no segue ID]")")
         
         guard let id = segue.identifier else {
-            print("no segue ID")
+            print("No segue ID; cannot prepare for segue.")
             return
         }
-        print("segueID: \(id)")
+        
+        switch id {
+        case "popover.segue.instrument":
+            print("running instrument switch")
+            let instrumentVC = segue.destination as! InstrumentPopoverViewController
+            print("running bought in instrumentVC")
+            instrumentVC.bleResponder = delegates[bleResponderKey]! as! BluetoothResponder
+            print("set the delegate")
+        default:
+            break
+        }
     }
     
 }

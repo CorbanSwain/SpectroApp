@@ -10,22 +10,31 @@ import UIKit
 
 fileprivate let _UIBlue = UIColor(21, 126, 251)
 
-enum InstrumentStatus {
+enum InstrumentStatus: String, CustomStringConvertible {
     case good
     case warning
-    case busy
+    case busy = "connected"
+    case unknown
     func show(with view: InstrumentAlertView) {
         switch self {
         case .good: view.showGoodStatus()
         case .warning: view.showWarningStatus()
         case .busy: view.showBusy()
+        case .unknown: view.backgroundView.backgroundColor = .clear
         }
     }
     var color: UIColor {
         switch self {
         case .good: return _UIBlue
-        case .busy: return .clear
+        case .busy, .unknown: return .clear
         case.warning: return .red
+        }
+    }
+    
+    var description: String {
+        switch self {
+        default:
+            return self.rawValue.capitalized
         }
     }
 }
@@ -36,55 +45,32 @@ class InstrumentAlertView: UIView, InstrumentBluetoothManagerReporter {
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var label: UILabel!
     @IBOutlet private weak var button: UIButton!
+    @IBOutlet private weak var messageLabel: UILabel?
+    @IBOutlet weak var backgroundView: UIView!
     
-    var status: InstrumentStatus = .busy {
+    var status: InstrumentStatus = .unknown {
         didSet {
             guard oldValue != status else { return }
             status.show(with: self)
         }
     }
-        
-    func setup() {
-        layer.cornerRadius = frame.width / 2
-        backgroundColor = .clear
-        checkMark.isHidden = true
-        label.isHidden = true
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.startAnimating()
-    }
     
-    fileprivate func showGoodStatus() {
-        self.activityIndicator.stopAnimating()
-        UIView.animate(withDuration: 0.5, animations: {
-            if self.isGrayedOut { self.backgroundColor = .gray }
-            else { self.backgroundColor = _UIBlue }
-            self.checkMark.isHidden = false
-            self.label.isHidden = true
-        })
-    }
-    
-    fileprivate func showWarningStatus() {
-        self.activityIndicator.stopAnimating()
-        UIView.animate(withDuration: 0.5, animations: {
-            if self.isGrayedOut { self.backgroundColor = .gray }
-            else { self.backgroundColor = .red }
-            self.checkMark.isHidden = true
-            self.label.isHidden = false
-        })
-    }
-    
-    fileprivate func showBusy() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.backgroundColor = .clear
-            self.checkMark.isHidden = true
-            self.label.isHidden = true
-        })
-        self.activityIndicator.startAnimating()
-    }
-    
-    func setStatusTo(_ status: InstrumentStatus) {
-        DispatchQueue.main.async {
-            self.status = status
+    var message: String? {
+        didSet {
+            guard let label = messageLabel else {
+                return
+            }
+            if label.isHidden {
+                UIView.animate(withDuration: 0.15, animations: {
+                    self.messageLabel?.isHidden = false
+                    label.text = self.message ?? self.status.description
+                })
+            } else {
+                UIView.animate(withDuration: 0.15, animations: {
+                    label.text = self.message ?? self.status.description
+                })
+            }
+            
         }
     }
     
@@ -95,15 +81,81 @@ class InstrumentAlertView: UIView, InstrumentBluetoothManagerReporter {
             }
             print("did set isGrayedOut to: \(isGrayedOut)")
             if isGrayedOut {
-                if self.backgroundColor != .clear {
-                    self.backgroundColor = .gray
+                if self.backgroundView.backgroundColor != .clear {
+                    UIView.animate(withDuration: 0.15, animations: {
+                        self.backgroundView.backgroundColor = .gray
+                    })
                 }
                 self.button.isUserInteractionEnabled = false
             } else {
-                self.backgroundColor = status.color
+                UIView.animate(withDuration: 0.15, animations: {
+                    self.backgroundView.backgroundColor = self.status.color
+                })
                 self.button.isUserInteractionEnabled = true
             }
         }
+    }
+    
+    func setup(isFirstTime: Bool = true) {
+        print("setting up instrument alert view")
+        if backgroundView == nil {
+            print("setting background view to nil...")
+            backgroundView = self
+            print("sett to nil")
+        }
+        backgroundView.layer.cornerRadius = backgroundView.frame.width / 2
+        backgroundView.backgroundColor = .clear
+        checkMark.isHidden = true
+        label.isHidden = true
+        activityIndicator.hidesWhenStopped = true
+        messageLabel?.isHidden = true
+        activityIndicator.stopAnimating()
+        
+        if isFirstTime {
+            status = .busy
+        }
+    }
+    
+    fileprivate func showGoodStatus() {
+        self.activityIndicator.stopAnimating()
+        UIView.animate(withDuration: 0.15, animations: {
+            if self.isGrayedOut { self.backgroundView.backgroundColor = .gray }
+            else { self.backgroundView.backgroundColor = _UIBlue }
+            self.checkMark.isHidden = false
+            self.label.isHidden = true
+        })
+    }
+    
+    fileprivate func showWarningStatus() {
+        self.activityIndicator.stopAnimating()
+        UIView.animate(withDuration: 0.15, animations: {
+            if self.isGrayedOut { self.backgroundView.backgroundColor = .gray }
+            else { self.backgroundView.backgroundColor = .red }
+            self.checkMark.isHidden = true
+            self.label.isHidden = false
+        })
+    }
+    
+    fileprivate func showBusy() {
+        UIView.animate(withDuration: 0.15, animations: {
+            self.backgroundView.backgroundColor = .clear
+            self.checkMark.isHidden = true
+            self.label.isHidden = true
+        })
+        self.activityIndicator.startAnimating()
+    }
+    
+    func setStatus(to status: InstrumentStatus) {
+        DispatchQueue.main.async {
+            self.status = status
+        }
+    }
+    
+    func setStatusMessage(to message: String?) {
+        DispatchQueue.main.async {
+            self.message = message
+        }
+        
     }
     
 }
