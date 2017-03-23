@@ -31,11 +31,13 @@ class PopoverNavigationController: UINavigationController {
         
         switch id {
         case "popover.segue.instrument":
-            print("running instrument switch")
             let instrumentVC = segue.destination as! InstrumentPopoverViewController
-            print("running bought in instrumentVC")
             instrumentVC.bleResponder = delegates[bleResponderKey]! as! BluetoothResponder
-            print("set the delegate")
+            
+        case "popover.segue.projects":
+            // let projectsVC = segue.destination as! ProjectsPopoverViewController
+            break
+            
         default:
             break
         }

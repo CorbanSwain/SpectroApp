@@ -39,7 +39,7 @@ enum InstrumentStatus: String, CustomStringConvertible {
     }
 }
 
-class InstrumentAlertView: UIView, InstrumentBluetoothManagerReporter {
+class InstrumentAlertView: UIView, CBInstrumentCentralManagerReporter {
     
     @IBOutlet private weak var checkMark: UIImageView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
@@ -145,17 +145,11 @@ class InstrumentAlertView: UIView, InstrumentBluetoothManagerReporter {
         self.activityIndicator.startAnimating()
     }
     
-    func setStatus(to status: InstrumentStatus) {
+    func display(_ status: InstrumentStatus, message: String?) {
         DispatchQueue.main.async {
             self.status = status
-        }
-    }
-    
-    func setStatusMessage(to message: String?) {
-        DispatchQueue.main.async {
             self.message = message
         }
-        
     }
     
 }

@@ -10,27 +10,26 @@ import UIKit
 
 public let bleResponderKey = "BLE"
 
-protocol BluetoothResponder {
+protocol InstrummentSettingsViewControllerDelegate: class {
     func rescanForDevices()
-    func addReporter(_ newReporter: InstrumentBluetoothManagerReporter)
+    func addReporter(_ newReporter: CBInstrumentCentralManagerReporter)
     func popReporter()
     func echoStatus()
 }
 
 class InstrumentPopoverViewController: UIViewController {
     
-    var bleResponder: BluetoothResponder!
+    weak var delegate: InstrummentSettingsViewControllerDelegate!
     @IBOutlet weak var instrumentAlertView: InstrumentAlertView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         instrumentAlertView.setup(isFirstTime: false)
-        bleResponder.addReporter(instrumentAlertView)
-        bleResponder.echoStatus()
+        delegate.addReporter(instrumentAlertView)
     }
     
     @IBAction func scanButtonPressed(_ sender: UIBarButtonItem) {
-        bleResponder.rescanForDevices()
+        delegate.rescanForDevices()
     }
     
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
@@ -38,9 +37,6 @@ class InstrumentPopoverViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        bleResponder.popReporter()
+        delegate.popReporter()
     }
-    
-
 }

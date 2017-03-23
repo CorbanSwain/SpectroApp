@@ -63,7 +63,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     /// index of the current segmented control selection
     var segmentedControlIndex = 0
     
-    var BLEManager: InstrumentBluetoothManager!
+    var bluetoothManager: CBInstrumentCentralManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +77,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         add(asChildViewController: projectViewController)
         
         // instantiate bluetooth manager
-        BLEManager = InstrumentBluetoothManager(withDelegate: instrumentAlertView)
+        bluetoothManager = CBInstrumentCentralManager(withReporter: instrumentAlertView)
         
         // setup instrument alert view
         instrumentAlertView.setup()
@@ -92,8 +92,8 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         instrumentButtonToAlertViewFixedSpace.width = -5
         
         // search for UART peripherals
-        print(BLEManager.isOn() ? "BT powered on" : "BT NOT powered on")
-        print("central manager state: \(BLEManager.centralManager.state.rawValue)")
+        print(bluetoothManager.isOn() ? "BT powered on" : "BT NOT powered on")
+        print("central manager state: \(bluetoothManager.centralManager.state.rawValue)")
     }
 
     override func didReceiveMemoryWarning() {
@@ -124,16 +124,17 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         print("Segue ID: \(id)")
         
         switch id {
-        case "master.segue.instrumentPop1",
-             "master.segue.instrumentPop2":
+        case "master.segue.instrumentPop":
             let popoverVC = segue.destination as! PopoverNavigationController
-            popoverVC.delegates[bleResponderKey] = BLEManager as BluetoothResponder
-            popoverVC.performSegue(withIdentifier: "popover.segue.instrument", sender: popoverVC)
+            popoverVC.delegates[bleResponderKey] = bluetoothManager as InstrummentSettingsViewControllerDelegate
             instrumentAlertView.isGrayedOut = true
-            // fix me!
+            popoverVC.performSegue(withIdentifier: "popover.segue.instrument", sender: popoverVC)
             break
         case "master.segue.projectsPop":
-            break
+            let popoverVC = segue.destination as! PopoverNavigationController
+            // send delegates
+            popoverVC.performSegue(withIdentifier: "popover.segue.projects", sender: popoverVC)
+
         case "master.segue.addPop":
             break
         case "master.segue.exportPop":
@@ -142,7 +143,6 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             break
         }
     }
-    
     
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         instrumentAlertView.isGrayedOut = false

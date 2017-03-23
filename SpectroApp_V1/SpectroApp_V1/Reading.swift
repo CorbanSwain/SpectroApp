@@ -15,7 +15,10 @@ struct Reading {
     
     var readingName: String
     var timestamp: Date
+    
+    // fix me!
     var hashValue: Int
+    
     var experimentType: ExperimentType
     var readingType: ReadingType
     
@@ -26,6 +29,6 @@ struct Reading {
     
     var isEmpty: Bool { return dataPoints.count < 1 }
     var hasRepeats: Bool { return dataPoints.count > 1 }
-    var absorbanceValue: CGFloat? { return AbsorbanceKit.average(of: dataPoints) }
-    var stdDev: CGFloat? { return AbsorbanceKit.stdev(of: dataPoints) }
+    var absorbanceValue: CGFloat? { return average(of: dataPoints) }
+    var stdDev: CGFloat? { return stdev(of: dataPoints) }
 }
