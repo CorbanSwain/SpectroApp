@@ -23,7 +23,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     @IBOutlet weak var headerView: ExperimentHeaderView!
     
     @IBOutlet weak var instrumentButton: UIBarButtonItem!
-    @IBOutlet weak var instrumentAlertView: InstrumentAlertView!
+    @IBOutlet weak var instrumentAlertView: InstrumentStatusView!
     
     @IBOutlet weak var instrumentButtonToAlertViewFixedSpace: UIBarButtonItem!
     /// instance of the project view controller; view controllers are
@@ -126,7 +126,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         switch id {
         case "master.segue.instrumentPop":
             let popoverVC = segue.destination as! PopoverNavigationController
-            popoverVC.delegates[bleResponderKey] = bluetoothManager as InstrummentSettingsViewControllerDelegate
+            popoverVC.delegates[instrumentConnectionVCDelegateKey] = bluetoothManager as InstrummentConnectionViewControllerDelegate
             instrumentAlertView.isGrayedOut = true
             popoverVC.performSegue(withIdentifier: "popover.segue.instrument", sender: popoverVC)
             break

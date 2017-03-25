@@ -8,19 +8,19 @@
 
 import UIKit
 
-public let bleResponderKey = "BLE"
+public let instrumentConnectionVCDelegateKey = "BLE"
 
-protocol InstrummentSettingsViewControllerDelegate: class {
+protocol InstrummentConnectionViewControllerDelegate: class {
     func rescanForDevices()
     func addReporter(_ newReporter: CBInstrumentCentralManagerReporter)
     func popReporter()
     func echoStatus()
 }
 
-class InstrumentPopoverViewController: UIViewController {
+class InstrumentConnectionViewController: UIViewController {
     
-    weak var delegate: InstrummentSettingsViewControllerDelegate!
-    @IBOutlet weak var instrumentAlertView: InstrumentAlertView!
+    weak var delegate: InstrummentConnectionViewControllerDelegate!
+    @IBOutlet weak var instrumentAlertView: InstrumentStatusView!
 
     override func viewDidLoad() {
         super.viewDidLoad()

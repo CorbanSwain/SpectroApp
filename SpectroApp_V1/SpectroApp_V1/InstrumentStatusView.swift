@@ -8,14 +8,15 @@
 
 import UIKit
 
-fileprivate let _UIBlue = UIColor(21, 126, 251)
+let _UIBlue = UIColor(21, 126, 251)
+let goodStatusGreen =  UIColor(52, 133, 88)
 
 enum InstrumentStatus: String, CustomStringConvertible {
     case good = "Connected"
     case warning = "Not connected"
     case busy
     case unknown
-    func show(with view: InstrumentAlertView) {
+    func show(with view: InstrumentStatusView) {
         switch self {
         case .good: view.showGoodStatus()
         case .warning: view.showWarningStatus()
@@ -25,7 +26,7 @@ enum InstrumentStatus: String, CustomStringConvertible {
     }
     var color: UIColor {
         switch self {
-        case .good: return _UIBlue
+        case .good: return goodStatusGreen
         case .busy, .unknown: return .clear
         case.warning: return .red
         }
@@ -39,7 +40,7 @@ enum InstrumentStatus: String, CustomStringConvertible {
     }
 }
 
-class InstrumentAlertView: UIView, CBInstrumentCentralManagerReporter {
+class InstrumentStatusView: UIView, CBInstrumentCentralManagerReporter {
     
     @IBOutlet private weak var checkMark: UIImageView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
@@ -99,9 +100,8 @@ class InstrumentAlertView: UIView, CBInstrumentCentralManagerReporter {
     func setup(isFirstTime: Bool = true) {
         print("setting up instrument alert view")
         if backgroundView == nil {
-            print("setting background view to nil...")
+            print("setting background view to be the alert view")
             backgroundView = self
-            print("sett to nil")
         }
         backgroundView.layer.cornerRadius = backgroundView.frame.width / 2
         backgroundView.backgroundColor = .clear

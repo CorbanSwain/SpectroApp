@@ -31,8 +31,8 @@ class PopoverNavigationController: UINavigationController {
         
         switch id {
         case "popover.segue.instrument":
-            let instrumentVC = segue.destination as! InstrumentPopoverViewController
-            instrumentVC.bleResponder = delegates[bleResponderKey]! as! BluetoothResponder
+            let instrumentVC = segue.destination as! InstrumentConnectionViewController
+            instrumentVC.delegate = delegates[instrumentConnectionVCDelegateKey]! as! InstrummentConnectionViewControllerDelegate
             
         case "popover.segue.projects":
             // let projectsVC = segue.destination as! ProjectsPopoverViewController

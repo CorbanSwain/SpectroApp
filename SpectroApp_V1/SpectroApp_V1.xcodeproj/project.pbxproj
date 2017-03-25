@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C0BFEE41E7A759900408A28 /* InstrumentPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0BFEE31E7A759900408A28 /* InstrumentPopoverViewController.swift */; };
+		1C0BFEE41E7A759900408A28 /* InstrumentConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0BFEE31E7A759900408A28 /* InstrumentConnectionViewController.swift */; };
 		1C0BFEE71E7A77A400408A28 /* ProjectsPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0BFEE61E7A77A400408A28 /* ProjectsPopoverViewController.swift */; };
 		1C0BFEE91E7A77BA00408A28 /* AddPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0BFEE81E7A77BA00408A28 /* AddPopoverViewController.swift */; };
 		1C1944661E7B02DC002FB321 /* ExportPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1944651E7B02DC002FB321 /* ExportPopoverViewController.swift */; };
-		1C1944691E7B42EA002FB321 /* InstrumentBluetoothManagert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1944681E7B42EA002FB321 /* InstrumentBluetoothManagert.swift */; };
-		1C19446B1E7B7D9D002FB321 /* InstrumentAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19446A1E7B7D9C002FB321 /* InstrumentAlertView.swift */; };
+		1C1944691E7B42EA002FB321 /* CBInstrumentCentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1944681E7B42EA002FB321 /* CBInstrumentCentralManager.swift */; };
+		1C19446B1E7B7D9D002FB321 /* InstrumentStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19446A1E7B7D9C002FB321 /* InstrumentStatusView.swift */; };
 		1C569FF41E79AA5E00A9FAD4 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C569FF31E79AA5E00A9FAD4 /* DataViewController.swift */; };
 		1C569FF71E7A138C00A9FAD4 /* PlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C569FF61E7A138C00A9FAD4 /* PlotViewController.swift */; };
 		1C7E71401E78CA390073799D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E713F1E78CA390073799D /* AppDelegate.swift */; };
@@ -37,6 +37,7 @@
 		1CBE94311E7CF74B00F3C8F3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBE94301E7CF74B00F3C8F3 /* SwiftyJSON.swift */; };
 		1CBE94EB1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBE94EA1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift */; };
 		1CBE94ED1E8126F200F3C8F3 /* MasterNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBE94EC1E8126F200F3C8F3 /* MasterNavigationBar.swift */; };
+		1CC097B91E857BBE00655A90 /* CBDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC097B81E857BBD00655A90 /* CBDataParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,12 +58,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1C0BFEE31E7A759900408A28 /* InstrumentPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentPopoverViewController.swift; sourceTree = "<group>"; };
+		1C0BFEE31E7A759900408A28 /* InstrumentConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentConnectionViewController.swift; sourceTree = "<group>"; };
 		1C0BFEE61E7A77A400408A28 /* ProjectsPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsPopoverViewController.swift; sourceTree = "<group>"; };
 		1C0BFEE81E7A77BA00408A28 /* AddPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPopoverViewController.swift; sourceTree = "<group>"; };
 		1C1944651E7B02DC002FB321 /* ExportPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportPopoverViewController.swift; sourceTree = "<group>"; };
-		1C1944681E7B42EA002FB321 /* InstrumentBluetoothManagert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentBluetoothManagert.swift; sourceTree = "<group>"; };
-		1C19446A1E7B7D9C002FB321 /* InstrumentAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentAlertView.swift; sourceTree = "<group>"; };
+		1C1944681E7B42EA002FB321 /* CBInstrumentCentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBInstrumentCentralManager.swift; sourceTree = "<group>"; };
+		1C19446A1E7B7D9C002FB321 /* InstrumentStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentStatusView.swift; sourceTree = "<group>"; };
 		1C569FF31E79AA5E00A9FAD4 /* DataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
 		1C569FF61E7A138C00A9FAD4 /* PlotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotViewController.swift; sourceTree = "<group>"; };
 		1C7E713C1E78CA390073799D /* SpectroApp_V1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpectroApp_V1.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +94,7 @@
 		1CBE94301E7CF74B00F3C8F3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		1CBE94EA1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentHeaderView.swift; sourceTree = "<group>"; };
 		1CBE94EC1E8126F200F3C8F3 /* MasterNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterNavigationBar.swift; sourceTree = "<group>"; };
+		1CC097B81E857BBD00655A90 /* CBDataParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBDataParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +129,7 @@
 				1CBE942D1E7BDB3E00F3C8F3 /* PopoverViewController.swift */,
 				1C0BFEE61E7A77A400408A28 /* ProjectsPopoverViewController.swift */,
 				1C0BFEE81E7A77BA00408A28 /* AddPopoverViewController.swift */,
-				1C0BFEE31E7A759900408A28 /* InstrumentPopoverViewController.swift */,
+				1C0BFEE31E7A759900408A28 /* InstrumentConnectionViewController.swift */,
 			);
 			name = "Popover Controllers";
 			sourceTree = "<group>";
@@ -135,7 +137,8 @@
 		1C1944671E7B42D0002FB321 /* Bluetooth */ = {
 			isa = PBXGroup;
 			children = (
-				1C1944681E7B42EA002FB321 /* InstrumentBluetoothManagert.swift */,
+				1CC097B81E857BBD00655A90 /* CBDataParser.swift */,
+				1C1944681E7B42EA002FB321 /* CBInstrumentCentralManager.swift */,
 			);
 			name = Bluetooth;
 			sourceTree = "<group>";
@@ -215,10 +218,10 @@
 		1C7E717D1E78E6760073799D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1C19446A1E7B7D9C002FB321 /* InstrumentStatusView.swift */,
+				1CBE94EA1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift */,
 				1C7E71811E78E7270073799D /* Cells */,
 				1C7E717E1E78E6890073799D /* Storyboards */,
-				1C19446A1E7B7D9C002FB321 /* InstrumentAlertView.swift */,
-				1CBE94EA1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -412,13 +415,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C7E71891E7903790073799D /* DataPoint.swift in Sources */,
+				1CC097B91E857BBE00655A90 /* CBDataParser.swift in Sources */,
 				1C7E71751E78E58E0073799D /* NucDataTableViewCell.swift in Sources */,
 				1CBE94EB1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift in Sources */,
 				1CBE94ED1E8126F200F3C8F3 /* MasterNavigationBar.swift in Sources */,
 				1C7E718B1E7904120073799D /* AbsorbanceKit.swift in Sources */,
-				1C0BFEE41E7A759900408A28 /* InstrumentPopoverViewController.swift in Sources */,
+				1C0BFEE41E7A759900408A28 /* InstrumentConnectionViewController.swift in Sources */,
 				1C7E71771E78E5AC0073799D /* ProteinDataTableViewCell.swift in Sources */,
-				1C19446B1E7B7D9D002FB321 /* InstrumentAlertView.swift in Sources */,
+				1C19446B1E7B7D9D002FB321 /* InstrumentStatusView.swift in Sources */,
 				1C569FF71E7A138C00A9FAD4 /* PlotViewController.swift in Sources */,
 				1C7E71871E79035E0073799D /* Reading.swift in Sources */,
 				1CBE94311E7CF74B00F3C8F3 /* SwiftyJSON.swift in Sources */,
@@ -435,7 +439,7 @@
 				1CBE942E1E7BDB3E00F3C8F3 /* PopoverViewController.swift in Sources */,
 				1C0BFEE71E7A77A400408A28 /* ProjectsPopoverViewController.swift in Sources */,
 				1C7E71711E78D6C80073799D /* ProjectTableViewCell.swift in Sources */,
-				1C1944691E7B42EA002FB321 /* InstrumentBluetoothManagert.swift in Sources */,
+				1C1944691E7B42EA002FB321 /* CBInstrumentCentralManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

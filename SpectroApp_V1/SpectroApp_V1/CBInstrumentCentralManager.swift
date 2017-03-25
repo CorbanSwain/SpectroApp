@@ -9,19 +9,34 @@
 import UIKit
 import CoreBluetooth
 
-public let instrumentDPStringExample = JSON(data: "<P{\"Index\":\"4\", \"Value\":\"2776\", \"Tag\":\"control\", \"TagNumber\":\"2\", \"Identifier\":\"24566781\"}>".data(using: .utf8)!)
 
+/// An example JSON string to show the format for measuments sent by a connected instrument
+public let instrumentDPStringExample = "{\"Index\":\"4\", \"Value\":\"2776\", \"Tag\":\"control\", \"TagNumber\":\"2\", \"Identifier\":\"24566781\"}"
+
+
+/// A 128-bit universially unnique identifier (UUID) for the UART service, for more information about the UART service see [adafruit.learn.com](https://learn.adafruit.com/introducing-adafruit-ble-bluetooth-low-energy-friend/uart-service)
 fileprivate let uartServiceUUID = CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")
-fileprivate let uartTXCharID = CBUUID(string:    "6E400002-B5A3-F393-E0A9-E50E24DCCA9E")
-fileprivate let uartRXCharID = CBUUID(string:    "6E400003-B5A3-F393-E0A9-E50E24DCCA9E")
+
+/// The UUID for the transmission charachteristic of the [UART service](https://learn.adafruit.com/introducing-adafruit-ble-bluetooth-low-energy-friend/uart-service)
+fileprivate let uartTXCharID = CBUUID(string: "6E400002-B5A3-F393-E0A9-E50E24DCCA9E")
+
+
+/// The UUID for the recieving charachteristic of the [UART service](https://learn.adafruit.com/introducing-adafruit-ble-bluetooth-low-energy-friend/uart-service), data from the instrment is sent through this charachteristic
+fileprivate let uartRXCharID = CBUUID(string: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E")
+
+
+/// The UUID for the LEGO Spectrophotometer peripheral: the device used for app testing, Spring 2017. The arduino in this device is an [Adafruit Feather M0 Bluefruit LE](https://learn.adafruit.com/adafruit-feather-m0-bluefruit-le/overview).
 fileprivate let legoSpecID = UUID(uuidString: "EF520BC5-9EF2-4801-B395-DA0D146A4B65")
 
 
+/// The ```CBInstrumentCentralManagerReporter``` protocol defines the methods that a reporter delegate of a CBInstrumentCentralManager object must adopt.
+
+/// The CBCentralManagerDelegate protocol defines the methods that a delegate of a CBCentralManager object must adopt. The optional methods of the protocol allow the delegate to monitor the discovery, connectivity, and retrieval of peripheral devices. The only required method of the protocol indicates the availability of the central manager, and is called when the central manager’s state is updated.
 protocol CBInstrumentCentralManagerReporter: class {
     func display(_ status: InstrumentStatus, message: String?)
 }
 
-class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, CBDataParserDelegate, InstrummentSettingsViewControllerDelegate {
+class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, CBDataParserDelegate, InstrummentConnectionViewControllerDelegate {
     
     let secondsToScanForPeripherals: TimeInterval = 20
     let secondsToWaitToTurnOn: TimeInterval = 3
@@ -47,9 +62,13 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
         }
     }
     
-    var status: (status: InstrumentStatus, message: String?) = (.busy, "Initializing…") {
-        didSet { echoStatus() }
+    var status: (status: InstrumentStatus, message: String?) = (.busy, "Initializing …") {
+        didSet {
+            if tempStatus != nil { tempStatus = nil }
+            echoStatus()
+        }
     }
+    var tempStatus: (status: InstrumentStatus, message: String?)?
     
     init(withReporter reporter: CBInstrumentCentralManagerReporter) {
         super.init()
@@ -67,7 +86,7 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
         if let connectedPeripheral = connectedPeripheral {
             centralManager.cancelPeripheralConnection(connectedPeripheral)
         }
-        scanForPeripherals(withServices: requiredServices)
+        scanForPeripherals()
     }
     
     func scanForPeripherals(withServices serviceUUIDs: [CBUUID]? = nil) {
@@ -136,7 +155,9 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
         print("peripheral disconnected!")
         connectedPeripheral = nil
         status = (.warning, "Instrument disconected.")
-        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(scanForPeripherals), userInfo: nil, repeats: false)
+        DispatchQueue.main.async {
+            Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.rescanForDevices), userInfo: nil, repeats: false)
+        }
     }
     
     internal func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
@@ -183,7 +204,7 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
             case uartRXCharID:
                 print("Sucessfully found UART RX charachteristic...subscribing")
                 peripheral.setNotifyValue(true, for: c)
-                status = (.good, "Connected to instrument, waiting for incoming data.")
+                status = (.good, "Connected to instrument. Waiting for incoming data …")
                 
             default:
                 break
@@ -200,13 +221,11 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
         dataParser.parse(data, fromPeripheral: peripheral, fromCharachteristic: characteristic)
     }
     
-    internal func peripheral(_ peripheral: CBPeripheral, didRecieveDataString string: String, fromCharachteristic characteristic: CBCharacteristic) {
-        let instrumentDP = JSON(parseJSON: string).instrumentDataPointValue
-        print("Recieved: \(instrumentDP)")
-        
+    func dataParser(_ dataParser: CBDataParser, didBeginParsingObjectWithTag tag: CBDataParser.ParsingTag, FromPeripheral peripheral: CBPeripheral, fromCharachteristic charachteristic: CBCharacteristic) {
+        status = (.busy,"Recieving \(tag) …")
     }
     
-    internal func dataParser(_ dataParser: CBDataParser, didRecieveObject parsedObject: Any, fromPeripheral peripheral: CBPeripheral, fromCharachteristic charachteristic: CBCharacteristic) {
+    internal func dataParser(_ dataParser: CBDataParser, didRecieveObject parsedObject: Any, withTag tag: CBDataParser.ParsingTag, fromPeripheral peripheral: CBPeripheral, fromCharachteristic charachteristic: CBCharacteristic) {
         switch parsedObject {
         case let instrumentDP as InstrumentDataPoint:
             print("Just got a data point!\n    --> \(instrumentDP)")
@@ -214,6 +233,15 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
             print("Recieved an object, but it was of an unknown type.")
             break
         }
+        tempStatus = (.good, "Recieved \(tag). Waiting for more incoming data …")
+        DispatchQueue.main.async {
+            Timer.scheduledTimer(timeInterval: 0.75, target: self, selector: #selector(self.loadTempStatus), userInfo: nil, repeats: false)
+        }
+    }
+
+    func loadTempStatus() {
+        guard let s = tempStatus else { return }
+        status = s
     }
     
     func addReporter(_ newReporter: CBInstrumentCentralManagerReporter) {
@@ -233,91 +261,8 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
     
 }
 
-
 protocol CBDataParserDelegate: class {
-    func dataParser(_ dataParser: CBDataParser, didRecieveObject parsedObject: Any, fromPeripheral peripheral: CBPeripheral, fromCharachteristic charachteristic: CBCharacteristic)
+    func dataParser(_ dataParser: CBDataParser, didRecieveObject parsedObject: Any, withTag tag: CBDataParser.ParsingTag, fromPeripheral peripheral: CBPeripheral, fromCharachteristic charachteristic: CBCharacteristic)
+    func dataParser(_ dataParser: CBDataParser, didBeginParsingObjectWithTag tag: CBDataParser.ParsingTag, FromPeripheral peripheral: CBPeripheral, fromCharachteristic charachteristic: CBCharacteristic)
 }
 
-
-class CBDataParser {
-    
-    enum ParseStatus {
-        case calm
-        case recievingTag
-        case recievingJSON
-    }
-    
-    enum ParsingTag: Character {
-        case dataPoint = "P"
-        case instrumentInfo = "I"
-    }
-    
-    let openingChar: Character = "<"
-    let closingChar: Character = "<"
-    
-    weak var delegate: CBDataParserDelegate?
-    
-    var parseStatus: ParseStatus = .calm
-    
-    var tag: ParsingTag? = nil
-    
-    var jsonString = ""
-    
-    var parsedObject: Any? {
-        guard let t = tag else {
-            return nil
-        }
-        
-        let json = JSON(parseJSON: jsonString)
-        
-        switch t {
-        case .dataPoint:
-            return json.instrumentDataPointValue
-        case .instrumentInfo:
-            // FIX ME!!!
-            return nil
-        }
-    }
-    
-    init(withDelegate delegate: CBDataParserDelegate) {
-        self.delegate = delegate
-    }
-    
-    func parse(_ data: Data, fromPeripheral peripheral: CBPeripheral, fromCharachteristic charachteristic: CBCharacteristic) {
-        guard let string = String(data: data, encoding: .utf8) else {
-            print("String could not be extracted from data.")
-            return
-        }
-        
-        for char in string.characters {
-            switch char {
-            case openingChar:
-                jsonString = ""
-                parseStatus = .recievingTag
-                // FIX ME add timing structure to prevent canAppendChars from staying true indefinately...
-            case closingChar:
-                parseStatus = .calm
-                guard let object = parsedObject else {
-                    print("ERROR: Object could not be created from jsonString!")
-                    return
-                }
-                delegate?.dataParser(self, didRecieveObject: object, fromPeripheral: peripheral, fromCharachteristic: charachteristic)
-                
-            default:
-                switch parseStatus {
-                case .calm:
-                    print("Recieving improperly cormatted data")
-                    break
-                case .recievingTag:
-                    tag = ParsingTag(rawValue: char)
-                    parseStatus = .recievingJSON
-                
-                case .recievingJSON:
-                    jsonString.append(char)
-                    
-                }
-            }
-        }
-    }
-    
-}
