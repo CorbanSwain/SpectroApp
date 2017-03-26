@@ -9,6 +9,11 @@
 import UIKit
 import CoreBluetooth
 
+protocol CBDataParserDelegate: class {
+    func dataParser(_ dataParser: CBDataParser, didRecieveObject parsedObject: Any, withTag tag: CBDataParser.ParsingTag, fromPeripheral peripheral: CBPeripheral, fromCharachteristic charachteristic: CBCharacteristic)
+    func dataParser(_ dataParser: CBDataParser, didBeginParsingObjectWithTag tag: CBDataParser.ParsingTag, FromPeripheral peripheral: CBPeripheral, fromCharachteristic charachteristic: CBCharacteristic)
+}
+
 class CBDataParser {
     
     enum ParseStatus {
@@ -64,38 +69,35 @@ class CBDataParser {
     
     func parse(_ data: Data, fromPeripheral peripheral: CBPeripheral, fromCharachteristic charachteristic: CBCharacteristic) {
         guard let string = String(data: data, encoding: .utf8) else {
-            print("String could not be extracted from data.")
+            print("BLE:_String could not be extracted from data.")
             return
         }
         for char in string.characters {
             switch char {
             case openingChar:
-                print("JSON String has begun ...")
+                print("BLE:_JSON String has begun ...")
                 jsonString = ""
                 parseStatus = .recievingTag
-            // FIX ME add timing structure to prevent canAppendChars from staying true indefinately...
+                // FIX ME add timing structure to prevent canAppendChars from staying true indefinately...
             case closingChar:
-                print("JSON String has ended.")
+                print("BLE:_JSON String has ended.")
+//                print("BLE:_ --> \(jsonString)")
                 parseStatus = .calm
                 guard let object = parsedObject else {
-                    print("ERROR: Object could not be created from jsonString!")
+                    print("BLE:_ERROR: Object could not be created from jsonString!")
                     return
                 }
                 delegate?.dataParser(self, didRecieveObject: object, withTag: tag!, fromPeripheral: peripheral, fromCharachteristic: charachteristic)
-                
             default:
                 switch parseStatus {
                 case .calm:
-                    print("Recieving improperly formatted data string")
+                    print("BLE:_Recieving improperly formatted data string! --> | \(char) |")
                     break
                 case .recievingTag:
                     tag = ParsingTag(rawValue: char)
                     parseStatus = .recievingJSON
-                    guard let t = tag else {
-                        break
-                    }
+                    guard let t = tag else { break }
                     delegate?.dataParser(self, didBeginParsingObjectWithTag: t, FromPeripheral: peripheral, fromCharachteristic: charachteristic)
-                    
                 case .recievingJSON:
                     jsonString.append(char)
                     

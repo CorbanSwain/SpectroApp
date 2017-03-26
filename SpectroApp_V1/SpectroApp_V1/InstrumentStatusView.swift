@@ -8,7 +8,7 @@
 
 import UIKit
 
-let _UIBlue = UIColor(21, 126, 251)
+// let _UIBlue = UIColor(21, 126, 251)
 let goodStatusGreen =  UIColor(52, 133, 88)
 
 enum InstrumentStatus: String, CustomStringConvertible {
@@ -120,7 +120,7 @@ class InstrumentStatusView: UIView, CBInstrumentCentralManagerReporter {
         self.activityIndicator.stopAnimating()
         UIView.animate(withDuration: 0.15, animations: {
             if self.isGrayedOut { self.backgroundView.backgroundColor = .gray }
-            else { self.backgroundView.backgroundColor = _UIBlue }
+            else { self.backgroundView.backgroundColor = InstrumentStatus.good.color }
             self.checkMark.isHidden = false
             self.label.isHidden = true
         })
@@ -145,7 +145,7 @@ class InstrumentStatusView: UIView, CBInstrumentCentralManagerReporter {
         self.activityIndicator.startAnimating()
     }
     
-    func display(_ status: InstrumentStatus, message: String?) {
+    func display(status: InstrumentStatus, message: String?) {
         DispatchQueue.main.async {
             self.status = status
             self.message = message

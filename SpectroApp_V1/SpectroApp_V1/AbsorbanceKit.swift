@@ -38,13 +38,12 @@ enum ReadingType: String, CustomStringConvertible {
         return [.control, .standard, .unknown, .wildType, .mutant, .custom]
     }
     
-    static func get(fromString string: String) -> ReadingType {
-        for type in allTypes {
-            if string == type.rawValue {
-                return type
-            }
+    init(fromString string: String) {
+        if let t = ReadingType(rawValue: string) {
+            self = t
+        } else {
+            self = .noType
         }
-        return .noType
     }
     
     var description: String {

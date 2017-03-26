@@ -48,7 +48,7 @@
                         <barButtonItem style="plain" systemItem="fixedSpace" id="b7b-3R-veY"/>
                         <barButtonItem style="plain" id="TCR-Wn-yuR">
                             <view key="customView" contentMode="scaleToFill" id="rse-Qf-Bns" customClass="InstrumentStatusView" customModule="SpectroApp_V1" customModuleProvider="target">
-                                <rect key="frame" x="113" y="11.5" width="21" height="21"/>
+                                <rect key="frame" x="113" y="12" width="21" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsH-YK-G8z">
@@ -64,7 +64,7 @@
                                         </constraints>
                                     </imageView>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="lcJ-vq-C4c">
-                                        <rect key="frame" x="0.5" y="0.5" width="20" height="20"/>
+                                        <rect key="frame" x="1" y="1" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="47D-RQ-bDh"/>
                                             <constraint firstAttribute="height" constant="20" id="OVK-U3-yND"/>
@@ -123,7 +123,6 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="g71-PS-IXR">
-                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" id="1fW-Dc-1pv">
                             <view key="customView" contentMode="scaleToFill" id="DJV-Rr-pN1" userLabel="Experiment Header View" customClass="ExperimentHeaderView" customModule="SpectroApp_V1" customModuleProvider="target">
                                 <rect key="frame" x="20" y="2" width="332" height="40"/>
@@ -241,7 +240,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rcn-py-ezS" id="yUK-bP-ydW">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -501,7 +500,7 @@
                                         <rect key="frame" x="0.0" y="28" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kde-9b-Xyy" id="Pgl-ps-6vN">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -512,7 +511,7 @@
                                         <rect key="frame" x="0.0" y="72" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zbW-kE-kZW" id="qzh-Oi-tKj">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>

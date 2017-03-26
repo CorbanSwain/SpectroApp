@@ -76,7 +76,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         // begin by loading the project view controller
         add(asChildViewController: projectViewController)
         
-        // instantiate bluetooth manager
+        // instantiate bluetooth manager..begins scanning if BLE is on
         bluetoothManager = CBInstrumentCentralManager(withReporter: instrumentAlertView)
         
         // setup instrument alert view
@@ -91,9 +91,6 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         // move instrument alert view a bit closer to instrument button
         instrumentButtonToAlertViewFixedSpace.width = -5
         
-        // search for UART peripherals
-        print(bluetoothManager.isOn() ? "BT powered on" : "BT NOT powered on")
-        print("central manager state: \(bluetoothManager.centralManager.state.rawValue)")
     }
 
     override func didReceiveMemoryWarning() {
@@ -146,10 +143,6 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         instrumentAlertView.isGrayedOut = false
-    }
-    
-    
-    @IBAction func instrumentButtonPressed(_ sender: UIBarButtonItem) {
     }
     
     /// Adds a view controller to the master view's container view 

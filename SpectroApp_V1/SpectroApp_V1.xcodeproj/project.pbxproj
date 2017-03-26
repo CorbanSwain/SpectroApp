@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C005FD11E871917003539F1 /* InstrumentDataPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C005FD01E871917003539F1 /* InstrumentDataPoint.swift */; };
 		1C0BFEE41E7A759900408A28 /* InstrumentConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0BFEE31E7A759900408A28 /* InstrumentConnectionViewController.swift */; };
 		1C0BFEE71E7A77A400408A28 /* ProjectsPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0BFEE61E7A77A400408A28 /* ProjectsPopoverViewController.swift */; };
 		1C0BFEE91E7A77BA00408A28 /* AddPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0BFEE81E7A77BA00408A28 /* AddPopoverViewController.swift */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C005FD01E871917003539F1 /* InstrumentDataPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentDataPoint.swift; sourceTree = "<group>"; };
 		1C0BFEE31E7A759900408A28 /* InstrumentConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentConnectionViewController.swift; sourceTree = "<group>"; };
 		1C0BFEE61E7A77A400408A28 /* ProjectsPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsPopoverViewController.swift; sourceTree = "<group>"; };
 		1C0BFEE81E7A77BA00408A28 /* AddPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPopoverViewController.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				1C7E71861E79035E0073799D /* Reading.swift */,
 				1C7E718A1E7904120073799D /* AbsorbanceKit.swift */,
 				1C7E71881E7903790073799D /* DataPoint.swift */,
+				1C005FD01E871917003539F1 /* InstrumentDataPoint.swift */,
 			);
 			name = "Absorbance Data";
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				1CBE942E1E7BDB3E00F3C8F3 /* PopoverViewController.swift in Sources */,
 				1C0BFEE71E7A77A400408A28 /* ProjectsPopoverViewController.swift in Sources */,
 				1C7E71711E78D6C80073799D /* ProjectTableViewCell.swift in Sources */,
+				1C005FD11E871917003539F1 /* InstrumentDataPoint.swift in Sources */,
 				1C1944691E7B42EA002FB321 /* CBInstrumentCentralManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
