@@ -1,0 +1,712 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/AbsorbanceKit.swift",
+      "line": 12,
+      "symbol": "ExperimentType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/AbsorbanceKit.swift",
+      "line": 28,
+      "symbol": "ReadingType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/AbsorbanceKit.swift",
+      "line": 61,
+      "symbol": "Wavelength",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/AbsorbanceKit.swift",
+      "line": 68,
+      "symbol": "average(of:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/AbsorbanceKit.swift",
+      "line": 78,
+      "symbol": "stdev(of:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/AddPopoverViewController.swift",
+      "line": 11,
+      "symbol": "AddPopoverViewController",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/AppDelegate.swift",
+      "line": 13,
+      "symbol": "AppDelegate",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/CBDataParser.swift",
+      "line": 12,
+      "symbol": "CBDataParserDelegate",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/CBDataParser.swift",
+      "line": 17,
+      "symbol": "CBDataParser",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/CBInstrumentCentralManager.swift",
+      "line": 51,
+      "symbol": "CBInstrumentCentralManagerReporter.display(status:message:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/CBInstrumentCentralManager.swift",
+      "line": 227,
+      "symbol": "CBInstrumentCentralManager.centralManager(_:didDisconnectPeripheral:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/CBInstrumentCentralManager.swift",
+      "line": 236,
+      "symbol": "CBInstrumentCentralManager.centralManager(_:didConnect:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/CBInstrumentCentralManager.swift",
+      "line": 250,
+      "symbol": "CBInstrumentCentralManager.discoveredPeripherals",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/CBInstrumentCentralManager.swift",
+      "line": 252,
+      "symbol": "CBInstrumentCentralManager.peripheral(_:didDiscoverServices:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/CBInstrumentCentralManager.swift",
+      "line": 271,
+      "symbol": "CBInstrumentCentralManager.peripheral(_:didDiscoverCharacteristicsFor:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/CBInstrumentCentralManager.swift",
+      "line": 296,
+      "symbol": "CBInstrumentCentralManager.peripheral(_:didUpdateValueFor:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/CBInstrumentCentralManager.swift",
+      "line": 311,
+      "symbol": "CBInstrumentCentralManager.dataParser",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/CBInstrumentCentralManager.swift",
+      "line": 313,
+      "symbol": "CBInstrumentCentralManager.dataParser(_:didBeginParsingObjectWithTag:FromPeripheral:fromCharachteristic:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/CBInstrumentCentralManager.swift",
+      "line": 317,
+      "symbol": "CBInstrumentCentralManager.dataParser(_:didRecieveObject:withTag:fromPeripheral:fromCharachteristic:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/CBInstrumentCentralManager.swift",
+      "line": 331,
+      "symbol": "CBInstrumentCentralManager.loadTempStatus()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/DataPoint.swift",
+      "line": 12,
+      "symbol": "DataPoint",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/DataTableViewCell.swift",
+      "line": 11,
+      "symbol": "DataTableViewCell",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/DataViewController.swift",
+      "line": 11,
+      "symbol": "DataViewController",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/DensityDataTableViewCell.swift",
+      "line": 11,
+      "symbol": "DensityDataTableViewCell",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/ExperimentHeaderView.swift",
+      "line": 11,
+      "symbol": "ExperimentHeaderView",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/ExportPopoverViewController.swift",
+      "line": 11,
+      "symbol": "ExportPopoverViewController",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/InstrumentConnectionViewController.swift",
+      "line": 11,
+      "symbol": "instrumentConnectionVCDelegateKey",
+      "symbol_kind": "source.lang.swift.decl.var.global",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/InstrumentConnectionViewController.swift",
+      "line": 13,
+      "symbol": "InstrummentConnectionViewControllerDelegate",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/InstrumentConnectionViewController.swift",
+      "line": 20,
+      "symbol": "InstrumentConnectionViewController",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/InstrumentDataPoint.swift",
+      "line": 13,
+      "symbol": "instrumentDP_JSONExample",
+      "symbol_kind": "source.lang.swift.decl.var.global",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/InstrumentDataPoint.swift",
+      "line": 15,
+      "symbol": "InstrumentDataPoint",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/InstrumentStatusView.swift",
+      "line": 12,
+      "symbol": "goodStatusGreen",
+      "symbol_kind": "source.lang.swift.decl.var.global",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/InstrumentStatusView.swift",
+      "line": 14,
+      "symbol": "InstrumentStatus",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/InstrumentStatusView.swift",
+      "line": 43,
+      "symbol": "InstrumentStatusView",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/MasterNavigationBar.swift",
+      "line": 11,
+      "symbol": "MasterNavigationBar",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/MasterViewController.swift",
+      "line": 15,
+      "symbol": "MasterViewController",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/NucDataTableViewCell.swift",
+      "line": 11,
+      "symbol": "NucDataTableViewCell",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/PlotViewController.swift",
+      "line": 11,
+      "symbol": "PlotViewController",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/PopoverViewController.swift",
+      "line": 11,
+      "symbol": "PopoverNavigationController",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/Project.swift",
+      "line": 11,
+      "symbol": "Project",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/ProjectTableViewCell.swift",
+      "line": 11,
+      "symbol": "ProjectTableViewCell",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/ProjectViewController.swift",
+      "line": 11,
+      "symbol": "ProjectViewController",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/ProjectsPopoverViewController.swift",
+      "line": 11,
+      "symbol": "ProjectsPopoverViewController",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/ProteinDataTableViewCell.swift",
+      "line": 11,
+      "symbol": "ProteinDataTableViewCell",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/Reading.swift",
+      "line": 13,
+      "symbol": "Reading",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": null,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": null,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": null,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": null,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": null,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": null,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": null,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": null,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": null,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": null,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": null,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": null,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": null,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": null,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": null,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": null,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": null,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": null,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": null,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": null,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": null,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 32,
+      "symbol": "ErrorIndexOutOfBounds",
+      "symbol_kind": "source.lang.swift.decl.var.global",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 33,
+      "symbol": "ErrorWrongType",
+      "symbol_kind": "source.lang.swift.decl.var.global",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 34,
+      "symbol": "ErrorNotExist",
+      "symbol_kind": "source.lang.swift.decl.var.global",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 35,
+      "symbol": "ErrorInvalidJSON",
+      "symbol_kind": "source.lang.swift.decl.var.global",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 46,
+      "symbol": "Type.number",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 47,
+      "symbol": "Type.string",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 48,
+      "symbol": "Type.bool",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 49,
+      "symbol": "Type.array",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 50,
+      "symbol": "Type.dictionary",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 51,
+      "symbol": "Type.null",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 52,
+      "symbol": "Type.unknown",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 56,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 252,
+      "symbol": "unwrap(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 269,
+      "symbol": "Index",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 357,
+      "symbol": "JSONKey.index",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 358,
+      "symbol": "JSONKey.key",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 361,
+      "symbol": "JSONSubscriptType",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 366,
+      "symbol": "Int.jsonKey",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 372,
+      "symbol": "String.jsonKey",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 1253,
+      "symbol": "==(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 1273,
+      "symbol": "<=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 1293,
+      "symbol": ">=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 1313,
+      "symbol": ">(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 1325,
+      "symbol": "<(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 1337,
+      "symbol": "trueNumber",
+      "symbol_kind": "source.lang.swift.decl.var.global",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 1338,
+      "symbol": "falseNumber",
+      "symbol_kind": "source.lang.swift.decl.var.global",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 1339,
+      "symbol": "trueObjCType",
+      "symbol_kind": "source.lang.swift.decl.var.global",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 1340,
+      "symbol": "falseObjCType",
+      "symbol_kind": "source.lang.swift.decl.var.global",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 1357,
+      "symbol": "==(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 1368,
+      "symbol": "!=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 1372,
+      "symbol": "<(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 1384,
+      "symbol": ">(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 1396,
+      "symbol": "<=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 1408,
+      "symbol": ">=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1/SpectroApp_V1/SwiftyJSON.swift",
+      "line": 1420,
+      "symbol": "writingOptionsKeys",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/corbann.swain/Documents/SpectroAppRepo/iOSApp/SpectroApp_V1"
+}

@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CBInstrumentCentralManager Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/CBInstrumentCentralManager" class="dashAnchor"></a>
+    <a title="CBInstrumentCentralManager Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (24% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        CBInstrumentCentralManager Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/CBInstrumentCentralManager.html">CBInstrumentCentralManager</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V111ErrorDomainSS">ErrorDomain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V120ErrorUnsupportedTypeSi">ErrorUnsupportedType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V126instrumentDP_StringExampleSS">instrumentDP_StringExample</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V1P33_2699CFEE5672A5B78CEBC4E37B8EE5BB10legoSpecIDGSqV10Foundation4UUID_">legoSpecID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V1P33_2699CFEE5672A5B78CEBC4E37B8EE5BB12uartRXCharIDCSo6CBUUID">uartRXCharID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V1P33_2699CFEE5672A5B78CEBC4E37B8EE5BB15uartServiceUUIDCSo6CBUUID">uartServiceUUID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V1P33_2699CFEE5672A5B78CEBC4E37B8EE5BB12uartTXCharIDCSo6CBUUID">uartTXCharID</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums.html#/s:O13SpectroApp_V17JSONKey">JSONKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums.html#/s:O13SpectroApp_V14Type">Type</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:Si">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:SS">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:P13SpectroApp_V134CBInstrumentCentralManagerReporter">CBInstrumentCentralManagerReporter</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>CBInstrumentCentralManager</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">class</span> <span class="kt">CBInstrumentCentralManager</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">CBCentralManagerDelegate</span><span class="p">,</span> <span class="kt">CBPeripheralDelegate</span><span class="p">,</span> <span class="kt">CBDataParserDelegate</span><span class="p">,</span> <span class="kt">InstrummentConnectionViewControllerDelegate</span></code></pre>
+
+                </div>
+              </div>
+            <p>The primary class to handle bluetooth connections to an instrument. Contains the methods to scan and connect to devices, derermine the services the the device has, and subscribe to charachteristics of that service, recieve data from the charachteristic. This class calls on <code>CBDataParser</code> delegate to interpret the incoming data into local object instances (e.g. an <code>InstrumentDataPoint</code> object for incoming measumet data).</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13SpectroApp_V126CBInstrumentCentralManager27secondsToScanForPeripheralsSd"></a>
+                    <a name="//apple_ref/swift/Property/secondsToScanForPeripherals" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13SpectroApp_V126CBInstrumentCentralManager27secondsToScanForPeripheralsSd">secondsToScanForPeripherals</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Specifies the number of seconds to wait after a device scan is initiated to stop scanning</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">let</span> <span class="nv">secondsToScanForPeripherals</span><span class="p">:</span> <span class="kt">TimeInterval</span> <span class="o">=</span> <span class="mi">20</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13SpectroApp_V126CBInstrumentCentralManagerP33_2699CFEE5672A5B78CEBC4E37B8EE5BB8bleQueueCSo13DispatchQueue"></a>
+                    <a name="//apple_ref/swift/Property/bleQueue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13SpectroApp_V126CBInstrumentCentralManagerP33_2699CFEE5672A5B78CEBC4E37B8EE5BB8bleQueueCSo13DispatchQueue">bleQueue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Queue to run bluetooth operation</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="k">let</span> <span class="nv">bleQueue</span> <span class="o">=</span> <span class="kt">DispatchQueue</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">label</span><span class="p">:</span> <span class="s">"bleQueue"</span><span class="p">,</span> <span class="nv">qos</span><span class="p">:</span> <span class="o">.</span><span class="n">utility</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13SpectroApp_V126CBInstrumentCentralManager15statusReportersGSaPS_34CBInstrumentCentralManagerReporter__"></a>
+                    <a name="//apple_ref/swift/Property/statusReporters" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13SpectroApp_V126CBInstrumentCentralManager15statusReportersGSaPS_34CBInstrumentCentralManagerReporter__">statusReporters</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The delegate reporters to display the bluetooth connection to the user</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">statusReporters</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols.html#/s:P13SpectroApp_V134CBInstrumentCentralManagerReporter">CBInstrumentCentralManagerReporter</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13SpectroApp_V126CBInstrumentCentralManager16requiredServicesGSqGSaCSo6CBUUID__"></a>
+                    <a name="//apple_ref/swift/Property/requiredServices" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13SpectroApp_V126CBInstrumentCentralManager16requiredServicesGSqGSaCSo6CBUUID__">requiredServices</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The services that will be required to filter discovered devices, setting this value to <code>nil</code> will the central manager will discover all divices</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">let</span> <span class="nv">requiredServices</span><span class="p">:</span> <span class="p">[</span><span class="kt">CBUUID</span><span class="p">]?</span> <span class="o">=</span> <span class="p">[</span><span class="n"><a href="../Global Variables.html#/s:v13SpectroApp_V1P33_2699CFEE5672A5B78CEBC4E37B8EE5BB15uartServiceUUIDCSo6CBUUID">uartServiceUUID</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13SpectroApp_V126CBInstrumentCentralManager25rememberedPeripheralUUIDsGSaGSqV10Foundation4UUID__"></a>
+                    <a name="//apple_ref/swift/Property/rememberedPeripheralUUIDs" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13SpectroApp_V126CBInstrumentCentralManager25rememberedPeripheralUUIDsGSaGSqV10Foundation4UUID__">rememberedPeripheralUUIDs</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The peripherals that the manager will recognize and connect to upon discovering</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">rememberedPeripheralUUIDs</span> <span class="o">=</span> <span class="p">[</span><span class="n"><a href="../Global Variables.html#/s:v13SpectroApp_V1P33_2699CFEE5672A5B78CEBC4E37B8EE5BB10legoSpecIDGSqV10Foundation4UUID_">legoSpecID</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13SpectroApp_V126CBInstrumentCentralManager19connectedPeripheralGSqCSo12CBPeripheral_"></a>
+                    <a name="//apple_ref/swift/Property/connectedPeripheral" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13SpectroApp_V126CBInstrumentCentralManager19connectedPeripheralGSqCSo12CBPeripheral_">connectedPeripheral</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The peripheral currently connected to the device</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">connectedPeripheral</span><span class="p">:</span> <span class="kt">CBPeripheral</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13SpectroApp_V126CBInstrumentCentralManager6statusT6statusOS_16InstrumentStatus7messageGSqSS__"></a>
+                    <a name="//apple_ref/swift/Property/status" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13SpectroApp_V126CBInstrumentCentralManager6statusT6statusOS_16InstrumentStatus7messageGSqSS__">status</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>the current status of the bluethooth connection, the <code>didSet</code> method will automatically update the status reporters when ever the status is changes through the <code><a href="../Classes/CBInstrumentCentralManager.html#/s:FC13SpectroApp_V126CBInstrumentCentralManager10echoStatusFT_T_">echoStatus()</a></code> methos</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">status</span><span class="p">:</span> <span class="p">(</span><span class="nv">status</span><span class="p">:</span> <span class="kt">InstrumentStatus</span><span class="p">,</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">String</span><span class="p">?)</span> <span class="o">=</span> <span class="p">(</span><span class="o">.</span><span class="n">busy</span><span class="p">,</span> <span class="s">"Initializing …"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13SpectroApp_V126CBInstrumentCentralManager10tempStatusGSqT6statusOS_16InstrumentStatus7messageGSqSS___"></a>
+                    <a name="//apple_ref/swift/Property/tempStatus" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13SpectroApp_V126CBInstrumentCentralManager10tempStatusGSqT6statusOS_16InstrumentStatus7messageGSqSS___">tempStatus</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The status to load into <code><a href="../Classes/CBInstrumentCentralManager.html#/s:vC13SpectroApp_V126CBInstrumentCentralManager6statusT6statusOS_16InstrumentStatus7messageGSqSS__">status</a></code> upon calling the <code>loadTempStatus()</code> method. Used primarily to display the <q>recieving data</q> status for a couple seconds before setting the status to <q>good</q> through a schedule timer.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">tempStatus</span><span class="p">:</span> <span class="p">(</span><span class="nv">status</span><span class="p">:</span> <span class="kt">InstrumentStatus</span><span class="p">,</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">String</span><span class="p">?)?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13SpectroApp_V126CBInstrumentCentralManagercFT12withReporterPS_34CBInstrumentCentralManagerReporter__S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(withReporter:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13SpectroApp_V126CBInstrumentCentralManagercFT12withReporterPS_34CBInstrumentCentralManagerReporter__S0_">init(withReporter:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializer for a <code>CBInstrumentCentralManager</code> object with a reporter delegate</p>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter reporter:
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="nf">init</span><span class="p">(</span><span class="n">withReporter</span> <span class="nv">reporter</span><span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:P13SpectroApp_V134CBInstrumentCentralManagerReporter">CBInstrumentCentralManagerReporter</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>reporter</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13SpectroApp_V126CBInstrumentCentralManager14centralManagerGSQCSo16CBCentralManager_"></a>
+                    <a name="//apple_ref/swift/Property/centralManager" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13SpectroApp_V126CBInstrumentCentralManager14centralManagerGSQCSo16CBCentralManager_">centralManager</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Manages connected devices notifies of the state of bluetooth on the central device</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">centralManager</span><span class="p">:</span> <span class="kt">CBCentralManager</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13SpectroApp_V126CBInstrumentCentralManager4isOnSb"></a>
+                    <a name="//apple_ref/swift/Property/isOn" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13SpectroApp_V126CBInstrumentCentralManager4isOnSb">isOn</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A boolean computed value that is true if bluetooth is turned on and false if not</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">isOn</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13SpectroApp_V126CBInstrumentCentralManager18scanForPeripheralsFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/scanForPeripherals()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13SpectroApp_V126CBInstrumentCentralManager18scanForPeripheralsFT_T_">scanForPeripherals()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Has the central manager scan for new devices.</p>
+
+<p>Checks to be sure the bluetooth is on then has the central manager scan for peripherals with the required sercices. This methos also schedules a timer to stop scanning after a specified time.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">scanForPeripherals</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13SpectroApp_V126CBInstrumentCentralManagerP33_2699CFEE5672A5B78CEBC4E37B8EE5BB26stopScanningForPeripheralsFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/stopScanningForPeripherals()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13SpectroApp_V126CBInstrumentCentralManagerP33_2699CFEE5672A5B78CEBC4E37B8EE5BB26stopScanningForPeripheralsFT_T_">stopScanningForPeripherals()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Has the central manger stop scanning for peripherals and updates the bluetooth status.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">private</span> <span class="kd">func</span> <span class="nf">stopScanningForPeripherals</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13SpectroApp_V126CBInstrumentCentralManager28centralManagerDidUpdateStateFCSo16CBCentralManagerT_"></a>
+                    <a name="//apple_ref/swift/Method/centralManagerDidUpdateState(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13SpectroApp_V126CBInstrumentCentralManager28centralManagerDidUpdateStateFCSo16CBCentralManagerT_">centralManagerDidUpdateState(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called each time bluetooth state changes.</p>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter central: the central manager object whose state was updated
+
+</div>
+
+<p>This method is called each time bluetooth state changes; it is a method of the <code>CBCentralManagerDelegate</code> protocol. If the state changes to <code>.poweredOn</code> the central manger will scan for peripherals.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">func</span> <span class="nf">centralManagerDidUpdateState</span><span class="p">(</span><span class="n">_</span> <span class="nv">central</span><span class="p">:</span> <span class="kt">CBCentralManager</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>central</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the central manager object whose state was updated</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13SpectroApp_V126CBInstrumentCentralManager14centralManagerFTCSo16CBCentralManager11didDiscoverCSo12CBPeripheral17advertisementDataGVs10DictionarySSP__4rssiCSo8NSNumber_T_"></a>
+                    <a name="//apple_ref/swift/Method/centralManager(_:didDiscover:advertisementData:rssi:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13SpectroApp_V126CBInstrumentCentralManager14centralManagerFTCSo16CBCentralManager11didDiscoverCSo12CBPeripheral17advertisementDataGVs10DictionarySSP__4rssiCSo8NSNumber_T_">centralManager(_:didDiscover:advertisementData:rssi:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called each time the central manager discovers a peripheral.</p>
+
+<ul>
+<li>Parameters:
+
+<ul>
+<li>central: the <code>CBCentralManager</code> instance which discovered a peripheral</li>
+<li>peripheral: the peripheral discovered</li>
+<li>advertisementData: a dictionary containing the advertisement data presented by the peripheral</li>
+<li>RSSI: the signal strength of the peripheral connection, (Received Signal Strength Indication)</li>
+</ul></li>
+</ul>
+
+<p>This method is called each time the central manager discovers a peripheral while scanning; it is a method of the <code>CBCentralManagerDelegate</code> protocol. The discovered peripheral will be added to a list of known peripherals as long as the peripheral has not been already discovered. If the discovered peripheral matches the list of known peripherals the central manager will attempt to to connect to that peripheral.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">func</span> <span class="nf">centralManager</span><span class="p">(</span><span class="n">_</span> <span class="nv">central</span><span class="p">:</span> <span class="kt">CBCentralManager</span><span class="p">,</span> <span class="n">didDiscover</span> <span class="nv">peripheral</span><span class="p">:</span> <span class="kt">CBPeripheral</span><span class="p">,</span> <span class="nv">advertisementData</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">],</span> <span class="n">rssi</span> <span class="kt">RSSI</span><span class="p">:</span> <span class="kt">NSNumber</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>central</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the <code>CBCentralManager</code> instance which discovered a peripheral</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>peripheral</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the peripheral discovered</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>advertisementData</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>a dictionary containing the advertisement data presented by the peripheral</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>RSSI</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the signal strength of the peripheral connection, (Received Signal Strength Indication)</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13SpectroApp_V126CBInstrumentCentralManager14centralManagerFTCSo16CBCentralManager16didFailToConnectCSo12CBPeripheral5errorGSqPs5Error___T_"></a>
+                    <a name="//apple_ref/swift/Method/centralManager(_:didFailToConnect:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13SpectroApp_V126CBInstrumentCentralManager14centralManagerFTCSo16CBCentralManager16didFailToConnectCSo12CBPeripheral5errorGSqPs5Error___T_">centralManager(_:didFailToConnect:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called if the central manager fails to connect to a peripheral.</p>
+
+<ul>
+<li>Parameters:
+
+<ul>
+<li>central: the <code>CBCentralManager</code> instance which failed to connect to the peripheral</li>
+<li>peripheral: the peripheral that could not be connected to</li>
+<li>error: an optional <code>Error</code> object that will be <code>nil</code> if there is no error, and contain an error if there is.</li>
+</ul></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">func</span> <span class="nf">centralManager</span><span class="p">(</span><span class="n">_</span> <span class="nv">central</span><span class="p">:</span> <span class="kt">CBCentralManager</span><span class="p">,</span> <span class="n">didFailToConnect</span> <span class="nv">peripheral</span><span class="p">:</span> <span class="kt">CBPeripheral</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>central</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the <code>CBCentralManager</code> instance which failed to connect to the peripheral</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>peripheral</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the peripheral that could not be connected to</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>an optional <code>Error</code> object that will be <code>nil</code> if there is no error, and contain an error if there is.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13SpectroApp_V126CBInstrumentCentralManager16rescanForDevicesFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/rescanForDevices()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13SpectroApp_V126CBInstrumentCentralManager16rescanForDevicesFT_T_">rescanForDevices()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delegate function to scans for devices.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">internal</span> <span class="kd">func</span> <span class="nf">rescanForDevices</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13SpectroApp_V126CBInstrumentCentralManager11addReporterFPS_34CBInstrumentCentralManagerReporter_T_"></a>
+                    <a name="//apple_ref/swift/Method/addReporter(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13SpectroApp_V126CBInstrumentCentralManager11addReporterFPS_34CBInstrumentCentralManagerReporter_T_">addReporter(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Adds a new status reporter delegate to the central manager.</p>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter newReporter: the new reporter delegate to add
+
+</div>
+
+<p>Adds a new status reporter delegate to the instrument central manager and updates the new reporter delegate to the manager&rsquo;s current status.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">addReporter</span><span class="p">(</span><span class="n">_</span> <span class="nv">newReporter</span><span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:P13SpectroApp_V134CBInstrumentCentralManagerReporter">CBInstrumentCentralManagerReporter</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>newReporter</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the new reporter delegate to add</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13SpectroApp_V126CBInstrumentCentralManager11popReporterFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/popReporter()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13SpectroApp_V126CBInstrumentCentralManager11popReporterFT_T_">popReporter()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Removes the last reporter delegate from the <code>statusReporter</code> array</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">popReporter</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13SpectroApp_V126CBInstrumentCentralManager10echoStatusFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/echoStatus()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13SpectroApp_V126CBInstrumentCentralManager10echoStatusFT_T_">echoStatus()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Updates each reporter delegate to the manager&rsquo;s current status</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">echoStatus</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2017-03-26)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

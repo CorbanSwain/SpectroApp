@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MasterViewController Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/MasterViewController" class="dashAnchor"></a>
+    <a title="MasterViewController Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (22% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        MasterViewController Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AddPopoverViewController.html">AddPopoverViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AppDelegate.html">AppDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CBDataParser.html">CBDataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CBDataParser/ParseStatus.html">– ParseStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CBDataParser/ParsingTag.html">– ParsingTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CBInstrumentCentralManager.html">CBInstrumentCentralManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DataTableViewCell.html">DataTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DataViewController.html">DataViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:C13SpectroApp_V124DensityDataTableViewCell">DensityDataTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ExperimentHeaderView.html">ExperimentHeaderView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ExportPopoverViewController.html">ExportPopoverViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/InstrumentConnectionViewController.html">InstrumentConnectionViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/InstrumentStatusView.html">InstrumentStatusView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MasterNavigationBar.html">MasterNavigationBar</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MasterViewController.html">MasterViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:C13SpectroApp_V120NucDataTableViewCell">NucDataTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PlotViewController.html">PlotViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PopoverNavigationController.html">PopoverNavigationController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ProjectTableViewCell.html">ProjectTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ProjectViewController.html">ProjectViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ProjectsPopoverViewController.html">ProjectsPopoverViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:C13SpectroApp_V124ProteinDataTableViewCell">ProteinDataTableViewCell</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V111ErrorDomainSS">ErrorDomain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V121ErrorIndexOutOfBoundsSi">ErrorIndexOutOfBounds</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V116ErrorInvalidJSONSi">ErrorInvalidJSON</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V113ErrorNotExistSi">ErrorNotExist</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V120ErrorUnsupportedTypeSi">ErrorUnsupportedType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V114ErrorWrongTypeSi">ErrorWrongType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V1P33_CFA704E9C5E6A36607498836881C8E5711falseNumberCSo8NSNumber">falseNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V1P33_CFA704E9C5E6A36607498836881C8E5713falseObjCTypeSS">falseObjCType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V115goodStatusGreenCSo7UIColor">goodStatusGreen</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V133instrumentConnectionVCDelegateKeySS">instrumentConnectionVCDelegateKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V124instrumentDP_JSONExampleVS_4JSON">instrumentDP_JSONExample</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V126instrumentDP_StringExampleSS">instrumentDP_StringExample</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V1P33_2699CFEE5672A5B78CEBC4E37B8EE5BB10legoSpecIDGSqV10Foundation4UUID_">legoSpecID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V1P33_CFA704E9C5E6A36607498836881C8E5710trueNumberCSo8NSNumber">trueNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V1P33_CFA704E9C5E6A36607498836881C8E5712trueObjCTypeSS">trueObjCType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V1P33_2699CFEE5672A5B78CEBC4E37B8EE5BB12uartRXCharIDCSo6CBUUID">uartRXCharID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V1P33_2699CFEE5672A5B78CEBC4E37B8EE5BB15uartServiceUUIDCSo6CBUUID">uartServiceUUID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V1P33_2699CFEE5672A5B78CEBC4E37B8EE5BB12uartTXCharIDCSo6CBUUID">uartTXCharID</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/ExperimentType.html">ExperimentType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Index.html">Index</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/InstrumentStatus.html">InstrumentStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JSONKey.html">JSONKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ReadingType.html">ReadingType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Type.html">Type</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Wavelength.html">Wavelength</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/writingOptionsKeys.html">writingOptionsKeys</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Int.html">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSNumber.html">NSNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIColor.html">UIColor</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1oi2neFTCSo8NSNumberS0__Sb">!=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1oi1lFTCSo8NSNumberS0__Sb">&lt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1oi1lFTVS_4JSONS0__Sb">&lt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1oi2leFTCSo8NSNumberS0__Sb">&lt;=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1oi2leFTVS_4JSONS0__Sb">&lt;=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1oi2eeFTCSo8NSNumberS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1oi2eeFTVS_4JSONS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1oi1gFTCSo8NSNumberS0__Sb">&gt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1oi1gFTVS_4JSONS0__Sb">&gt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1oi2geFTCSo8NSNumberS0__Sb">&gt;=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1oi2geFTVS_4JSONS0__Sb">&gt;=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V17averageFT2ofGSaVS_9DataPoint__GSqV12CoreGraphics7CGFloat_">average(of:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V15stdevFT2ofGSaVS_9DataPoint__GSqV12CoreGraphics7CGFloat_">stdev(of:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1P33_CFA704E9C5E6A36607498836881C8E576unwrapFP_P_">unwrap(_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/CBDataParserDelegate.html">CBDataParserDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/CBInstrumentCentralManagerReporter.html">CBInstrumentCentralManagerReporter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/InstrummentConnectionViewControllerDelegate.html">InstrummentConnectionViewControllerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/JSONSubscriptType.html">JSONSubscriptType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/DataPoint.html">DataPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/InstrumentDataPoint.html">InstrumentDataPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/JSON.html">JSON</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Project.html">Project</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Reading.html">Reading</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>MasterViewController</h1>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13SpectroApp_V120MasterViewController13containerViewXwGSQCSo6UIView_"></a>
+                    <a name="//apple_ref/swift/Property/containerView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13SpectroApp_V120MasterViewController13containerViewXwGSQCSo6UIView_">containerView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Outlet to the container view in which the various view 
+controllers will be presented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBOutlet</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">containerView</span><span class="p">:</span> <span class="kt">UIView</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13SpectroApp_V120MasterViewController10headerViewXwGSQCS_20ExperimentHeaderView_"></a>
+                    <a name="//apple_ref/swift/Property/headerView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13SpectroApp_V120MasterViewController10headerViewXwGSQCS_20ExperimentHeaderView_">headerView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>outlet to a view containing a label used to indicate the current experiment name and 
+a label used to indicate details about the current experiment</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBOutlet</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">headerView</span><span class="p">:</span> <span class="kt"><a href="../Classes/ExperimentHeaderView.html">ExperimentHeaderView</a></span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13SpectroApp_V120MasterViewController16instrumentButtonXwGSQCSo15UIBarButtonItem_"></a>
+                    <a name="//apple_ref/swift/Property/instrumentButton" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13SpectroApp_V120MasterViewController16instrumentButtonXwGSQCSo15UIBarButtonItem_">instrumentButton</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13SpectroApp_V120MasterViewController19instrumentAlertViewXwGSQCS_20InstrumentStatusView_"></a>
+                    <a name="//apple_ref/swift/Property/instrumentAlertView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13SpectroApp_V120MasterViewController19instrumentAlertViewXwGSQCS_20InstrumentStatusView_">instrumentAlertView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13SpectroApp_V120MasterViewController37instrumentButtonToAlertViewFixedSpaceXwGSQCSo15UIBarButtonItem_"></a>
+                    <a name="//apple_ref/swift/Property/instrumentButtonToAlertViewFixedSpace" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13SpectroApp_V120MasterViewController37instrumentButtonToAlertViewFixedSpaceXwGSQCSo15UIBarButtonItem_">instrumentButtonToAlertViewFixedSpace</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13SpectroApp_V120MasterViewControllerP33_B4D1461E6C4D61A00DAC89D1BB68549021projectViewControllerCS_21ProjectViewController"></a>
+                    <a name="//apple_ref/swift/Property/projectViewController" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13SpectroApp_V120MasterViewControllerP33_B4D1461E6C4D61A00DAC89D1BB68549021projectViewControllerCS_21ProjectViewController">projectViewController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>instance of the project view controller; view controllers are
+implemented with lazy loading to prevent the costs of set up
+if a particular view controller is never used</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">projectViewController</span><span class="p">:</span> <span class="kt"><a href="../Classes/ProjectViewController.html">ProjectViewController</a></span> <span class="o">=</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13SpectroApp_V120MasterViewControllerP33_B4D1461E6C4D61A00DAC89D1BB68549018dataViewControllerCS_18DataViewController"></a>
+                    <a name="//apple_ref/swift/Property/dataViewController" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13SpectroApp_V120MasterViewControllerP33_B4D1461E6C4D61A00DAC89D1BB68549018dataViewControllerCS_18DataViewController">dataViewController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>instance of the data view controller; view controllers are
+implemented with lazy loading to prevent the costs of set up
+if a particular view controller is never used</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">dataViewController</span><span class="p">:</span> <span class="kt"><a href="../Classes/DataViewController.html">DataViewController</a></span> <span class="o">=</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13SpectroApp_V120MasterViewControllerP33_B4D1461E6C4D61A00DAC89D1BB68549018plotViewControllerCS_18PlotViewController"></a>
+                    <a name="//apple_ref/swift/Property/plotViewController" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13SpectroApp_V120MasterViewControllerP33_B4D1461E6C4D61A00DAC89D1BB68549018plotViewControllerCS_18PlotViewController">plotViewController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>instance of the plot view controller; view controllers are
+implemented with lazy loading to prevent the costs of set up
+if a particular view controller is never used</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">plotViewController</span><span class="p">:</span> <span class="kt"><a href="../Classes/PlotViewController.html">PlotViewController</a></span> <span class="o">=</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13SpectroApp_V120MasterViewController15viewControllersGSaFT_CSo16UIViewController_"></a>
+                    <a name="//apple_ref/swift/Property/viewControllers" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13SpectroApp_V120MasterViewController15viewControllersGSaFT_CSo16UIViewController_">viewControllers</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>an array of closures that each return the primary view controllers</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">viewControllers</span><span class="p">:</span> <span class="p">[()</span><span class="o">-&gt;</span><span class="kt">UIViewController</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13SpectroApp_V120MasterViewController21segmentedControlIndexSi"></a>
+                    <a name="//apple_ref/swift/Property/segmentedControlIndex" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13SpectroApp_V120MasterViewController21segmentedControlIndexSi">segmentedControlIndex</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>index of the current segmented control selection</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">segmentedControlIndex</span> <span class="o">=</span> <span class="mi">0</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC13SpectroApp_V120MasterViewController16bluetoothManagerGSQCS_26CBInstrumentCentralManager_"></a>
+                    <a name="//apple_ref/swift/Property/bluetoothManager" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC13SpectroApp_V120MasterViewController16bluetoothManagerGSQCS_26CBInstrumentCentralManager_">bluetoothManager</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13SpectroApp_V120MasterViewController11viewDidLoadFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/viewDidLoad()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13SpectroApp_V120MasterViewController11viewDidLoadFT_T_">viewDidLoad()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13SpectroApp_V120MasterViewController23didReceiveMemoryWarningFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/didReceiveMemoryWarning()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13SpectroApp_V120MasterViewController23didReceiveMemoryWarningFT_T_">didReceiveMemoryWarning()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13SpectroApp_V120MasterViewController24segmentedControllChangedFCSo18UISegmentedControlT_"></a>
+                    <a name="//apple_ref/swift/Method/segmentedControllChanged(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13SpectroApp_V120MasterViewController24segmentedControllChangedFCSo18UISegmentedControlT_">segmentedControllChanged(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Respond to change in the segmented controll selection;
+chnges the interface presented in the container view.</p>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter sender: <code>UISegmentedControl</code> object
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBAction</span> <span class="kd">func</span> <span class="nf">segmentedControllChanged</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UISegmentedControl</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sender</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><code>UISegmentedControl</code> object</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13SpectroApp_V120MasterViewController7prepareFT3forCSo17UIStoryboardSegue6senderGSqP___T_"></a>
+                    <a name="//apple_ref/swift/Method/prepare(for:sender:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13SpectroApp_V120MasterViewController7prepareFT3forCSo17UIStoryboardSegue6senderGSqP___T_">prepare(for:sender:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13SpectroApp_V120MasterViewController46popoverPresentationControllerDidDismissPopoverFCSo31UIPopoverPresentationControllerT_"></a>
+                    <a name="//apple_ref/swift/Method/popoverPresentationControllerDidDismissPopover(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13SpectroApp_V120MasterViewController46popoverPresentationControllerDidDismissPopoverFCSo31UIPopoverPresentationControllerT_">popoverPresentationControllerDidDismissPopover(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13SpectroApp_V120MasterViewControllerP33_B4D1461E6C4D61A00DAC89D1BB6854903addFT21asChildViewControllerCSo16UIViewController_T_"></a>
+                    <a name="//apple_ref/swift/Method/add(asChildViewController:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13SpectroApp_V120MasterViewControllerP33_B4D1461E6C4D61A00DAC89D1BB6854903addFT21asChildViewControllerCSo16UIViewController_T_">add(asChildViewController:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Adds a view controller to the master view&rsquo;s container view 
+and sets that view controller to be a child of the master 
+controller.</p>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter viewController: the new child view controller
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">add</span><span class="p">(</span><span class="n">asChildViewController</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>viewController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the new child view controller</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13SpectroApp_V120MasterViewControllerP33_B4D1461E6C4D61A00DAC89D1BB6854906removeFT21asChildViewControllerCSo16UIViewController_T_"></a>
+                    <a name="//apple_ref/swift/Method/remove(asChildViewController:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13SpectroApp_V120MasterViewControllerP33_B4D1461E6C4D61A00DAC89D1BB6854906removeFT21asChildViewControllerCSo16UIViewController_T_">remove(asChildViewController:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Removes the current child view controller from its super view
+and clears it as the current child view controller.</p>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter viewController: the child view controller to be removed
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">remove</span><span class="p">(</span><span class="n">asChildViewController</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>viewController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the child view controller to be removed</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13SpectroApp_V120MasterViewControllerP33_B4D1461E6C4D61A00DAC89D1BB68549019updateContainerViewFT4fromSi_T_"></a>
+                    <a name="//apple_ref/swift/Method/updateContainerView(from:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13SpectroApp_V120MasterViewControllerP33_B4D1461E6C4D61A00DAC89D1BB68549019updateContainerViewFT4fromSi_T_">updateContainerView(from:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Transitions the container view from the old interface 
+to a new interface</p>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter index: the index of the old view controller in the 
+               <code><a href="../Classes/MasterViewController.html#/s:vC13SpectroApp_V120MasterViewController15viewControllersGSaFT_CSo16UIViewController_">viewControllers</a></code> array
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">updateContainerView</span><span class="p">(</span><span class="n">from</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>index</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the index of the old view controller in the <code>viewControllers</code> array</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC13SpectroApp_V120MasterViewControllerP33_B4D1461E6C4D61A00DAC89D1BB68549025instantiateViewControllerFT6withIDSS_CSo16UIViewController"></a>
+                    <a name="//apple_ref/swift/Method/instantiateViewController(withID:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC13SpectroApp_V120MasterViewControllerP33_B4D1461E6C4D61A00DAC89D1BB68549025instantiateViewControllerFT6withIDSS_CSo16UIViewController">instantiateViewController(withID:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a new view controller instance from a view controller
+on the main storyboard.</p>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter identifier: the StoryboardID of the view controller
+
+</div>
+
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    the new view controller instance
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">instantiateViewController</span><span class="p">(</span><span class="n">withID</span> <span class="nv">identifier</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewController</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>identifier</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the StoryboardID of the view controller</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>the new view controller instance</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2017-03-26)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

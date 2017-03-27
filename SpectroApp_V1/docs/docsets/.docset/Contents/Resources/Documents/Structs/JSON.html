@@ -1,0 +1,2648 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JSON Struct Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/JSON" class="dashAnchor"></a>
+    <a title="JSON Struct Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (22% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        JSON Struct Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AddPopoverViewController.html">AddPopoverViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AppDelegate.html">AppDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CBDataParser.html">CBDataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CBDataParser/ParseStatus.html">– ParseStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CBDataParser/ParsingTag.html">– ParsingTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CBInstrumentCentralManager.html">CBInstrumentCentralManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DataTableViewCell.html">DataTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DataViewController.html">DataViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:C13SpectroApp_V124DensityDataTableViewCell">DensityDataTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ExperimentHeaderView.html">ExperimentHeaderView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ExportPopoverViewController.html">ExportPopoverViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/InstrumentConnectionViewController.html">InstrumentConnectionViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/InstrumentStatusView.html">InstrumentStatusView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MasterNavigationBar.html">MasterNavigationBar</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MasterViewController.html">MasterViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:C13SpectroApp_V120NucDataTableViewCell">NucDataTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PlotViewController.html">PlotViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PopoverNavigationController.html">PopoverNavigationController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ProjectTableViewCell.html">ProjectTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ProjectViewController.html">ProjectViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ProjectsPopoverViewController.html">ProjectsPopoverViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:C13SpectroApp_V124ProteinDataTableViewCell">ProteinDataTableViewCell</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V111ErrorDomainSS">ErrorDomain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V121ErrorIndexOutOfBoundsSi">ErrorIndexOutOfBounds</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V116ErrorInvalidJSONSi">ErrorInvalidJSON</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V113ErrorNotExistSi">ErrorNotExist</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V120ErrorUnsupportedTypeSi">ErrorUnsupportedType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V114ErrorWrongTypeSi">ErrorWrongType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V1P33_CFA704E9C5E6A36607498836881C8E5711falseNumberCSo8NSNumber">falseNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V1P33_CFA704E9C5E6A36607498836881C8E5713falseObjCTypeSS">falseObjCType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V115goodStatusGreenCSo7UIColor">goodStatusGreen</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V133instrumentConnectionVCDelegateKeySS">instrumentConnectionVCDelegateKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V124instrumentDP_JSONExampleVS_4JSON">instrumentDP_JSONExample</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V126instrumentDP_StringExampleSS">instrumentDP_StringExample</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V1P33_2699CFEE5672A5B78CEBC4E37B8EE5BB10legoSpecIDGSqV10Foundation4UUID_">legoSpecID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V1P33_CFA704E9C5E6A36607498836881C8E5710trueNumberCSo8NSNumber">trueNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V1P33_CFA704E9C5E6A36607498836881C8E5712trueObjCTypeSS">trueObjCType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V1P33_2699CFEE5672A5B78CEBC4E37B8EE5BB12uartRXCharIDCSo6CBUUID">uartRXCharID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V1P33_2699CFEE5672A5B78CEBC4E37B8EE5BB15uartServiceUUIDCSo6CBUUID">uartServiceUUID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v13SpectroApp_V1P33_2699CFEE5672A5B78CEBC4E37B8EE5BB12uartTXCharIDCSo6CBUUID">uartTXCharID</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/ExperimentType.html">ExperimentType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Index.html">Index</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/InstrumentStatus.html">InstrumentStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JSONKey.html">JSONKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ReadingType.html">ReadingType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Type.html">Type</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Wavelength.html">Wavelength</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/writingOptionsKeys.html">writingOptionsKeys</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Int.html">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSNumber.html">NSNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIColor.html">UIColor</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1oi2neFTCSo8NSNumberS0__Sb">!=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1oi1lFTCSo8NSNumberS0__Sb">&lt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1oi1lFTVS_4JSONS0__Sb">&lt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1oi2leFTCSo8NSNumberS0__Sb">&lt;=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1oi2leFTVS_4JSONS0__Sb">&lt;=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1oi2eeFTCSo8NSNumberS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1oi2eeFTVS_4JSONS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1oi1gFTCSo8NSNumberS0__Sb">&gt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1oi1gFTVS_4JSONS0__Sb">&gt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1oi2geFTCSo8NSNumberS0__Sb">&gt;=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1oi2geFTVS_4JSONS0__Sb">&gt;=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V17averageFT2ofGSaVS_9DataPoint__GSqV12CoreGraphics7CGFloat_">average(of:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V15stdevFT2ofGSaVS_9DataPoint__GSqV12CoreGraphics7CGFloat_">stdev(of:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F13SpectroApp_V1P33_CFA704E9C5E6A36607498836881C8E576unwrapFP_P_">unwrap(_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/CBDataParserDelegate.html">CBDataParserDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/CBInstrumentCentralManagerReporter.html">CBInstrumentCentralManagerReporter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/InstrummentConnectionViewControllerDelegate.html">InstrummentConnectionViewControllerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/JSONSubscriptType.html">JSONSubscriptType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/DataPoint.html">DataPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/InstrumentDataPoint.html">InstrumentDataPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/JSON.html">JSON</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Project.html">Project</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Reading.html">Reading</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>JSON</h1>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV13SpectroApp_V14JSONcFT4dataV10Foundation4Data7optionsVCSo17JSONSerialization14ReadingOptions5errorGSqGVs33AutoreleasingUnsafeMutablePointerGSqCSo7NSError____S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(data:options:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV13SpectroApp_V14JSONcFT4dataV10Foundation4Data7optionsVCSo17JSONSerialization14ReadingOptions5errorGSqGVs33AutoreleasingUnsafeMutablePointerGSqCSo7NSError____S0_">init(data:options:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a JSON using the data.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="kt">Data</span><span class="p">,</span> <span class="n">options</span> <span class="nv">opt</span><span class="p">:</span> <span class="kt">JSONSerialization</span><span class="o">.</span><span class="kt">ReadingOptions</span> <span class="o">=</span> <span class="o">.</span><span class="n">allowFragments</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSErrorPointer</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>data</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The NSData used to convert to json.Top level object in data is an NSArray or NSDictionary</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>opt</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The JSON serialization reading options. <code>.AllowFragments</code> by default.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The NSErrorPointer used to return the error. <code>nil</code> by default.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The created JSON</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV13SpectroApp_V14JSONcFP_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV13SpectroApp_V14JSONcFP_S0_">init(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a JSON object
+- parameter object: the object
+- note: this does not parse a <code>String</code> into JSON, instead use <code>init(parseJSON: String)</code>
+- returns: the created JSON object</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>object</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the object</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>the created JSON object</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV13SpectroApp_V14JSONcFT9parseJSONSS_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(parseJSON:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV13SpectroApp_V14JSONcFT9parseJSONSS_S0_">init(parseJSON:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Parses the JSON string into a JSON object
+- parameter json: the JSON string
+- returns: the created JSON object</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">parseJSON</span> <span class="nv">jsonString</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>json</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the JSON string</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>the created JSON object</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFV13SpectroApp_V14JSON5parseFSSS0_"></a>
+                    <a name="//apple_ref/swift/Method/parse(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFV13SpectroApp_V14JSON5parseFSSS0_">parse(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a JSON from JSON string
+- parameter string: Normal json string like &lsquo;{<q>a</q>:<q>b</q>}&rsquo;</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">parse</span><span class="p">(</span><span class="n">_</span> <span class="nv">json</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">JSON</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>string</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Normal json string like ‘{“a”:“b”}’</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The created JSON</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV13SpectroApp_V14JSONcFT10jsonObjectP__S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(jsonObject:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV13SpectroApp_V14JSONcFT10jsonObjectP__S0_">init(jsonObject:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a JSON using the object.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">fileprivate</span> <span class="nf">init</span><span class="p">(</span><span class="nv">jsonObject</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>object</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The object must have the following properties: All objects are NSString/String, NSNumber/Int/Float/Double/Bool, NSArray/Array, NSDictionary/Dictionary, or NSNull; All dictionary keys are NSStrings/String; NSNumbers are not NaN or infinity.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The created JSON</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV13SpectroApp_V14JSON5mergeFzT4withS0__T_"></a>
+                    <a name="//apple_ref/swift/Method/merge(with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV13SpectroApp_V14JSON5mergeFzT4withS0__T_">merge(with:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Merges another JSON into this JSON, whereas primitive values which are not present in this JSON are getting added, 
+present values getting overwritten, array values getting appended and nested JSONs getting merged the same way.</p>
+
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    throws <code><a href="../Global Variables.html#/s:v13SpectroApp_V114ErrorWrongTypeSi">ErrorWrongType</a></code> if the other JSONs differs in type on the top level.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">merge</span><span class="p">(</span><span class="n">with</span> <span class="nv">other</span><span class="p">:</span> <span class="kt">JSON</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>other</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The JSON which gets merged into this JSON</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV13SpectroApp_V14JSON6mergedFzT4withS0__S0_"></a>
+                    <a name="//apple_ref/swift/Method/merged(with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV13SpectroApp_V14JSON6mergedFzT4withS0__S0_">merged(with:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Merges another JSON into this JSON and returns a new JSON, whereas primitive values which are not present in this JSON are getting added,
+present values getting overwritten, array values getting appended and nested JSONS getting merged the same way.</p>
+
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    throws <code><a href="../Global Variables.html#/s:v13SpectroApp_V114ErrorWrongTypeSi">ErrorWrongType</a></code> if the other JSONs differs in type on the top level.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">merged</span><span class="p">(</span><span class="n">with</span> <span class="nv">other</span><span class="p">:</span> <span class="kt">JSON</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">JSON</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>other</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The JSON which gets merged into this JSON</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>New merged JSON</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E575mergeFzT4withS0_9typecheckSb_T_"></a>
+                    <a name="//apple_ref/swift/Method/merge(with:typecheck:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E575mergeFzT4withS0_9typecheckSb_T_">merge(with:typecheck:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E578rawArrayGSaP__"></a>
+                    <a name="//apple_ref/swift/Property/rawArray" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E578rawArrayGSaP__">rawArray</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Private object</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">fileprivate</span> <span class="k">var</span> <span class="nv">rawArray</span><span class="p">:</span> <span class="p">[</span><span class="kt">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E5713rawDictionaryGVs10DictionarySSP__"></a>
+                    <a name="//apple_ref/swift/Property/rawDictionary" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E5713rawDictionaryGVs10DictionarySSP__">rawDictionary</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E579rawStringSS"></a>
+                    <a name="//apple_ref/swift/Property/rawString" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E579rawStringSS">rawString</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E579rawNumberCSo8NSNumber"></a>
+                    <a name="//apple_ref/swift/Property/rawNumber" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E579rawNumberCSo8NSNumber">rawNumber</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E577rawNullCSo6NSNull"></a>
+                    <a name="//apple_ref/swift/Property/rawNull" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E577rawNullCSo6NSNull">rawNull</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E577rawBoolSb"></a>
+                    <a name="//apple_ref/swift/Property/rawBool" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E577rawBoolSb">rawBool</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E575_typeOS_4Type"></a>
+                    <a name="//apple_ref/swift/Property/_type" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E575_typeOS_4Type">_type</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Private type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">fileprivate</span> <span class="k">var</span> <span class="nv">_type</span><span class="p">:</span> <span class="k">Type</span> <span class="o">=</span> <span class="o">.</span><span class="n"><a href="../Structs/JSON.html#/s:ZvV13SpectroApp_V14JSON4nullS0_">null</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E576_errorGSqCSo7NSError_"></a>
+                    <a name="//apple_ref/swift/Property/_error" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E576_errorGSqCSo7NSError_">_error</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>prviate error</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">fileprivate</span> <span class="k">var</span> <span class="nv">_error</span><span class="p">:</span> <span class="kt">NSError</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON6objectP_"></a>
+                    <a name="//apple_ref/swift/Property/object" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON6objectP_">object</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Object in JSON</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">Any</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON4typeOS_4Type"></a>
+                    <a name="//apple_ref/swift/Property/type" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON4typeOS_4Type">type</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>JSON type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="k">Type</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON5errorGSqCSo7NSError_"></a>
+                    <a name="//apple_ref/swift/Property/error" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON5errorGSqCSo7NSError_">error</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Error in JSON</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSError</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvV13SpectroApp_V14JSON4nullS0_"></a>
+                    <a name="//apple_ref/swift/Variable/null" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvV13SpectroApp_V14JSON4nullS0_">null</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vPs13IndexableBase10startIndexwx5Index"></a>
+                    <a name="//apple_ref/swift/Property/startIndex" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vPs13IndexableBase10startIndexwx5Index">startIndex</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">startIndex</span><span class="p">:</span> <span class="kt"><a href="../Enums/Index.html">Index</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vPs13IndexableBase8endIndexwx5Index"></a>
+                    <a name="//apple_ref/swift/Property/endIndex" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vPs13IndexableBase8endIndexwx5Index">endIndex</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">endIndex</span><span class="p">:</span> <span class="kt"><a href="../Enums/Index.html">Index</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FPs13IndexableBase5indexFT5afterwx5Index_wxS0_"></a>
+                    <a name="//apple_ref/swift/Method/index(after:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FPs13IndexableBase5indexFT5afterwx5Index_wxS0_">index(after:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">index</span><span class="p">(</span><span class="n">after</span> <span class="nv">i</span><span class="p">:</span> <span class="kt"><a href="../Enums/Index.html">Index</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Enums/Index.html">Index</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>i</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A valid index of the collection. <code>i</code> must be less than <code>endIndex</code>.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The index value immediately after <code>i</code>.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:iV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E579subscriptFT5indexSi_S0_"></a>
+                    <a name="//apple_ref/swift/Method/subscript(index:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:iV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E579subscriptFT5indexSi_S0_">subscript(index:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>If <code><a href="../Structs/JSON.html#/s:vV13SpectroApp_V14JSON4typeOS_4Type">type</a></code> is <code>.Array</code>, return json whose object is <code>array[index]</code>, otherwise return null json with error.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">fileprivate</span> <span class="nf">subscript</span><span class="p">(</span><span class="n">index</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">JSON</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:iV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E579subscriptFT3keySS_S0_"></a>
+                    <a name="//apple_ref/swift/Method/subscript(key:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:iV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E579subscriptFT3keySS_S0_">subscript(key:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>If <code><a href="../Structs/JSON.html#/s:vV13SpectroApp_V14JSON4typeOS_4Type">type</a></code> is <code>.Dictionary</code>, return json whose object is <code>dictionary[key]</code> , otherwise return null json with error.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">fileprivate</span> <span class="nf">subscript</span><span class="p">(</span><span class="n">key</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">JSON</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:iV13SpectroApp_V14JSON9subscriptFGSaPS_17JSONSubscriptType__S0_"></a>
+                    <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:iV13SpectroApp_V14JSON9subscriptFGSaPS_17JSONSubscriptType__S0_">subscript(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Find a json in the complex data structures by using array of Int and/or String as path.</p>
+
+<p>let json = JSON[data]
+let path = [9,<q>list</q>,<q>person</q>,<q>name</q>]
+let name = json[path]</p>
+
+<p>The same as: let name = json[9][<q>list</q>][<q>person</q>][<q>name</q>]</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">subscript</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/JSONSubscriptType.html">JSONSubscriptType</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">JSON</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>path</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The target json’s path. Example:</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Return a json found by the path or a null json with error</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:iV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E579subscriptFT3subPS_17JSONSubscriptType__S0_"></a>
+                    <a name="//apple_ref/swift/Method/subscript(sub:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:iV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E579subscriptFT3subPS_17JSONSubscriptType__S0_">subscript(sub:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>If <code>sub</code> is <code>Int</code>, return <code><a href="../Structs/JSON.html#/s:iV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E579subscriptFT5indexSi_S0_">subscript(index:)</a></code>; If <code>sub</code> is <code>String</code>,  return <code><a href="../Structs/JSON.html#/s:iV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E579subscriptFT3keySS_S0_">subscript(key:)</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">fileprivate</span> <span class="nf">subscript</span><span class="p">(</span><span class="n">sub</span> <span class="nv">sub</span><span class="p">:</span> <span class="kt"><a href="../Protocols/JSONSubscriptType.html">JSONSubscriptType</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">JSON</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:iV13SpectroApp_V14JSON9subscriptFtGSaPS_17JSONSubscriptType___S0_"></a>
+                    <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:iV13SpectroApp_V14JSON9subscriptFtGSaPS_17JSONSubscriptType___S0_">subscript(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Find a json in the complex data structures by using array of Int and/or String as path.</p>
+
+<p>let name = json[9,<q>list</q>,<q>person</q>,<q>name</q>]</p>
+
+<p>The same as: let name = json[9][<q>list</q>][<q>person</q>][<q>name</q>]</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">subscript</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="kt"><a href="../Protocols/JSONSubscriptType.html">JSONSubscriptType</a></span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">JSON</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>path</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The target json’s path. Example:</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Return a json found by the path or a null json with error</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FPs26ExpressibleByStringLiteralcFT13stringLiteralwx17StringLiteralType_x"></a>
+                    <a name="//apple_ref/swift/Method/init(stringLiteral:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FPs26ExpressibleByStringLiteralcFT13stringLiteralwx17StringLiteralType_x">init(stringLiteral:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">stringLiteral</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">StringLiteralType</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FPs43ExpressibleByExtendedGraphemeClusterLiteralcFT30extendedGraphemeClusterLiteralwx34ExtendedGraphemeClusterLiteralType_x"></a>
+                    <a name="//apple_ref/swift/Method/init(extendedGraphemeClusterLiteral:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FPs43ExpressibleByExtendedGraphemeClusterLiteralcFT30extendedGraphemeClusterLiteralwx34ExtendedGraphemeClusterLiteralType_x">init(extendedGraphemeClusterLiteral:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">extendedGraphemeClusterLiteral</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">StringLiteralType</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FPs33ExpressibleByUnicodeScalarLiteralcFT20unicodeScalarLiteralwx24UnicodeScalarLiteralType_x"></a>
+                    <a name="//apple_ref/swift/Method/init(unicodeScalarLiteral:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FPs33ExpressibleByUnicodeScalarLiteralcFT20unicodeScalarLiteralwx24UnicodeScalarLiteralType_x">init(unicodeScalarLiteral:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">unicodeScalarLiteral</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">StringLiteralType</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FPs27ExpressibleByIntegerLiteralcFT14integerLiteralwx18IntegerLiteralType_x"></a>
+                    <a name="//apple_ref/swift/Method/init(integerLiteral:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FPs27ExpressibleByIntegerLiteralcFT14integerLiteralwx18IntegerLiteralType_x">init(integerLiteral:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">integerLiteral</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">IntegerLiteralType</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FPs27ExpressibleByBooleanLiteralcFT14booleanLiteralwx18BooleanLiteralType_x"></a>
+                    <a name="//apple_ref/swift/Method/init(booleanLiteral:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FPs27ExpressibleByBooleanLiteralcFT14booleanLiteralwx18BooleanLiteralType_x">init(booleanLiteral:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">booleanLiteral</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">BooleanLiteralType</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The value of the new instance.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FPs25ExpressibleByFloatLiteralcFT12floatLiteralwx16FloatLiteralType_x"></a>
+                    <a name="//apple_ref/swift/Method/init(floatLiteral:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FPs25ExpressibleByFloatLiteralcFT12floatLiteralwx16FloatLiteralType_x">init(floatLiteral:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">floatLiteral</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">FloatLiteralType</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FPs30ExpressibleByDictionaryLiteralcFt17dictionaryLiteralGSaTwx3Keywx5Value___x"></a>
+                    <a name="//apple_ref/swift/Method/init(dictionaryLiteral:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FPs30ExpressibleByDictionaryLiteralcFt17dictionaryLiteralGSaTwx3Keywx5Value___x">init(dictionaryLiteral:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">dictionaryLiteral</span> <span class="nv">elements</span><span class="p">:</span> <span class="p">(</span><span class="kt">String</span><span class="p">,</span> <span class="kt">Any</span><span class="p">)</span><span class="o">...</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FPs25ExpressibleByArrayLiteralcFt12arrayLiteralGSawx7Element__x"></a>
+                    <a name="//apple_ref/swift/Method/init(arrayLiteral:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FPs25ExpressibleByArrayLiteralcFt12arrayLiteralGSawx7Element__x">init(arrayLiteral:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">arrayLiteral</span> <span class="nv">elements</span><span class="p">:</span> <span class="kt">Any</span><span class="o">...</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FPs23ExpressibleByNilLiteralcFT10nilLiteralT__x"></a>
+                    <a name="//apple_ref/swift/Method/init(nilLiteral:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FPs23ExpressibleByNilLiteralcFT10nilLiteralT__x">init(nilLiteral:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">nilLiteral</span><span class="p">:</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FPs16RawRepresentablecFT8rawValuewx8RawValue_GSqx_"></a>
+                    <a name="//apple_ref/swift/Method/init(rawValue:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FPs16RawRepresentablecFT8rawValuewx8RawValue_GSqx_">init(rawValue:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">rawValue</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rawValue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The raw value to use for the new instance.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vPs16RawRepresentable8rawValuewx8RawValue"></a>
+                    <a name="//apple_ref/swift/Property/rawValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vPs16RawRepresentable8rawValuewx8RawValue">rawValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">rawValue</span><span class="p">:</span> <span class="kt">Any</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV13SpectroApp_V14JSON7rawDataFzT7optionsVCSo17JSONSerialization14WritingOptions_V10Foundation4Data"></a>
+                    <a name="//apple_ref/swift/Method/rawData(options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV13SpectroApp_V14JSON7rawDataFzT7optionsVCSo17JSONSerialization14WritingOptions_V10Foundation4Data">rawData(options:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV13SpectroApp_V14JSON9rawStringFTVE10FoundationSS8Encoding7optionsVCSo17JSONSerialization14WritingOptions_GSqSS_"></a>
+                    <a name="//apple_ref/swift/Method/rawString(_:options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV13SpectroApp_V14JSON9rawStringFTVE10FoundationSS8Encoding7optionsVCSo17JSONSerialization14WritingOptions_GSqSS_">rawString(_:options:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV13SpectroApp_V14JSON9rawStringFGVs10DictionaryOS_18writingOptionsKeysP__GSqSS_"></a>
+                    <a name="//apple_ref/swift/Method/rawString(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV13SpectroApp_V14JSON9rawStringFGVs10DictionaryOS_18writingOptionsKeysP__GSqSS_">rawString(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E5710_rawStringFzTVE10FoundationSS8Encoding7optionsGVs10DictionaryOS_18writingOptionsKeysP__14maxObjectDepthSi_GSqSS_"></a>
+                    <a name="//apple_ref/swift/Method/_rawString(_:options:maxObjectDepth:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV13SpectroApp_V14JSONP33_CFA704E9C5E6A36607498836881C8E5710_rawStringFzTVE10FoundationSS8Encoding7optionsGVs10DictionaryOS_18writingOptionsKeysP__14maxObjectDepthSi_GSqSS_">_rawString(_:options:maxObjectDepth:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vPs23CustomStringConvertible11descriptionSS"></a>
+                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vPs23CustomStringConvertible11descriptionSS">description</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vPs28CustomDebugStringConvertible16debugDescriptionSS"></a>
+                    <a name="//apple_ref/swift/Property/debugDescription" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vPs28CustomDebugStringConvertible16debugDescriptionSS">debugDescription</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">debugDescription</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON5arrayGSqGSaS0___"></a>
+                    <a name="//apple_ref/swift/Property/array" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON5arrayGSqGSaS0___">array</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON10arrayValueGSaS0__"></a>
+                    <a name="//apple_ref/swift/Property/arrayValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON10arrayValueGSaS0__">arrayValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON11arrayObjectGSqGSaP___"></a>
+                    <a name="//apple_ref/swift/Property/arrayObject" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON11arrayObjectGSqGSaP___">arrayObject</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON10dictionaryGSqGVs10DictionarySSS0___"></a>
+                    <a name="//apple_ref/swift/Property/dictionary" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON10dictionaryGSqGVs10DictionarySSS0___">dictionary</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON15dictionaryValueGVs10DictionarySSS0__"></a>
+                    <a name="//apple_ref/swift/Property/dictionaryValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON15dictionaryValueGVs10DictionarySSS0__">dictionaryValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON16dictionaryObjectGSqGVs10DictionarySSP___"></a>
+                    <a name="//apple_ref/swift/Property/dictionaryObject" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON16dictionaryObjectGSqGVs10DictionarySSP___">dictionaryObject</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON4boolGSqSb_"></a>
+                    <a name="//apple_ref/swift/Property/bool" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON4boolGSqSb_">bool</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON9boolValueSb"></a>
+                    <a name="//apple_ref/swift/Property/boolValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON9boolValueSb">boolValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON6stringGSqSS_"></a>
+                    <a name="//apple_ref/swift/Property/string" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON6stringGSqSS_">string</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON11stringValueSS"></a>
+                    <a name="//apple_ref/swift/Property/stringValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON11stringValueSS">stringValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON6numberGSqCSo8NSNumber_"></a>
+                    <a name="//apple_ref/swift/Property/number" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON6numberGSqCSo8NSNumber_">number</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON11numberValueCSo8NSNumber"></a>
+                    <a name="//apple_ref/swift/Property/numberValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON11numberValueCSo8NSNumber">numberValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON4nullGSqCSo6NSNull_"></a>
+                    <a name="//apple_ref/swift/Property/null" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON4nullGSqCSo6NSNull_">null</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV13SpectroApp_V14JSON6existsFT_Sb"></a>
+                    <a name="//apple_ref/swift/Method/exists()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV13SpectroApp_V14JSON6existsFT_Sb">exists()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON3urlGSqV10Foundation3URL_"></a>
+                    <a name="//apple_ref/swift/Property/url" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON3urlGSqV10Foundation3URL_">url</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON6doubleGSqSd_"></a>
+                    <a name="//apple_ref/swift/Property/double" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON6doubleGSqSd_">double</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON11doubleValueSd"></a>
+                    <a name="//apple_ref/swift/Property/doubleValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON11doubleValueSd">doubleValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON5floatGSqSf_"></a>
+                    <a name="//apple_ref/swift/Property/float" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON5floatGSqSf_">float</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON10floatValueSf"></a>
+                    <a name="//apple_ref/swift/Property/floatValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON10floatValueSf">floatValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON3intGSqSi_"></a>
+                    <a name="//apple_ref/swift/Property/int" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON3intGSqSi_">int</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON8intValueSi"></a>
+                    <a name="//apple_ref/swift/Property/intValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON8intValueSi">intValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON4uIntGSqSu_"></a>
+                    <a name="//apple_ref/swift/Property/uInt" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON4uIntGSqSu_">uInt</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON9uIntValueSu"></a>
+                    <a name="//apple_ref/swift/Property/uIntValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON9uIntValueSu">uIntValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON4int8GSqVs4Int8_"></a>
+                    <a name="//apple_ref/swift/Property/int8" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON4int8GSqVs4Int8_">int8</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON9int8ValueVs4Int8"></a>
+                    <a name="//apple_ref/swift/Property/int8Value" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON9int8ValueVs4Int8">int8Value</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON5uInt8GSqVs5UInt8_"></a>
+                    <a name="//apple_ref/swift/Property/uInt8" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON5uInt8GSqVs5UInt8_">uInt8</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON10uInt8ValueVs5UInt8"></a>
+                    <a name="//apple_ref/swift/Property/uInt8Value" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON10uInt8ValueVs5UInt8">uInt8Value</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON5int16GSqVs5Int16_"></a>
+                    <a name="//apple_ref/swift/Property/int16" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON5int16GSqVs5Int16_">int16</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON10int16ValueVs5Int16"></a>
+                    <a name="//apple_ref/swift/Property/int16Value" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON10int16ValueVs5Int16">int16Value</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON6uInt16GSqVs6UInt16_"></a>
+                    <a name="//apple_ref/swift/Property/uInt16" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON6uInt16GSqVs6UInt16_">uInt16</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON11uInt16ValueVs6UInt16"></a>
+                    <a name="//apple_ref/swift/Property/uInt16Value" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON11uInt16ValueVs6UInt16">uInt16Value</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON5int32GSqVs5Int32_"></a>
+                    <a name="//apple_ref/swift/Property/int32" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON5int32GSqVs5Int32_">int32</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON10int32ValueVs5Int32"></a>
+                    <a name="//apple_ref/swift/Property/int32Value" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON10int32ValueVs5Int32">int32Value</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON6uInt32GSqVs6UInt32_"></a>
+                    <a name="//apple_ref/swift/Property/uInt32" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON6uInt32GSqVs6UInt32_">uInt32</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON11uInt32ValueVs6UInt32"></a>
+                    <a name="//apple_ref/swift/Property/uInt32Value" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON11uInt32ValueVs6UInt32">uInt32Value</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON5int64GSqVs5Int64_"></a>
+                    <a name="//apple_ref/swift/Property/int64" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON5int64GSqVs5Int64_">int64</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON10int64ValueVs5Int64"></a>
+                    <a name="//apple_ref/swift/Property/int64Value" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON10int64ValueVs5Int64">int64Value</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON6uInt64GSqVs6UInt64_"></a>
+                    <a name="//apple_ref/swift/Property/uInt64" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON6uInt64GSqVs6UInt64_">uInt64</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON11uInt64ValueVs6UInt64"></a>
+                    <a name="//apple_ref/swift/Property/uInt64Value" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON11uInt64ValueVs6UInt64">uInt64Value</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON24instrumentDataPointValueVS_19InstrumentDataPoint"></a>
+                    <a name="//apple_ref/swift/Property/instrumentDataPointValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON24instrumentDataPointValueVS_19InstrumentDataPoint">instrumentDataPointValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON4uuidGSqV10Foundation4UUID_"></a>
+                    <a name="//apple_ref/swift/Property/uuid" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON4uuidGSqV10Foundation4UUID_">uuid</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV13SpectroApp_V14JSON9uuidValueV10Foundation4UUID"></a>
+                    <a name="//apple_ref/swift/Property/uuidValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV13SpectroApp_V14JSON9uuidValueV10Foundation4UUID">uuidValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2017-03-26)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
