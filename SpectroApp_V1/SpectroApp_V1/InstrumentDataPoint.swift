@@ -34,7 +34,7 @@ struct InstrumentDataPoint: CustomStringConvertible, Hashable {
     static func ==(lhs: InstrumentDataPoint, rhs: InstrumentDataPoint) -> Bool {
         return lhs.identifier == rhs.identifier
     }
-
+    
 }
 
 extension JSON {
@@ -70,5 +70,5 @@ extension JSON {
             self.object = newValue.uuidString
         }
     }
-
+    
 }

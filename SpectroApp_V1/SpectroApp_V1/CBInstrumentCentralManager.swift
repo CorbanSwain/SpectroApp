@@ -3,7 +3,8 @@
 //  CBInstrumentCentralManager.swift                      //
 //  SpectroApp_V1                                         //
 //                                                        //
-//  Creator: Corban Swain on 3/16/17.                     //
+//  Creator: Corban Swain                                 //
+//  DATE: 3/16/17.                                        //
 //  Copyright © 2017 CorbanSwain. All rights reserved.    //
 //                                                        //
 //________________________________________________________//
@@ -217,7 +218,7 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
     ///   - error: an optional `Error` object that will be `nil` if there is no error, and contain an error if there is.
     internal func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         print("BLE:_Failed to connect to a peripheral")
-                if let err = error {
+        if let err = error {
             status = (.warning, "Could not connect to instrument." + err.localizedDescription)
         } else {
             status = (.warning, "Could not connect to instrument.")
@@ -339,7 +340,7 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
     // Instrumment Connection View Controller Delegate Functions
     // ----------------------------------------------------------------------
     
-    /// Delegate function to scans for devices.
+    /// Delegate function to scan for devices.
     internal func rescanForDevices() {
         if let connectedPeripheral = connectedPeripheral {
             centralManager.cancelPeripheralConnection(connectedPeripheral)
