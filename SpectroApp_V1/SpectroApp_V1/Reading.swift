@@ -11,7 +11,8 @@ import UIKit
 
 
 struct Reading {
-    var project: Project
+    // ???????
+    var projectID: UUID
     
     var readingName: String
     var timestamp: Date
@@ -23,8 +24,8 @@ struct Reading {
     var readingType: ReadingType
     
     var dataPoints: [DataPoint] = []
-    var wavelength: Wavelength?
-    var calibrationPoints: [DataPoint] = []
+    var wavelength: Wavelength
+    var calibrationPoints: [DataPoint]? = []
     var calibrationWavelength: Wavelength?
     
     var isEmpty: Bool { return dataPoints.count < 1 }

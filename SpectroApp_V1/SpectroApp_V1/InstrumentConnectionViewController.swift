@@ -33,6 +33,9 @@ class InstrumentConnectionViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
+//        guard let masterVC = self.parent?.parent as? MasterViewController else {
+//            self.dismiss(animated: true, completion: nil)
+//        }
         self.dismiss(animated: true, completion: nil)
     }
     

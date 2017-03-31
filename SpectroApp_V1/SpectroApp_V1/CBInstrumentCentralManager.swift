@@ -319,6 +319,7 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
         switch parsedObject {
         case let instrumentDP as InstrumentDataPoint:
             print("BLE:_Just got a data point!\n    --> \(instrumentDP)")
+            // VC
         default:
             print("BLE:_Recieved an object, but it was of an unknown type.")
             break

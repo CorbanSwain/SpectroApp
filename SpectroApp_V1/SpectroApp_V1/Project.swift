@@ -13,4 +13,9 @@ struct Project {
     var title: String
     var timeStamp: Date
     var experimentType: ExperimentType
+    // plot
+//    var metadata: Metadata {
+//        get
+//    }
+    
 }
