@@ -65,7 +65,12 @@ enum Wavelength: Int {
     case _595 = 595 // bradford
 }
 
+/// does simething
+///
+/// - Parameter points: point to stuff
+/// - Returns: a number
 func average(of points: [DataPoint]) -> CGFloat? {
+    // somh
     let count = points.count
     guard count > 0 else {
         return nil
