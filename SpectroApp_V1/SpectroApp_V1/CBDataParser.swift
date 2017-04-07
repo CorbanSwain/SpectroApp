@@ -25,6 +25,7 @@ class CBDataParser {
     enum ParsingTag: Character, CustomStringConvertible {
         case dataPoint = "P"
         case instrumentInfo = "I"
+        case instrumentTime = "T"
         
         var description: String {
             switch self {
@@ -32,6 +33,8 @@ class CBDataParser {
                 return "an instrument data point"
             case .instrumentInfo:
                 return "instrument information"
+            case .instrumentTime:
+                return "instrument time in ms"
             }
         }
     }
@@ -60,6 +63,8 @@ class CBDataParser {
         case .instrumentInfo:
             // FIX ME!!!
             return nil
+        case .instrumentTime:
+            return json["Millis"].intValue
         }
     }
     
@@ -73,12 +78,12 @@ class CBDataParser {
             return
         }
         for char in string.characters {
+            // FIXME, need to handle potentially incomplete string i.e. "<T{.....}" where there is no closing char, '>'
             switch char {
             case openingChar:
                 print("BLE:_JSON String has begun ...")
                 jsonString = ""
                 parseStatus = .recievingTag
-                // FIX ME add timing structure to prevent canAppendChars from staying true indefinately...
             case closingChar:
                 print("BLE:_JSON String has ended.")
 //                print("BLE:_ --> \(jsonString)")
@@ -96,7 +101,10 @@ class CBDataParser {
                 case .recievingTag:
                     tag = ParsingTag(rawValue: char)
                     parseStatus = .recievingJSON
-                    guard let t = tag else { break }
+                    guard let t = tag else {
+                        //  Fix me
+                        break
+                    }
                     delegate?.dataParser(self, didBeginParsingObjectWithTag: t, FromPeripheral: peripheral, fromCharachteristic: charachteristic)
                 case .recievingJSON:
                     jsonString.append(char)

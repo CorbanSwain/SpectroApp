@@ -14,6 +14,7 @@
 		1C1944661E7B02DC002FB321 /* ExportPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1944651E7B02DC002FB321 /* ExportPopoverViewController.swift */; };
 		1C1944691E7B42EA002FB321 /* CBInstrumentCentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1944681E7B42EA002FB321 /* CBInstrumentCentralManager.swift */; };
 		1C19446B1E7B7D9D002FB321 /* InstrumentStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19446A1E7B7D9C002FB321 /* InstrumentStatusView.swift */; };
+		1C3175C31E96F61F008E4DFB /* InstrumentTimeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3175C21E96F61F008E4DFB /* InstrumentTimeConverter.swift */; };
 		1C3896AC1E8EF9BF004E9CD6 /* Plot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3896AB1E8EF9BF004E9CD6 /* Plot.swift */; };
 		1C569FF41E79AA5E00A9FAD4 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C569FF31E79AA5E00A9FAD4 /* DataViewController.swift */; };
 		1C569FF71E7A138C00A9FAD4 /* PlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C569FF61E7A138C00A9FAD4 /* PlotViewController.swift */; };
@@ -67,6 +68,7 @@
 		1C1944651E7B02DC002FB321 /* ExportPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportPopoverViewController.swift; sourceTree = "<group>"; };
 		1C1944681E7B42EA002FB321 /* CBInstrumentCentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBInstrumentCentralManager.swift; sourceTree = "<group>"; };
 		1C19446A1E7B7D9C002FB321 /* InstrumentStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentStatusView.swift; sourceTree = "<group>"; };
+		1C3175C21E96F61F008E4DFB /* InstrumentTimeConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentTimeConverter.swift; sourceTree = "<group>"; };
 		1C3896AB1E8EF9BF004E9CD6 /* Plot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plot.swift; sourceTree = "<group>"; };
 		1C569FF31E79AA5E00A9FAD4 /* DataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
 		1C569FF61E7A138C00A9FAD4 /* PlotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotViewController.swift; sourceTree = "<group>"; };
@@ -141,8 +143,8 @@
 		1C1944671E7B42D0002FB321 /* Bluetooth */ = {
 			isa = PBXGroup;
 			children = (
-				1CC097B81E857BBD00655A90 /* CBDataParser.swift */,
 				1C1944681E7B42EA002FB321 /* CBInstrumentCentralManager.swift */,
+				1CC097B81E857BBD00655A90 /* CBDataParser.swift */,
 			);
 			name = Bluetooth;
 			sourceTree = "<group>";
@@ -252,6 +254,8 @@
 			isa = PBXGroup;
 			children = (
 				1CBE94301E7CF74B00F3C8F3 /* SwiftyJSON.swift */,
+				1C3896AB1E8EF9BF004E9CD6 /* Plot.swift */,
+				1C3175C21E96F61F008E4DFB /* InstrumentTimeConverter.swift */,
 				1CBE942F1E7CC65A00F3C8F3 /* Absorbance Data */,
 				1C1944671E7B42D0002FB321 /* Bluetooth */,
 				1C7E71461E78CA390073799D /* SpectroApp_V1.xcdatamodeld */,
@@ -273,10 +277,9 @@
 		1CBE942F1E7CC65A00F3C8F3 /* Absorbance Data */ = {
 			isa = PBXGroup;
 			children = (
+				1C7E718A1E7904120073799D /* AbsorbanceKit.swift */,
 				1C7E71841E78F7600073799D /* Project.swift */,
 				1C7E71861E79035E0073799D /* Reading.swift */,
-				1C7E718A1E7904120073799D /* AbsorbanceKit.swift */,
-				1C3896AB1E8EF9BF004E9CD6 /* Plot.swift */,
 				1C7E71881E7903790073799D /* DataPoint.swift */,
 				1C005FD01E871917003539F1 /* InstrumentDataPoint.swift */,
 			);
@@ -434,6 +437,7 @@
 				1CBE94311E7CF74B00F3C8F3 /* SwiftyJSON.swift in Sources */,
 				1C7E71731E78D6F50073799D /* ProjectViewController.swift in Sources */,
 				1C7E71421E78CA390073799D /* MasterViewController.swift in Sources */,
+				1C3175C31E96F61F008E4DFB /* InstrumentTimeConverter.swift in Sources */,
 				1C569FF41E79AA5E00A9FAD4 /* DataViewController.swift in Sources */,
 				1C0BFEE91E7A77BA00408A28 /* AddPopoverViewController.swift in Sources */,
 				1C7E717B1E78E63D0073799D /* DataTableViewCell.swift in Sources */,

@@ -47,7 +47,9 @@ fileprivate let legoSpecID = UUID(uuidString: "EF520BC5-9EF2-4801-B395-DA0D146A4
 // ----------------------------------------------------------------------
 // ----------------------------------------------------------------------
 
-/// This protocol defines the methods that a reporter delegate of a `CBInstrumentCentralManager` object must adopt. The only method of the protocol, `display(status:message:)`, requires that the reporter be able to present the status of the bluetooth connection to a user. The reporter delegate should be a `UIView` or `UIViewController` object, so that is can display the status to the user.
+/// This protocol defines the methods that a reporter delegate of a `CBInstrumentCentralManager` object must adopt. 
+///
+/// The only method of the protocol, `display(status:message:)`, requires that the reporter be able to present the status of the bluetooth connection to a user. The reporter delegate should be a `UIView` or `UIViewController` object, so that is can display the status to the user.
 protocol CBInstrumentCentralManagerReporter: class {
     func display(status: InstrumentStatus, message: String?)
 }
@@ -60,7 +62,9 @@ protocol CBInstrumentCentralManagerReporter: class {
 // ----------------------------------------------------------------------
 // ----------------------------------------------------------------------
 
-/// The primary class to handle bluetooth connections to an instrument. Contains the methods to scan and connect to devices, derermine the services the the device has, and subscribe to charachteristics of that service, recieve data from the charachteristic. This class calls on `CBDataParser` delegate to interpret the incoming data into local object instances (e.g. an `InstrumentDataPoint` object for incoming measumet data).
+/// The primary class to handle bluetooth connections to an instrument. 
+///
+/// Contains the methods to scan and connect to devices, determine the services the the device has, subscribe to charachteristics of that service, and recieve data from the charachteristics. This class calls on `CBDataParser` delegate to interpret the incoming data into local object instances (e.g. an `InstrumentDataPoint` object for incoming measumet data).
 class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, CBDataParserDelegate, InstrummentConnectionViewControllerDelegate {
     
     
@@ -84,7 +88,7 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
     /// The peripherals that the manager will recognize and connect to upon discovering
     var rememberedPeripheralUUIDs = [legoSpecID]
     
-    
+    var connectionSessionID: UUID?
     
     // ----------------------------------------------------------------------
     // Computed Values
@@ -228,15 +232,17 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
     internal func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("BLE:_peripheral disconnected!")
         connectedPeripheral = nil
+        connectionSessionID = nil
         status = (.warning, "Instrument disconected.")
         DispatchQueue.main.async {
-            Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.scanForPeripherals), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.scanForPeripherals), userInfo: nil, repeats: false)
         }
     }
     
     internal func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("BLE:_Connected to a peripheral!")
         connectedPeripheral = peripheral
+        connectionSessionID = UUID()
         peripheral.delegate = self
         peripheral.discoverServices([uartServiceUUID])
         print("BLE:_searcing for services....")

@@ -65,7 +65,7 @@ enum Wavelength: Int {
     case _595 = 595 // bradford
 }
 
-/// does simething
+/// does something
 ///
 /// - Parameter points: point to stuff
 /// - Returns: a number

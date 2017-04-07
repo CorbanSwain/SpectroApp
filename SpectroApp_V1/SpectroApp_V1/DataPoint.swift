@@ -11,13 +11,42 @@ import UIKit
 
 struct DataPoint {
     
-    var dataPointID: String
+    var identifier: UUID
     
-    var value: CGFloat
+    var value: CGFloat? {
+        get {
+            if let v = manualValue {
+                return v
+            } else if let v = instrumentDataPoint?.value, let b = instrumentBaselineValue {
+                return CGFloat(v) / CGFloat(b)
+            } else {
+                return nil
+            }
+        } set {
+            if let v = newValue  {
+                manualValue = v
+            } else {
+                manualValue = nil
+            }
+        }
+    }
+    
+    var manualValue: CGFloat?
     var timeStamp: Date
-    var pointLabel: String
-    var reading: Reading
-    var instrumentUUID: UUID
+    var pointLabel: String?
+    var instrumentUUID: UUID?
     
-    var instrumentDataPoint: InstrumentDataPoint
+    var instrumentDataPoint: InstrumentDataPoint?
+    var instrumentBaselineValue: Int?
+    
+    init() {
+        timeStamp = Date()
+        identifier = UUID()
+    }
+    
+    init(fromIDP idp: InstrumentDataPoint, usingTimeConverter timeConverter: InstrumentTimeConverter) {
+        instrumentDataPoint = idp
+        timeStamp = timeConverter.createDate(fromInstrumentMillis: idp.timestamp)
+        identifier = idp.identifier
+    }
 }

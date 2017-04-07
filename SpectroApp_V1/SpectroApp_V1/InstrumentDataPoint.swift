@@ -34,9 +34,10 @@ struct InstrumentDataPoint: CustomStringConvertible, Hashable {
     static func ==(lhs: InstrumentDataPoint, rhs: InstrumentDataPoint) -> Bool {
         return lhs.identifier == rhs.identifier
     }
-    
+
 }
 
+// add JSON support for instrument data points
 extension JSON {
     var instrumentDataPointValue: InstrumentDataPoint {
         let index = self["Index"].intValue
@@ -50,7 +51,7 @@ extension JSON {
     }
 }
 
-// add support for UUIDs
+// add JSON support for UUIDs
 extension JSON {
     public var uuid: UUID? {
         get {
