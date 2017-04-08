@@ -20,7 +20,6 @@ struct Reading {
     // fix me!
     var hashValue: Int
     
-    var experimentType: ExperimentType
     var readingType: ReadingType
     
     var dataPoints: [DataPoint] = []
@@ -30,6 +29,6 @@ struct Reading {
     
     var isEmpty: Bool { return dataPoints.count < 1 }
     var hasRepeats: Bool { return dataPoints.count > 1 }
-    var absorbanceValue: CGFloat? { return average(of: dataPoints) }
-    var stdDev: CGFloat? { return stdev(of: dataPoints) }
+    var absorbanceValue: CGFloat? { return average(ofPoints: dataPoints) }
+    var stdDev: CGFloat? { return stdev(ofPoints: dataPoints) }
 }

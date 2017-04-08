@@ -65,31 +65,49 @@ enum Wavelength: Int {
     case _595 = 595 // bradford
 }
 
-/// does something
-///
-/// - Parameter points: point to stuff
-/// - Returns: a number
-func average(of points: [DataPoint]) -> CGFloat? {
-    // somh
-    let count = points.count
-    guard count > 0 else {
-        return nil
+
+func getVals(fromPoints points: [DataPoint]) -> [CGFloat] {
+    var vals: [CGFloat] = []
+    for point in points {
+        guard let v = point.value else {
+            continue
+        }
+        vals.append(v)
     }
-    var average: CGFloat = 0
-    for point in points { average += point.value }
-    return average / CGFloat(count)
+    return vals
 }
 
-func stdev(of points: [DataPoint]) -> CGFloat? {
-    let count = points.count
-    guard count > 1 else { return nil }
-    guard let u = average(of: points) else { return nil }
+
+func average(ofFloats floats: [CGFloat]) -> CGFloat? {
+    guard floats.count > 1 else {
+        return nil
+    }
+    var sum: CGFloat = 0
+    for x in floats {
+        sum += x
+    }
+    return sum / CGFloat(floats.count)
+}
+
+func average(ofPoints points: [DataPoint]) -> CGFloat? {
+    return average(ofFloats: getVals(fromPoints: points))
+}
+
+func stdev(ofFloats floats: [CGFloat]) -> CGFloat? {
+    guard floats.count > 1 else {
+        return nil
+    }
+    let u = average(ofFloats: floats)!
     var sumsq: CGFloat = 0
     var diff: CGFloat
-    for point in points {
-        diff = point.value - u
+    for x in floats {
+        diff = x - u
         sumsq +=  diff * diff
     }
-    return sqrt(sumsq / CGFloat(count - 1))
+    return sqrt(sumsq / CGFloat(floats.count - 1))
+}
+
+func stdev(ofPoints points: [DataPoint]) -> CGFloat? {
+    return stdev(ofFloats: getVals(fromPoints: points))
 }
 
