@@ -9,16 +9,30 @@
 import UIKit
 
 struct Reading {
-    // ???????
     var projectID: UUID?
     
     var readingName: String
-    // var timestamp: Date { COMPUTED VAL }
     
-    // fix me! -- use UUID
-    var readingID: UUID
+    var timestamp: Date? {
+        guard !isEmpty  else { return nil }
+        let count = dataPoints.count
+        var d = dataPoints[0].timestamp
+        var pointDate: Date
+        for i in 1..<count {
+            pointDate = dataPoints[i].timestamp
+            switch d.compare(pointDate) {
+            case .orderedDescending:
+                d = pointDate
+            default:
+                continue
+            }
+        }
+        return d
+    }
     
-    var readingType: ReadingType
+    var uuid: UUID
+    
+    var readingType: ReadingType = .noType
     
     var dataPoints: [DataPoint] = []
     var calibrationPoints: [DataPoint]? = nil

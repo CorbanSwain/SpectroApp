@@ -36,6 +36,8 @@ struct DataPoint {
     var manualValue: CGFloat?
     var timestamp: Date
     var pointLabel: String?
+    
+    var wavelength: Wavelength?
     var instrumentUUID: UUID?
     
     var instrumentDataPoint: InstrumentDataPoint?

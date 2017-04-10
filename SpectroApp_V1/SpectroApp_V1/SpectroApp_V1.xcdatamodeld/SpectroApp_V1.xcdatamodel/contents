@@ -32,9 +32,9 @@
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="DataPoint" positionX="225" positionY="-18" width="128" height="148"/>
+        <element name="InstrumentDataPoint" positionX="369" positionY="-18" width="128" height="148"/>
         <element name="Project" positionX="-63" positionY="-18" width="128" height="118"/>
         <element name="Reading" positionX="81" positionY="-16" width="128" height="103"/>
-        <element name="DataPoint" positionX="225" positionY="-18" width="128" height="150"/>
-        <element name="InstrumentDataPoint" positionX="369" positionY="-18" width="128" height="148"/>
     </elements>
 </model>
