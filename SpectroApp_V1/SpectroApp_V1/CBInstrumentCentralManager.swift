@@ -90,6 +90,8 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
     
     var connectionSessionID: UUID?
     
+    var timeConverter: InstrumentTimeConverter?
+    
     // ----------------------------------------------------------------------
     // Computed Values
     // ----------------------------------------------------------------------
@@ -326,6 +328,8 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
         case let instrumentDP as InstrumentDataPoint:
             print("BLE:_Just got a data point!\n    --> \(instrumentDP)")
             // VC
+        case let instrumentMillis as UInt32:
+            timeConverter = InstrumentTimeConverter(instrumentMillis: instrumentMillis)
         default:
             print("BLE:_Recieved an object, but it was of an unknown type.")
             break

@@ -13,6 +13,8 @@ struct Project {
     var title: String
     var timeStamp: Date
     var experimentType: ExperimentType
+    var projectID: UUID
+    var projectNotes: String
     // plot
 //    var metadata: Metadata {
 //        get

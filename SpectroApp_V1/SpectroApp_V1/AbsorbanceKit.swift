@@ -9,7 +9,8 @@
 import UIKit
 import Darwin
 
-enum ExperimentType {
+enum ExperimentType: String, CustomStringConvertible  {
+   //FIXME
     case bradford
     case cellDensity
     case nuecleicAcid
@@ -23,6 +24,8 @@ enum ExperimentType {
             return ._280
         }
     }
+    
+    var description: String { return self.rawValue }
 }
 
 enum ReadingType: String, CustomStringConvertible {

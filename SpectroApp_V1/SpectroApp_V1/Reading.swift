@@ -8,24 +8,20 @@
 
 import UIKit
 
-
-
 struct Reading {
     // ???????
-    var projectID: UUID
+    var projectID: UUID?
     
     var readingName: String
-    var timestamp: Date
+    // var timestamp: Date { COMPUTED VAL }
     
-    // fix me!
-    var hashValue: Int
+    // fix me! -- use UUID
+    var readingID: UUID
     
     var readingType: ReadingType
     
     var dataPoints: [DataPoint] = []
-    var wavelength: Wavelength
-    var calibrationPoints: [DataPoint]? = []
-    var calibrationWavelength: Wavelength?
+    var calibrationPoints: [DataPoint]? = nil
     
     var isEmpty: Bool { return dataPoints.count < 1 }
     var hasRepeats: Bool { return dataPoints.count > 1 }

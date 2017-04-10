@@ -64,7 +64,7 @@ class CBDataParser {
             // FIX ME!!!
             return nil
         case .instrumentTime:
-            return json["Millis"].intValue
+            return json["Millis"].uInt32Value
         }
     }
     

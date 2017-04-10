@@ -11,7 +11,9 @@ import UIKit
 
 struct DataPoint {
     
-    var identifier: UUID
+    let identifier: UUID
+    var readingID: UUID?
+    var isCalibrationPoint: Bool = false
     
     var value: CGFloat? {
         get {
@@ -32,7 +34,7 @@ struct DataPoint {
     }
     
     var manualValue: CGFloat?
-    var timeStamp: Date
+    var timestamp: Date
     var pointLabel: String?
     var instrumentUUID: UUID?
     
@@ -40,13 +42,13 @@ struct DataPoint {
     var instrumentBaselineValue: Int?
     
     init() {
-        timeStamp = Date()
+        timestamp = Date()
         identifier = UUID()
     }
     
     init(fromIDP idp: InstrumentDataPoint, usingTimeConverter timeConverter: InstrumentTimeConverter) {
         instrumentDataPoint = idp
-        timeStamp = timeConverter.createDate(fromInstrumentMillis: idp.timestamp)
-        identifier = idp.identifier
+        timestamp = timeConverter.createDate(fromInstrumentMillis: idp.timestamp)
+        identifier = idp.uuid
     }
 }
