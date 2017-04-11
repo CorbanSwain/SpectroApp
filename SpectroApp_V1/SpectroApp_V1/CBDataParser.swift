@@ -59,7 +59,8 @@ class CBDataParser {
         
         switch t {
         case .dataPoint:
-            return json.instrumentDataPointValue
+            //return json.instrumentDataPointValue
+            return nil
         case .instrumentInfo:
             // FIX ME!!!
             return nil

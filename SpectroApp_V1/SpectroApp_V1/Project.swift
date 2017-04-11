@@ -7,17 +7,18 @@
 //
 
 import UIKit
+import CoreData
 
-struct Project {
-    var readings: [Reading]
-    var title: String
-    var timeStamp: Date
-    var experimentType: ExperimentType
-    var projectID: UUID
-    var projectNotes: String
-    // plot
-//    var metadata: Metadata {
-//        get
-//    }
-    
+class Project: NSManagedObject {
+//    var readings: [Reading]
+////    var title: String
+////    var timeStamp: Date
+////    var experimentType: ExperimentType
+////    var projectID: UUID
+////    var projectNotes: String
+//    // plot
+////    var metadata: Metadata {
+////        get
+////    }
+//    
 }

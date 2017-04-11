@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="DataPoint" representedClassName="DataPoint" syncable="YES" codeGenerationType="class">
+    <entity name="DataPoint" representedClassName="DataPoint" syncable="YES" codeGenerationType="category">
         <attribute name="baselineValue" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isCalibrationPoint" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="manualValue" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="manualValue" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="readingID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="InstrumentDataPoint" representedClassName="InstrumentDataPoint" syncable="YES" codeGenerationType="class">
+    <entity name="InstrumentDataPoint" representedClassName="InstrumentDataPoint" syncable="YES" codeGenerationType="category">
         <attribute name="dataPointID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="instrumentTime" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -18,23 +18,23 @@
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
-    <entity name="Project" representedClassName="Project" syncable="YES" codeGenerationType="class">
+    <entity name="Project" representedClassName="Project" syncable="YES" codeGenerationType="category">
         <attribute name="experimentType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="projectNotes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Reading" representedClassName="Reading" syncable="YES" codeGenerationType="class">
+    <entity name="Reading" representedClassName="Reading" syncable="YES" codeGenerationType="category">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="projectID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DataPoint" positionX="225" positionY="-18" width="128" height="148"/>
-        <element name="InstrumentDataPoint" positionX="369" positionY="-18" width="128" height="148"/>
-        <element name="Project" positionX="-63" positionY="-18" width="128" height="118"/>
-        <element name="Reading" positionX="81" positionY="-16" width="128" height="103"/>
+        <element name="DataPoint" positionX="225" positionY="-18" width="128" height="150"/>
+        <element name="InstrumentDataPoint" positionX="369" positionY="-18" width="128" height="150"/>
+        <element name="Project" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Reading" positionX="81" positionY="-16" width="128" height="105"/>
     </elements>
 </model>
