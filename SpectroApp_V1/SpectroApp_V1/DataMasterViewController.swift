@@ -56,7 +56,7 @@ class DataMasterViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 75
+        return 50
     }
     
     
