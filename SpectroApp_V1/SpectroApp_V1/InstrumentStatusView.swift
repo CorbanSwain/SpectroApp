@@ -8,7 +8,7 @@
 
 import UIKit
 
-// let _UIBlue = UIColor(21, 126, 251)
+// let _UIBlue = UIColor(21, 126, 251) OK
 let goodStatusGreen =  UIColor(52, 133, 88)
 
 enum InstrumentStatus: String, CustomStringConvertible {
