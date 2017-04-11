@@ -140,7 +140,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             break
         }
     }
-    
+
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         instrumentAlertView.isGrayedOut = false
     }
