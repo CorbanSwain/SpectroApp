@@ -227,6 +227,96 @@
             </objects>
             <point key="canvasLocation" x="4000" y="1368"/>
         </scene>
+        <!--Data View Controller-->
+        <scene sceneID="GVq-6p-xjR">
+            <objects>
+                <viewController storyboardIdentifier="DataViewController" id="lh4-Om-hVE" customClass="DataViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n6H-jA-GyG"/>
+                        <viewControllerLayoutGuide type="bottom" id="B73-Rw-c1m"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a5H-Qs-d5i">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gcD-sd-3wd">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="sampleCell" rowHeight="50" id="KSD-gE-KWk" customClass="SampleTableViewCell" customModule="SpectroApp_V1" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="1024" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KSD-gE-KWk" id="jwO-L6-38M">
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="49.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pL2-xC-8ln">
+                                                    <rect key="frame" x="8" y="0.0" width="107" height="50"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Values" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAd-Io-ncY">
+                                                    <rect key="frame" x="160" y="0.0" width="51" height="50"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4Q-qg-0nR">
+                                                    <rect key="frame" x="62" y="0.0" width="63" height="50"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StandardDeviation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JpK-uQ-Lrr">
+                                                    <rect key="frame" x="170" y="0.0" width="142" height="50"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="CAd-Io-ncY" firstAttribute="centerY" secondItem="jwO-L6-38M" secondAttribute="centerY" id="0wq-5H-hYN"/>
+                                                <constraint firstItem="pL2-xC-8ln" firstAttribute="leading" secondItem="jwO-L6-38M" secondAttribute="leadingMargin" id="2oH-zb-TF1"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="JpK-uQ-Lrr" secondAttribute="trailing" id="3wU-3b-k03"/>
+                                                <constraint firstItem="pL2-xC-8ln" firstAttribute="centerY" secondItem="jwO-L6-38M" secondAttribute="centerY" id="78T-Or-wFr"/>
+                                                <constraint firstItem="w4Q-qg-0nR" firstAttribute="centerY" secondItem="jwO-L6-38M" secondAttribute="centerY" id="9O9-z2-stz"/>
+                                                <constraint firstItem="JpK-uQ-Lrr" firstAttribute="centerY" secondItem="jwO-L6-38M" secondAttribute="centerY" id="Pbl-ru-Qyo"/>
+                                                <constraint firstItem="JpK-uQ-Lrr" firstAttribute="height" secondItem="jwO-L6-38M" secondAttribute="height" id="RP6-pL-jk4"/>
+                                                <constraint firstItem="w4Q-qg-0nR" firstAttribute="height" secondItem="jwO-L6-38M" secondAttribute="height" id="Xrm-gJ-NGI"/>
+                                                <constraint firstItem="CAd-Io-ncY" firstAttribute="height" secondItem="jwO-L6-38M" secondAttribute="height" id="YVV-gl-Re0"/>
+                                                <constraint firstItem="CAd-Io-ncY" firstAttribute="leading" secondItem="jwO-L6-38M" secondAttribute="leadingMargin" constant="152" id="eRx-Qq-jGq"/>
+                                                <constraint firstItem="pL2-xC-8ln" firstAttribute="height" secondItem="jwO-L6-38M" secondAttribute="height" id="eX3-pj-uOs"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="w4Q-qg-0nR" secondAttribute="trailing" constant="187" id="llg-yu-8fb"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="averageLabel" destination="w4Q-qg-0nR" id="0Qe-j8-7CG"/>
+                                            <outlet property="measurementsLabel" destination="CAd-Io-ncY" id="aGJ-1K-4RY"/>
+                                            <outlet property="stdLabel" destination="JpK-uQ-Lrr" id="3mp-QI-VXj"/>
+                                            <outlet property="titleLabel" destination="pL2-xC-8ln" id="Uor-4N-1O1"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gcD-sd-3wd" firstAttribute="leading" secondItem="a5H-Qs-d5i" secondAttribute="leading" id="3Jc-NJ-8I0"/>
+                            <constraint firstAttribute="trailing" secondItem="gcD-sd-3wd" secondAttribute="trailing" id="S4c-R6-fed"/>
+                            <constraint firstItem="gcD-sd-3wd" firstAttribute="top" secondItem="a5H-Qs-d5i" secondAttribute="top" id="etV-Gi-D8m"/>
+                            <constraint firstItem="gcD-sd-3wd" firstAttribute="bottom" secondItem="B73-Rw-c1m" secondAttribute="top" id="hyw-Ww-glE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="eWl-H2-Euh"/>
+                    <connections>
+                        <outlet property="sampleTableView" destination="gcD-sd-3wd" id="c3c-G7-nJQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qbR-Gy-9bS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4000" y="-261"/>
+        </scene>
         <!--Table View Controller-->
         <scene sceneID="YFm-PF-QVK">
             <objects>
