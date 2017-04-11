@@ -30,7 +30,7 @@
 		1C7E714D1E78CA390073799D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C7E714B1E78CA390073799D /* LaunchScreen.storyboard */; };
 		1C7E71581E78CA390073799D /* SpectroApp_V1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E71571E78CA390073799D /* SpectroApp_V1Tests.swift */; };
 		1C7E71631E78CA390073799D /* SpectroApp_V1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E71621E78CA390073799D /* SpectroApp_V1UITests.swift */; };
-		1C7E71711E78D6C80073799D /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E71701E78D6C80073799D /* ProjectTableViewCell.swift */; };
+		1C7E71711E78D6C80073799D /* ProjectPopoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E71701E78D6C80073799D /* ProjectPopoverTableViewCell.swift */; };
 		1C7E71731E78D6F50073799D /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E71721E78D6F50073799D /* ProjectViewController.swift */; };
 		1C7E71751E78E58E0073799D /* NucDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E71741E78E58E0073799D /* NucDataTableViewCell.swift */; };
 		1C7E71771E78E5AC0073799D /* ProteinDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E71761E78E5AC0073799D /* ProteinDataTableViewCell.swift */; };
@@ -48,6 +48,7 @@
 		D58B47581E9D78E1007145FB /* DataMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B47571E9D78E1007145FB /* DataMasterViewController.swift */; };
 		D58B475A1E9D7915007145FB /* DataDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B47591E9D7915007145FB /* DataDetailViewController.swift */; };
 		D58B475C1E9D8002007145FB /* DataDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B475B1E9D8002007145FB /* DataDetailTableViewCell.swift */; };
+		D58B47601E9D9B2A007145FB /* DataHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B475F1E9D9B2A007145FB /* DataHeaderTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,7 +98,7 @@
 		1C7E715E1E78CA390073799D /* SpectroApp_V1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpectroApp_V1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C7E71621E78CA390073799D /* SpectroApp_V1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectroApp_V1UITests.swift; sourceTree = "<group>"; };
 		1C7E71641E78CA390073799D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1C7E71701E78D6C80073799D /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
+		1C7E71701E78D6C80073799D /* ProjectPopoverTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectPopoverTableViewCell.swift; sourceTree = "<group>"; };
 		1C7E71721E78D6F50073799D /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		1C7E71741E78E58E0073799D /* NucDataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NucDataTableViewCell.swift; sourceTree = "<group>"; };
 		1C7E71761E78E5AC0073799D /* ProteinDataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProteinDataTableViewCell.swift; sourceTree = "<group>"; };
@@ -115,6 +116,7 @@
 		D58B47571E9D78E1007145FB /* DataMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataMasterViewController.swift; sourceTree = "<group>"; };
 		D58B47591E9D7915007145FB /* DataDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDetailViewController.swift; sourceTree = "<group>"; };
 		D58B475B1E9D8002007145FB /* DataDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDetailTableViewCell.swift; sourceTree = "<group>"; };
+		D58B475F1E9D9B2A007145FB /* DataHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataHeaderTableViewCell.swift; path = ../DataHeaderTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +233,7 @@
 			children = (
 				1C7E717A1E78E63D0073799D /* DataTableViewCell.swift */,
 				D58B475B1E9D8002007145FB /* DataDetailTableViewCell.swift */,
+				D58B475F1E9D9B2A007145FB /* DataHeaderTableViewCell.swift */,
 				1C7E71781E78E5C30073799D /* DensityDataTableViewCell.swift */,
 				1C7E71761E78E5AC0073799D /* ProteinDataTableViewCell.swift */,
 				1C7E71741E78E58E0073799D /* NucDataTableViewCell.swift */,
@@ -285,7 +288,7 @@
 		1C7E71811E78E7270073799D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				1C7E71701E78D6C80073799D /* ProjectTableViewCell.swift */,
+				D58B47631E9D9D8D007145FB /* Project Cells */,
 				1C7E717C1E78E64D0073799D /* Data Cells */,
 			);
 			name = Cells;
@@ -305,6 +308,14 @@
 				1C005FD01E871917003539F1 /* InstrumentDataPoint.swift */,
 			);
 			name = "Absorbance Data";
+			sourceTree = "<group>";
+		};
+		D58B47631E9D9D8D007145FB /* Project Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1C7E71701E78D6C80073799D /* ProjectPopoverTableViewCell.swift */,
+			);
+			name = "Project Cells";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -465,6 +476,7 @@
 				1CBE94311E7CF74B00F3C8F3 /* SwiftyJSON.swift in Sources */,
 				1C7E71731E78D6F50073799D /* ProjectViewController.swift in Sources */,
 				1C7E71421E78CA390073799D /* MasterViewController.swift in Sources */,
+				D58B47601E9D9B2A007145FB /* DataHeaderTableViewCell.swift in Sources */,
 				1C3175C31E96F61F008E4DFB /* InstrumentTimeConverter.swift in Sources */,
 				1C569FF41E79AA5E00A9FAD4 /* DataViewController.swift in Sources */,
 				1C0BFEE91E7A77BA00408A28 /* AddPopoverViewController.swift in Sources */,
@@ -477,7 +489,7 @@
 				1CBE942E1E7BDB3E00F3C8F3 /* PopoverViewController.swift in Sources */,
 				1C0BFEE71E7A77A400408A28 /* ProjectsPopoverViewController.swift in Sources */,
 				1C3896AC1E8EF9BF004E9CD6 /* Plot.swift in Sources */,
-				1C7E71711E78D6C80073799D /* ProjectTableViewCell.swift in Sources */,
+				1C7E71711E78D6C80073799D /* ProjectPopoverTableViewCell.swift in Sources */,
 				1C005FD11E871917003539F1 /* InstrumentDataPoint.swift in Sources */,
 				1C1944691E7B42EA002FB321 /* CBInstrumentCentralManager.swift in Sources */,
 			);

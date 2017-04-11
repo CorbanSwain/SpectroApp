@@ -17,7 +17,7 @@ class DataMasterViewController: UIViewController, UITableViewDataSource, UITable
     //var sampleAverages: [String]!
     //var sampleStds: [String]!
     
-    var header = "Sample Name\t\tMeasurements\t\tAverage\t\tStandard Deviation"
+    //var header = "Sample Name\t\tMeasurements\t\tAverage\t\tStandard Deviation"
     var sampleNames = ["S1", "S2", "S3"]
     var sampleMeasurements = [["1","2","3"], ["5"], ["4","2"]]
     var sampleAverages = ["2", "5", "3"]
@@ -39,7 +39,7 @@ class DataMasterViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "sampleCell", for: indexPath) as! DataTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath) as! DataTableViewCell
         
         cell.titleLabel!.text = sampleNames[indexPath.row]
         let measurementsText = sampleMeasurements[indexPath.row]
@@ -50,9 +50,15 @@ class DataMasterViewController: UIViewController, UITableViewDataSource, UITable
         return cell
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return header
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "dataHeader") as! DataHeaderTableViewCell
+        return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 75
+    }
+    
     
     
     // MARK: segue functions
