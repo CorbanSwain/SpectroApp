@@ -40,6 +40,8 @@
 		1C7E71871E79035E0073799D /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E71861E79035E0073799D /* Reading.swift */; };
 		1C7E71891E7903790073799D /* DataPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E71881E7903790073799D /* DataPoint.swift */; };
 		1C7E718B1E7904120073799D /* AbsorbanceFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E718A1E7904120073799D /* AbsorbanceFunctions.swift */; };
+		1CA6871D1E9D894700B8DD7F /* AbsorbanceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA6871C1E9D894700B8DD7F /* AbsorbanceObject.swift */; };
+		1CA6871F1E9D8BC400B8DD7F /* ManualValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA6871E1E9D8BC400B8DD7F /* ManualValue.swift */; };
 		1CBE942E1E7BDB3E00F3C8F3 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBE942D1E7BDB3E00F3C8F3 /* PopoverViewController.swift */; };
 		1CBE94311E7CF74B00F3C8F3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBE94301E7CF74B00F3C8F3 /* SwiftyJSON.swift */; };
 		1CBE94EB1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBE94EA1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift */; };
@@ -108,6 +110,8 @@
 		1C7E71861E79035E0073799D /* Reading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reading.swift; sourceTree = "<group>"; };
 		1C7E71881E7903790073799D /* DataPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPoint.swift; sourceTree = "<group>"; };
 		1C7E718A1E7904120073799D /* AbsorbanceFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsorbanceFunctions.swift; sourceTree = "<group>"; };
+		1CA6871C1E9D894700B8DD7F /* AbsorbanceObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsorbanceObject.swift; sourceTree = "<group>"; };
+		1CA6871E1E9D8BC400B8DD7F /* ManualValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualValue.swift; sourceTree = "<group>"; };
 		1CBE942D1E7BDB3E00F3C8F3 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		1CBE94301E7CF74B00F3C8F3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		1CBE94EA1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentHeaderView.swift; sourceTree = "<group>"; };
@@ -297,14 +301,16 @@
 		1CBE942F1E7CC65A00F3C8F3 /* Absorbance Data */ = {
 			isa = PBXGroup;
 			children = (
+				1C3175C41E9BF67D008E4DFB /* TestData.swift */,
 				1C7E718A1E7904120073799D /* AbsorbanceFunctions.swift */,
 				1C67FFB61E9C213E00B6194E /* Wavelength.swift */,
 				1C67FFB81E9C215300B6194E /* ReadingType.swift */,
 				1C67FFBA1E9C215E00B6194E /* ExperimentType.swift */,
+				1CA6871C1E9D894700B8DD7F /* AbsorbanceObject.swift */,
 				1C7E71841E78F7600073799D /* Project.swift */,
 				1C7E71861E79035E0073799D /* Reading.swift */,
 				1C7E71881E7903790073799D /* DataPoint.swift */,
-				1C3175C41E9BF67D008E4DFB /* TestData.swift */,
+				1CA6871E1E9D8BC400B8DD7F /* ManualValue.swift */,
 				1C005FD01E871917003539F1 /* InstrumentDataPoint.swift */,
 			);
 			name = "Absorbance Data";
@@ -469,11 +475,13 @@
 				1C0BFEE41E7A759900408A28 /* InstrumentConnectionViewController.swift in Sources */,
 				D58B475C1E9D8002007145FB /* DataDetailTableViewCell.swift in Sources */,
 				1C7E71771E78E5AC0073799D /* ProteinDataTableViewCell.swift in Sources */,
+				1CA6871F1E9D8BC400B8DD7F /* ManualValue.swift in Sources */,
 				1C19446B1E7B7D9D002FB321 /* InstrumentStatusView.swift in Sources */,
 				1C569FF71E7A138C00A9FAD4 /* PlotViewController.swift in Sources */,
 				D58B475A1E9D7915007145FB /* DataDetailViewController.swift in Sources */,
 				1C7E71871E79035E0073799D /* Reading.swift in Sources */,
 				1CBE94311E7CF74B00F3C8F3 /* SwiftyJSON.swift in Sources */,
+				1CA6871D1E9D894700B8DD7F /* AbsorbanceObject.swift in Sources */,
 				1C7E71731E78D6F50073799D /* ProjectViewController.swift in Sources */,
 				1C7E71421E78CA390073799D /* MasterViewController.swift in Sources */,
 				D58B47601E9D9B2A007145FB /* DataHeaderTableViewCell.swift in Sources */,

@@ -9,37 +9,48 @@
 import UIKit
 import CoreData
 
-class Reading: NSManagedObject {
-////    var projectID: UUID?
-//    
-////    var readingName: String
-//    
-////    var timestamp: Date? {
-////        guard !isEmpty  else { return nil }
-////        let count = dataPoints.count
-////        var d = dataPoints[0].timestamp
-////        var pointDate: Date
-////        for i in 1..<count {
-////            pointDate = dataPoints[i].timestamp
-////            switch d.compare(pointDate) {
-////            case .orderedDescending:
-////                d = pointDate
-////            default:
-////                continue
-////            }
-////        }
-////        return d
-////    }
-//    
-////    var uuid: UUID
-//    
-////    var readingType: ReadingType = .noType
-//    
-//    var dataPoints: [DataPoint] = []
-//    var calibrationPoints: [DataPoint]? = nil
-//    
-//    var isEmpty: Bool { return dataPoints.count < 1 }
-//    var hasRepeats: Bool { return dataPoints.count > 1 }
-//    var absorbanceValue: CGFloat? { return average(ofPoints: dataPoints) }
-//    var stdDev: CGFloat? { return stdev(ofPoints: dataPoints) }
+class Reading: AbsorbanceObject {
+    var timestamp: Date? {
+        guard let t1 = dataPointArray[0].timestamp as? Date else { return nil }
+        return t1
+    }
+    
+    var dataPointSet: Set<DataPoint> {
+        get {
+            guard let points = dataPoints as? Set<DataPoint> else {
+                return []
+            }
+            return points
+        }
+    }
+    
+    var dataPointArray: [DataPoint] {
+        get {
+            guard let points = dataPoints as? Set<DataPoint> else {
+                return []
+            }
+            return points.sorted(by: {
+                guard let t1 = $0.timestamp as? Date, let t2 = $1.timestamp as? Date else {
+                    return true
+                }
+                switch t1.compare(t2) {
+                case .orderedDescending: return true
+                default: return false
+                }
+            })
+        }
+    }
+    
+    var readingType: ReadingType {
+        get {
+            return ReadingType(rawValue: typeInt) ?? .noType
+        } set {
+            typeInt = newValue.rawValue
+        }
+    }
+    
+    var isEmpty: Bool { return dataPointSet.count < 1 }
+    var hasRepeats: Bool { return dataPointSet.count > 1 }
+    var absorbanceValue: CGFloat? { return average(ofPoints: dataPointSet) }
+    var stdDev: CGFloat? { return stdev(ofPoints: dataPointSet) }
 }
