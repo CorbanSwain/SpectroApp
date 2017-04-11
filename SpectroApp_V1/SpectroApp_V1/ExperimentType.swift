@@ -8,10 +8,11 @@
 
 import Foundation
 
-enum ExperimentType: UInt16, CustomStringConvertible  {
-    case bradford = 0
-    case cellDensity = 1
-    case nuecleicAcid = 2
+enum ExperimentType: Int16, CustomStringConvertible  {
+    case noType = 0
+    case bradford
+    case cellDensity
+    case nuecleicAcid
     
     var wavelength: Wavelength {
         switch self {
@@ -21,6 +22,8 @@ enum ExperimentType: UInt16, CustomStringConvertible  {
             return ._560
         case .nuecleicAcid:
             return ._280
+        case .noType:
+            return .unknown
         }
     }
     
@@ -32,6 +35,8 @@ enum ExperimentType: UInt16, CustomStringConvertible  {
             return "Cell Density"
         case .nuecleicAcid:
             return "Nuecleic Acid Concentration"
+        case .noType:
+            return "[no type]"
         }
     }
 }

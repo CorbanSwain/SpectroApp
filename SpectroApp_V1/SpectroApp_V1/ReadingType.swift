@@ -8,14 +8,14 @@
 
 import Foundation
 
-enum ReadingType: UInt16, CustomStringConvertible {
-    case control = 3
-    case standard = 6
-    case unknown = 7
-    case known = 10
-    case wildType = 4
-    case mutant = 9
-    case custom = 5
+enum ReadingType: Int16, CustomStringConvertible {
+    case control = 1
+    case standard = 2
+    case unknown = 3
+    case known = 4
+    case wildType = 5
+    case mutant = 6
+    case custom = 7
     case noType = 0
     
     var stringValue: String {

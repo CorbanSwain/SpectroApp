@@ -9,48 +9,36 @@
 import UIKit
 import CoreData
 
-class DataPoint: NSManagedObject {
+class DataPoint: AbsorbanceObject {
     
-//    let identifier: UUID
-//    // var readingID: UUID?
-//    // var isCalibrationPoint: Bool = false
-//    
-////    var value: CGFloat? {
-////        get {
-////            if let v = manualValue {
-////                return v
-////            } else if let v = instrumentDataPoint?.value, let b = instrumentBaselineValue {
-////                return CGFloat(v) / CGFloat(b)
-////            } else {
-////                return nil
-////            }
-////        } set {
-////            if let v = newValue  {
-////                manualValue = v
-////            } else {
-////                manualValue = nil
-////            }
-////        }
-////    }
-//    
-//    // var manualValue: CGFloat?
-//    // var timestamp: Date
-//    var pointLabel: String?
-//    
-//    var wavelength: Wavelength?
-//    var instrumentUUID: UUID?
-//    
-//    var instrumentDataPoint: InstrumentDataPoint?
-//    var instrumentBaselineValue: Int?
-//    
-//    init() {
-//        timestamp = NSDate()
-//        identifier = UUID()
-//    }
-//    
-//    init(fromIDP idp: InstrumentDataPoint, usingTimeConverter timeConverter: InstrumentTimeConverter) {
-//        instrumentDataPoint = idp
-//        timestamp = timeConverter.createDate(fromInstrumentMillis: idp.timestamp)
-//        identifier = idp.uuid
-//    }
+    var pointValue: CGFloat? {
+        get {
+            if let mv = manualValue, mv.isSet {
+                return CGFloat(mv.theValue)
+            } else if let v = instrumentDataPoint?.measurementValue {
+                return CGFloat(v) / CGFloat(baselineValue)
+            } else {
+                return nil
+            }
+        } set {
+            if let v = newValue  {
+                manualValue?.theValue = Float(v)
+            } else {
+                manualValue = nil
+            }
+        }
+    }
+    
+    init() {
+        super.init(entity: InstrumentDataPoint.entity(), insertInto: AppDelegate.viewContext)
+        timestamp = NSDate()
+        uuid = UUID()
+    }
+    
+    convenience init(fromIDP idp: InstrumentDataPoint, usingTimeConverter timeConverter: InstrumentTimeConverter) {
+        self.init()
+        instrumentDataPoint = idp
+        timestamp = timeConverter.createDate(fromInstrumentMillis: idp.instrumentMillis) as NSDate
+        uuid = idp.uuid
+    }
 }

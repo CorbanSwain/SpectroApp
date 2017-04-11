@@ -8,14 +8,16 @@
 
 import Foundation
 
-enum Wavelength: UInt16 {
-    case _260 = 0
-    case _280 = 1
-    case _560 = 2
-    case _595 = 3
+enum Wavelength: Int16 {
+    case unknown = 0
+    case _260 = 1
+    case _280 = 2
+    case _560 = 3
+    case _595 = 4
     
-    var nanometers: Int {
+    var nanometers: Int? {
         switch self {
+        case .unknown: return nil
         case ._260: return 260
         case ._280: return 280
         case ._560: return 560
