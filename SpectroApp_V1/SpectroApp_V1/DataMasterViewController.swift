@@ -9,7 +9,8 @@
 import UIKit
 
 class DataMasterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var sampleTableView: UITableView!
+    
+    @IBOutlet weak var dataTableView: UITableView!
     
     // FIXME: use core data to access actual project info, pass project from ProjectVivarontroller
     //var sampleNames: [String]!
@@ -22,6 +23,10 @@ class DataMasterViewController: UIViewController, UITableViewDataSource, UITable
     var sampleMeasurements = [["1","2","3"], ["5"], ["4","2"]]
     var sampleAverages = ["2", "5", "3"]
     var sampleStds = ["1", "0", "1.4142"]
+    var sampleTypes = ["Unknown", "Known", "Blank"]
+    var sampleTimes = [["9:34AM", "12:00PM", "3:15PM"],["10:00AM"],["4:30PM", "5:10PM"]]
+    var sampleNotes = ["This is a sample of unknown concentration", "This is a sample of known concentration", "This is a blank sample"]
+    
     
     
     // MARK: table view functions
@@ -62,32 +67,37 @@ class DataMasterViewController: UIViewController, UITableViewDataSource, UITable
     
     
     // MARK: segue functions
-    /*
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     if (segue.identifier == "showDetailView") {
-     self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "showDetailView") {
+            //self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
      
-     let detailView = segue.destination as! DetailViewController
-     //let indexPath = sampleTableView.indexPath(for: sender as! UITableViewCell)
+            let dataDetailView = segue.destination as! DataDetailViewController
+            let indexPath = dataTableView.indexPathForSelectedRow! as NSIndexPath
+            
      
-     // FIXME: implement this to accept data from the project view
-     detailView.data = [["S1"], ["Unknown"], ["9:34AM", "12:00PM", "3:15PM"], ["This is just a test"]]
+            // FIXME: implement this to accept data from the project view
+            let sampleName = sampleNames[indexPath.row]
+            let sampleType = sampleTypes[indexPath.row]
+            let sampleTime = sampleTimes[indexPath.row]
+            let sampleNote = sampleNotes[indexPath.row]
+            dataDetailView.data = [[sampleName], [sampleType], sampleTime, [sampleNote]]
      
-     }
+        }
      }
      
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     self.performSegue(withIdentifier: "showDetailView", sender: self)
+        self.performSegue(withIdentifier: "showDetailView", sender: self)
      }
-     */
+    
     
     
     // MARK: default functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sampleTableView.delegate = self
-        sampleTableView.dataSource = self
+        dataTableView.delegate = self
+        dataTableView.dataSource = self
     }
     
     override func didReceiveMemoryWarning() {
