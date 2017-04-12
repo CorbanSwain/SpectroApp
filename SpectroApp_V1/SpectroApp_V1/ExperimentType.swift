@@ -36,7 +36,7 @@ enum ExperimentType: Int16, CustomStringConvertible  {
         case .nuecleicAcid:
             return "Nuecleic Acid Concentration"
         case .noType:
-            return "[no type]"
+            return "Unknown Exp."
         }
     }
 }
