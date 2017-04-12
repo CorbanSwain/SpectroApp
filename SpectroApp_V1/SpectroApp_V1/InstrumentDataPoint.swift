@@ -13,19 +13,23 @@ import CoreData
 public let instrumentDP_StringExample = "{\"Index\":\"4\", \"Value\":\"2776\", \"Tag\":\"control\", \"TagNumber\":\"2\", \"Identifier\":\"24566781\", \"Timestamp\":\"2223145\"}"
 public let instrumentDP_JSONExample = JSON(parseJSON: instrumentDP_StringExample)
 
+@objc(InstrumentDataPoint)
 class InstrumentDataPoint: AbsorbanceObject {
+    
     
     static let instrumentDP_ObjectExample = instrumentDP_JSONExample.instrumentDataPointValue
     
-    var tag: (type: ReadingType, index: Int32) {
+    static var entityDescr: NSEntityDescription { return NSEntityDescription.entity(forEntityName: "InstrumentDataPoint", in: AppDelegate.viewContext)! }
+    
+    var tag: (type: ReadingType, index: Int) {
         get {
-            return (ReadingType(rawValue: self.tagTypeInt) ?? .noType, tagIndex)
+            return (ReadingType(rawValue: self.tagTypeInt) ?? .noType, Int(tagIndex))
         } set {
             tagTypeInt = newValue.type.rawValue
-            tagIndex = newValue.index
+            tagIndex = Int32(newValue.index)
         }
     }
-
+    
     var instrumentMillis: UInt32 {
         get {
             return UInt32(instrumentTime)
@@ -34,21 +38,25 @@ class InstrumentDataPoint: AbsorbanceObject {
         }
     }
     
-    var customDescription: String {
-        if tag.type == .noType {
-            return "Data Point <Index: \(pointIndex), Value: \(measurementValue), Tagged: [no tag], ID: \(uuid), Timestamp: \(instrumentTime) ms>"
-        }
-        else {
-            return "Data Point <Index: \(pointIndex), Value: \(measurementValue), Tagged: \(tag.type)-\(tag.index), ID: \(uuid), Timestamp: \(instrumentTime) ms>"
+    var uuid: UUID {
+        get {
+            guard let str = uuidString, let id = UUID(uuidString: str) else {
+                print("uuid is incomplete or nil")
+                return UUID(uuid: UUID_NULL)
+            }
+            return id
+        } set {
+            uuidString = newValue.uuidString
         }
     }
     
-    init() {
-        super.init(entity: InstrumentDataPoint.entity(), insertInto: AppDelegate.viewContext)
+    var customDescription: String {
+        return "Instr.DataPoint <Index: \(pointIndex), Value: \(measurementValue), Tagged: \(tag.type)-\(tag.index), ID: \(uuid), Timestamp: \(instrumentTime) ms>"
     }
     
     convenience init(index: Int, value: Int, tag: (ReadingType, Int), uuid: UUID, timestamp: UInt32) {
-        self.init()
+        self.init(entity: InstrumentDataPoint.entityDescr, insertInto: AppDelegate.viewContext)
+        self.tag = tag
         self.pointIndex = Int32(index)
         self.measurementValue = Int32(value)
         self.uuid = uuid

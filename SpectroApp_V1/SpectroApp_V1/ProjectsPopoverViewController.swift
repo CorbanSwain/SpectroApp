@@ -7,11 +7,26 @@
 //
 
 import UIKit
+import CoreData
 
 class ProjectsPopoverViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     @IBOutlet weak var projectTableView: UITableView!
 
     // FIXME: use core data to access actual project info
+    // RESOLVED
+    
+    var projects: [Project] {
+        let request: NSFetchRequest<Project> = NSFetchRequest(entityName: "Project")
+        let sortDescr = NSSortDescriptor(key: "timestamp", ascending: false, selector: #selector(NSDate.compare(_:)))
+        request.sortDescriptors = [sortDescr]
+        do {
+            let result = try AppDelegate.viewContext.fetch(request)
+            return result
+        } catch {
+            print("could not fetch projects")
+            return []
+        }
+    }
     
     var projectNames: [String] = ["First Experiment", "Second Experiment", "Third Experiment"]
     var projectTypes: [String] = ["Protein", "Nucleic Acid", "Cell Density"]
@@ -21,7 +36,7 @@ class ProjectsPopoverViewController: UIViewController, UITableViewDataSource, UI
     // MARK: table view functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.projectNames.count
+        return self.projects.count
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -35,12 +50,12 @@ class ProjectsPopoverViewController: UIViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "projectCell", for: indexPath) as! ProjectTableViewCell
         
-        cell.titleLabel!.text = projectNames[indexPath.row]
-        cell.typeLabel!.text = projectTypes[indexPath.row]
+        cell.titleLabel!.text = projects[indexPath.row].title
+        cell.typeLabel!.text = projects[indexPath.row].experimentType.description
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMMM dd, YYYY"
+        formatter.dateFormat = "MMM, d H:mm a"
         //print(formatter.string(for: formatter.date(from: projectDates[indexPath.row])))
-        cell.dateLabel!.text = formatter.string(for: Date())
+        cell.dateLabel!.text = formatter.string(for: projects[indexPath.row].timestamp)
         
         return cell
     }

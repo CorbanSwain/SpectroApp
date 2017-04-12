@@ -9,14 +9,22 @@
 import UIKit
 import CoreData
 
+@objc(Project)
 class Project: AbsorbanceObject {
 
+    static var entityDescr: NSEntityDescription { return NSEntityDescription.entity(forEntityName: "Project", in: AppDelegate.viewContext)! }
+    
     var readingSet: Set<Reading> {
         get {
             guard let r = readings as? Set<Reading> else {
                 return []
             }
             return r
+        } set {
+            for r in newValue {
+                r.project = self
+            }
+            readings = newValue as NSSet
         }
     }
     
@@ -31,6 +39,12 @@ class Project: AbsorbanceObject {
                 default: return false
                 }
             })
+        } set {
+            readings = []
+            for r in newValue {
+                r.project = self
+                addToReadings(r)
+            }
         }
     }
     
@@ -40,5 +54,11 @@ class Project: AbsorbanceObject {
         } set {
             experimentTypeInt = newValue.rawValue
         }
+    }
+    
+    convenience init(withTitle title: String) {
+        self.init(entity: Project.entityDescr, insertInto: AppDelegate.viewContext)
+        self.title = title
+        timestamp = Date() as NSDate
     }
 }

@@ -9,7 +9,11 @@
 import UIKit
 import CoreData
 
+@objc(Reading)
 class Reading: AbsorbanceObject {
+    
+    static var entityDescr: NSEntityDescription { return NSEntityDescription.entity(forEntityName: "Reading", in: AppDelegate.viewContext)! }
+    
     var timestamp: Date? {
         guard let t1 = dataPointArray[0].timestamp as? Date else { return nil }
         return t1
@@ -21,6 +25,11 @@ class Reading: AbsorbanceObject {
                 return []
             }
             return points
+        } set {
+            for point in newValue {
+                point.reading = self
+            }
+            dataPoints = newValue as NSSet?
         }
     }
     
@@ -35,6 +44,12 @@ class Reading: AbsorbanceObject {
                 default: return false
                 }
             })
+        } set {
+            dataPoints = []
+            for point in newValue {
+                addToDataPoints(point)
+                point.reading = self
+            }
         }
     }
     
@@ -50,4 +65,9 @@ class Reading: AbsorbanceObject {
     var hasRepeats: Bool { return dataPointSet.count > 1 }
     var absorbanceValue: CGFloat? { return average(ofPoints: dataPointSet) }
     var stdDev: CGFloat? { return stdev(ofPoints: dataPointSet) }
+    
+    convenience init(fromDataPoints dataPoints: Set<DataPoint>) {
+        self.init(entity: Reading.entityDescr, insertInto: AppDelegate.viewContext)
+        dataPointSet = dataPoints
+    }
 }

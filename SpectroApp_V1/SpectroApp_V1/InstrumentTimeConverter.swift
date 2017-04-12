@@ -30,4 +30,8 @@ class InstrumentTimeConverter {
         return turnOnDate.addingTimeInterval(-intervalSinceOn(instrumentMillis))
     }
     
+    static func millis(fromDate date: Date) -> UInt32 {
+        return UInt32(-date.timeIntervalSinceNow * 1000)
+    }
+    
 }

@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+@objc(ManualValue)
 class ManualValue: NSManagedObject {
 
 }

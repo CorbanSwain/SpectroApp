@@ -9,6 +9,8 @@
 import Foundation
 
 enum ReadingType: Int16, CustomStringConvertible {
+    static var numTypes = 8
+    
     case control = 1
     case standard = 2
     case unknown = 3
@@ -48,6 +50,8 @@ enum ReadingType: Int16, CustomStringConvertible {
         switch self {
         case .wildType:
             return "Wild Type"
+        case .noType:
+            return self.stringValue
         default:
             return self.stringValue.capitalized(with: nil)
         }

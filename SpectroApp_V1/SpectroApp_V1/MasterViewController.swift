@@ -91,6 +91,26 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         // move instrument alert view a bit closer to instrument button
         instrumentButtonToAlertViewFixedSpace.width = -5
         
+        // setup core data
+      
+        
+        // create test data
+        TestDataGenerator.initialDate = Date()
+        let newProject = TestDataGenerator.createProject()
+        guard let readings = newProject.readings as? Set<Reading> else {
+            print("No readings")
+            return
+        }
+        for (i, reading) in readings.enumerated() {
+            print("Reading-\(i) : \(reading.absorbanceValue ?? 0) +/- \(reading.stdDev ?? 0)")
+        }
+        
+        // save test data
+        do {
+            try AppDelegate.viewContext.save()
+        } catch let error as NSError {
+            print("Could not save.\nERROR: \(error), \(error.userInfo)")
+        }
     }
 
     override func didReceiveMemoryWarning() {

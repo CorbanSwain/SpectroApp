@@ -9,7 +9,18 @@
 import UIKit
 import CoreData
 
+@objc(DataPoint)
 class DataPoint: AbsorbanceObject {
+    
+    static var entityDescr: NSEntityDescription { return NSEntityDescription.entity(forEntityName: "DataPoint", in: AppDelegate.viewContext)! }
+    
+    var baseline: Int {
+        get {
+            return Int(baselineValue)
+        } set {
+            baselineValue = Int32(newValue)
+        }
+    }
     
     var pointValue: CGFloat? {
         get {
@@ -21,24 +32,20 @@ class DataPoint: AbsorbanceObject {
                 return nil
             }
         } set {
+            manualValue = ManualValue()
             if let v = newValue  {
                 manualValue?.theValue = Float(v)
             } else {
-                manualValue = nil
+                manualValue?.theValue = 0
+                manualValue?.isSet = false
             }
         }
     }
     
-    init() {
-        super.init(entity: InstrumentDataPoint.entity(), insertInto: AppDelegate.viewContext)
-        timestamp = NSDate()
-        uuid = UUID()
-    }
-    
     convenience init(fromIDP idp: InstrumentDataPoint, usingTimeConverter timeConverter: InstrumentTimeConverter) {
-        self.init()
+        self.init(entity: DataPoint.entityDescr, insertInto: AppDelegate.viewContext)
         instrumentDataPoint = idp
+        idp.dataPoint = self
         timestamp = timeConverter.createDate(fromInstrumentMillis: idp.instrumentMillis) as NSDate
-        uuid = idp.uuid
     }
 }
