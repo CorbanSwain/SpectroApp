@@ -50,7 +50,7 @@
 		D58B47581E9D78E1007145FB /* DataMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B47571E9D78E1007145FB /* DataMasterViewController.swift */; };
 		D58B475A1E9D7915007145FB /* DataDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B47591E9D7915007145FB /* DataDetailViewController.swift */; };
 		D58B475C1E9D8002007145FB /* DataDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B475B1E9D8002007145FB /* DataDetailTableViewCell.swift */; };
-		D58B47601E9D9B2A007145FB /* DataHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B475F1E9D9B2A007145FB /* DataHeaderTableViewCell.swift */; };
+		D5ACE84C1E9DD54200459C6F /* DataHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACE84B1E9DD54200459C6F /* DataHeaderTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,7 +120,7 @@
 		D58B47571E9D78E1007145FB /* DataMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataMasterViewController.swift; sourceTree = "<group>"; };
 		D58B47591E9D7915007145FB /* DataDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDetailViewController.swift; sourceTree = "<group>"; };
 		D58B475B1E9D8002007145FB /* DataDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDetailTableViewCell.swift; sourceTree = "<group>"; };
-		D58B475F1E9D9B2A007145FB /* DataHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataHeaderTableViewCell.swift; path = ../DataHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		D5ACE84B1E9DD54200459C6F /* DataHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHeaderTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,7 +237,7 @@
 			children = (
 				1C7E717A1E78E63D0073799D /* DataTableViewCell.swift */,
 				D58B475B1E9D8002007145FB /* DataDetailTableViewCell.swift */,
-				D58B475F1E9D9B2A007145FB /* DataHeaderTableViewCell.swift */,
+				D5ACE84B1E9DD54200459C6F /* DataHeaderTableViewCell.swift */,
 				1C7E71781E78E5C30073799D /* DensityDataTableViewCell.swift */,
 				1C7E71761E78E5AC0073799D /* ProteinDataTableViewCell.swift */,
 				1C7E71741E78E58E0073799D /* NucDataTableViewCell.swift */,
@@ -484,7 +484,6 @@
 				1CA6871D1E9D894700B8DD7F /* AbsorbanceObject.swift in Sources */,
 				1C7E71731E78D6F50073799D /* ProjectViewController.swift in Sources */,
 				1C7E71421E78CA390073799D /* MasterViewController.swift in Sources */,
-				D58B47601E9D9B2A007145FB /* DataHeaderTableViewCell.swift in Sources */,
 				1C3175C31E96F61F008E4DFB /* InstrumentTimeConverter.swift in Sources */,
 				1C569FF41E79AA5E00A9FAD4 /* DataViewController.swift in Sources */,
 				1C0BFEE91E7A77BA00408A28 /* AddPopoverViewController.swift in Sources */,
@@ -497,6 +496,7 @@
 				1CBE942E1E7BDB3E00F3C8F3 /* PopoverViewController.swift in Sources */,
 				1C0BFEE71E7A77A400408A28 /* ProjectsPopoverViewController.swift in Sources */,
 				1C3896AC1E8EF9BF004E9CD6 /* Plot.swift in Sources */,
+				D5ACE84C1E9DD54200459C6F /* DataHeaderTableViewCell.swift in Sources */,
 				1C7E71711E78D6C80073799D /* ProjectPopoverTableViewCell.swift in Sources */,
 				1C005FD11E871917003539F1 /* InstrumentDataPoint.swift in Sources */,
 				1C1944691E7B42EA002FB321 /* CBInstrumentCentralManager.swift in Sources */,
