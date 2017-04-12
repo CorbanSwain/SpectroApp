@@ -32,7 +32,6 @@ class DataDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print(self.data[section].count)
         return self.data[section].count
     }
     
