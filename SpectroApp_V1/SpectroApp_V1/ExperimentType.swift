@@ -10,9 +10,9 @@ import Foundation
 
 enum ExperimentType: Int16, CustomStringConvertible  {
     case noType = 0
-    case bradford
-    case cellDensity
-    case nuecleicAcid
+    case bradford = 1
+    case cellDensity = 2
+    case nuecleicAcid = 3
     
     var wavelength: Wavelength {
         switch self {

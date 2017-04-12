@@ -26,10 +26,7 @@ class Reading: AbsorbanceObject {
     
     var dataPointArray: [DataPoint] {
         get {
-            guard let points = dataPoints as? Set<DataPoint> else {
-                return []
-            }
-            return points.sorted(by: {
+            return dataPointSet.sorted(by: {
                 guard let t1 = $0.timestamp as? Date, let t2 = $1.timestamp as? Date else {
                     return true
                 }
@@ -41,7 +38,7 @@ class Reading: AbsorbanceObject {
         }
     }
     
-    var readingType: ReadingType {
+    var type: ReadingType {
         get {
             return ReadingType(rawValue: typeInt) ?? .noType
         } set {

@@ -52,6 +52,7 @@ class DataMasterViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dataHeader") as! DataHeaderTableViewCell
+        cell.backgroundColor = .gray
         return cell
     }
     

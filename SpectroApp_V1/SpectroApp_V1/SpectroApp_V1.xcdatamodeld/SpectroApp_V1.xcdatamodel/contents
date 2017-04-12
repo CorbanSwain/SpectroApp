@@ -11,7 +11,7 @@
         <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="calibrationReading" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Reading" inverseName="calibrationPoints" inverseEntity="Reading" syncable="YES"/>
         <relationship name="instrumentDataPoint" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="InstrumentDataPoint" inverseName="dataPoint" inverseEntity="InstrumentDataPoint" syncable="YES"/>
-        <relationship name="manualValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManualValue" inverseName="dataPoint" inverseEntity="ManualValue" syncable="YES"/>
+        <relationship name="manualValue" maxCount="1" deletionRule="Nullify" destinationEntity="ManualValue" inverseName="dataPoint" inverseEntity="ManualValue" syncable="YES"/>
         <relationship name="reading" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Reading" inverseName="dataPoints" inverseEntity="Reading" syncable="YES"/>
     </entity>
     <entity name="InstrumentDataPoint" representedClassName="InstrumentDataPoint" parentEntity="AbsorbanceObject" syncable="YES" codeGenerationType="category">

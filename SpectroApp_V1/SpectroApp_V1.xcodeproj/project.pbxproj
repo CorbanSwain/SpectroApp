@@ -280,6 +280,7 @@
 				1CBE94301E7CF74B00F3C8F3 /* SwiftyJSON.swift */,
 				1C3896AB1E8EF9BF004E9CD6 /* Plot.swift */,
 				1C3175C21E96F61F008E4DFB /* InstrumentTimeConverter.swift */,
+				1C7E718A1E7904120073799D /* AbsorbanceFunctions.swift */,
 				1CBE942F1E7CC65A00F3C8F3 /* Absorbance Data */,
 				1C1944671E7B42D0002FB321 /* Bluetooth */,
 				1C7E71461E78CA390073799D /* SpectroApp_V1.xcdatamodeld */,
@@ -302,7 +303,6 @@
 			isa = PBXGroup;
 			children = (
 				1C3175C41E9BF67D008E4DFB /* TestData.swift */,
-				1C7E718A1E7904120073799D /* AbsorbanceFunctions.swift */,
 				1C67FFB61E9C213E00B6194E /* Wavelength.swift */,
 				1C67FFB81E9C215300B6194E /* ReadingType.swift */,
 				1C67FFBA1E9C215E00B6194E /* ExperimentType.swift */,

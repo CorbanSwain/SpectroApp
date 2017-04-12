@@ -21,8 +21,8 @@ class InstrumentDataPoint: AbsorbanceObject {
         get {
             return (ReadingType(rawValue: self.tagTypeInt) ?? .noType, tagIndex)
         } set {
-            tagTypeInt = newValue.0.rawValue
-            tagIndex = newValue.1
+            tagTypeInt = newValue.type.rawValue
+            tagIndex = newValue.index
         }
     }
 
