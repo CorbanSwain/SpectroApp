@@ -6,6 +6,12 @@
 //  Copyright © 2017 CorbanSwain. All rights reserved.
 //
 
+// Clicking Project populates
+// --> 
+// Hook up to core data
+
+
+
 import UIKit
 
 class PopoverNavigationController: UINavigationController {
@@ -35,7 +41,8 @@ class PopoverNavigationController: UINavigationController {
             instrumentVC.delegate = delegates[instrumentConnectionVCDelegateKey]! as! InstrummentConnectionViewControllerDelegate
             
         case "popover.segue.projects":
-            // let projectsVC = segue.destination as! ProjectsPopoverViewController
+            let projectsVC = segue.destination as! ProjectsPopoverViewController
+            projectsVC.delegate = delegates[projectChangerDelegateKey]! as! ProjectChangerDelegate
             break
             
         default:

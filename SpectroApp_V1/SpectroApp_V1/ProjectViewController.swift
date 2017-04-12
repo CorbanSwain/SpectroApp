@@ -11,6 +11,8 @@ import UIKit
 /// Does something
 class ProjectViewController: UIViewController {
 
+    var project: Project!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

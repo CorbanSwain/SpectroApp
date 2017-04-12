@@ -9,11 +9,18 @@
 import UIKit
 import CoreData
 
+public var projectChangerDelegateKey = "projChange"
+protocol ProjectChangerDelegate: class {
+    func changeProject(to project: Project)
+}
+
 class ProjectsPopoverViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     @IBOutlet weak var projectTableView: UITableView!
 
     // FIXME: use core data to access actual project info
     // RESOLVED
+    
+    var delegate: ProjectChangerDelegate!
     
     var projects: [Project] {
         let request: NSFetchRequest<Project> = NSFetchRequest(entityName: "Project")
@@ -60,6 +67,9 @@ class ProjectsPopoverViewController: UIViewController, UITableViewDataSource, UI
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate.changeProject(to: projects[indexPath.row])
+    }
     
     //when you click a project
     //overview: show the project title at the top

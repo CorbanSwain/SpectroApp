@@ -57,7 +57,8 @@ class Project: AbsorbanceObject {
     }
     
     convenience init(withTitle title: String) {
-        self.init(entity: Project.entityDescr, insertInto: AppDelegate.viewContext)
+        //self.init(entity: Project.entityDescr, insertInto: AppDelegate.viewContext)
+        self.init(context: AppDelegate.viewContext)
         self.title = title
         timestamp = Date() as NSDate
     }

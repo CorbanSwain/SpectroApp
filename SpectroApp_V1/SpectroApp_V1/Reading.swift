@@ -67,7 +67,8 @@ class Reading: AbsorbanceObject {
     var stdDev: CGFloat? { return stdev(ofPoints: dataPointSet) }
     
     convenience init(fromDataPoints dataPoints: Set<DataPoint>) {
-        self.init(entity: Reading.entityDescr, insertInto: AppDelegate.viewContext)
+        //self.init(entity: Reading.entityDescr, insertInto: AppDelegate.viewContext)
+        self.init(context: AppDelegate.viewContext)
         dataPointSet = dataPoints
     }
 }

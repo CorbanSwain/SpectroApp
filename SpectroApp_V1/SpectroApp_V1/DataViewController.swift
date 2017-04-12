@@ -10,6 +10,16 @@ import UIKit
 
 class DataViewController: UISplitViewController {
 
+    var project: Project! {
+        didSet {
+            guard let masterVC = childViewControllers[0] as? DataMasterViewController else {
+                print("could not grab master VC")
+                return
+            }
+            masterVC.project = project
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         preferredPrimaryColumnWidthFraction = 0.7

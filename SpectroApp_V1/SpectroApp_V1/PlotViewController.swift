@@ -10,6 +10,8 @@ import UIKit
 
 class PlotViewController: UIViewController {
 
+    var project: Project!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

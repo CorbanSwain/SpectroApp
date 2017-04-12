@@ -43,7 +43,8 @@ class DataPoint: AbsorbanceObject {
     }
     
     convenience init(fromIDP idp: InstrumentDataPoint, usingTimeConverter timeConverter: InstrumentTimeConverter) {
-        self.init(entity: DataPoint.entityDescr, insertInto: AppDelegate.viewContext)
+        // self.init(entity: DataPoint.entityDescr, insertInto: AppDelegate.viewContext)
+        self.init(context: AppDelegate.viewContext)
         instrumentDataPoint = idp
         idp.dataPoint = self
         timestamp = timeConverter.createDate(fromInstrumentMillis: idp.instrumentMillis) as NSDate

@@ -55,7 +55,7 @@ class InstrumentDataPoint: AbsorbanceObject {
     }
     
     convenience init(index: Int, value: Int, tag: (ReadingType, Int), uuid: UUID, timestamp: UInt32) {
-        self.init(entity: InstrumentDataPoint.entityDescr, insertInto: AppDelegate.viewContext)
+        self.init(context: AppDelegate.viewContext)
         self.tag = tag
         self.pointIndex = Int32(index)
         self.measurementValue = Int32(value)

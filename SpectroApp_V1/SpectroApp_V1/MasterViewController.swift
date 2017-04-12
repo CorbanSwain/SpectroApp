@@ -10,9 +10,34 @@ import UIKit
 import CoreBluetooth
 
 
-
-
-class MasterViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+class MasterViewController: UIViewController, UIPopoverPresentationControllerDelegate, ProjectChangerDelegate {
+    
+    var activeProject: Project! {
+        didSet {
+            // FIXME: when `activeProject` changes, change the project of the active child ViewController
+            guard let activeProj = activeProject else {
+                return
+            }
+            headerView.mainText = activeProj.title ?? "[untitled]"
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMMM dd, YYYY"
+            headerView.subText = formatter.string(from: activeProj.timestamp as! Date)
+            switch segmentedControlIndex {
+            case 1:
+                projectViewController.project = activeProj
+            case 2:
+                dataViewController.project = activeProj
+            case 3:
+                plotViewController.project = activeProj
+            default:
+                break
+            }
+        }
+    }
+    
+    func changeProject(to project: Project) {
+        activeProject = project
+    }
     
     /// Outlet to the container view in which the various view 
     /// controllers will be presented
@@ -55,7 +80,6 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         self.add(asChildViewController: viewController)
         return viewController
     }()
-
     
     /// an array of closures that each return the primary view controllers
     var viewControllers: [()->UIViewController] = []
@@ -76,6 +100,18 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         // begin by loading the project view controller
         add(asChildViewController: projectViewController)
         
+        // create test data
+        TestDataGenerator.initialDate = Date()
+        let newProject = TestDataGenerator.createProject()
+        activeProject = newProject
+        
+        // save test data
+        do {
+            try AppDelegate.viewContext.save()
+        } catch let error as NSError {
+            print("Could not save.\nSAVING ERROR: \(error), \(error.userInfo)")
+        }
+        
         // instantiate bluetooth manager..begins scanning if BLE is on
         bluetoothManager = CBInstrumentCentralManager(withReporter: instrumentAlertView)
         
@@ -83,34 +119,14 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         instrumentAlertView.setup()
         
         // set experiment title and subtitle
-        headerView.mainText = "A Dope Experiment Title"
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMMM dd, YYYY"
-        headerView.subText = formatter.string(from: Date())
+//        headerView.mainText = "A Dope Experiment Title"
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "MMMM dd, YYYY"
+//        headerView.subText = formatter.string(from: Date())
         
         // move instrument alert view a bit closer to instrument button
         instrumentButtonToAlertViewFixedSpace.width = -5
         
-        // setup core data
-      
-        
-        // create test data
-        TestDataGenerator.initialDate = Date()
-        let newProject = TestDataGenerator.createProject()
-        guard let readings = newProject.readings as? Set<Reading> else {
-            print("No readings")
-            return
-        }
-        for (i, reading) in readings.enumerated() {
-            print("Reading-\(i) : \(reading.absorbanceValue ?? 0) +/- \(reading.stdDev ?? 0)")
-        }
-        
-        // save test data
-        do {
-            try AppDelegate.viewContext.save()
-        } catch let error as NSError {
-            print("Could not save.\nERROR: \(error), \(error.userInfo)")
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -149,7 +165,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             break
         case "master.segue.projectsPop":
             let popoverVC = segue.destination as! PopoverNavigationController
-            // send delegates
+            popoverVC.delegates[projectChangerDelegateKey] = self as ProjectChangerDelegate
             popoverVC.performSegue(withIdentifier: "popover.segue.projects", sender: popoverVC)
 
         case "master.segue.addPop":

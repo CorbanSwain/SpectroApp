@@ -12,6 +12,8 @@ class DataMasterViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var dataTableView: UITableView!
     
+    var project: Project!
+    
     // FIXME: use core data to access actual project info, pass project from ProjectVivarontroller
     //var sampleNames: [String]!
     //var sampleMeasurements: [[String]]!
