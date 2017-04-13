@@ -12,7 +12,21 @@ class DataMasterViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var dataTableView: UITableView!
     
-    var project: Project!
+    var dataViewController: DataViewController {
+        return splitViewController as! DataViewController
+    }
+    
+    var project: Project? {
+        return dataViewController.project
+    }
+    
+    lazy var numberFormatter: NumberFormatter = {
+        let nf = NumberFormatter()
+        nf.numberStyle = .decimal
+        nf.minimumFractionDigits = 3
+        nf.maximumFractionDigits = 3
+        return nf
+    }()
     
     // FIXME: use core data to access actual project info, pass project from ProjectVivarontroller
     //var sampleNames: [String]!
@@ -34,7 +48,11 @@ class DataMasterViewController: UIViewController, UITableViewDataSource, UITable
     // MARK: table view functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.sampleNames.count
+        guard let p = project, let readings = p.readings, readings.count > 0  else {
+            return 1
+        }
+        return readings.count
+//        return self.sampleNames.count
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -46,13 +64,21 @@ class DataMasterViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath) as! DataTableViewCell
+        guard let p = project, let readings = p.readings, readings.count > 0 else {
+            // FIXME: return some "no data" table cell
+            print("Attempting to load table when project has no data - DataMasterVC")
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "No Data in Project"
+            return cell
+        }
         
-        cell.titleLabel!.text = sampleNames[indexPath.row]
-        let measurementsText = sampleMeasurements[indexPath.row]
-        cell.measurementsLabel!.text = measurementsText.joined(separator: "\t")
-        cell.averageLabel!.text = sampleAverages[indexPath.row]
-        cell.stdLabel!.text = sampleStds[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath) as! DataTableViewCell
+        let reading = p.readingArray[indexPath.row]
+        
+        cell.titleLabel.text = reading.label ?? "[untitled]"
+        cell.measurementsLabel.text = reading.dataPointsStringArray.joined(separator: ", ")
+        cell.averageLabel.text = numberFormatter.string(from: (reading.absorbanceValue ?? -1) as NSNumber)
+        cell.stdLabel.text = numberFormatter.string(from: (reading.stdDev ?? -1) as NSNumber)
         
         return cell
     }

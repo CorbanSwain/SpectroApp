@@ -8,9 +8,14 @@
 
 import UIKit
 
-class PlotViewController: UIViewController {
+class PlotViewController: UIViewController, ProjectPresenter {
 
     var project: Project!
+    
+    func loadProject(_ project: Project) {
+        print("loadingProject -- Plot VC")
+        self.project = project
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

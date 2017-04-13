@@ -8,17 +8,37 @@
 
 import UIKit
 
-class DataViewController: UISplitViewController {
+class DataViewController: UISplitViewController, ProjectPresenter {
 
     var project: Project! {
         didSet {
-            guard let masterVC = childViewControllers[0] as? DataMasterViewController else {
-                print("could not grab master VC")
+            print("didSet project - DataVC")
+            guard let masterVC = viewControllers.first as? DataMasterViewController else {
+                print("could not load master VC -- Data VC")
                 return
             }
-            masterVC.project = project
+            if masterVC.dataTableView != nil {
+                masterVC.dataTableView.reloadData()
+            }
         }
     }
+
+    func loadProject(_ project: Project) {
+        print("loadingProject -- DataVC")
+        self.project = project
+    }
+    
+//        {
+//        didSet {
+//            print("did set project in DataVC")
+//            guard let masterVC = splitViewController?.viewControllers.first as? DataMasterViewController else {
+//                print("could not grab master VC")
+//                return
+//            }
+//            // masterVC.project = project
+//        }
+//    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

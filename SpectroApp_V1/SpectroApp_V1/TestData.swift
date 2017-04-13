@@ -67,6 +67,7 @@ class TestDataGenerator {
             dps = []
             reading.typeInt = readingTypeInt
             reading.project = proj
+            reading.label = "Data-" + String(rand(1,10))
 //            print("i:\(i) \(reading)")
             proj.addToReadings(reading)
         }

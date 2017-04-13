@@ -65,6 +65,13 @@ class Reading: AbsorbanceObject {
     var hasRepeats: Bool { return dataPointSet.count > 1 }
     var absorbanceValue: CGFloat? { return average(ofPoints: dataPointSet) }
     var stdDev: CGFloat? { return stdev(ofPoints: dataPointSet) }
+    var dataPointsStringArray: [String] {
+        var result: [String] = []
+        for point in dataPointArray {
+            result.append( String(describing: point.instrumentDataPoint?.measurementValue ?? -1))
+        }
+        return result
+    }
     
     convenience init(fromDataPoints dataPoints: Set<DataPoint>) {
         //self.init(entity: Reading.entityDescr, insertInto: AppDelegate.viewContext)

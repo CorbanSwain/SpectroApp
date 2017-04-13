@@ -9,6 +9,10 @@
 import UIKit
 import CoreBluetooth
 
+protocol ProjectPresenter {
+    func loadProject(_ project: Project)
+}
+
 
 class MasterViewController: UIViewController, UIPopoverPresentationControllerDelegate, ProjectChangerDelegate {
     
@@ -22,16 +26,12 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             let formatter = DateFormatter()
             formatter.dateFormat = "MMMM dd, YYYY"
             headerView.subText = formatter.string(from: activeProj.timestamp as! Date)
-            switch segmentedControlIndex {
-            case 1:
-                projectViewController.project = activeProj
-            case 2:
-                dataViewController.project = activeProj
-            case 3:
-                plotViewController.project = activeProj
-            default:
-                break
+            
+            guard let projectPresenter = childViewControllers.first as? ProjectPresenter else {
+                print("could not load project presenter")
+                return
             }
+            projectPresenter.loadProject(activeProj)
         }
     }
     
@@ -96,15 +96,15 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         viewControllers.append({ return self.projectViewController })
         viewControllers.append({ return self.dataViewController })
         viewControllers.append({ return self.plotViewController })
-        
-        // begin by loading the project view controller
-        add(asChildViewController: projectViewController)
-        
+    
         // create test data
         TestDataGenerator.initialDate = Date()
         let newProject = TestDataGenerator.createProject()
         activeProject = newProject
         
+        // begin by loading the project view controller
+        add(asChildViewController: projectViewController)
+
         // save test data
         do {
             try AppDelegate.viewContext.save()
@@ -187,6 +187,10 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     ///
     /// - Parameter viewController: the new child view controller
     private func add(asChildViewController viewController: UIViewController) {
+        if let projectPresenter = viewController as? ProjectPresenter {
+            print("loading project into child view controller")
+            projectPresenter.loadProject(activeProject)
+        }
         addChildViewController(viewController)
         
         // add child view as Subview within the containerView

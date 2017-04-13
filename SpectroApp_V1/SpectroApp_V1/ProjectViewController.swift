@@ -9,9 +9,14 @@
 import UIKit
 
 /// Does something
-class ProjectViewController: UIViewController {
+class ProjectViewController: UIViewController, ProjectPresenter {
 
     var project: Project!
+    
+    func loadProject(_ project: Project) {
+        print("loadingProject -- ProjectVC")
+        self.project = project
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
