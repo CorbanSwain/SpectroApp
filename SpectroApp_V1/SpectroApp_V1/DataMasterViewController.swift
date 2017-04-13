@@ -20,6 +20,22 @@ class DataMasterViewController: UIViewController, UITableViewDataSource, UITable
         return dataViewController.project
     }
     
+    var readingCache: [Reading]? {
+        didSet {
+            if let rs = readingCache, rs.count < 1 {
+                readingCache = nil
+            }
+        }
+    }
+    
+    func refreshReadingCache() {
+        readingCache = nil
+        guard let p = project else {
+            return
+        }
+        readingCache = p.readingArray
+    }
+    
     lazy var numberFormatter: NumberFormatter = {
         let nf = NumberFormatter()
         nf.numberStyle = .decimal
@@ -48,10 +64,10 @@ class DataMasterViewController: UIViewController, UITableViewDataSource, UITable
     // MARK: table view functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let p = project, let readings = p.readings, readings.count > 0  else {
+        guard let rs = readingCache else {
             return 1
         }
-        return readings.count
+        return rs.count
 //        return self.sampleNames.count
     }
     
@@ -64,7 +80,7 @@ class DataMasterViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let p = project, let readings = p.readings, readings.count > 0 else {
+        guard let rs = readingCache else {
             // FIXME: return some "no data" table cell
             print("Attempting to load table when project has no data - DataMasterVC")
             let cell = UITableViewCell()
@@ -73,7 +89,7 @@ class DataMasterViewController: UIViewController, UITableViewDataSource, UITable
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath) as! DataTableViewCell
-        let reading = p.readingArray[indexPath.row]
+        let reading = rs[indexPath.row]
         
         cell.titleLabel.text = reading.label ?? "[untitled]"
         cell.measurementsLabel.text = reading.dataPointsStringArray.joined(separator: ", ")
@@ -85,14 +101,12 @@ class DataMasterViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dataHeader") as! DataHeaderTableViewCell
-        cell.backgroundColor = .gray
-        return cell
+        return cell.contentView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 40
     }
-    
     
     
     // MARK: segue functions
@@ -127,6 +141,7 @@ class DataMasterViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         dataTableView.delegate = self
         dataTableView.dataSource = self
+        refreshReadingCache()
     }
     
     override func didReceiveMemoryWarning() {

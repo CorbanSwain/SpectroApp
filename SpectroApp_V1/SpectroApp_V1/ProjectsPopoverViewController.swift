@@ -71,6 +71,13 @@ class ProjectsPopoverViewController: UIViewController, UITableViewDataSource, UI
         delegate.changeProject(to: projects[indexPath.row])
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "PROJECTS"
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
     //when you click a project
     //overview: show the project title at the top
     //show experiment type, date, notes

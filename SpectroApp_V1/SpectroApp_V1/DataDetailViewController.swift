@@ -20,9 +20,9 @@ class DataDetailViewController: UIViewController, UITableViewDataSource, UITable
     // MARK: table view functions
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell", for: indexPath) as! DataDetailTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "detailViewCell", for: indexPath) as! DataDetailTableViewCell
         
-        cell.titleLabel!.text = data[indexPath.section][indexPath.row]
+        cell.titleLabel?.text = data[indexPath.section][indexPath.row]
         
         return cell
     }

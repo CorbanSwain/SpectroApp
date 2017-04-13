@@ -25,7 +25,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             headerView.mainText = activeProj.title ?? "[untitled]"
             let formatter = DateFormatter()
             formatter.dateFormat = "MMMM dd, YYYY"
-            headerView.subText = formatter.string(from: activeProj.timestamp as! Date)
+            headerView.subText = formatter.string(from: activeProj.timestamp! as Date)
             
             guard let projectPresenter = childViewControllers.first as? ProjectPresenter else {
                 print("could not load project presenter")
@@ -99,8 +99,13 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     
         // create test data
         TestDataGenerator.initialDate = Date()
+        TestDataGenerator.numReadings = 40
         let newProject = TestDataGenerator.createProject()
         activeProject = newProject
+        
+//        for _ in 0...20 {
+//            _ = TestDataGenerator.createProject()
+//        }
         
         // begin by loading the project view controller
         add(asChildViewController: projectViewController)

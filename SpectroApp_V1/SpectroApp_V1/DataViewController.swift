@@ -18,6 +18,7 @@ class DataViewController: UISplitViewController, ProjectPresenter {
                 return
             }
             if masterVC.dataTableView != nil {
+                masterVC.refreshReadingCache()
                 masterVC.dataTableView.reloadData()
             }
         }

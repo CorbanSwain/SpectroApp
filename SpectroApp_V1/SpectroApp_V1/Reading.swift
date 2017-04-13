@@ -12,10 +12,12 @@ import CoreData
 @objc(Reading)
 class Reading: AbsorbanceObject {
     
+    
+    
     static var entityDescr: NSEntityDescription { return NSEntityDescription.entity(forEntityName: "Reading", in: AppDelegate.viewContext)! }
     
     var timestamp: Date? {
-        guard let t1 = dataPointArray[0].timestamp as? Date else { return nil }
+        guard let t1 = dataPointArray[0].timestamp as Date? else { return nil }
         return t1
     }
     
@@ -36,7 +38,7 @@ class Reading: AbsorbanceObject {
     var dataPointArray: [DataPoint] {
         get {
             return dataPointSet.sorted(by: {
-                guard let t1 = $0.timestamp as? Date, let t2 = $1.timestamp as? Date else {
+                guard let t1 = $0.timestamp as Date?, let t2 = $1.timestamp as Date? else {
                     return true
                 }
                 switch t1.compare(t2) {
@@ -65,10 +67,20 @@ class Reading: AbsorbanceObject {
     var hasRepeats: Bool { return dataPointSet.count > 1 }
     var absorbanceValue: CGFloat? { return average(ofPoints: dataPointSet) }
     var stdDev: CGFloat? { return stdev(ofPoints: dataPointSet) }
+    
+    lazy var numberFormatter: NumberFormatter = {
+        let nf = NumberFormatter()
+        nf.numberStyle = .none
+        nf.maximumIntegerDigits = 4
+        nf.minimumIntegerDigits = 4
+        return nf
+    }()
+    
     var dataPointsStringArray: [String] {
         var result: [String] = []
         for point in dataPointArray {
-            result.append( String(describing: point.instrumentDataPoint?.measurementValue ?? -1))
+            let numStr = numberFormatter.string(from: (point.instrumentDataPoint?.measurementValue ?? -1) as NSNumber) ?? "9999"
+            result.append(numStr)
         }
         return result
     }

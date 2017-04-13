@@ -10,24 +10,26 @@ import Foundation
 import Darwin
 
 class TestDataGenerator {
+    static private let words = ["Lorem", "Ipsum", "Dolor", "Sit", "Amet", "Sciency", "Measure", "Test", "Kanye", "Lift", "Spectral", "Graphene", "Nano", "Ribolyse", "Pitch", "Read", "Corral"]
     static var index = 0
     static var initialDate = Date()
     static var numPointsPerReading = 5
     static var experimentType = ExperimentType.cellDensity
     static var numReadings = 100
     static var baselineVal = 2800
-    static var spread = 10
+    static var spread = 100
     static var readingTypeIndices: [Int] = [0,0,0, 0,0,0, 0,0]
-    static var projectTitle = "with C. Eligans"
+    // static var projectTitle = "with C. Eligans"
     static var timeConverter: InstrumentTimeConverter {
         return InstrumentTimeConverter(instrumentMillis: 0, centralTime: initialDate)
     }
     
     static func createProject() -> Project {
-        let proj = Project(withTitle: projectTitle)
+        let proj = Project()
         proj.experimentType = ExperimentType(rawValue: Int16(rand(1,3))) ?? .noType
-        proj.timestamp = Date() as NSDate
-        proj.title =  proj.experimentType.description + " " + projectTitle
+        proj.timestamp = Date().addingTimeInterval(-(Double)(rand(0,100_000_000))) as NSDate
+        proj.title =  proj.experimentType.description + " " + randWords(3)
+        proj.projectNotes = randWords(15, sentence: true) + " " + randWords(10, sentence: true) + " " + randWords(20, sentence: true) + " " + randWords(17, sentence: true)
         
         var reading: Reading
         var dp: DataPoint
@@ -42,7 +44,7 @@ class TestDataGenerator {
         for _ in 0..<numReadings {
             
             val = rand(10, baselineVal)
-            readingTypeInt = Int16(rand(0,8))
+            readingTypeInt = Int16(rand(0,7))
 //            print("i:\(i) - val:\(val)- ReadingTypeInt:\(readingTypeInt)")
             for _ in 0..<numPointsPerReading {
                 specificVal = val + rand(-spread/2, spread/2)
@@ -53,7 +55,7 @@ class TestDataGenerator {
                 index += 1
                 dp = DataPoint(fromIDP: idp, usingTimeConverter: timeConverter)
                 idp.dataPoint = dp
-                dp.label = "A Title " + String(index)
+                dp.label = randWords(1)
                 dp.baseline = baselineVal
 //                print("     j:\(j) - \(dp)")
                 dps.insert(dp)
@@ -67,7 +69,7 @@ class TestDataGenerator {
             dps = []
             reading.typeInt = readingTypeInt
             reading.project = proj
-            reading.label = "Data-" + String(rand(1,10))
+            reading.label = randWords(2)
 //            print("i:\(i) \(reading)")
             proj.addToReadings(reading)
         }
@@ -79,7 +81,26 @@ class TestDataGenerator {
         guard high > low else {
             return 0
         }
-        let range: UInt32 = UInt32(high - low)
+        let range: UInt32 = UInt32(high - low + 1)
         return Int(arc4random() % range) + low
+    }
+    
+    static func randWords(_ num: Int, sentence: Bool = false, from words: [String] = words, seperator: String = " ") -> String {
+        guard num > 0 else {
+            return ""
+        }
+        var w = ""
+        var str = words[rand(0,words.count - 1)]
+        if num > 1 {
+            str += seperator
+            for i in 0..<(num - 1) {
+                w = words[rand(0,words.count - 1)]
+                str += (sentence ? w.lowercased() : w)
+                if i != num - 2 {
+                    str += seperator
+                }
+            }
+        }
+        return str + (sentence ? "." : "")
     }
 }

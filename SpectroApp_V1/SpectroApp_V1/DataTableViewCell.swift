@@ -15,9 +15,30 @@ class DataTableViewCell: UITableViewCell {
     @IBOutlet weak var averageLabel: UILabel!
     @IBOutlet weak var stdLabel: UILabel!
     
+    var numberLabels: Set<UILabel> {
+        return [measurementsLabel, averageLabel, stdLabel]
+    }
+    
+    func tabularizeLabel(_ label: UILabel) {
+        let originalDescriptor = label.font.fontDescriptor
+        let figureCaseDict = [
+            UIFontFeatureTypeIdentifierKey: kNumberSpacingType,
+            UIFontFeatureSelectorIdentifierKey: kMonospacedNumbersSelector,
+        ]
+        let attributes = [
+            UIFontDescriptorFeatureSettingsAttribute: [ figureCaseDict ],
+        ]
+        let descriptor = originalDescriptor.addingAttributes(attributes)
+        let tabularizedFont = UIFont(descriptor: descriptor, size: 0)
+        label.font = tabularizedFont
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        for l in numberLabels {
+            tabularizeLabel(l)
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

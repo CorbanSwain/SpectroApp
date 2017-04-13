@@ -11,7 +11,16 @@ import UIKit
 /// Does something
 class ProjectViewController: UIViewController, ProjectPresenter {
 
-    var project: Project!
+    @IBOutlet weak var projectNotesLabel: UILabel!
+    
+    var project: Project! {
+        didSet {
+            guard let label = projectNotesLabel, let p = project else {
+                return
+            }
+            label.text = p.projectNotes
+        }
+    }
     
     func loadProject(_ project: Project) {
         print("loadingProject -- ProjectVC")
@@ -20,7 +29,7 @@ class ProjectViewController: UIViewController, ProjectPresenter {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        projectNotesLabel.text = project.projectNotes ?? "[no notes]"
         // Do any additional setup after loading the view.
     }
 
