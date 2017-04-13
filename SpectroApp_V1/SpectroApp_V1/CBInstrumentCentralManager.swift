@@ -13,7 +13,7 @@
 
 
 // ----------------------------------------------------------------------
-// Import Packages
+// MARK: - Import Packages
 // ----------------------------------------------------------------------
 import UIKit
 import CoreBluetooth
@@ -21,7 +21,7 @@ import CoreBluetooth
 
 
 // ----------------------------------------------------------------------
-// UUIDs
+// MARK: - UUIDs
 // ----------------------------------------------------------------------
 
 /// A 128-bit universially unnique identifier (UUID) for the UART service, for more information about the UART service see [adafruit.learn.com](https://learn.adafruit.com/introducing-adafruit-ble-bluetooth-low-energy-friend/uart-service)
@@ -54,7 +54,9 @@ protocol CBInstrumentCentralManagerReporter: class {
     func display(status: InstrumentStatus, message: String?)
 }
 
-
+protocol DatabaseDelegate {
+    func add(dataPoint: DataPoint)
+}
 
 // ----------------------------------------------------------------------
 // ----------------------------------------------------------------------
@@ -70,7 +72,7 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
     
     
     // ----------------------------------------------------------------------
-    // Constants
+    // MARK: Constants
     // ----------------------------------------------------------------------
     
     /// Specifies the number of seconds to wait after a device scan is initiated to stop scanning
@@ -92,8 +94,14 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
     
     var timeConverter: InstrumentTimeConverter?
     
+    var databaseDelegate: DatabaseDelegate?
+    
+    var tempDataPointCache: Set<DataPoint> = []
+    
+    var tempInstrumentDataCache: Set<InstrumentDataPoint> = []
+    
     // ----------------------------------------------------------------------
-    // Computed Values
+    // MARK: Computed Values
     // ----------------------------------------------------------------------
     
     /// The peripheral currently connected to the device
@@ -131,7 +139,7 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
     
     
     // ----------------------------------------------------------------------
-    // Central Manager, Central Manager Functions, & Delegate Functions
+    // MARK: - Central Manager, Central Manager Functions, & Delegate Functions
     // ----------------------------------------------------------------------
 
     /// Manages connected devices notifies of the state of bluetooth on the central device
@@ -253,7 +261,7 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
     
     
     // ----------------------------------------------------------------------
-    // Peripheral Functions & Delegate Functions
+    // MARK: - Peripheral Functions & Delegate Functions
     // ----------------------------------------------------------------------
     
     var discoveredPeripherals: [UUID: CBPeripheral] = [:]
@@ -314,7 +322,7 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
     
     
     // -----------------------------------------------------------------------
-    // Data Parser & Delegate Functions
+    // MARK: - Data Parser & Delegate Functions
     // ----------------------------------------------------------------------
     
     var dataParser: CBDataParser!
@@ -327,7 +335,17 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
         switch parsedObject {
         case let instrumentDP as InstrumentDataPoint:
             print("BLE:_Just got a data point!\n    --> \(instrumentDP)")
-            // VC
+            if let tc = timeConverter {
+                let dp = DataPoint(fromIDP: instrumentDP, usingTimeConverter: tc)
+                if let delegate = databaseDelegate {
+                    delegate.add(dataPoint: dp)
+                } else {
+                    tempDataPointCache.insert(dp)
+                }
+            } else {
+                tempInstrumentDataCache.insert(instrumentDP)
+            }
+            
         case let instrumentMillis as UInt32:
             timeConverter = InstrumentTimeConverter(instrumentMillis: instrumentMillis)
         default:
@@ -348,7 +366,7 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
     
     
     // ----------------------------------------------------------------------
-    // Instrumment Connection View Controller Delegate Functions
+    // MARK: - Instrumment Connection View Controller Delegate Functions
     // ----------------------------------------------------------------------
     
     /// Delegate function to scan for devices.

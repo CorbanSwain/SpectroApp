@@ -20,7 +20,7 @@ class ProjectsPopoverViewController: UIViewController, UITableViewDataSource, UI
     // FIXME: use core data to access actual project info
     // RESOLVED
     
-    var delegate: ProjectChangerDelegate!
+    weak var delegate: ProjectChangerDelegate!
     
     var projects: [Project] {
         let request: NSFetchRequest<Project> = NSFetchRequest(entityName: "Project")
