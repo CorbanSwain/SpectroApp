@@ -29,7 +29,6 @@ class PopoverNavigationController: UINavigationController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("In segue: \(segue.identifier ?? "[no segue ID]")")
-        
         guard let id = segue.identifier else {
             print("No segue ID; cannot prepare for segue.")
             return
@@ -47,6 +46,17 @@ class PopoverNavigationController: UINavigationController {
             
         default:
             break
+        }
+    }
+    
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        guard let delegate = popoverPresentationController?.delegate else {
+            super.dismiss(animated: flag, completion: nil)
+            return
+        }
+        
+        if delegate.popoverPresentationControllerShouldDismissPopover!(popoverPresentationController!) {
+            super.dismiss(animated: flag, completion: nil)
         }
     }
     

@@ -107,6 +107,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
 //            _ = TestDataGenerator.createProject()
 //        }
         
+        
         // begin by loading the project view controller
         add(asChildViewController: projectViewController)
 
@@ -154,7 +155,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         instrumentAlertView.isGrayedOut = false
         let newVC = segue.destination
         newVC.popoverPresentationController?.delegate = self
-        
+
         guard let id = segue.identifier else {
             print("No segue ID, cannot prepare for segue.")
                     return
@@ -181,9 +182,10 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             break
         }
     }
-
-    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+    
+    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
         instrumentAlertView.isGrayedOut = false
+        return true;
     }
     
     /// Adds a view controller to the master view's container view 
