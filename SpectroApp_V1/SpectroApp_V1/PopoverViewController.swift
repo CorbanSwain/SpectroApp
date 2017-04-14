@@ -50,12 +50,12 @@ class PopoverNavigationController: UINavigationController {
     }
     
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
-        guard let delegate = popoverPresentationController?.delegate else {
+        guard let delegate = popoverPresentationController?.delegate, let popControl = popoverPresentationController else {
             super.dismiss(animated: flag, completion: nil)
             return
         }
         
-        if delegate.popoverPresentationControllerShouldDismissPopover!(popoverPresentationController!) {
+        if delegate.popoverPresentationControllerShouldDismissPopover!(popControl) {
             super.dismiss(animated: flag, completion: nil)
         }
     }

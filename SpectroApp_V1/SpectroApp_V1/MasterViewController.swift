@@ -13,7 +13,6 @@ protocol ProjectPresenter {
     func loadProject(_ project: Project)
 }
 
-
 class MasterViewController: UIViewController, UIPopoverPresentationControllerDelegate, ProjectChangerDelegate {
     
     var activeProject: Project! {
@@ -25,7 +24,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             headerView.mainText = activeProj.title ?? "[untitled]"
             let formatter = DateFormatter()
             formatter.dateFormat = "MMMM dd, YYYY"
-            headerView.subText = formatter.string(from: activeProj.timestamp! as Date)
+            headerView.subText = Formatter.monDayYr.string(from: activeProj.timestamp! as Date)
             
             guard let projectPresenter = childViewControllers.first as? ProjectPresenter else {
                 print("could not load project presenter")

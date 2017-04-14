@@ -12,10 +12,45 @@ class DataDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var detailTableView: UITableView!
     
+    var reading: Reading? {
+        didSet {
+            guard let tableView = detailTableView else {
+                return
+            }
+            tableView.reloadData()
+        }
+    }
     // FIXME: use real data
-    let sections = ["Sample Name", "Sample Type", "Times", "Notes"]
-    var data = [["S1"], ["Unknown"], ["9:34AM", "12:00PM", "3:15PM"], ["This is just a test"]]
-    
+    let sections = ["NAME", "TYPE", "POINTS", "BASELINES", "TIMES"]
+    var data: Array<[String]> {
+        if dataCache == nil {
+            guard let r = reading else {
+                return []
+            }
+            let name = r.label ?? "[untitled]"
+            let type = r.type.description
+            var points: [String] = []
+            var baselines: [String] = []
+            var times: [String] = []
+            for (i,point) in r.dataPointArray.enumerated() {
+                if let val = point.pointValue {
+                    points.append("\(i): " + (Formatter.threeDecNum.string(from: val as NSNumber) ?? "???"))
+                } else {
+                    points.append("\(i): " + "???")
+                }
+                baselines.append("\(i): " + (Formatter.fourDigNum.string(from: point.baseline as NSNumber) ?? "???"))
+                if let ts = point.timestamp {
+                    times.append("\(i): " + (Formatter.hrMin.string(from: ts as Date)))
+                } else {
+                    times.append("\(i): " + "[no date]")
+                }
+                
+            }
+            dataCache = [[name],[type],points,baselines,times]
+        }
+        return dataCache!
+    }
+    var dataCache: Array<[String]>?
     
     // MARK: table view functions
     
@@ -28,7 +63,7 @@ class DataDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.sections.count
+        return self.data.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

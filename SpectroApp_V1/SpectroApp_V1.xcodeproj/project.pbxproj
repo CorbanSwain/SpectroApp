@@ -47,6 +47,7 @@
 		1CBE94EB1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBE94EA1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift */; };
 		1CBE94ED1E8126F200F3C8F3 /* MasterNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBE94EC1E8126F200F3C8F3 /* MasterNavigationBar.swift */; };
 		1CC097B91E857BBE00655A90 /* CBDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC097B81E857BBD00655A90 /* CBDataParser.swift */; };
+		1CEE4D4F1EA1276900321217 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEE4D4E1EA1276900321217 /* Formatters.swift */; };
 		D58B47581E9D78E1007145FB /* DataMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B47571E9D78E1007145FB /* DataMasterViewController.swift */; };
 		D58B475A1E9D7915007145FB /* DataDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B47591E9D7915007145FB /* DataDetailViewController.swift */; };
 		D58B475C1E9D8002007145FB /* DataDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B475B1E9D8002007145FB /* DataDetailTableViewCell.swift */; };
@@ -117,6 +118,7 @@
 		1CBE94EA1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentHeaderView.swift; sourceTree = "<group>"; };
 		1CBE94EC1E8126F200F3C8F3 /* MasterNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterNavigationBar.swift; sourceTree = "<group>"; };
 		1CC097B81E857BBD00655A90 /* CBDataParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBDataParser.swift; sourceTree = "<group>"; };
+		1CEE4D4E1EA1276900321217 /* Formatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		D58B47571E9D78E1007145FB /* DataMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataMasterViewController.swift; sourceTree = "<group>"; };
 		D58B47591E9D7915007145FB /* DataDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDetailViewController.swift; sourceTree = "<group>"; };
 		D58B475B1E9D8002007145FB /* DataDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 		1C7E717F1E78E69F0073799D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1CEE4D4E1EA1276900321217 /* Formatters.swift */,
 				1C7E713F1E78CA390073799D /* AppDelegate.swift */,
 				1C569FF51E79AA7600A9FAD4 /* ViewControllers */,
 			);
@@ -479,6 +482,7 @@
 				1C19446B1E7B7D9D002FB321 /* InstrumentStatusView.swift in Sources */,
 				1C569FF71E7A138C00A9FAD4 /* PlotViewController.swift in Sources */,
 				D58B475A1E9D7915007145FB /* DataDetailViewController.swift in Sources */,
+				1CEE4D4F1EA1276900321217 /* Formatters.swift in Sources */,
 				1C7E71871E79035E0073799D /* Reading.swift in Sources */,
 				1CBE94311E7CF74B00F3C8F3 /* SwiftyJSON.swift in Sources */,
 				1CA6871D1E9D894700B8DD7F /* AbsorbanceObject.swift in Sources */,

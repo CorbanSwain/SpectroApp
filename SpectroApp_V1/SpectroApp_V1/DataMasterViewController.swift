@@ -117,14 +117,14 @@ class DataMasterViewController: UIViewController, UITableViewDataSource, UITable
      
             let dataDetailView = segue.destination as! DataDetailViewController
             let indexPath = dataTableView.indexPathForSelectedRow! as NSIndexPath
-            
+            dataDetailView.reading = readingCache?[indexPath.row]
      
             // FIXME: implement this to accept data from the project view
-            let sampleName = sampleNames[indexPath.row]
-            let sampleType = sampleTypes[indexPath.row]
-            let sampleTime = sampleTimes[indexPath.row]
-            let sampleNote = sampleNotes[indexPath.row]
-            dataDetailView.data = [[sampleName], [sampleType], sampleTime, [sampleNote]]
+//            let sampleName = sampleNames[indexPath.row]
+//            let sampleType = sampleTypes[indexPath.row]
+//            let sampleTime = sampleTimes[indexPath.row]
+//            let sampleNote = sampleNotes[indexPath.row]
+            
      
         }
      }

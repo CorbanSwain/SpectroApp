@@ -9,7 +9,7 @@
 import UIKit
 
 // let _UIBlue = UIColor(21, 126, 251) OK
-let goodStatusGreen =  UIColor(52, 133, 88)
+let goodStatusGreen =  UIColor(52, 220, 88)
 
 enum InstrumentStatus: String, CustomStringConvertible {
     case good = "Connected"

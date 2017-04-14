@@ -20,7 +20,7 @@ enum ReadingType: Int16, CustomStringConvertible {
     case custom = 7
     case noType = 0
     
-    var stringValue: String {
+    private var stringValue: String {
         switch self {
         case .control: return "control"
         case .known: return "known"
