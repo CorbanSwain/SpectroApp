@@ -11,14 +11,40 @@ import UIKit
 /// Does something
 class ProjectViewController: UIViewController, ProjectPresenter {
 
-    @IBOutlet weak var projectNotesLabel: UILabel!
+    @IBOutlet weak var createdDate: UILabel!
+    @IBOutlet weak var editedDate: UILabel!
+    @IBOutlet weak var experimentType: UILabel!
+    @IBOutlet weak var creator: UILabel!
+    @IBOutlet weak var numberOfSamples: UILabel!
+    @IBOutlet weak var notebookReference: UILabel!
+    @IBOutlet weak var notes: UILabel!
     
+    
+    func refreshProject() {
+        guard let createdDateLabel = createdDate, let editedDateLabel = editedDate,
+            let experimentTypeLabel = experimentType, let creatorLabel = creator,
+            let numberOfSamplesLabel = numberOfSamples, let notebookReferenceLabel = notebookReference,
+            let notesLabel = notes, let p = project else {
+            return
+        }
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM dd, YYYY"
+        
+        createdDateLabel.text = Formatter.monDayYr.string(from: p.creationDate! as Date)
+        editedDateLabel.text = Formatter.monDayYr.string(from: p.editDate as Date)
+        experimentTypeLabel.text = p.experimentType.description
+        creatorLabel.text = p.creator?.username
+        numberOfSamplesLabel.text = String(p.readings.count)
+        notebookReferenceLabel.text = p.notebookReference
+        notesLabel.text = p.notes
+        
+    }
+    
+
     var project: Project! {
         didSet {
-            guard let label = projectNotesLabel, let p = project else {
-                return
-            }
-            label.text = p.notes
+            refreshProject()
         }
     }
     
@@ -29,7 +55,7 @@ class ProjectViewController: UIViewController, ProjectPresenter {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        projectNotesLabel.text = project.notes ?? "[no notes]"
+        refreshProject()
         
         // Do any additional setup after loading the view.
     }
