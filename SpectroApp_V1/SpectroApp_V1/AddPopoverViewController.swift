@@ -10,6 +10,7 @@ import UIKit
 
 class AddPopoverViewController: UIViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +20,25 @@ class AddPopoverViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func createButtonPressed(_ sender: UIBarButtonItem)  {
+        // let proj = Project()
+        // FIXME: set the project properties based on the text field inputs
+        // proj.title = "something new"
+        
+        // try? AppDelegate.viewContext.save()
+        // FIXME: set the new project as the active project
+        dismiss()
+    }
+    
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        // FIXME: clear all text fields if necesary
+        dismiss()
+    }
+    
+    func dismiss() {
+        (navigationController as! PopoverNavigationController).dismiss(animated: true, completion: nil)
     }
     
     /*

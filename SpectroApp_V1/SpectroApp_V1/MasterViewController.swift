@@ -38,6 +38,8 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         activeProject = project
     }
     
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
     /// Outlet to the container view in which the various view 
     /// controllers will be presented
     @IBOutlet weak var containerView: UIView!
@@ -102,11 +104,11 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         let newProject = TestDataGenerator.createProject()
         activeProject = newProject
 //
-        for _ in 0...150 {
-            let p = TestDataGenerator.createProject()
-            // print("\(i): \(p.dateSection.header): --> \(Formatter.monDayYr.string(from: p.editDate))")
-        }
-        
+//        for _ in 0...150 {
+//            _ = TestDataGenerator.createProject()
+//            // print("\(i): \(p.dateSection.header): --> \(Formatter.monDayYr.string(from: p.editDate))")
+//        }
+//        
         
         for dateSection in DateSection.sectionArray {
             print("\(dateSection.header) : \(Formatter.monDayYr.string(from: dateSection.date))")
@@ -179,6 +181,14 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             popoverVC.performSegue(withIdentifier: "popover.segue.projects", sender: popoverVC)
 
         case "master.segue.addPop":
+            let popoverVC = segue.destination as! PopoverNavigationController
+            // set delegates
+            popoverVC.performSegue(withIdentifier: "popover.segue.add", sender: popoverVC)
+            // FIXME: need to more smoothly gray out the segmented control, figure out how to change passthrough views
+            segmentedControl.isEnabled = false
+            segmentedControl.tintColor = .darkGray
+            instrumentAlertView.isGrayedOut = true
+            
             break
         case "master.segue.exportPop":
             break
@@ -189,6 +199,8 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     
     func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
         instrumentAlertView.isGrayedOut = false
+        segmentedControl.isEnabled = true
+        segmentedControl.tintColor = _UIBlue
         return true;
     }
     

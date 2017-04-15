@@ -30,6 +30,7 @@ class ProjectViewController: UIViewController, ProjectPresenter {
     override func viewDidLoad() {
         super.viewDidLoad()
         projectNotesLabel.text = project.notes ?? "[no notes]"
+        
         // Do any additional setup after loading the view.
     }
 

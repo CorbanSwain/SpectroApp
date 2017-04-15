@@ -173,7 +173,7 @@
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Cw7-Xx-fQw">
                             <connections>
-                                <segue destination="8Yi-r4-228" kind="popoverPresentation" identifier="master.segue.addPop" popoverAnchorBarButtonItem="Cw7-Xx-fQw" id="10E-vn-Kwk">
+                                <segue destination="Exx-dy-jdA" kind="popoverPresentation" identifier="master.segue.addPop" popoverAnchorBarButtonItem="Cw7-Xx-fQw" id="3l5-9H-mWb">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
@@ -185,6 +185,7 @@
                         <outlet property="instrumentAlertView" destination="rse-Qf-Bns" id="zwO-Xc-e8U"/>
                         <outlet property="instrumentButton" destination="b3a-Or-61N" id="OSF-vK-pQI"/>
                         <outlet property="instrumentButtonToAlertViewFixedSpace" destination="b7b-3R-veY" id="Emo-Tg-UAq"/>
+                        <outlet property="segmentedControl" destination="XrQ-i1-t0d" id="QiR-U8-rGf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MNt-DM-G9a" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -523,7 +524,7 @@
             </objects>
             <point key="canvasLocation" x="2736" y="1603"/>
         </scene>
-        <!--Add Popover View Controller-->
+        <!--New Project-->
         <scene sceneID="zgr-Cj-WMh">
             <objects>
                 <viewController id="8Yi-r4-228" customClass="AddPopoverViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
@@ -532,11 +533,11 @@
                         <viewControllerLayoutGuide type="bottom" id="qfv-BF-sGm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3sf-jO-frW" customClass="A">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="350"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Someting" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IcA-ji-blg">
-                                <rect key="frame" x="59" y="112" width="133" height="77"/>
+                                <rect key="frame" x="183.5" y="136.5" width="133" height="77"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="77" id="GAP-lt-VpV"/>
                                     <constraint firstAttribute="width" constant="133" id="YXt-gd-Z76"/>
@@ -545,22 +546,41 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QJ6-6L-Isu">
+                                <rect key="frame" x="150" y="223.5" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="sFN-rm-92B"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="IcA-ji-blg" firstAttribute="centerX" secondItem="3sf-jO-frW" secondAttribute="centerX" id="VGe-1S-caX"/>
+                            <constraint firstItem="QJ6-6L-Isu" firstAttribute="centerX" secondItem="IcA-ji-blg" secondAttribute="centerX" id="VMD-zY-nwe"/>
+                            <constraint firstItem="QJ6-6L-Isu" firstAttribute="top" secondItem="IcA-ji-blg" secondAttribute="bottom" constant="10" id="xDh-NY-BMB"/>
                             <constraint firstItem="IcA-ji-blg" firstAttribute="centerY" secondItem="3sf-jO-frW" secondAttribute="centerY" id="xW9-ar-Cc6"/>
                         </constraints>
                     </view>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="250" height="300"/>
+                    <navigationItem key="navigationItem" title="New Project" id="cYp-DD-ViS">
+                        <barButtonItem key="leftBarButtonItem" title="Create" style="done" id="KwL-KG-QIu">
+                            <connections>
+                                <action selector="createButtonPressed:" destination="8Yi-r4-228" id="gwU-qi-cfl"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="wCz-ah-9w1">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="8Yi-r4-228" id="wlV-dR-mfZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <value key="contentSizeForViewInPopover" type="size" width="250" height="300"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1bR-9E-LL4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2008" y="1653"/>
+            <point key="canvasLocation" x="2007" y="2202"/>
         </scene>
         <!--Export Popover View Controller-->
         <scene sceneID="7f2-ur-Mr5">
@@ -607,6 +627,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gTw-rf-UqO" customClass="PopoverNavigationController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <value key="contentSizeForViewInPopover" type="size" width="350" height="450"/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="350" height="450"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qiA-IR-Naj">
@@ -639,7 +660,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VUG-4p-lQO">
-                                <rect key="frame" x="0.0" y="109" width="350" height="341"/>
+                                <rect key="frame" x="0.0" y="89" width="350" height="361"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell.peripheral.connected" id="kde-9b-Xyy">
@@ -664,7 +685,7 @@
                                 </prototypes>
                             </tableView>
                             <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b81-Fl-uXY" customClass="InstrumentStatusView" customModule="SpectroApp_V1" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="350" height="45"/>
+                                <rect key="frame" x="0.0" y="44" width="350" height="45"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zf7-Oq-qdK">
                                         <rect key="frame" x="15" y="11" width="23" height="23"/>
@@ -796,6 +817,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mRl-yS-SZ2" customClass="PopoverNavigationController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <value key="contentSizeForViewInPopover" type="size" width="550" height="500"/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="550" height="500"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dcU-bv-QqW">
@@ -940,6 +962,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vh8-nT-xXm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="574" y="868"/>
+        </scene>
+        <!--Popover Navigation Controller-->
+        <scene sceneID="Hat-xY-Ck0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Exx-dy-jdA" customClass="PopoverNavigationController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <value key="contentSizeForViewInPopover" type="size" width="500" height="350"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="500" height="350"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="38r-fQ-UGm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="MeP-fA-8Uc">
+                        <rect key="frame" x="0.0" y="406" width="350" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="8Yi-r4-228" kind="show" identifier="popover.segue.add" id="DIa-tm-Fdu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V83-24-3jn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2007" y="1711"/>
         </scene>
     </scenes>
     <resources>
