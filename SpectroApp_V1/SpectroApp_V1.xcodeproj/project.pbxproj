@@ -50,6 +50,8 @@
 		1CBE94ED1E8126F200F3C8F3 /* MasterNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBE94EC1E8126F200F3C8F3 /* MasterNavigationBar.swift */; };
 		1CC097B91E857BBE00655A90 /* CBDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC097B81E857BBD00655A90 /* CBDataParser.swift */; };
 		1CEE4D4F1EA1276900321217 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEE4D4E1EA1276900321217 /* Formatters.swift */; };
+		D565E1B21EA2CDB200864385 /* AddProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D565E1B11EA2CDB200864385 /* AddProjectTableViewCell.swift */; };
+		D565E1B41EA2DA1500864385 /* AddProjectTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D565E1B31EA2DA1500864385 /* AddProjectTypeTableViewCell.swift */; };
 		D58B47581E9D78E1007145FB /* DataMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B47571E9D78E1007145FB /* DataMasterViewController.swift */; };
 		D58B475A1E9D7915007145FB /* DataDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B47591E9D7915007145FB /* DataDetailViewController.swift */; };
 		D58B475C1E9D8002007145FB /* DataDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58B475B1E9D8002007145FB /* DataDetailTableViewCell.swift */; };
@@ -123,6 +125,8 @@
 		1CBE94EC1E8126F200F3C8F3 /* MasterNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterNavigationBar.swift; sourceTree = "<group>"; };
 		1CC097B81E857BBD00655A90 /* CBDataParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBDataParser.swift; sourceTree = "<group>"; };
 		1CEE4D4E1EA1276900321217 /* Formatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		D565E1B11EA2CDB200864385 /* AddProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProjectTableViewCell.swift; sourceTree = "<group>"; };
+		D565E1B31EA2DA1500864385 /* AddProjectTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProjectTypeTableViewCell.swift; sourceTree = "<group>"; };
 		D58B47571E9D78E1007145FB /* DataMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataMasterViewController.swift; sourceTree = "<group>"; };
 		D58B47591E9D7915007145FB /* DataDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDetailViewController.swift; sourceTree = "<group>"; };
 		D58B475B1E9D8002007145FB /* DataDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -300,6 +304,7 @@
 		1C7E71811E78E7270073799D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D565E1B51EA2DA3B00864385 /* Add Project Cells */,
 				D58B47631E9D9D8D007145FB /* Project Cells */,
 				1C7E717C1E78E64D0073799D /* Data Cells */,
 			);
@@ -331,6 +336,15 @@
 				1C005FD01E871917003539F1 /* InstrumentDataPoint.swift */,
 			);
 			name = "Absorbance Data";
+			sourceTree = "<group>";
+		};
+		D565E1B51EA2DA3B00864385 /* Add Project Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D565E1B31EA2DA1500864385 /* AddProjectTypeTableViewCell.swift */,
+				D565E1B11EA2CDB200864385 /* AddProjectTableViewCell.swift */,
+			);
+			name = "Add Project Cells";
 			sourceTree = "<group>";
 		};
 		D58B47631E9D9D8D007145FB /* Project Cells */ = {
@@ -513,10 +527,12 @@
 				1C7E71851E78F7600073799D /* Project.swift in Sources */,
 				1C7E71481E78CA390073799D /* SpectroApp_V1.xcdatamodeld in Sources */,
 				1C7E71791E78E5C30073799D /* DensityDataTableViewCell.swift in Sources */,
+				D565E1B41EA2DA1500864385 /* AddProjectTypeTableViewCell.swift in Sources */,
 				1CBE942E1E7BDB3E00F3C8F3 /* PopoverViewController.swift in Sources */,
 				1C0BFEE71E7A77A400408A28 /* ProjectsPopoverViewController.swift in Sources */,
 				1C3896AC1E8EF9BF004E9CD6 /* Plot.swift in Sources */,
 				D5ACE84C1E9DD54200459C6F /* DataHeaderTableViewCell.swift in Sources */,
+				D565E1B21EA2CDB200864385 /* AddProjectTableViewCell.swift in Sources */,
 				1C7E71711E78D6C80073799D /* ProjectPopoverTableViewCell.swift in Sources */,
 				1C005FD11E871917003539F1 /* InstrumentDataPoint.swift in Sources */,
 				1C1944691E7B42EA002FB321 /* CBInstrumentCentralManager.swift in Sources */,

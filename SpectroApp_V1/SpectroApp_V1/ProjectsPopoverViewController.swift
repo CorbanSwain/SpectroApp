@@ -17,8 +17,6 @@ protocol ProjectChangerDelegate: class {
 class ProjectsPopoverViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var projectTableView: UITableView!
 
-    // FIXME: use core data to access actual project info
-    // RESOLVED
     
     weak var delegate: ProjectChangerDelegate!
     
@@ -37,10 +35,6 @@ class ProjectsPopoverViewController: UIViewController, UITableViewDataSource, UI
 //            return []
 //        }
 //    }
-    
-    var projectNames: [String] = ["First Experiment", "Second Experiment", "Third Experiment"]
-    var projectTypes: [String] = ["Protein", "Nucleic Acid", "Cell Density"]
-    var projectDates: [String] = ["2017-03-25", "2017-03-20", "2017-01-1"]
     
     
     // MARK: table view functions
@@ -92,34 +86,6 @@ class ProjectsPopoverViewController: UIViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
-    //when you click a project
-    //overview: show the project title at the top
-    //show experiment type, date, notes
-    
-    
-    // MARK: segue functions
-    /*
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     if (segue.identifier == "showDataView") {
-     self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
-     
-     let dataView = segue.destination as! DataViewController
-     //let indexPath = sampleTableView.indexPath(for: sender as! UITableViewCell)
-     
-     // FIXME: implement this to accept data from the project view
-     dataView.sampleNames = ["S1", "S2", "S3"]
-     dataView.sampleMeasurements = [["1","2","3"], ["5"], ["4","2"]]
-     dataView.sampleAverages = ["2", "5", "3"]
-     dataView.sampleStds = ["1", "0", "1.4142"]
-     
-     }
-     }
-     
-     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     self.performSegue(withIdentifier: "showDataView", sender: self)
-     self.dismiss(animated: true, completion: nil)
-     }
-     */
 
     
     // MARK: default functions

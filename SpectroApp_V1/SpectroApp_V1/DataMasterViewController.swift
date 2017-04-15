@@ -44,21 +44,6 @@ class DataMasterViewController: UIViewController, UITableViewDataSource, UITable
         return nf
     }()
     
-    // FIXME: use core data to access actual project info, pass project from ProjectVivarontroller
-    //var sampleNames: [String]!
-    //var sampleMeasurements: [[String]]!
-    //var sampleAverages: [String]!
-    //var sampleStds: [String]!
-    
-    //var header = "Sample Name\t\tMeasurements\t\tAverage\t\tStandard Deviation"
-    var sampleNames = ["S1", "S2", "S3"]
-    var sampleMeasurements = [["1","2","3"], ["5"], ["4","2"]]
-    var sampleAverages = ["2", "5", "3"]
-    var sampleStds = ["1", "0", "1.4142"]
-    var sampleTypes = ["Unknown", "Known", "Blank"]
-    var sampleTimes = [["9:34AM", "12:00PM", "3:15PM"],["10:00AM"],["4:30PM", "5:10PM"]]
-    var sampleNotes = ["This is a sample of unknown concentration", "This is a sample of known concentration", "This is a blank sample"]
-    
     
     
     // MARK: table view functions
@@ -117,14 +102,7 @@ class DataMasterViewController: UIViewController, UITableViewDataSource, UITable
      
             let dataDetailView = segue.destination as! DataDetailViewController
             let indexPath = dataTableView.indexPathForSelectedRow! as NSIndexPath
-            dataDetailView.reading = readingCache?[indexPath.row]
-     
-            // FIXME: implement this to accept data from the project view
-//            let sampleName = sampleNames[indexPath.row]
-//            let sampleType = sampleTypes[indexPath.row]
-//            let sampleTime = sampleTimes[indexPath.row]
-//            let sampleNote = sampleNotes[indexPath.row]
-            
+            dataDetailView.reading = readingCache?[indexPath.row]            
      
         }
      }
