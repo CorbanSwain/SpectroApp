@@ -27,18 +27,18 @@ class DataDetailViewController: UIViewController, UITableViewDataSource, UITable
             guard let r = reading else {
                 return []
             }
-            let name = r.label ?? "[untitled]"
+            let name = r.title ?? "[untitled]"
             let type = r.type.description
             var points: [String] = []
             var baselines: [String] = []
             var times: [String] = []
             for (i,point) in r.dataPointArray.enumerated() {
-                if let val = point.pointValue {
+                if let val = point.measurementValue {
                     points.append("\(i): " + (Formatter.threeDecNum.string(from: val as NSNumber) ?? "???"))
                 } else {
                     points.append("\(i): " + "???")
                 }
-                baselines.append("\(i): " + (Formatter.fourDigNum.string(from: point.baseline as NSNumber) ?? "???"))
+                baselines.append("\(i): " + (Formatter.fourDigNum.string(from: point.baselineValue as NSNumber) ?? "???"))
                 if let ts = point.timestamp {
                     times.append("\(i): " + (Formatter.hrMin.string(from: ts as Date)))
                 } else {

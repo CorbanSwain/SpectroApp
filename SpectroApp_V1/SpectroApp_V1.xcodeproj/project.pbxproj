@@ -11,6 +11,8 @@
 		1C0BFEE41E7A759900408A28 /* InstrumentConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0BFEE31E7A759900408A28 /* InstrumentConnectionViewController.swift */; };
 		1C0BFEE71E7A77A400408A28 /* ProjectsPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0BFEE61E7A77A400408A28 /* ProjectsPopoverViewController.swift */; };
 		1C0BFEE91E7A77BA00408A28 /* AddPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0BFEE81E7A77BA00408A28 /* AddPopoverViewController.swift */; };
+		1C11C1701EA1F73200AAF534 /* DateSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C11C16F1EA1F73200AAF534 /* DateSection.swift */; };
+		1C11C1721EA210BB00AAF534 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C11C1711EA210BB00AAF534 /* User.swift */; };
 		1C1944661E7B02DC002FB321 /* ExportPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1944651E7B02DC002FB321 /* ExportPopoverViewController.swift */; };
 		1C1944691E7B42EA002FB321 /* CBInstrumentCentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1944681E7B42EA002FB321 /* CBInstrumentCentralManager.swift */; };
 		1C19446B1E7B7D9D002FB321 /* InstrumentStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19446A1E7B7D9C002FB321 /* InstrumentStatusView.swift */; };
@@ -76,6 +78,8 @@
 		1C0BFEE31E7A759900408A28 /* InstrumentConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentConnectionViewController.swift; sourceTree = "<group>"; };
 		1C0BFEE61E7A77A400408A28 /* ProjectsPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsPopoverViewController.swift; sourceTree = "<group>"; };
 		1C0BFEE81E7A77BA00408A28 /* AddPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPopoverViewController.swift; sourceTree = "<group>"; };
+		1C11C16F1EA1F73200AAF534 /* DateSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateSection.swift; sourceTree = "<group>"; };
+		1C11C1711EA210BB00AAF534 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1C1944651E7B02DC002FB321 /* ExportPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportPopoverViewController.swift; sourceTree = "<group>"; };
 		1C1944681E7B42EA002FB321 /* CBInstrumentCentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBInstrumentCentralManager.swift; sourceTree = "<group>"; };
 		1C19446A1E7B7D9C002FB321 /* InstrumentStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentStatusView.swift; sourceTree = "<group>"; };
@@ -283,12 +287,12 @@
 				1CBE94301E7CF74B00F3C8F3 /* SwiftyJSON.swift */,
 				1C3896AB1E8EF9BF004E9CD6 /* Plot.swift */,
 				1C3175C21E96F61F008E4DFB /* InstrumentTimeConverter.swift */,
-				1C7E718A1E7904120073799D /* AbsorbanceFunctions.swift */,
 				1CBE942F1E7CC65A00F3C8F3 /* Absorbance Data */,
 				1C1944671E7B42D0002FB321 /* Bluetooth */,
 				1C7E71461E78CA390073799D /* SpectroApp_V1.xcdatamodeld */,
 				1C7E714E1E78CA390073799D /* Info.plist */,
 				1C7E71491E78CA390073799D /* Assets.xcassets */,
+				1C11C1711EA210BB00AAF534 /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -302,13 +306,23 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		1C917FF11EA1E3A000612609 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				1C67FFBA1E9C215E00B6194E /* ExperimentType.swift */,
+				1C67FFB81E9C215300B6194E /* ReadingType.swift */,
+				1C67FFB61E9C213E00B6194E /* Wavelength.swift */,
+				1C11C16F1EA1F73200AAF534 /* DateSection.swift */,
+			);
+			name = Enums;
+			sourceTree = "<group>";
+		};
 		1CBE942F1E7CC65A00F3C8F3 /* Absorbance Data */ = {
 			isa = PBXGroup;
 			children = (
+				1C917FF11EA1E3A000612609 /* Enums */,
 				1C3175C41E9BF67D008E4DFB /* TestData.swift */,
-				1C67FFB61E9C213E00B6194E /* Wavelength.swift */,
-				1C67FFB81E9C215300B6194E /* ReadingType.swift */,
-				1C67FFBA1E9C215E00B6194E /* ExperimentType.swift */,
+				1C7E718A1E7904120073799D /* AbsorbanceFunctions.swift */,
 				1CA6871C1E9D894700B8DD7F /* AbsorbanceObject.swift */,
 				1C7E71841E78F7600073799D /* Project.swift */,
 				1C7E71861E79035E0073799D /* Reading.swift */,
@@ -484,6 +498,7 @@
 				D58B475A1E9D7915007145FB /* DataDetailViewController.swift in Sources */,
 				1CEE4D4F1EA1276900321217 /* Formatters.swift in Sources */,
 				1C7E71871E79035E0073799D /* Reading.swift in Sources */,
+				1C11C1721EA210BB00AAF534 /* User.swift in Sources */,
 				1CBE94311E7CF74B00F3C8F3 /* SwiftyJSON.swift in Sources */,
 				1CA6871D1E9D894700B8DD7F /* AbsorbanceObject.swift in Sources */,
 				1C7E71731E78D6F50073799D /* ProjectViewController.swift in Sources */,
@@ -493,6 +508,7 @@
 				1C0BFEE91E7A77BA00408A28 /* AddPopoverViewController.swift in Sources */,
 				1C7E717B1E78E63D0073799D /* DataTableViewCell.swift in Sources */,
 				1C1944661E7B02DC002FB321 /* ExportPopoverViewController.swift in Sources */,
+				1C11C1701EA1F73200AAF534 /* DateSection.swift in Sources */,
 				1C7E71401E78CA390073799D /* AppDelegate.swift in Sources */,
 				1C7E71851E78F7600073799D /* Project.swift in Sources */,
 				1C7E71481E78CA390073799D /* SpectroApp_V1.xcdatamodeld in Sources */,

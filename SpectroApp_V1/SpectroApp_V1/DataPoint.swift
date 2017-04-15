@@ -14,18 +14,44 @@ class DataPoint: AbsorbanceObject {
     
     static var entityDescr: NSEntityDescription { return NSEntityDescription.entity(forEntityName: "DataPoint", in: AppDelegate.viewContext)! }
     
-    var baseline: Int {
+    var title: String? {
         get {
-            return Int(baselineValue)
-        } set {
-            baselineValue = Int32(newValue)
+            return titleDB
+        }
+        set {
+            titleDB = newValue
         }
     }
     
-    var pointValue: CGFloat? {
+    var isCalibrationPoint: Bool {
         get {
-            if let mv = manualValue, mv.isSet {
-                return CGFloat(mv.theValue)
+            return isCalibrationPointDB
+        } set {
+            isCalibrationPointDB = newValue
+        }
+    }
+    
+    var wavelength: Wavelength {
+        get {
+            return Wavelength(rawValue: wavelengthDB) ?? .unknown
+        }
+        set {
+            wavelengthDB = newValue.rawValue
+        }
+    }
+    
+    var baselineValue: Int {
+        get {
+            return Int(baselineValueDB)
+        } set {
+            baselineValueDB = Int32(newValue)
+        }
+    }
+    
+    var measurementValue: CGFloat? {
+        get {
+            if let manualVal = manualValue, manualVal.isSet {
+                return manualVal.measurementValue
             } else if let v = instrumentDataPoint?.measurementValue {
                 return CGFloat(v) / CGFloat(baselineValue)
             } else {
@@ -34,19 +60,34 @@ class DataPoint: AbsorbanceObject {
         } set {
             manualValue = ManualValue()
             if let v = newValue  {
-                manualValue?.theValue = Float(v)
+                manualValue?.measurementValue = CGFloat(v)
             } else {
-                manualValue?.theValue = 0
+                manualValue?.measurementValue = 0
                 manualValue?.isSet = false
             }
         }
     }
     
-    convenience init(fromIDP idp: InstrumentDataPoint, usingTimeConverter timeConverter: InstrumentTimeConverter) {
-        // self.init(entity: DataPoint.entityDescr, insertInto: AppDelegate.viewContext)
+    var timestamp: Date? {
+        get {
+            guard let tstamp = timestampDB as Date? else {
+                return nil
+            }
+            return tstamp
+        } set {
+            timestampDB = newValue as NSDate?
+        }
+    }
+    
+    convenience init() {
         self.init(context: AppDelegate.viewContext)
+        timestamp = Date()
+    }
+    
+    convenience init(fromIDP idp: InstrumentDataPoint, usingTimeConverter timeConverter: InstrumentTimeConverter) {
+        self.init()
         instrumentDataPoint = idp
         idp.dataPoint = self
-        timestamp = timeConverter.createDate(fromInstrumentMillis: idp.instrumentMillis) as NSDate
+        timestamp = timeConverter.createDate(fromInstrumentMillis: idp.instrumentMillis)
     }
 }

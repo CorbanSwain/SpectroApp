@@ -27,10 +27,10 @@ class TestDataGenerator {
     static func createProject() -> Project {
         let proj = Project()
         proj.experimentType = ExperimentType(rawValue: Int16(rand(1,3))) ?? .noType
-        proj.timestamp = Date().addingTimeInterval(-(Double)(rand(0,100_000_000))) as NSDate
+        proj.editDate = Date().addingTimeInterval(-(Double)(rand(0,9_000_000)))
         proj.title =  proj.experimentType.description + " " + randWords(3)
-        proj.projectNotes = randWords(15, sentence: true) + " " + randWords(10, sentence: true) + " " + randWords(20, sentence: true) + " " + randWords(17, sentence: true)
-        
+        //proj.notes = randWords(15, sentence: true) + " " + randWords(10, sentence: true) + " " + randWords(20, sentence: true) + " " + randWords(17, sentence: true)
+        proj.notes = "hi"
         var reading: Reading
         var dp: DataPoint
         var dps: Set<DataPoint> = []
@@ -55,8 +55,8 @@ class TestDataGenerator {
                 index += 1
                 dp = DataPoint(fromIDP: idp, usingTimeConverter: timeConverter)
                 idp.dataPoint = dp
-                dp.label = randWords(1)
-                dp.baseline = baselineVal
+                dp.title = randWords(1)
+                dp.baselineValue = baselineVal
 //                print("     j:\(j) - \(dp)")
                 dps.insert(dp)
             }
@@ -67,11 +67,11 @@ class TestDataGenerator {
                 dp.reading = reading
             }
             dps = []
-            reading.typeInt = readingTypeInt
+            reading.typeDB = readingTypeInt
             reading.project = proj
-            reading.label = randWords(2)
+            reading.title = randWords(2)
 //            print("i:\(i) \(reading)")
-            proj.addToReadings(reading)
+            proj.addToReadingsDB(reading)
         }
 //        print(proj)
         return proj

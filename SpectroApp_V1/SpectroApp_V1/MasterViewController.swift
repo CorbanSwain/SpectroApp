@@ -24,7 +24,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             headerView.mainText = activeProj.title ?? "[untitled]"
             let formatter = DateFormatter()
             formatter.dateFormat = "MMMM dd, YYYY"
-            headerView.subText = Formatter.monDayYr.string(from: activeProj.timestamp! as Date)
+            headerView.subText = Formatter.monDayYr.string(from: activeProj.creationDate! as Date)
             
             guard let projectPresenter = childViewControllers.first as? ProjectPresenter else {
                 print("could not load project presenter")
@@ -96,23 +96,28 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         viewControllers.append({ return self.dataViewController })
         viewControllers.append({ return self.plotViewController })
     
-        // create test data
+        //create test data
         TestDataGenerator.initialDate = Date()
         TestDataGenerator.numReadings = 40
         let newProject = TestDataGenerator.createProject()
         activeProject = newProject
+//
+        for _ in 0...150 {
+            let p = TestDataGenerator.createProject()
+            // print("\(i): \(p.dateSection.header): --> \(Formatter.monDayYr.string(from: p.editDate))")
+        }
         
-//        for _ in 0...20 {
-//            _ = TestDataGenerator.createProject()
-//        }
         
-        
+        for dateSection in DateSection.sectionArray {
+            print("\(dateSection.header) : \(Formatter.monDayYr.string(from: dateSection.date))")
+        }
         // begin by loading the project view controller
         add(asChildViewController: projectViewController)
 
         // save test data
         do {
             try AppDelegate.viewContext.save()
+            print("saved")
         } catch let error as NSError {
             print("Could not save.\nSAVING ERROR: \(error), \(error.userInfo)")
         }

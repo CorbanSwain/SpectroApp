@@ -1,50 +1,66 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AbsorbanceObject" representedClassName="AbsorbanceObject" syncable="YES" codeGenerationType="category"/>
     <entity name="DataPoint" representedClassName="DataPoint" parentEntity="AbsorbanceObject" syncable="YES" codeGenerationType="category">
-        <attribute name="baselineValue" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="isCalibrationPoint" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="calibrationReading" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Reading" inverseName="calibrationPoints" inverseEntity="Reading" syncable="YES"/>
+        <attribute name="baselineValueDB" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isCalibrationPointDB" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="timestampDB" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="titleDB" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wavelengthDB" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="calibrationReading" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Reading" inverseName="calibrationPointsDB" inverseEntity="Reading" syncable="YES"/>
         <relationship name="instrumentDataPoint" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="InstrumentDataPoint" inverseName="dataPoint" inverseEntity="InstrumentDataPoint" syncable="YES"/>
         <relationship name="manualValue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManualValue" inverseName="dataPoint" inverseEntity="ManualValue" syncable="YES"/>
-        <relationship name="reading" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Reading" inverseName="dataPoints" inverseEntity="Reading" syncable="YES"/>
+        <relationship name="reading" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Reading" inverseName="dataPointsDB" inverseEntity="Reading" syncable="YES"/>
     </entity>
     <entity name="InstrumentDataPoint" representedClassName="InstrumentDataPoint" parentEntity="AbsorbanceObject" syncable="YES" codeGenerationType="category">
-        <attribute name="instrumentTime" attributeType="Integer 64" minValueString="0" maxValueString="4294967296" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="measurementValue" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="pointIndex" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="tagIndex" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="tagTypeInt" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="uuidString" attributeType="String" syncable="YES"/>
+        <attribute name="connectionSessionIDDB" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="instrumentIDDB" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="instrumentMillisDB" attributeType="Integer 64" minValueString="0" maxValueString="4294967296" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="measurementValueDB" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="pointIndexDB" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tagIndexDB" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tagTypeDB" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="uuidDB" attributeType="String" syncable="YES"/>
         <relationship name="dataPoint" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DataPoint" inverseName="instrumentDataPoint" inverseEntity="DataPoint" syncable="YES"/>
     </entity>
     <entity name="ManualValue" representedClassName="ManualValue" syncable="YES" codeGenerationType="category">
-        <attribute name="isSet" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="theValue" attributeType="Float" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isSetDB" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="measurementValueDB" attributeType="Float" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="dataPoint" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DataPoint" inverseName="manualValue" inverseEntity="DataPoint" syncable="YES"/>
     </entity>
     <entity name="Project" representedClassName="Project" parentEntity="AbsorbanceObject" syncable="YES" codeGenerationType="category">
-        <attribute name="experimentTypeInt" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="projectNotes" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="title" attributeType="String" syncable="YES"/>
-        <relationship name="readings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reading" inverseName="project" inverseEntity="Reading" syncable="YES"/>
+        <attribute name="creationDateDB" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateSectionDB" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="dateSectionStringDB" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="editDateDB" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="experimentTypeDB" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="notebookReferenceDB" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notesDB" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="titleDB" attributeType="String" syncable="YES"/>
+        <relationship name="creator" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="projectsDB" inverseEntity="User" syncable="YES"/>
+        <relationship name="readingsDB" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reading" inverseName="project" inverseEntity="Reading" syncable="YES"/>
     </entity>
     <entity name="Reading" representedClassName="Reading" parentEntity="AbsorbanceObject" syncable="YES" codeGenerationType="category">
-        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="typeInt" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="calibrationPoints" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DataPoint" inverseName="calibrationReading" inverseEntity="DataPoint" syncable="YES"/>
-        <relationship name="dataPoints" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DataPoint" inverseName="reading" inverseEntity="DataPoint" syncable="YES"/>
-        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="readings" inverseEntity="Project" syncable="YES"/>
+        <attribute name="titleDB" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="typeDB" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="calibrationPointsDB" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DataPoint" inverseName="calibrationReading" inverseEntity="DataPoint" syncable="YES"/>
+        <relationship name="dataPointsDB" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DataPoint" inverseName="reading" inverseEntity="DataPoint" syncable="YES"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="readingsDB" inverseEntity="Project" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="category">
+        <attribute name="firstNameDB" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastNameDB" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="passwordDB" attributeType="String" syncable="YES"/>
+        <attribute name="usernameDB" attributeType="String" syncable="YES"/>
+        <relationship name="projectsDB" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Project" inverseName="creator" inverseEntity="Project" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AbsorbanceObject" positionX="153" positionY="-187" width="128" height="43"/>
-        <element name="DataPoint" positionX="214" positionY="-55" width="128" height="163"/>
-        <element name="InstrumentDataPoint" positionX="385" positionY="-45" width="128" height="148"/>
-        <element name="ManualValue" positionX="207" positionY="182" width="128" height="88"/>
-        <element name="Project" positionX="-137" positionY="-9" width="128" height="118"/>
-        <element name="Reading" positionX="34" positionY="-9" width="128" height="118"/>
+        <element name="AbsorbanceObject" positionX="153" positionY="-207" width="128" height="45"/>
+        <element name="DataPoint" positionX="214" positionY="-55" width="128" height="178"/>
+        <element name="InstrumentDataPoint" positionX="378" positionY="-117" width="128" height="180"/>
+        <element name="ManualValue" positionX="376" positionY="101" width="128" height="88"/>
+        <element name="Project" positionX="-137" positionY="-46" width="128" height="193"/>
+        <element name="Reading" positionX="43" positionY="-0" width="128" height="118"/>
+        <element name="User" positionX="-135" positionY="152" width="128" height="118"/>
     </elements>
 </model>

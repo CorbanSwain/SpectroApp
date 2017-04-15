@@ -11,5 +11,23 @@ import CoreData
 
 @objc(ManualValue)
 class ManualValue: NSManagedObject {
-
+    var isSet: Bool {
+        get {
+            return isSetDB
+        } set {
+            isSetDB = newValue
+        }
+    }
+    
+    var measurementValue: CGFloat {
+        get {
+            return CGFloat(measurementValueDB)
+        } set {
+            measurementValueDB = Float(newValue)
+        }
+    }
+    
+    convenience init() {
+        self.init(context: AppDelegate.viewContext)
+    }
 }

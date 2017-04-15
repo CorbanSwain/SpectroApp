@@ -14,9 +14,57 @@ class Project: AbsorbanceObject {
 
     static var entityDescr: NSEntityDescription { return NSEntityDescription.entity(forEntityName: "Project", in: AppDelegate.viewContext)! }
     
-    var readingSet: Set<Reading> {
+    var dateSectionString: String {
+        return dateSection.header
+    }
+    
+    var dateSectionInt: String {
+        return dateSection.header
+    }
+    
+    var dateSection: DateSection {
+//        guard let editDate = editDate else {
+//            return .undated
+//        }
+        for section in DateSection.sectionArray {
+            print("Section Date: \(Formatter.monDayYr.string(from: section.date)) -- \(Formatter.monDayYr.string(from: editDate)) :Edit Date")
+            switch section.date.compare(editDate) {
+            case .orderedAscending, .orderedSame:
+                return DateSection(rawValue: section.rawValue) ?? .undated
+            default:
+                continue
+            }
+        }
+        return .older
+    }
+    
+    var notes: String? {
         get {
-            guard let r = readings as? Set<Reading> else {
+            return notesDB
+        } set {
+            notesDB = newValue
+        }
+    }
+    
+    var notebookReference: String? {
+        get {
+            return notebookReferenceDB
+        } set {
+            notebookReferenceDB = newValue
+        }
+    }
+    
+    var title: String? {
+        get {
+            return titleDB
+        } set {
+            titleDB = newValue
+        }
+    }
+    
+    var readings: Set<Reading> {
+        get {
+            guard let r = readingsDB as? Set<Reading> else {
                 return []
             }
             return r
@@ -24,13 +72,13 @@ class Project: AbsorbanceObject {
             for r in newValue {
                 r.project = self
             }
-            readings = newValue as NSSet
+            readingsDB = newValue as NSSet
         }
     }
     
     var readingArray: [Reading] {
         get {
-            return readingSet.sorted(by: {
+            return readings.sorted(by: {
                 guard let t1 = $0.timestamp, let t2 = $1.timestamp else {
                     return true
                 }
@@ -43,23 +91,38 @@ class Project: AbsorbanceObject {
             readings = []
             for r in newValue {
                 r.project = self
-                addToReadings(r)
+                addToReadingsDB(r)
             }
         }
     }
     
     var experimentType: ExperimentType {
         get {
-            return ExperimentType(rawValue: experimentTypeInt) ?? .noType
+            return ExperimentType(rawValue: experimentTypeDB) ?? .noType
         } set {
-            experimentTypeInt = newValue.rawValue
+            experimentTypeDB = newValue.rawValue
+        }
+    }
+    
+    var creationDate: Date? {
+        get {
+            return creationDateDB as Date?
+        }
+    }
+    
+    var editDate: Date {
+        get {
+            return editDateDB! as Date
+        } set {
+            editDateDB = newValue as NSDate
+            dateSectionDB = dateSection.rawValue
+            dateSectionStringDB = dateSection.header
         }
     }
     
     convenience init() {
-        //self.init(entity: Project.entityDescr, insertInto: AppDelegate.viewContext)
         self.init(context: AppDelegate.viewContext)
-        timestamp = Date() as NSDate
+        creationDateDB = Date() as NSDate
     }
 
     

@@ -16,49 +16,74 @@ public let instrumentDP_JSONExample = JSON(parseJSON: instrumentDP_StringExample
 @objc(InstrumentDataPoint)
 class InstrumentDataPoint: AbsorbanceObject {
     
-    
     static let instrumentDP_ObjectExample = instrumentDP_JSONExample.instrumentDataPointValue
     
     static var entityDescr: NSEntityDescription { return NSEntityDescription.entity(forEntityName: "InstrumentDataPoint", in: AppDelegate.viewContext)! }
     
+    var pointIndex: Int {
+        get { return Int(pointIndexDB) }
+        set { pointIndexDB = Int32(newValue) }
+    }
+    
     var tag: (type: ReadingType, index: Int) {
         get {
-            return (ReadingType(rawValue: self.tagTypeInt) ?? .noType, Int(tagIndex))
+            return (ReadingType(rawValue: self.tagTypeDB) ?? .noType, Int(tagIndexDB))
         } set {
-            tagTypeInt = newValue.type.rawValue
-            tagIndex = Int32(newValue.index)
+            tagTypeDB = newValue.type.rawValue
+            tagIndexDB = Int32(newValue.index)
+        }
+    }
+    
+    var instrumentID: UUID {
+        get {
+            return uuidCreator(uuidDB)
+        }
+        set {
+            uuidDB = newValue.uuidString
+        }
+    }
+    
+    var connectionSessionID: UUID {
+        get {
+            return uuidCreator(uuidDB)
+        } set {
+            connectionSessionIDDB = newValue.uuidString
         }
     }
     
     var instrumentMillis: UInt32 {
         get {
-            return UInt32(instrumentTime)
+            return UInt32(instrumentMillisDB)
         } set {
-            instrumentTime = Int64(newValue)
+            instrumentMillisDB = Int64(newValue)
         }
     }
     
     var uuid: UUID {
         get {
-            guard let str = uuidString, let id = UUID(uuidString: str) else {
-                print("uuid is incomplete or nil")
-                return UUID(uuid: UUID_NULL)
-            }
-            return id
+            return uuidCreator(uuidDB)
         } set {
-            uuidString = newValue.uuidString
+            uuidDB = newValue.uuidString
         }
     }
     
     var customDescription: String {
-        return "Instr.DataPoint <Index: \(pointIndex), Value: \(measurementValue), Tagged: \(tag.type)-\(tag.index), ID: \(uuid), Timestamp: \(instrumentTime) ms>"
+        return "Instr.DataPoint <Index: \(pointIndex), Value: \(measurementValue), Tagged: \(tag.type)-\(tag.index), ID: \(uuid), Timestamp: \(instrumentMillis) ms>"
+    }
+    
+    var measurementValue: Int {
+        get {
+            return Int(measurementValueDB)
+        } set {
+            measurementValueDB = Int32(newValue)
+        }
     }
     
     convenience init(index: Int, value: Int, tag: (ReadingType, Int), uuid: UUID, timestamp: UInt32) {
         self.init(context: AppDelegate.viewContext)
         self.tag = tag
-        self.pointIndex = Int32(index)
-        self.measurementValue = Int32(value)
+        self.pointIndex = index
+        self.measurementValue = value
         self.uuid = uuid
         self.instrumentMillis = timestamp
     }

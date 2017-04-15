@@ -12,18 +12,25 @@ import CoreData
 @objc(Reading)
 class Reading: AbsorbanceObject {
     
-    
-    
     static var entityDescr: NSEntityDescription { return NSEntityDescription.entity(forEntityName: "Reading", in: AppDelegate.viewContext)! }
+    
+    var title: String? {
+        get {
+            return titleDB
+        }
+        set {
+            titleDB = newValue
+        }
+    }
     
     var timestamp: Date? {
         guard let t1 = dataPointArray[0].timestamp as Date? else { return nil }
         return t1
     }
     
-    var dataPointSet: Set<DataPoint> {
+    var dataPoints: Set<DataPoint> {
         get {
-            guard let points = dataPoints as? Set<DataPoint> else {
+            guard let points = dataPointsDB as? Set<DataPoint> else {
                 return []
             }
             return points
@@ -31,25 +38,27 @@ class Reading: AbsorbanceObject {
             for point in newValue {
                 point.reading = self
             }
-            dataPoints = newValue as NSSet?
+            dataPointsDB = newValue as NSSet?
         }
     }
     
     var dataPointArray: [DataPoint] {
         get {
-            return dataPointSet.sorted(by: {
-                guard let t1 = $0.timestamp as Date?, let t2 = $1.timestamp as Date? else {
+            return dataPoints.sorted(by: {
+                guard let t1 = $0.timestamp, let t2 = $1.timestamp else {
                     return true
                 }
                 switch t1.compare(t2) {
-                case .orderedDescending: return true
-                default: return false
+                case .orderedDescending:
+                    return true
+                default:
+                    return false
                 }
             })
         } set {
             dataPoints = []
             for point in newValue {
-                addToDataPoints(point)
+                addToDataPointsDB(point)
                 point.reading = self
             }
         }
@@ -57,37 +66,35 @@ class Reading: AbsorbanceObject {
     
     var type: ReadingType {
         get {
-            return ReadingType(rawValue: typeInt) ?? .noType
+            return ReadingType(rawValue: typeDB) ?? .noType
         } set {
-            typeInt = newValue.rawValue
+            typeDB = newValue.rawValue
         }
     }
     
-    var isEmpty: Bool { return dataPointSet.count < 1 }
-    var hasRepeats: Bool { return dataPointSet.count > 1 }
-    var absorbanceValue: CGFloat? { return average(ofPoints: dataPointSet) }
-    var stdDev: CGFloat? { return stdev(ofPoints: dataPointSet) }
-    
-    lazy var numberFormatter: NumberFormatter = {
-        let nf = NumberFormatter()
-        nf.numberStyle = .none
-        nf.maximumIntegerDigits = 4
-        nf.minimumIntegerDigits = 4
-        return nf
-    }()
+    var isEmpty: Bool { return dataPoints.count < 1 }
+    var hasRepeats: Bool { return dataPoints.count > 1 }
+    var absorbanceValue: CGFloat? { return average(ofPoints: dataPoints) }
+    var stdDev: CGFloat? { return stdev(ofPoints: dataPoints) }
     
     var dataPointsStringArray: [String] {
         var result: [String] = []
         for point in dataPointArray {
-            let numStr = numberFormatter.string(from: (point.instrumentDataPoint?.measurementValue ?? -1) as NSNumber) ?? "9999"
-            result.append(numStr)
+            guard let val = point.measurementValue as NSNumber? else {
+                continue
+            }
+            let numStr = Formatter.threeDecNum.string(from: val)
+            result.append(numStr ?? "???")
         }
         return result
     }
     
-    convenience init(fromDataPoints dataPoints: Set<DataPoint>) {
-        //self.init(entity: Reading.entityDescr, insertInto: AppDelegate.viewContext)
+    convenience init() {
         self.init(context: AppDelegate.viewContext)
-        dataPointSet = dataPoints
+    }
+    
+    convenience init(fromDataPoints dataPoints: Set<DataPoint>) {
+        self.init()
+        self.dataPoints = dataPoints
     }
 }

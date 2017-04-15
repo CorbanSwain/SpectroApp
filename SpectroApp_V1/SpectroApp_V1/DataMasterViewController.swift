@@ -91,7 +91,7 @@ class DataMasterViewController: UIViewController, UITableViewDataSource, UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath) as! DataTableViewCell
         let reading = rs[indexPath.row]
         
-        cell.titleLabel.text = reading.label ?? "[untitled]"
+        cell.titleLabel.text = reading.title ?? "[untitled]"
         cell.measurementsLabel.text = reading.dataPointsStringArray.joined(separator: ", ")
         cell.averageLabel.text = numberFormatter.string(from: (reading.absorbanceValue ?? -1) as NSNumber)
         cell.stdLabel.text = numberFormatter.string(from: (reading.stdDev ?? -1) as NSNumber)

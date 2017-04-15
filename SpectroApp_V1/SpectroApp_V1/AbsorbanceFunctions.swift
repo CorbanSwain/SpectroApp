@@ -9,11 +9,19 @@
 import UIKit
 import Darwin
 
+let uuidCreator: (String?) -> UUID = {
+    uuidStr in
+    guard let str = uuidStr, let id = UUID(uuidString: str) else {
+        print("uuid is incomplete or nil")
+        return UUID(uuid: UUID_NULL)
+    }
+    return id
+}
 
 func getVals(fromPoints points: [DataPoint]) -> [CGFloat] {
     var vals: [CGFloat] = []
     for point in points {
-        guard let v = point.pointValue else {
+        guard let v = point.measurementValue else {
             continue
         }
         vals.append(v)
@@ -24,7 +32,7 @@ func getVals(fromPoints points: [DataPoint]) -> [CGFloat] {
 func getVals(fromPoints points: Set<DataPoint>) -> Set<CGFloat> {
     var vals: Set<CGFloat> = []
     for point in points {
-        guard let v = point.pointValue else {
+        guard let v = point.measurementValue else {
             continue
         }
         vals.insert(v)

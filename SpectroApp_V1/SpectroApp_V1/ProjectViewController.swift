@@ -18,7 +18,7 @@ class ProjectViewController: UIViewController, ProjectPresenter {
             guard let label = projectNotesLabel, let p = project else {
                 return
             }
-            label.text = p.projectNotes
+            label.text = p.notes
         }
     }
     
@@ -29,7 +29,7 @@ class ProjectViewController: UIViewController, ProjectPresenter {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        projectNotesLabel.text = project.projectNotes ?? "[no notes]"
+        projectNotesLabel.text = project.notes ?? "[no notes]"
         // Do any additional setup after loading the view.
     }
 
