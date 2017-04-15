@@ -21,7 +21,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             guard let activeProj = activeProject else {
                 return
             }
-            headerView.mainText = activeProj.title ?? "[untitled]"
+            headerView.mainText = activeProj.title
             let formatter = DateFormatter()
             formatter.dateFormat = "MMMM dd, YYYY"
             headerView.subText = Formatter.monDayYr.string(from: activeProj.creationDate! as Date)

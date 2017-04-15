@@ -12,4 +12,10 @@ import CoreData
 @objc(User)
 class User: NSManagedObject {
 
+    var username: String {
+        get {
+            return usernameDB ?? "no username"
+        }
+    }
+    
 }

@@ -38,25 +38,25 @@ class Project: AbsorbanceObject {
         return .older
     }
     
-    var notes: String? {
+    var notes: String {
         get {
-            return notesDB
+            return notesDB ?? "no notes"
         } set {
             notesDB = newValue
         }
     }
     
-    var notebookReference: String? {
+    var notebookReference: String {
         get {
-            return notebookReferenceDB
+            return notebookReferenceDB ?? "no notebook reference"
         } set {
             notebookReferenceDB = newValue
         }
     }
     
-    var title: String? {
+    var title: String {
         get {
-            return titleDB
+            return titleDB ?? "untitled"
         } set {
             titleDB = newValue
         }
