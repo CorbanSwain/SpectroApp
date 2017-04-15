@@ -56,4 +56,5 @@ enum ReadingType: Int16, CustomStringConvertible {
             return self.stringValue.capitalized(with: nil)
         }
     }
+
 }
