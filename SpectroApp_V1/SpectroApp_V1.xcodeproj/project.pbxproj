@@ -44,6 +44,7 @@
 		1C7E718B1E7904120073799D /* AbsorbanceFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E718A1E7904120073799D /* AbsorbanceFunctions.swift */; };
 		1CA6871D1E9D894700B8DD7F /* AbsorbanceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA6871C1E9D894700B8DD7F /* AbsorbanceObject.swift */; };
 		1CA6871F1E9D8BC400B8DD7F /* ManualValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA6871E1E9D8BC400B8DD7F /* ManualValue.swift */; };
+		1CB5D1E91EA2C08F00325AF8 /* FetchedResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB5D1E81EA2C08F00325AF8 /* FetchedResultsTableViewController.swift */; };
 		1CBE942E1E7BDB3E00F3C8F3 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBE942D1E7BDB3E00F3C8F3 /* PopoverViewController.swift */; };
 		1CBE94311E7CF74B00F3C8F3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBE94301E7CF74B00F3C8F3 /* SwiftyJSON.swift */; };
 		1CBE94EB1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBE94EA1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift */; };
@@ -117,6 +118,7 @@
 		1C7E718A1E7904120073799D /* AbsorbanceFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsorbanceFunctions.swift; sourceTree = "<group>"; };
 		1CA6871C1E9D894700B8DD7F /* AbsorbanceObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsorbanceObject.swift; sourceTree = "<group>"; };
 		1CA6871E1E9D8BC400B8DD7F /* ManualValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualValue.swift; sourceTree = "<group>"; };
+		1CB5D1E81EA2C08F00325AF8 /* FetchedResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsTableViewController.swift; sourceTree = "<group>"; };
 		1CBE942D1E7BDB3E00F3C8F3 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		1CBE94301E7CF74B00F3C8F3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		1CBE94EA1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentHeaderView.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 		1C569FF51E79AA7600A9FAD4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1CB5D1E81EA2C08F00325AF8 /* FetchedResultsTableViewController.swift */,
 				1C7E71411E78CA390073799D /* MasterViewController.swift */,
 				1CBE94EC1E8126F200F3C8F3 /* MasterNavigationBar.swift */,
 				1C569FF31E79AA5E00A9FAD4 /* DataViewController.swift */,
@@ -286,13 +289,13 @@
 			children = (
 				1CBE94301E7CF74B00F3C8F3 /* SwiftyJSON.swift */,
 				1C3896AB1E8EF9BF004E9CD6 /* Plot.swift */,
+				1C11C1711EA210BB00AAF534 /* User.swift */,
 				1C3175C21E96F61F008E4DFB /* InstrumentTimeConverter.swift */,
 				1CBE942F1E7CC65A00F3C8F3 /* Absorbance Data */,
 				1C1944671E7B42D0002FB321 /* Bluetooth */,
 				1C7E71461E78CA390073799D /* SpectroApp_V1.xcdatamodeld */,
 				1C7E714E1E78CA390073799D /* Info.plist */,
 				1C7E71491E78CA390073799D /* Assets.xcassets */,
-				1C11C1711EA210BB00AAF534 /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C7E71891E7903790073799D /* DataPoint.swift in Sources */,
+				1CB5D1E91EA2C08F00325AF8 /* FetchedResultsTableViewController.swift in Sources */,
 				1CC097B91E857BBE00655A90 /* CBDataParser.swift in Sources */,
 				1C67FFBB1E9C215E00B6194E /* ExperimentType.swift in Sources */,
 				1C7E71751E78E58E0073799D /* NucDataTableViewCell.swift in Sources */,
