@@ -15,17 +15,17 @@ protocol ProjectPresenter {
 
 class MasterViewController: UIViewController, UIPopoverPresentationControllerDelegate, ProjectChangerDelegate {
     
+    var lastActiveProject: Project? = nil
     var activeProject: Project! {
         didSet {
-            // FIXME: when `activeProject` changes, change the project of the active child ViewController
+            print("didSet active project -- MasterVC")
             guard let activeProj = activeProject else {
+                print("WARNING: just set the active project to nil. --MasterVC")
                 return
             }
+            print("ACTIVE PROJECT: \(activeProj.title)")
             headerView.mainText = activeProj.title
-            let formatter = DateFormatter()
-            formatter.dateFormat = "MMMM dd, YYYY"
             headerView.subText = Formatter.monDayYr.string(from: activeProj.creationDate! as Date)
-            
             guard let projectPresenter = childViewControllers.first as? ProjectPresenter else {
                 print("could not load project presenter")
                 return
@@ -34,8 +34,25 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         }
     }
     
-    func changeProject(to project: Project) {
+    // FIXME: Maybe implement project/view history so back and forward buttons can be used
+    func prepareChange(to project: Project) {
+        print("preparing project change")
+        if lastActiveProject == nil {
+            lastActiveProject = activeProject
+        }
         activeProject = project
+    }
+    
+    func commitChange() {
+        print("commiting change")
+        lastActiveProject = nil
+    }
+    
+    func cancelChange() {
+        // FIXME: in DataVC need to reslect last selected reading
+        print("cancelng change")
+        activeProject = lastActiveProject
+        lastActiveProject = nil
     }
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -113,8 +130,14 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         for dateSection in DateSection.sectionArray {
             print("\(dateSection.header) : \(Formatter.monDayYr.string(from: dateSection.date))")
         }
-        // begin by loading the project view controller
-        add(asChildViewController: projectViewController)
+        // begin by loading the initial view controller
+        let firstViewIndex = 0 // 0, 1, or 2
+        let firstController = viewControllers[firstViewIndex]()
+        add(asChildViewController: firstController)
+        if let projectPresenter = firstController as? ProjectPresenter {
+            print("loading project into child view controller")
+            projectPresenter.loadProject(activeProject)
+        }
 
         // save test data
         do {
@@ -198,9 +221,11 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     }
     
     func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+//        print("--MasterVC.popoverShouldDismiss")
         instrumentAlertView.isGrayedOut = false
         segmentedControl.isEnabled = true
         segmentedControl.tintColor = _UIBlue
+        commitChange()
         return true;
     }
     
@@ -210,10 +235,6 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     ///
     /// - Parameter viewController: the new child view controller
     private func add(asChildViewController viewController: UIViewController) {
-        if let projectPresenter = viewController as? ProjectPresenter {
-            print("loading project into child view controller")
-            projectPresenter.loadProject(activeProject)
-        }
         addChildViewController(viewController)
         
         // add child view as Subview within the containerView
@@ -250,12 +271,16 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     /// - Parameter index: the index of the old view controller in the 
     ///                    ```viewControllers``` array
     private func updateContainerView(from index: Int) {
-        let newController = viewControllers[segmentedControlIndex]
-        let oldController = viewControllers[index]
-        oldController().beginAppearanceTransition(false, animated: true)
-        newController().beginAppearanceTransition(true, animated: true)
-        remove(asChildViewController: oldController())
-        add(asChildViewController: newController())
+        let newController = viewControllers[segmentedControlIndex]()
+        if let projectPresenter = newController as? ProjectPresenter {
+            print("loading project into child view controller  -- MasterVC.updateContainerView")
+            projectPresenter.loadProject(activeProject)
+        }
+        let oldController = viewControllers[index]()
+        oldController.beginAppearanceTransition(false, animated: true)
+        newController.beginAppearanceTransition(true, animated: true)
+        remove(asChildViewController: oldController)
+        add(asChildViewController: newController)
     }
     
     /// Creates a new view controller instance from a view controller

@@ -13,7 +13,14 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
     
     @IBOutlet weak var dataTableView: UITableView!
     
+    var selectionIndexPath: IndexPath? = nil
+    
     var frc: NSFetchedResultsController<Reading>!
+    var didSetupFRC = false
+    
+    var detailViewController: DataDetailViewController {
+        return dataViewController.viewControllers[1] as! DataDetailViewController
+    }
     
     var dataViewController: DataViewController {
         return splitViewController as! DataViewController
@@ -39,18 +46,7 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
         readingCache = p.readingArray
     }
     
-    lazy var numberFormatter: NumberFormatter = {
-        let nf = NumberFormatter()
-        nf.numberStyle = .decimal
-        nf.minimumFractionDigits = 3
-        nf.maximumFractionDigits = 3
-        return nf
-    }()
-    
-    
-    
     // MARK: table view functions
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return frc.sections?[section].numberOfObjects ?? 0
@@ -104,40 +100,79 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
     
     // MARK: segue functions
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "showDetailView") {
-            //self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
-     
-            let dataDetailView = segue.destination as! DataDetailViewController
-            let indexPath = dataTableView.indexPathForSelectedRow! as NSIndexPath
-            dataDetailView.reading = readingCache?[indexPath.row]            
-     
-        }
-     }
-     
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if (segue.identifier == "showDetailView") {
+//            //self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+//     
+//            let dataDetailView = segue.destination as! DataDetailViewController
+//            let indexPath = dataTableView.indexPathForSelectedRow! as NSIndexPath
+//            dataDetailView.reading = readingCache?[indexPath.row]            
+//     
+//        }
+//     }
+    
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "showDetailView", sender: self)
+        //self.performSegue(withIdentifier: "showDetailView", sender: self)
+//        print("indexPath: \(indexPath)  -- DataMasterVC.tableview")
+//        print("reading: \(frc.object(at: indexPath))  -- DataMasterVC.tableview")
+        selectionIndexPath = indexPath
+        detailViewController.reading = frc.object(at: indexPath)
      }
     
-    func setupFRC() {
-        let request: NSFetchRequest<Reading> = Reading.fetchRequest()
-        //let titleKey = "titleDB"
-        //let titleSort = NSSortDescriptor(key: titleKey, ascending: false, selector: #selector(NSString.compare(_:)))
-        let typeKey = "typeDB"
-        let typeSort =  NSSortDescriptor(key: typeKey,  ascending: true, selector: #selector(NSNumber.compare(_:)))
-        request.sortDescriptors = [typeSort]
+    func refreshFRC() {
         
-        // FIXME: maybe `nil` project should be handled differently
-        if let proj = project {
-            request.predicate = NSPredicate(format: "project = %@", proj)
+        guard didSetupFRC else {
+            return
+        }
+        guard let proj = project else {
+            // FIXME: need to do something is no project
+            return
         }
         
+        print("refreshing FRC -- DataMasterVC")
+        frc.fetchRequest.predicate = NSPredicate(format: "project = %@", proj)
+//        setupFRC()
+        do {
+            try frc.performFetch()
+            dataTableView.reloadData()
+            detailViewController.reading = nil
+            if let indexPath = selectionIndexPath {
+                if indexPath.section < (frc.sections?.count ?? 0) {
+                    if indexPath.row < (frc.sections?[indexPath.section].numberOfObjects  ?? 0) {
+                        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+                        tableView.delegate?.tableView?(tableView, didSelectRowAt: indexPath)
+                    }
+                }
+            }
+            
+        } catch let error as NSError {
+            print("Could not perform fetch! -- DataMasterVC\nFETCHING ERROR: \(error), \(error.userInfo)")
+        }
+//        masterVC?.refreshFRC()
+    }
+    
+    func setupFRC() {
+        print("settingup FRC -- DataMasterVC")
+        let request: NSFetchRequest<Reading> = Reading.fetchRequest()
+        let titleKey = "titleDB"
+        let titleSort = NSSortDescriptor(key: titleKey, ascending: true, selector: #selector(NSString.compare(_:)))
+        let typeKey = "typeDB"
+        let typeSort =  NSSortDescriptor(key: typeKey,  ascending: true, selector: #selector(NSNumber.compare(_:)))
+        request.sortDescriptors = [typeSort, titleSort]
+        
+        if let proj = project {
+            request.predicate = NSPredicate(format: "project = %@", proj)
+        } else {
+            // FIXME: maybe `nil` project should be handled differently
+        }
         frc = NSFetchedResultsController(
-            fetchRequest: request,
+            fetchRequest        : request,
             managedObjectContext: AppDelegate.viewContext,
-            sectionNameKeyPath: typeKey,
-            cacheName: nil
+            sectionNameKeyPath  : typeKey,
+            cacheName           : nil
         )
+        frc.delegate = self
+        
     }
     
     // MARK: default functions
@@ -145,12 +180,13 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         setupFRC()
-        frc.delegate = self
         super.tableView = dataTableView
         dataTableView.delegate = self
         dataTableView.dataSource = self
         do {
+           print("fetching data -- DataMasterVC")
             try frc.performFetch()
+            didSetupFRC = true
         } catch let error as NSError {
             print("Could not perform fetch! -- DataMasterVC\nFETCHING ERROR: \(error), \(error.userInfo)")
         }

@@ -10,17 +10,17 @@ import UIKit
 
 class DataViewController: UISplitViewController, ProjectPresenter {
 
+    var masterVC: DataMasterViewController? {
+        guard let masterVC = viewControllers.first as? DataMasterViewController else {
+            print("could not load master VC -- Data VC")
+            return nil
+        }
+        return masterVC
+    }
+    
     var project: Project! {
         didSet {
-            print("didSet project - DataVC")
-            guard let masterVC = viewControllers.first as? DataMasterViewController else {
-                print("could not load master VC -- Data VC")
-                return
-            }
-            if masterVC.dataTableView != nil {
-                masterVC.refreshReadingCache()
-                masterVC.dataTableView.reloadData()
-            }
+            masterVC?.refreshFRC()
         }
     }
 

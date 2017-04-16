@@ -140,7 +140,7 @@
                                             <constraint firstAttribute="height" constant="25" id="5aS-cY-Mgw"/>
                                             <constraint firstAttribute="width" constant="350" id="tN0-Pq-9rj"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="21"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1094,10 +1094,20 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8WA-V9-vMe">
-                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="gun-q8-wTR"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="aZd-8e-tPZ"/>
+                        <barButtonItem key="leftBarButtonItem" title="Done" style="done" id="gun-q8-wTR">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="Ukr-Ns-5Y3" id="NgW-xh-IsE"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="aZd-8e-tPZ">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="Ukr-Ns-5Y3" id="5oF-QA-rTj"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="aZd-8e-tPZ" id="ZhF-ct-683"/>
+                        <outlet property="doneButton" destination="gun-q8-wTR" id="lnq-tb-Si2"/>
                         <outlet property="projectTableView" destination="Zyu-0J-72y" id="5US-0e-XDK"/>
                     </connections>
                 </viewController>

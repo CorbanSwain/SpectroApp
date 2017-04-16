@@ -11,7 +11,9 @@ import CoreData
 
 public var projectChangerDelegateKey = "projChange"
 protocol ProjectChangerDelegate: class {
-    func changeProject(to project: Project)
+    func prepareChange(to project: Project)
+    func commitChange()
+    func cancelChange()
 }
 
 class ProjectsPopoverViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
@@ -23,18 +25,9 @@ class ProjectsPopoverViewController: UIViewController, UITableViewDataSource, UI
     var fetchedResultController: NSFetchedResultsController<Project>!
    
     var projects: [Project]!
-//    var projects: [Project] {
-//        let request: NSFetchRequest<Project> = NSFetchRequest(entityName: "Project")
-//        let sortDescr = NSSortDescriptor(key: "editDate", ascending: false, selector: #selector(NSDate.compare(_:)))
-//        request.sortDescriptors = [sortDescr]
-//        do {
-//            let result = try AppDelegate.viewContext.fetch(request)
-//            return result
-//        } catch {
-//            print("could not fetch projects")
-//            return []
-//        }
-//    }
+
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     
     // MARK: table view functions
@@ -75,7 +68,11 @@ class ProjectsPopoverViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate.changeProject(to: fetchedResultController.object(at: indexPath))
+        delegate.prepareChange(to: fetchedResultController.object(at: indexPath))
+        // FIXME: could add animations here
+        cancelButton.isEnabled = true
+        doneButton.title = "Open"
+        doneButton.tintColor = .green
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -87,11 +84,27 @@ class ProjectsPopoverViewController: UIViewController, UITableViewDataSource, UI
         return 30
     }
 
+    // MARK: Navigation Button Functions
+    
+    @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
+        delegate.commitChange()
+        dismiss()
+    }
+    
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        delegate.cancelChange()
+        dismiss()
+    }
+    
+    func dismiss() {
+        (navigationController as! PopoverNavigationController).dismiss(animated: true, completion: nil)
+    }
     
     // MARK: default functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cancelButton.isEnabled = false
         let request: NSFetchRequest<Project> = Project.fetchRequest()
         let sortDescr1 = NSSortDescriptor(key: "dateSectionDB", ascending: true, selector: #selector(NSNumber.compare(_:)))
         let sortDescr2 = NSSortDescriptor(key: "editDateDB", ascending: false, selector: #selector(NSDate.compare(_:)))

@@ -14,13 +14,12 @@ class DataDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     var reading: Reading? {
         didSet {
-            guard let tableView = detailTableView else {
-                return
-            }
-            tableView.reloadData()
+            dataCache = nil
+            print("reloading table! -- DataDetailVC")
+            detailTableView?.reloadData()
         }
     }
-    // FIXME: use real data
+
     let sections = ["NAME", "TYPE", "POINTS", "BASELINES", "TIMES"]
     var data: Array<[String]> {
         if dataCache == nil {
@@ -48,7 +47,11 @@ class DataDetailViewController: UIViewController, UITableViewDataSource, UITable
             }
             dataCache = [[name],[type],points,baselines,times]
         }
-        return dataCache!
+        guard let cache = dataCache else {
+            print("dataCache somehow still nil after loading in a reading. --DataDetailVC")
+            return []
+        }
+        return cache
     }
     var dataCache: Array<[String]>?
     
