@@ -19,6 +19,7 @@ class ProjectViewController: UIViewController, ProjectPresenter {
     @IBOutlet weak var notebookReference: UILabel!
     @IBOutlet weak var notes: UILabel!
     
+    let noDateStr = "[no date]"
     
     func refreshProject() {
         guard let createdDateLabel = createdDate, let editedDateLabel = editedDate,
@@ -28,11 +29,8 @@ class ProjectViewController: UIViewController, ProjectPresenter {
             return
         }
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMMM dd, YYYY"
-        
-        createdDateLabel.text = Formatter.monDayYr.string(from: p.creationDate! as Date)
-        editedDateLabel.text = Formatter.monDayYr.string(from: p.editDate as Date)
+        createdDateLabel.text = Formatter.monDayYr.string(fromOptional: p.creationDate)
+        editedDateLabel.text = Formatter.monDayYr.string(fromOptional: p.editDate)
         experimentTypeLabel.text = p.experimentType.description
         creatorLabel.text = p.creator?.username
         numberOfSamplesLabel.text = String(p.readings.count)

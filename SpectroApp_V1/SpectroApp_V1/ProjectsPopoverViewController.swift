@@ -67,10 +67,10 @@ class ProjectsPopoverViewController: UIViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "projectCell", for: indexPath) as! ProjectTableViewCell
         let obj = fetchedResultController.object(at: indexPath)
-        cell.titleLabel!.text = obj.title
-        cell.typeLabel!.text = obj.experimentType.description
+        cell.titleLabel?.text = obj.title
+        cell.typeLabel?.text = obj.experimentType.description
         //print(formatter.string(for: formatter.date(from: projectDates[indexPath.row])))
-        cell.dateLabel!.text = Formatter.monDayYr.string(from: obj.editDate)
+        cell.dateLabel?.text = Formatter.monDayYr.string(fromOptional: obj.editDate)
         return cell
     }
     

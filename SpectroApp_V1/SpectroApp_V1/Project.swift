@@ -18,14 +18,10 @@ class Project: AbsorbanceObject {
         return dateSection.header
     }
     
-    var dateSectionInt: String {
-        return dateSection.header
-    }
-    
     var dateSection: DateSection {
-//        guard let editDate = editDate else {
-//            return .undated
-//        }
+        guard let editDate = editDate else {
+            return .undated
+        }
         for section in DateSection.sectionArray {
             print("Section Date: \(Formatter.monDayYr.string(from: section.date)) -- \(Formatter.monDayYr.string(from: editDate)) :Edit Date")
             switch section.date.compare(editDate) {
@@ -107,16 +103,17 @@ class Project: AbsorbanceObject {
     var creationDate: Date? {
         get {
             return creationDateDB as Date?
+        } set {
+            creationDateDB = newValue as NSDate?
         }
     }
     
-    var editDate: Date {
+    var editDate: Date? {
         get {
-            return editDateDB! as Date
+            return editDateDB as Date?
         } set {
-            editDateDB = newValue as NSDate
+            editDateDB = newValue as NSDate?
             dateSectionDB = dateSection.rawValue
-            dateSectionStringDB = dateSection.header
         }
     }
     

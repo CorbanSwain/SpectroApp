@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 class Formatter {
+    static var noDateStr = "[no date]"
+    
     static let monDayYr = dateFmtr("MMM dd, YYYY")
     static let monDayYrHrMin = dateFmtr("MMM dd, YYYY hh:mm a")
     static let hrMin = dateFmtr("hh:mm a")
@@ -42,5 +44,15 @@ class Formatter {
         nf.minimumIntegerDigits = minIntDigits ?? numIntDigits
         nf.maximumIntegerDigits = numIntDigits
         return nf
+    }
+}
+
+extension DateFormatter {
+    func string(fromOptional date: Date?) -> String {
+        if let d = date {
+            return  string(from: d)
+        } else {
+            return Formatter.noDateStr
+        }
     }
 }

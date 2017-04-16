@@ -31,7 +31,6 @@
     <entity name="Project" representedClassName="Project" parentEntity="AbsorbanceObject" syncable="YES" codeGenerationType="category">
         <attribute name="creationDateDB" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateSectionDB" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="dateSectionStringDB" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="editDateDB" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="experimentTypeDB" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="notebookReferenceDB" optional="YES" attributeType="String" syncable="YES"/>
@@ -55,11 +54,11 @@
         <relationship name="projectsDB" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Project" inverseName="creator" inverseEntity="Project" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AbsorbanceObject" positionX="153" positionY="-207" width="128" height="45"/>
+        <element name="AbsorbanceObject" positionX="153" positionY="-207" width="128" height="43"/>
         <element name="DataPoint" positionX="214" positionY="-55" width="128" height="178"/>
         <element name="InstrumentDataPoint" positionX="378" positionY="-117" width="128" height="180"/>
         <element name="ManualValue" positionX="376" positionY="101" width="128" height="88"/>
-        <element name="Project" positionX="-137" positionY="-46" width="128" height="193"/>
+        <element name="Project" positionX="-137" positionY="-46" width="128" height="178"/>
         <element name="Reading" positionX="43" positionY="-0" width="128" height="118"/>
         <element name="User" positionX="-135" positionY="152" width="128" height="118"/>
     </elements>
