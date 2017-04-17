@@ -8,17 +8,22 @@
 
 import UIKit
 
-class AddPopoverViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AddPopoverViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
 
     @IBOutlet weak var newProjectTableView: UITableView!
     
+    weak var delegate: ProjectChangerDelegate!
+    
     let labels = ["Project Title", "Notes", "Notebook Reference", "Experiment Type"]
-    let experimentTypes = ["Bradford Assay", "Cell Density", "Nuecleic Acid Concentration", "Unknown Exp."]
+    
+    // FIXME: don't us indices to get the experiment type
+    var experimentType = 0
     
     
     @IBAction func createButtonPressed(_ sender: UIBarButtonItem)  {
         let project = Project()
-        // FIXME: set the project properties based on the text field inputs
+        
+        // set the project properties based on the text field inputs
         var cell =  newProjectTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! AddProjectTableViewCell
         project.title = cell.textInput.text!
         
@@ -28,11 +33,16 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
         cell =  newProjectTableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! AddProjectTableViewCell
         project.notebookReference = cell.textInput.text!
         
-        //cell = newProjectTableView.cellForRow(at: IndexPath(row: 3, section: 0)) as! AddProjectTypeTableViewCell
-        //project.experimentType = ExperimentType(rawValue: Int16(rand(1,3))) //FIXME make this a dropdown and use the index selected
+        project.experimentType = ExperimentType(rawValue: Int16(experimentType))!
         
-        // try? AppDelegate.viewContext.save()
-        // FIXME: set the new project as the active project
+        project.editDate = Date()
+        
+        // save the project
+        try? AppDelegate.viewContext.save()
+        
+        // set the new project as the active project
+        delegate.prepareChange(to: project)
+        delegate.commitChange()
         dismiss()
     }
     
@@ -65,9 +75,57 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "addProjectTypeCell", for: indexPath) as! AddProjectTypeTableViewCell
             cell.titleLabel.text = labels[indexPath.row]
+            
+            cell.experimentTypePicker.delegate = self
+            cell.experimentTypePicker.dataSource = self
+            
             return cell
         }
         
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row != 3 {
+            return 50
+        }
+        else {
+            return 100
+        }
+
+    }
+    
+    
+    // MARK: picker view functions
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return ExperimentType.allTypeStrings.count
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        // FIXME: use the actual ExperimentTypes
+        experimentType = row + 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var label: UILabel
+        
+        if let view = view as? UILabel {
+            label = view
+        } else {
+            label = UILabel()
+        }
+        
+        label.textColor = .black
+        label.textAlignment = .center
+        label.font = UIFont(name: "SanFranciscoText-Light", size: 15)
+        
+        label.text = ExperimentType.allTypeStrings[row]
+        
+        return label
     }
     
     
@@ -76,9 +134,6 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         newProjectTableView.delegate = self
         newProjectTableView.dataSource = self
-        
-        //myPicker.dataSource = self
-        //myPicker.delegate = self
         
         // Do any additional setup after loading the view.
     }

@@ -12,7 +12,7 @@ enum ExperimentType: Int16, CustomStringConvertible  {
     case noType = 0
     case bradford = 1
     case cellDensity = 2
-    case nuecleicAcid = 3
+    case nucleicAcid = 3
     
     var wavelength: Wavelength {
         switch self {
@@ -20,7 +20,7 @@ enum ExperimentType: Int16, CustomStringConvertible  {
             return ._595
         case .cellDensity:
             return ._560
-        case .nuecleicAcid:
+        case .nucleicAcid:
             return ._280
         case .noType:
             return .unknown
@@ -33,10 +33,23 @@ enum ExperimentType: Int16, CustomStringConvertible  {
             return "Bradford Assay"
         case .cellDensity:
             return "Cell Density"
-        case .nuecleicAcid:
-            return "Nuecleic Acid Concentration"
+        case .nucleicAcid:
+            return "Nucleic Acid Concentration"
         case .noType:
             return "Unknown Exp."
         }
     }
+    
+    static var allTypes: [ExperimentType] {
+        return [.bradford, .cellDensity, .nucleicAcid]
+    }
+    
+    static var allTypeStrings: [String] {
+        var array: [String] = []
+        for type in allTypes {
+            array.append(type.description)
+        }
+        return array
+    }
+
 }
