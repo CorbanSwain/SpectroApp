@@ -119,8 +119,7 @@ class ProjectsPopoverViewController: FetchedResultsTableViewController, UITableV
         )
         frc.delegate = self
     }
-    
-    func 
+
     
     // MARK: default functions
     
