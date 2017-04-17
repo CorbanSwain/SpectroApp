@@ -63,7 +63,6 @@ class ProjectsPopoverViewController: FetchedResultsTableViewController, UITableV
         let obj = frc.object(at: indexPath)
         cell.titleLabel?.text = obj.title
         cell.typeLabel?.text = obj.experimentType.description
-        //print(formatter.string(for: formatter.date(from: projectDates[indexPath.row])))
         cell.dateLabel?.text = Formatter.monDayYr.string(fromOptional: obj.editDate)
         return cell
     }

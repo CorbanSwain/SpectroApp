@@ -44,6 +44,11 @@ class PopoverNavigationController: UINavigationController {
             projectsVC.delegate = delegates[projectChangerDelegateKey]! as! ProjectChangerDelegate
             break
             
+        case "popover.segue.add":
+            let projectsVC = segue.destination as! AddPopoverViewController
+            projectsVC.delegate = delegates[projectChangerDelegateKey]! as! ProjectChangerDelegate
+            break
+            
         default:
             break
         }

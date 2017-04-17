@@ -205,7 +205,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
 
         case "master.segue.addPop":
             let popoverVC = segue.destination as! PopoverNavigationController
-            // set delegates
+            popoverVC.delegates[projectChangerDelegateKey] = self as ProjectChangerDelegate
             popoverVC.performSegue(withIdentifier: "popover.segue.add", sender: popoverVC)
             // FIXME: need to more smoothly gray out the segmented control, figure out how to change passthrough views
             segmentedControl.isEnabled = false
