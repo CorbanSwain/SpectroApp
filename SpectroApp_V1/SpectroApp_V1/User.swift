@@ -15,6 +15,8 @@ class User: NSManagedObject {
     var username: String {
         get {
             return usernameDB ?? "no username"
+        } set {
+            usernameDB = newValue
         }
     }
     

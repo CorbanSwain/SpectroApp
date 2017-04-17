@@ -16,14 +16,15 @@ protocol ProjectChangerDelegate: class {
     func cancelChange()
 }
 
-class ProjectsPopoverViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
+class ProjectsPopoverViewController: FetchedResultsTableViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var projectTableView: UITableView!
 
     
     weak var delegate: ProjectChangerDelegate!
     
-    var fetchedResultController: NSFetchedResultsController<Project>!
-   
+    var frc: NSFetchedResultsController<Project>!
+    var didSetupFRC = false
+    
     var projects: [Project]!
 
     @IBOutlet weak var doneButton: UIBarButtonItem!
@@ -33,18 +34,18 @@ class ProjectsPopoverViewController: UIViewController, UITableViewDataSource, UI
     // MARK: table view functions
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        print(fetchedResultController ?? "no controller")
-        print("num sections: \(fetchedResultController.sections?.count ?? -9999)")
-        return fetchedResultController.sections?.count ?? 0
+//        print(fetchedResultController ?? "no controller")
+//        print("num sections: \(fetchedResultController.sections?.count ?? -9999)")
+        return frc.sections?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return self.projects.count
-        if let sections =  fetchedResultController.sections, sections.count > 0 {
-            print("Some number of rows: \(sections[section].numberOfObjects)")
+        if let sections =  frc.sections, sections.count > 0 {
+//            print("Some number of rows: \(sections[section].numberOfObjects)")
             return sections[section].numberOfObjects
         } else {
-            print("no rows!")
+//            print("no rows!")
             return 0
         }
     }
@@ -59,7 +60,7 @@ class ProjectsPopoverViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "projectCell", for: indexPath) as! ProjectTableViewCell
-        let obj = fetchedResultController.object(at: indexPath)
+        let obj = frc.object(at: indexPath)
         cell.titleLabel?.text = obj.title
         cell.typeLabel?.text = obj.experimentType.description
         //print(formatter.string(for: formatter.date(from: projectDates[indexPath.row])))
@@ -68,15 +69,15 @@ class ProjectsPopoverViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate.prepareChange(to: fetchedResultController.object(at: indexPath))
+        delegate.prepareChange(to: frc.object(at: indexPath))
         // FIXME: could add animations here
         cancelButton.isEnabled = true
         doneButton.title = "Open"
-        doneButton.tintColor = .green
+//        doneButton.tintColor = .green
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let a = Int16(Formatter.intNum.number(from: (fetchedResultController.sections?[section].name)!)!)
+        let a = Int16(Formatter.intNum.number(from: (frc.sections?[section].name)!)!)
         return DateSection(rawValue: a)!.header
     }
     
@@ -100,23 +101,43 @@ class ProjectsPopoverViewController: UIViewController, UITableViewDataSource, UI
         (navigationController as! PopoverNavigationController).dismiss(animated: true, completion: nil)
     }
     
+    // MARK: Feteched Result Controller Functions
+    
+    func setupFRC() {
+        let request: NSFetchRequest<Project> = Project.fetchRequest()
+        // FIXME: add keys and sort descriptors to each class
+        let dateSectionKey = "dateSectionDB"
+        let dateSectionSort = NSSortDescriptor(key: dateSectionKey, ascending: true, selector: #selector(NSNumber.compare(_:)))
+        let editDateKey = "editDateDB"
+        let editDateSort = NSSortDescriptor(key: editDateKey, ascending: false, selector: #selector(NSDate.compare(_:)))
+        request.sortDescriptors = [dateSectionSort, editDateSort]
+        frc = NSFetchedResultsController<Project>(
+            fetchRequest        : request,
+            managedObjectContext: AppDelegate.viewContext,
+            sectionNameKeyPath  : dateSectionKey,
+            cacheName           : nil
+        )
+        frc.delegate = self
+    }
+    
+    func 
+    
     // MARK: default functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView = projectTableView
         cancelButton.isEnabled = false
-        let request: NSFetchRequest<Project> = Project.fetchRequest()
-        let sortDescr1 = NSSortDescriptor(key: "dateSectionDB", ascending: true, selector: #selector(NSNumber.compare(_:)))
-        let sortDescr2 = NSSortDescriptor(key: "editDateDB", ascending: false, selector: #selector(NSDate.compare(_:)))
-        request.sortDescriptors = [sortDescr1, sortDescr2]
-        fetchedResultController = NSFetchedResultsController<Project>(
-            fetchRequest        : request,
-            managedObjectContext: AppDelegate.viewContext,
-            sectionNameKeyPath  : "dateSectionDB",
-            cacheName           : nil)
+        setupFRC()
+        // FIXME: maybe add perfetch to its own function...implement in super class
+        do {
+            print("fetching data -- ProjectPopoverVC")
+            try frc.performFetch()
+            didSetupFRC = true
+        } catch let error as NSError {
+            print("Could not perform fetch! -- ProjectPopoverVC\nFETCHING ERROR: \(error), \(error.userInfo)")
+        }
         
-        fetchedResultController.delegate = self
-        try? fetchedResultController.performFetch()
         projectTableView.delegate = self
         projectTableView.dataSource = self
     }
