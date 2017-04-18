@@ -116,7 +116,7 @@
                         <barButtonItem width="64" style="plain" systemItem="fixedSpace" id="XmA-I3-wM1"/>
                         <barButtonItem title="Export" id="rNA-2m-gbH">
                             <connections>
-                                <segue destination="A9Y-9Q-rTs" kind="popoverPresentation" popoverAnchorBarButtonItem="rNA-2m-gbH" id="QdE-jr-Xwl">
+                                <segue destination="A9Y-9Q-rTs" kind="popoverPresentation" identifier="master.segue.exportPop" popoverAnchorBarButtonItem="rNA-2m-gbH" id="QdE-jr-Xwl">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
@@ -797,6 +797,9 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="250" height="300"/>
+                    <connections>
+                        <outlet property="fileNameText" destination="VOc-Iz-QmF" id="Crm-Ms-CUq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fhi-RZ-hXC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
