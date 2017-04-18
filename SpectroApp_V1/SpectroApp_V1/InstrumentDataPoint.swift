@@ -36,16 +36,16 @@ class InstrumentDataPoint: AbsorbanceObject {
     
     var instrumentID: UUID {
         get {
-            return uuidCreator(uuidDB)
+            return UUID(stringOptional: instrumentIDDB)
         }
         set {
-            uuidDB = newValue.uuidString
+            instrumentIDDB = newValue.uuidString
         }
     }
     
     var connectionSessionID: UUID {
         get {
-            return uuidCreator(uuidDB)
+            return UUID(stringOptional: connectionSessionIDDB)
         } set {
             connectionSessionIDDB = newValue.uuidString
         }
@@ -61,7 +61,7 @@ class InstrumentDataPoint: AbsorbanceObject {
     
     var uuid: UUID {
         get {
-            return uuidCreator(uuidDB)
+            return UUID(stringOptional: uuidDB)
         } set {
             uuidDB = newValue.uuidString
         }

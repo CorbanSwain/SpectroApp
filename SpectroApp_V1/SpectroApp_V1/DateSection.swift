@@ -36,7 +36,7 @@ enum DateSection: Int16 {
             return DateSection.adjustDate(date: DateSection.today.date, y: 0, mo: 0, d: -1)
         case .thisWeek:
             let components2 = Calendar.current.dateComponents([.year, .month, .weekOfYear, .weekOfMonth], from: date)
-            return DateSection.adjustDate(date: Calendar.current.date(from: components2)!, y: 0, mo: 0, d: 0, w: 1)
+            return DateSection.adjustDate(date: Calendar.current.date(from: components2)!, y: 0, mo: 0, d: 0, w: 2)
         case .lastWeek:
             return DateSection.adjustDate(date: DateSection.thisWeek.date, y: 0, mo: 0, d: 0, w: -1)
         case .thisMonth:
@@ -49,7 +49,8 @@ enum DateSection: Int16 {
         case .threeMonthsAgo:
             return DateSection.adjustDate(date: DateSection.twoMonthsAgo.date, y: 0, mo: -1, d: 0)
         case .thisYear:
-            return DateSection.setDate(date: DateSection.today.date, y: nil, mo: 1, d: 1)
+            let components4 = Calendar.current.dateComponents([.year], from: date)
+            return Calendar.current.date(from: components4)!
         case .lastYear:
             return DateSection.adjustDate(date: DateSection.thisYear.date, y: -1, mo: 0, d: 0)
         case .twoYearsAgo:

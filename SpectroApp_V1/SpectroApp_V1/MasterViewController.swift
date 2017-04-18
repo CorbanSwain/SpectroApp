@@ -13,21 +13,25 @@ protocol ProjectPresenter {
     func loadProject(_ project: Project)
 }
 
-class MasterViewController: UIViewController, UIPopoverPresentationControllerDelegate, ProjectChangerDelegate {
+class MasterViewController: UIViewController, UIPopoverPresentationControllerDelegate, ProjectChangerDelegate, DatabaseDelegate {
     
     var lastActiveProject: Project? = nil
     var activeProject: Project! {
         didSet {
-            print("didSet active project -- MasterVC")
+            guard oldValue != activeProject else {
+                // same project
+                return
+            }
+//            print("didSet active project -- MasterVC")
             guard let activeProj = activeProject else {
                 print("WARNING: just set the active project to nil. --MasterVC")
                 return
             }
-            print("ACTIVE PROJECT: \(activeProj.title)")
+            print("Set `activeProject` to: \(activeProj.title)\n\t↳ MasterVC.activeProject-didSet")
             headerView.mainText = activeProj.title
             headerView.subText = Formatter.monDayYr.string(from: activeProj.creationDate! as Date)
             guard let projectPresenter = childViewControllers.first as? ProjectPresenter else {
-                print("could not load project presenter")
+                print("could not load project presenter\n\t↳ MasterVC.activeProject-didSet")
                 return
             }
             projectPresenter.loadProject(activeProj)
@@ -114,7 +118,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         viewControllers.append({ return self.projectViewController })
         viewControllers.append({ return self.dataViewController })
         viewControllers.append({ return self.plotViewController })
-    
+        
         //create test data
         TestDataGenerator.initialDate = Date()
         TestDataGenerator.numReadings = 40
@@ -128,7 +132,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
 //        
         
         for dateSection in DateSection.sectionArray {
-            print("\(dateSection.header) : \(Formatter.monDayYr.string(from: dateSection.date))")
+            print("\(dateSection.header) : \(Formatter.monDayYrHrMin.string(from: dateSection.date))")
         }
         // begin by loading the initial view controller
         let firstViewIndex = 0 // 0, 1, or 2
@@ -149,6 +153,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         
         // instantiate bluetooth manager..begins scanning if BLE is on
         bluetoothManager = CBInstrumentCentralManager(withReporter: instrumentAlertView)
+        bluetoothManager.databaseDelegate = self
         
         // setup instrument alert view
         instrumentAlertView.setup()
@@ -164,6 +169,22 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         
     }
 
+    // MARK: - Database Delegate Functions
+    func add(dataPoint: DataPoint) {
+        let reading = Reading(fromDataPoints: [dataPoint])
+        reading.project = activeProject
+        
+        do {
+            try AppDelegate.viewContext.save()
+            print("saved")
+        } catch let error as NSError {
+            print("Could not save.\nSAVING ERROR: \(error), \(error.userInfo)")
+        }
+        
+    }
+    //------------------------------------
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

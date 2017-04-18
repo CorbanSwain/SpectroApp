@@ -19,19 +19,11 @@ class Project: AbsorbanceObject {
     }
     
     var dateSection: DateSection {
-        guard let editDate = editDate else {
-            return .undated
+        get {
+            return DateSection(rawValue: dateSectionDB) ?? .undated
+        } set {
+            dateSectionDB = dateSection.rawValue
         }
-        for section in DateSection.sectionArray {
-            print("Section Date: \(Formatter.monDayYr.string(from: section.date)) -- \(Formatter.monDayYr.string(from: editDate)) :Edit Date")
-            switch section.date.compare(editDate) {
-            case .orderedAscending, .orderedSame:
-                return DateSection(rawValue: section.rawValue) ?? .undated
-            default:
-                continue
-            }
-        }
-        return .older
     }
     
     var notes: String {
@@ -113,7 +105,7 @@ class Project: AbsorbanceObject {
             return editDateDB as Date?
         } set {
             editDateDB = newValue as NSDate?
-            dateSectionDB = dateSection.rawValue
+            refreshDateSection()
         }
     }
     
@@ -126,5 +118,34 @@ class Project: AbsorbanceObject {
     convenience init(withTitle title: String) {
         self.init()
         self.title = title
+    }
+    
+    func refreshDateSection() {
+        guard let editDate = editDate else {
+            dateSection = .undated
+            return
+        }
+        for section in DateSection.sectionArray {
+            // print("Section Date: \(Formatter.monDayYr.string(from: section.date)) -- \(Formatter.monDayYrHrMin.string(from: editDate)) :Edit Date")
+            switch section.date.compare(editDate) {
+            case .orderedAscending, .orderedSame:
+                dateSection = DateSection(rawValue: section.rawValue) ?? .undated
+                return
+            default:
+                continue
+            }
+        }
+        dateSection = .older
+    }
+    
+    class func refreshAllDateSections() {
+        let request: NSFetchRequest<Project> = fetchRequest()
+        do {
+            let allProjects = try AppDelegate.viewContext.fetch(request) 
+            print("Refreshing all date sections.\n\t↳ Project.refreshAllDateSections()")
+            for proj in allProjects { proj.refreshDateSection() }
+        } catch let error as NSError {
+            print("ERROR: Could not fetch all projects. --> Description: \(error.debugDescription)\n\t↳ Project.refreshAllDateSections()")
+        }
     }
 }

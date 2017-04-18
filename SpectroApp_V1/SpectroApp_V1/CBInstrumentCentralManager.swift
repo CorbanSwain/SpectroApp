@@ -319,8 +319,6 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
         dataParser.parse(data, fromPeripheral: peripheral, fromCharachteristic: characteristic)
     }
     
-    
-    
     // -----------------------------------------------------------------------
     // MARK: - Data Parser & Delegate Functions
     // ----------------------------------------------------------------------
@@ -334,9 +332,12 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
     internal func dataParser(_ dataParser: CBDataParser, didRecieveObject parsedObject: Any, withTag tag: CBDataParser.ParsingTag, fromPeripheral peripheral: CBPeripheral, fromCharachteristic charachteristic: CBCharacteristic) {
         switch parsedObject {
         case let instrumentDP as InstrumentDataPoint:
-            print("BLE:_Just got a data point!\n    --> \(instrumentDP)")
+            instrumentDP.connectionSessionID = connectionSessionID ?? UUID(uuid: UUID_NULL)
+            instrumentDP.instrumentID = connectedPeripheral?.identifier ?? UUID(uuid: UUID_NULL)
+            print("BLE:_Just got a data point! --> \(instrumentDP)\n\t↳ CBInstrumentCentraolManager.dataParser(_:didRecieveObject:...)")
             if let tc = timeConverter {
                 let dp = DataPoint(fromIDP: instrumentDP, usingTimeConverter: tc)
+                print("BLE:_Just converted instrumentDP to DataPoint! --> \(dp)\n\t↳ CBInstrumentCentraolManager.dataParser(_:didRecieveObject:...)")
                 if let delegate = databaseDelegate {
                     delegate.add(dataPoint: dp)
                 } else {
@@ -347,6 +348,7 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
             }
             
         case let instrumentMillis as UInt32:
+//            print("BLE:_just got a timestamp! --> \(instrumentMillis)\n\t↳ CBInstrumentCentraolManager.dataParser(_:didRecieveObject:...)")
             timeConverter = InstrumentTimeConverter(instrumentMillis: instrumentMillis)
         default:
             print("BLE:_Recieved an object, but it was of an unknown type.")

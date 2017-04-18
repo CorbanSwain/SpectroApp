@@ -59,8 +59,8 @@ class CBDataParser {
         
         switch t {
         case .dataPoint:
-            //return json.instrumentDataPointValue
-            return nil
+            return json.instrumentDataPointValue
+//            return nil
         case .instrumentInfo:
             // FIX ME!!!
             return nil
@@ -82,15 +82,15 @@ class CBDataParser {
             // FIXME, need to handle potentially incomplete string i.e. "<T{.....}" where there is no closing char, '>'
             switch char {
             case openingChar:
-                print("BLE:_JSON String has begun ...")
+                print("BLE:_JSON String has begun ...\n\t↳ CBDataParser.parse")
                 jsonString = ""
                 parseStatus = .recievingTag
             case closingChar:
-                print("BLE:_JSON String has ended.")
-//                print("BLE:_ --> \(jsonString)")
+                print("BLE:_JSON String has ended.\n\t↳ CBDataParser.parse")
+                print("BLE:_JSON String: --> \(jsonString)\n\t↳ CBDataParser.parse")
                 parseStatus = .calm
                 guard let object = parsedObject else {
-                    print("BLE:_ERROR: Object could not be created from jsonString!")
+                    print("BLE:_ERROR: Object could not be created from jsonString!\n\t↳ CBDataParser.parse")
                     return
                 }
                 delegate?.dataParser(self, didRecieveObject: object, withTag: tag!, fromPeripheral: peripheral, fromCharachteristic: charachteristic)
