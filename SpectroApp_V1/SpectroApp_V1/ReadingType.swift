@@ -9,7 +9,7 @@
 import Foundation
 
 enum ReadingType: Int16, CustomStringConvertible {
-    static var numTypes = 8
+    static var numTypes = 9
     
     case control = 1
     case standard = 2
@@ -18,6 +18,7 @@ enum ReadingType: Int16, CustomStringConvertible {
     case wildType = 5
     case mutant = 6
     case custom = 7
+    case blank = 8
     case noType = 0
     
     private var stringValue: String {
@@ -30,6 +31,7 @@ enum ReadingType: Int16, CustomStringConvertible {
         case .mutant: return "mutant"
         case .custom: return "custom"
         case .noType: return "[no type]"
+        case .blank: return "blank"
         }
     }
     
