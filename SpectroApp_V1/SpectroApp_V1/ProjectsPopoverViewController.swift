@@ -124,6 +124,7 @@ class ProjectsPopoverViewController: FetchedResultsTableViewController, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Project.refreshAllDateSections()
         tableView = projectTableView
         cancelButton.isEnabled = false
         setupFRC()

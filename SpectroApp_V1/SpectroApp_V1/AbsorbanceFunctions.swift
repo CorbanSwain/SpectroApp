@@ -9,13 +9,15 @@
 import UIKit
 import Darwin
 
-let uuidCreator: (String?) -> UUID = {
-    uuidStr in
-    guard let str = uuidStr, let id = UUID(uuidString: str) else {
-        print("uuid is incomplete or nil")
-        return UUID(uuid: UUID_NULL)
+extension UUID {
+    init(stringOptional uuidStr: String?) {
+        guard let str = uuidStr, let newID = UUID(uuidString: str) else {
+            print("uuid passed is incomplete or nil \n\t↳UUID.init(stringOptional:)")
+            self.init(uuid: UUID_NULL)
+            return
+        }
+        self.init(uuid: newID.uuid)
     }
-    return id
 }
 
 func getVals(fromPoints points: [DataPoint]) -> [CGFloat] {
