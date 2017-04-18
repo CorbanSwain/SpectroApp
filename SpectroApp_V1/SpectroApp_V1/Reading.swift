@@ -89,6 +89,65 @@ class Reading: AbsorbanceObject {
         return result
     }
     
+    
+    var calibrationPoints: Set<DataPoint> {
+        get {
+            guard let points = calibrationPointsDB as? Set<DataPoint> else {
+                return []
+            }
+            return points
+        } set {
+            for point in newValue {
+                point.reading = self
+            }
+            dataPointsDB = newValue as NSSet?
+        }
+    }
+    
+    var calibrationPointArray: [DataPoint] {
+        get {
+            return dataPoints.sorted(by: {
+                guard let t1 = $0.timestamp, let t2 = $1.timestamp else {
+                    return true
+                }
+                switch t1.compare(t2) {
+                case .orderedDescending:
+                    return true
+                default:
+                    return false
+                }
+            })
+        } set {
+            dataPoints = []
+            for point in newValue {
+                addToCalibrationPointsDB(point)
+                point.reading = self
+            }
+        }
+    }
+    
+    var isEmptyCalibration: Bool { return calibrationPoints.count < 1 }
+    var hasRepeatsCalibration: Bool { return calibrationPoints.count > 1 }
+    var absorbanceValueCalibration: CGFloat? { return average(ofPoints: calibrationPoints) }
+    var stdDevCalibration: CGFloat? { return stdev(ofPoints: calibrationPoints) }
+    
+    var calibrationPointsStringArray: [String] {
+        var result: [String] = []
+        for point in calibrationPointArray {
+            guard let val = point.measurementValue as NSNumber? else {
+                continue
+            }
+            let numStr = Formatter.threeDecNum.string(from: val)
+            result.append(numStr ?? "???")
+        }
+        return result
+    }
+
+
+    
+    
+    
+    
     convenience init() {
         self.init(context: AppDelegate.viewContext)
     }

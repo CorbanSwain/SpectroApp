@@ -14,6 +14,8 @@ class Formatter {
     
     static let monDayYr = dateFmtr("MMM dd, YYYY")
     static let monDayYrHrMin = dateFmtr("MMM dd, YYYY hh:mm a")
+    static let monDayYrExcel = dateFmtr("MM/dd/YYYY")
+    static let monDayYrHrMinExcel = dateFmtr("MM/dd/YYYY HH:mm")
     static let hrMin = dateFmtr("hh:mm a")
     static let sorting = dateFmtr("YYYYMMddHHmm")
     
@@ -26,6 +28,7 @@ class Formatter {
         return dateFmtr(format).string(from: date)
     }
     
+    static let tenDecNum = numFmtr(numDecimals: 10)
     static let threeDecNum = numFmtr(numDecimals: 3)
     static let fourDigNum = numFmtr(numIntDigits: 4)
     static let twoDigNum = numFmtr(numIntDigits: 2)
@@ -53,6 +56,16 @@ extension DateFormatter {
             return  string(from: d)
         } else {
             return Formatter.noDateStr
+        }
+    }
+}
+
+extension NumberFormatter {
+    func string(fromOptional num: NSNumber?) -> String? {
+        if let n = num {
+            return  string(from: n)
+        } else {
+            return nil
         }
     }
 }
