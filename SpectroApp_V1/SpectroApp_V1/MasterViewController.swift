@@ -36,7 +36,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     
     // FIXME: Maybe implement project/view history so back and forward buttons can be used
     func prepareChange(to project: Project) {
-        print("preparing project change")
+        print("preparing project change -- MasterVC.preppareChange")
         if lastActiveProject == nil {
             lastActiveProject = activeProject
         }
@@ -44,13 +44,13 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     }
     
     func commitChange() {
-        print("commiting change")
+        print("commiting change -- MasterVC.preppareChange")
         lastActiveProject = nil
     }
     
     func cancelChange() {
         // FIXME: in DataVC need to reslect last selected reading
-        print("cancelng change")
+        print("cancelng change -- MasterVC.preppareChange")
         activeProject = lastActiveProject
         lastActiveProject = nil
     }
