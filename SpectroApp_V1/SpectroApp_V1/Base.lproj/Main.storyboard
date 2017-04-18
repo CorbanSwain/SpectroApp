@@ -769,21 +769,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export Your Project" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9g-ht-AtN">
-                                <rect key="frame" x="58.5" y="112" width="133" height="77"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="133" id="QiX-4U-8Ef"/>
-                                    <constraint firstAttribute="height" constant="77" id="hDa-fk-SFV"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="23"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="File Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VOc-Iz-QmF">
+                                <rect key="frame" x="77" y="40" width="97" height="30"/>
                                 <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eez-nn-33N">
+                                <rect key="frame" x="102" y="95" width="46" height="30"/>
+                                <state key="normal" title="Export"/>
+                                <connections>
+                                    <action selector="writeDataWithSender:" destination="A9Y-9Q-rTs" eventType="touchUpInside" id="RZk-hu-7lL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="g9g-ht-AtN" firstAttribute="centerX" secondItem="YfF-hA-paq" secondAttribute="centerX" id="6kb-dI-fuS"/>
-                            <constraint firstItem="g9g-ht-AtN" firstAttribute="centerY" secondItem="YfF-hA-paq" secondAttribute="centerY" id="cl8-38-9qA"/>
+                            <constraint firstItem="VOc-Iz-QmF" firstAttribute="centerX" secondItem="YfF-hA-paq" secondAttribute="centerX" id="BTA-eW-fHU"/>
+                            <constraint firstItem="VOc-Iz-QmF" firstAttribute="top" secondItem="LvN-a6-TsA" secondAttribute="bottom" constant="40" id="HSV-uj-EQX"/>
+                            <constraint firstItem="eez-nn-33N" firstAttribute="top" secondItem="VOc-Iz-QmF" secondAttribute="bottom" constant="25" id="VZc-pw-uMk"/>
+                            <constraint firstItem="VOc-Iz-QmF" firstAttribute="leading" secondItem="YfF-hA-paq" secondAttribute="leadingMargin" constant="61" id="ezT-d9-INU"/>
+                            <constraint firstItem="VOc-Iz-QmF" firstAttribute="centerX" secondItem="eez-nn-33N" secondAttribute="centerX" id="u0t-F0-SLh"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
