@@ -235,6 +235,9 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             
             break
         case "master.segue.exportPop":
+            let exportVC = segue.destination as! ExportPopoverViewController
+            exportVC.project = activeProject
+            
             break
         default:
             break
