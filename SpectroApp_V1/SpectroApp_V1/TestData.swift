@@ -27,7 +27,7 @@ class TestDataGenerator {
     static func createProject() -> Project {
         let proj = Project()
         proj.experimentType = ExperimentType(rawValue: Int16(rand(1,3))) ?? .noType
-        proj.editDate = Date().addingTimeInterval(-(Double)(rand(0,9_000_000)))
+        proj.editDate = Date().addingTimeInterval(-(Double)(rand(0,20_000_000)))
         proj.title =  proj.experimentType.description + " " + randWords(3)
         proj.notes = randWords(15, sentence: true) + " " + randWords(10, sentence: true) + " " + randWords(20, sentence: true) + " " + randWords(17, sentence: true)
         //proj.notes = "hi"

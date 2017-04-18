@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7q6-yb-OqE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7q6-yb-OqE">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -181,6 +181,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="ss1-BV-WWC" id="hKX-uE-Nl3"/>
+                        <outlet property="exportButton" destination="rNA-2m-gbH" id="ym2-8z-dhS"/>
                         <outlet property="headerView" destination="DJV-Rr-pN1" id="c13-1M-r1f"/>
                         <outlet property="instrumentAlertView" destination="rse-Qf-Bns" id="zwO-Xc-e8U"/>
                         <outlet property="instrumentButton" destination="b3a-Or-61N" id="OSF-vK-pQI"/>
@@ -766,17 +767,17 @@
                         <viewControllerLayoutGuide type="bottom" id="QBY-wT-sAi"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YfF-hA-paq">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="File Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VOc-Iz-QmF">
-                                <rect key="frame" x="77" y="40" width="97" height="30"/>
+                                <rect key="frame" x="81" y="40" width="238" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eez-nn-33N">
-                                <rect key="frame" x="102" y="95" width="46" height="30"/>
+                                <rect key="frame" x="176.5" y="95" width="46" height="30"/>
                                 <state key="normal" title="Export"/>
                                 <connections>
                                     <action selector="writeDataWithSender:" destination="A9Y-9Q-rTs" eventType="touchUpInside" id="RZk-hu-7lL"/>
@@ -792,18 +793,19 @@
                             <constraint firstItem="VOc-Iz-QmF" firstAttribute="centerX" secondItem="eez-nn-33N" secondAttribute="centerX" id="u0t-F0-SLh"/>
                         </constraints>
                     </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="400" height="450"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="250" height="300"/>
+                    <size key="freeformSize" width="400" height="500"/>
                     <connections>
                         <outlet property="fileNameText" destination="VOc-Iz-QmF" id="Crm-Ms-CUq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fhi-RZ-hXC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1719" y="2183"/>
+            <point key="canvasLocation" x="1721" y="2260"/>
         </scene>
         <!--Popover Navigation Controller-->
         <scene sceneID="RUU-Kd-FAp">

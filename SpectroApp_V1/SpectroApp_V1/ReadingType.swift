@@ -36,13 +36,15 @@ enum ReadingType: Int16, CustomStringConvertible {
     }
     
     static var allTypes: Set<ReadingType> {
-        return [.control, .standard, .unknown, .wildType, .mutant, .custom]
+        return [.control, .known, .standard, .unknown, .wildType, .mutant, .custom, .blank]
     }
     
     init(fromString string: String) {
         for type in ReadingType.allTypes {
+//            print("\(string) == \(type.stringValue) : \(type.stringValue == string)")
             if type.stringValue == string {
                 self = type
+                return
             }
         }
         self = .noType

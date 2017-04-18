@@ -11,18 +11,14 @@ import CoreData
 
 @objc(Project)
 class Project: AbsorbanceObject {
-
-    static var entityDescr: NSEntityDescription { return NSEntityDescription.entity(forEntityName: "Project", in: AppDelegate.viewContext)! }
     
-    var dateSectionString: String {
-        return dateSection.header
-    }
+    static var entityDescr: NSEntityDescription { return NSEntityDescription.entity(forEntityName: "Project", in: AppDelegate.viewContext)! }
     
     var dateSection: DateSection {
         get {
             return DateSection(rawValue: dateSectionDB) ?? .undated
         } set {
-            dateSectionDB = dateSection.rawValue
+            dateSectionDB = newValue.rawValue
         }
     }
     
@@ -113,7 +109,7 @@ class Project: AbsorbanceObject {
         self.init(context: AppDelegate.viewContext)
         creationDateDB = Date() as NSDate
     }
-
+    
     
     convenience init(withTitle title: String) {
         self.init()
@@ -126,10 +122,12 @@ class Project: AbsorbanceObject {
             return
         }
         for section in DateSection.sectionArray {
-            // print("Section Date: \(Formatter.monDayYr.string(from: section.date)) -- \(Formatter.monDayYrHrMin.string(from: editDate)) :Edit Date")
+            //            print("Section Date: \(Formatter.monDayYr.string(from: section.date)) -- \(Formatter.monDayYrHrMin.string(from: editDate)) :Edit Date\n\t↳ Project.resreshDateSection()")
             switch section.date.compare(editDate) {
             case .orderedAscending, .orderedSame:
-                dateSection = DateSection(rawValue: section.rawValue) ?? .undated
+                //                print("ordered ascending or same:\n\t↳ Project.resreshDateSection()")
+                //                print("SECTION: \(section.header)\n\t↳ Project.resreshDateSection()");
+                dateSection = section
                 return
             default:
                 continue
@@ -138,14 +136,29 @@ class Project: AbsorbanceObject {
         dateSection = .older
     }
     
-    class func refreshAllDateSections() {
-        let request: NSFetchRequest<Project> = fetchRequest()
-        do {
-            let allProjects = try AppDelegate.viewContext.fetch(request) 
-            print("Refreshing all date sections.\n\t↳ Project.refreshAllDateSections()")
-            for proj in allProjects { proj.refreshDateSection() }
-        } catch let error as NSError {
-            print("ERROR: Could not fetch all projects. --> Description: \(error.debugDescription)\n\t↳ Project.refreshAllDateSections()")
+    // FIXME: - implement with user defaults or core data
+    static var lastDateSectionRefresh: Date?
+    
+    class func refreshAllDateSections() -> Bool {
+        if let date = lastDateSectionRefresh {
+            if date.timeIntervalSinceNow < (-60 * 60 * 23.99999) {
+                print("Time up! - refresfing!\n\t↳ Project.refreshAllDateSections()")
+                lastDateSectionRefresh = nil
+                return refreshAllDateSections()
+            }
+        } else {
+            lastDateSectionRefresh = DateSection.today.date
+            let request: NSFetchRequest<Project> = fetchRequest()
+            do {
+                let allProjects = try AppDelegate.viewContext.fetch(request)
+                print("Refreshing all date sections.\n\t↳ Project.refreshAllDateSections()")
+                for proj in allProjects { proj.refreshDateSection() }
+                return true
+            } catch let error as NSError {
+                print("ERROR: Could not fetch all projects. --> Description: \(error.debugDescription)\n\t↳ Project.refreshAllDateSections()")
+                return false
+            }
         }
+        return false
     }
 }

@@ -8,14 +8,22 @@
 
 import UIKit
 
+protocol DocumentControllerPresenter {
+    func prepareDocController(withURL url: URL)
+    func presentDocController()
+}
+
 class ExportPopoverViewController: UIViewController, UIDocumentInteractionControllerDelegate {
     
     @IBOutlet weak var fileNameText: UITextField!
+    
+    var documentControllerPresenter: DocumentControllerPresenter!
     
     var documentController : UIDocumentInteractionController!
     
     var project: Project!
     
+    var url: URL!
     
     func formatString(strings: [String], delim: String) -> String {
         var csv = ""
@@ -85,7 +93,7 @@ class ExportPopoverViewController: UIViewController, UIDocumentInteractionContro
             let path = dir.appendingPathComponent(fileName)
             
             documentController = UIDocumentInteractionController(url: path)
-            
+            documentControllerPresenter.prepareDocController(withURL: path)
             do {
                 print(data)
                 try data.write(to: path, atomically: false, encoding: String.Encoding.utf8)
@@ -107,9 +115,13 @@ class ExportPopoverViewController: UIViewController, UIDocumentInteractionContro
         } else {
             print("data not written")
         }
-        documentController.presentOptionsMenu(from: sender.frame, in: self.view, animated:true)
+        // FIXME: - decide which is better...
+        // A.
+//        documentController.presentOpenInMenu(from: view.frame, in: view, animated: true)
+        // or B.
+        dismiss(animated: true, completion: documentControllerPresenter.presentDocController)
+        
     }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()

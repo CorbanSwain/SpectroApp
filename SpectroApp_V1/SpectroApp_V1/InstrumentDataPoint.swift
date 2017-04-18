@@ -29,6 +29,8 @@ class InstrumentDataPoint: AbsorbanceObject {
         get {
             return (ReadingType(rawValue: self.tagTypeDB) ?? .noType, Int(tagIndexDB))
         } set {
+//            print("in tag --> set")
+//            print("tagType: \(newValue.type.description) [\(newValue.type.rawValue)]")
             tagTypeDB = newValue.type.rawValue
             tagIndexDB = Int32(newValue.index)
         }

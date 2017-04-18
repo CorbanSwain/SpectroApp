@@ -124,17 +124,26 @@ class ProjectsPopoverViewController: FetchedResultsTableViewController, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Project.refreshAllDateSections()
+        // FIXME: only refresh so often not upon every loading
+        if Project.refreshAllDateSections() {
+            do {
+                try AppDelegate.viewContext.save()
+                print("saved \n\t↳ ProjectsPopoverVC.viewDidLoad()")
+            } catch let error as NSError {
+                print("ERROP: Could not save.\nSAVING ERROR: \(error.debugDescription)\n\t↳ ProjectsPopoverVC.viewDidLoad()")
+            }
+        }
+        
         tableView = projectTableView
         cancelButton.isEnabled = false
         setupFRC()
-        // FIXME: maybe add perfetch to its own function...implement in super class
+        // FIXME: maybe add perroemfetch to its own function...implement in super class?
         do {
-            print("fetching data -- ProjectPopoverVC")
+            print("fetching data!\n\t↳ ProjectPopoverVC")
             try frc.performFetch()
             didSetupFRC = true
         } catch let error as NSError {
-            print("Could not perform fetch! -- ProjectPopoverVC\nFETCHING ERROR: \(error), \(error.userInfo)")
+            print("Could not perform fetch!\n\t↳ ProjectPopoverVC\nFETCHING ERROR: \(error), \(error.userInfo)")
         }
         
         projectTableView.delegate = self

@@ -13,7 +13,7 @@ protocol ProjectPresenter {
     func loadProject(_ project: Project)
 }
 
-class MasterViewController: UIViewController, UIPopoverPresentationControllerDelegate, ProjectChangerDelegate, DatabaseDelegate {
+class MasterViewController: UIViewController, UIPopoverPresentationControllerDelegate, ProjectChangerDelegate, DatabaseDelegate, DocumentControllerPresenter {
     
     var lastActiveProject: Project? = nil
     var activeProject: Project! {
@@ -166,17 +166,24 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         
         // move instrument alert view a bit closer to instrument button
         instrumentButtonToAlertViewFixedSpace.width = -5
-        
+        if Project.refreshAllDateSections() {
+            do {
+                try AppDelegate.viewContext.save()
+                print("saved")
+            } catch let error as NSError {
+                print("Could not save.\nSAVING ERROR: \(error), \(error.userInfo)")
+            }
+        }
     }
 
     // MARK: - Database Delegate Functions
     func add(dataPoint: DataPoint) {
         let reading = Reading(fromDataPoints: [dataPoint])
         reading.project = activeProject
-        
+        reading.title = String(describing: dataPoint.instrumentDataPoint!.pointIndex) + "--Rdng"
         do {
             try AppDelegate.viewContext.save()
-            print("saved")
+            print("saved \n\t↳ MasterVC.add(dataPoint:)")
         } catch let error as NSError {
             print("Could not save.\nSAVING ERROR: \(error), \(error.userInfo)")
         }
@@ -237,7 +244,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         case "master.segue.exportPop":
             let exportVC = segue.destination as! ExportPopoverViewController
             exportVC.project = activeProject
-            
+            exportVC.documentControllerPresenter = self
             break
         default:
             break
@@ -251,6 +258,25 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         segmentedControl.tintColor = _UIBlue
         commitChange()
         return true;
+    }
+    
+    
+    // MARK: Document Controller Functions
+    var documentController: UIDocumentInteractionController?
+    
+    @IBOutlet weak var exportButton: UIBarButtonItem!
+    
+    func presentDocController() {
+        guard let dc = documentController else {
+            print("no Document Controller! \n\t↳ MasterVC.presentDocConroller")
+            return
+        }
+        dc.presentOptionsMenu(from: exportButton, animated: true)
+    }
+    
+    
+    func prepareDocController(withURL url: URL) {
+        documentController = UIDocumentInteractionController(url: url)
     }
     
     /// Adds a view controller to the master view's container view 

@@ -142,11 +142,6 @@ class Reading: AbsorbanceObject {
         }
         return result
     }
-
-
-    
-    
-    
     
     convenience init() {
         self.init(context: AppDelegate.viewContext)
@@ -154,6 +149,28 @@ class Reading: AbsorbanceObject {
     
     convenience init(fromDataPoints dataPoints: Set<DataPoint>) {
         self.init()
+        
         self.dataPoints = dataPoints
+        
+        // parse out most cmmon type tag from instrument datapoints
+        var dict: [ReadingType:Int] = [:]
+        for point in dataPoints {
+            if let t = point.instrumentDataPoint?.tag.type {
+                if dict[t] == nil {
+                    dict[t] = 1
+                } else {
+                    dict[t] = dict[t]! + 1
+                }
+            }
+        }
+        var max = 0
+        var popularType: ReadingType? = nil
+        for item in dict {
+            if item.value > max {
+                max = item.value
+                popularType = item.key
+            }
+        }
+        type = popularType ?? .noType
     }
 }
