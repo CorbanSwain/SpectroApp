@@ -15,8 +15,7 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
     
     weak var delegate: ProjectChangerDelegate!
     
-    let firstLabels = ["Project Title", "Notes", "Notebook Reference"]
-    let secondLabels = ["Experiment Type"]
+    let labels = [["Project Title"], ["Experiment Type"], ["Notebook Reference", "Notes"]]
     var experimentType = ExperimentType.bradford
     
     
@@ -27,14 +26,13 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
         var cell =  newProjectTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! AddProjectTableViewCell
         project.title = cell.textInput.text!
         
-        cell =  newProjectTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! AddProjectTableViewCell
-        project.notes = cell.textInput.text!
-        
-        cell =  newProjectTableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! AddProjectTableViewCell
+        cell =  newProjectTableView.cellForRow(at: IndexPath(row: 0, section: 2)) as! AddProjectTableViewCell
         project.notebookReference = cell.textInput.text!
         
-        project.experimentType = experimentType
+        let cell2 =  newProjectTableView.cellForRow(at: IndexPath(row: 1, section: 2)) as! AddProjectNotesTableViewCell
+        project.notes = cell2.textInput.text!
         
+        project.experimentType = experimentType
         project.editDate = Date()
         
         // save the project
@@ -59,11 +57,11 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
     // MARK: table view functions
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return labels.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numberOfRowsAtSection: [Int] = [firstLabels.count, secondLabels.count]
+        let numberOfRowsAtSection: [Int] = [labels[0].count, labels[1].count, labels[2].count]
         var rows = 0
         if section < numberOfRowsAtSection.count {
             rows = numberOfRowsAtSection[section]
@@ -74,14 +72,27 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "addProjectCell", for: indexPath) as! AddProjectTableViewCell
-            cell.textInput.placeholder = firstLabels[indexPath.row]
+            cell.textInput.placeholder = labels[indexPath.section][indexPath.row]
+            return cell
+        }
+        else if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "addProjectTypeCell", for: indexPath) as! AddProjectTypeTableViewCell
+            cell.titleLabel.text = labels[indexPath.section][indexPath.row]
+            cell.selectedLabel.text = experimentType.description
             return cell
         }
         else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "addProjectTypeCell", for: indexPath) as! AddProjectTypeTableViewCell
-            cell.titleLabel.text = secondLabels[indexPath.row]
-            cell.selectedLabel.text = experimentType.description
-            return cell
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "addProjectCell", for: indexPath) as! AddProjectTableViewCell
+                cell.textInput.placeholder = labels[indexPath.section][indexPath.row]
+                return cell
+            }
+            else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "addProjectNotesCell", for: indexPath) as! AddProjectNotesTableViewCell
+                cell.textInput.text = labels[indexPath.section][indexPath.row]
+                //cell.textInput.textColor = UIColor.lightGray
+                return cell
+            }
         }
     }
     

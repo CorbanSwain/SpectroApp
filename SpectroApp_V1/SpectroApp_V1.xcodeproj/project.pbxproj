@@ -59,6 +59,7 @@
 		D5ACE84C1E9DD54200459C6F /* DataHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACE84B1E9DD54200459C6F /* DataHeaderTableViewCell.swift */; };
 		D5C8DDD01EA716FE005EB34E /* ExperimentTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C8DDCF1EA716FE005EB34E /* ExperimentTypeTableViewCell.swift */; };
 		D5C8DDD21EA71A08005EB34E /* ExperimentTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C8DDD11EA71A08005EB34E /* ExperimentTypeViewController.swift */; };
+		D5C8DDD41EA7D7D5005EB34E /* AddProjectNotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C8DDD31EA7D7D5005EB34E /* AddProjectNotesTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,7 @@
 		D5ACE84B1E9DD54200459C6F /* DataHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		D5C8DDCF1EA716FE005EB34E /* ExperimentTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentTypeTableViewCell.swift; sourceTree = "<group>"; };
 		D5C8DDD11EA71A08005EB34E /* ExperimentTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentTypeViewController.swift; sourceTree = "<group>"; };
+		D5C8DDD31EA7D7D5005EB34E /* AddProjectNotesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProjectNotesTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,6 +351,7 @@
 		D565E1B51EA2DA3B00864385 /* Add Project Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D5C8DDD31EA7D7D5005EB34E /* AddProjectNotesTableViewCell.swift */,
 				D5C8DDCF1EA716FE005EB34E /* ExperimentTypeTableViewCell.swift */,
 				D565E1B31EA2DA1500864385 /* AddProjectTypeTableViewCell.swift */,
 				D565E1B11EA2CDB200864385 /* AddProjectTableViewCell.swift */,
@@ -514,6 +517,7 @@
 				1C67FFB71E9C213E00B6194E /* Wavelength.swift in Sources */,
 				D5C8DDD21EA71A08005EB34E /* ExperimentTypeViewController.swift in Sources */,
 				1C67FFB91E9C215300B6194E /* ReadingType.swift in Sources */,
+				D5C8DDD41EA7D7D5005EB34E /* AddProjectNotesTableViewCell.swift in Sources */,
 				1C0BFEE41E7A759900408A28 /* InstrumentConnectionViewController.swift in Sources */,
 				D58B475C1E9D8002007145FB /* DataDetailTableViewCell.swift in Sources */,
 				1C7E71771E78E5AC0073799D /* ProteinDataTableViewCell.swift in Sources */,
