@@ -24,6 +24,7 @@
 		1C67FFB71E9C213E00B6194E /* Wavelength.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C67FFB61E9C213E00B6194E /* Wavelength.swift */; };
 		1C67FFB91E9C215300B6194E /* ReadingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C67FFB81E9C215300B6194E /* ReadingType.swift */; };
 		1C67FFBB1E9C215E00B6194E /* ExperimentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C67FFBA1E9C215E00B6194E /* ExperimentType.swift */; };
+		1C7DB49F1EA7E7E600335046 /* ReadingTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7DB49E1EA7E7E500335046 /* ReadingTypeView.swift */; };
 		1C7E71401E78CA390073799D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E713F1E78CA390073799D /* AppDelegate.swift */; };
 		1C7E71421E78CA390073799D /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E71411E78CA390073799D /* MasterViewController.swift */; };
 		1C7E71451E78CA390073799D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C7E71431E78CA390073799D /* Main.storyboard */; };
@@ -96,6 +97,7 @@
 		1C67FFB61E9C213E00B6194E /* Wavelength.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wavelength.swift; sourceTree = "<group>"; };
 		1C67FFB81E9C215300B6194E /* ReadingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingType.swift; sourceTree = "<group>"; };
 		1C67FFBA1E9C215E00B6194E /* ExperimentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentType.swift; sourceTree = "<group>"; };
+		1C7DB49E1EA7E7E500335046 /* ReadingTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingTypeView.swift; sourceTree = "<group>"; };
 		1C7E713C1E78CA390073799D /* SpectroApp_V1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpectroApp_V1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C7E713F1E78CA390073799D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C7E71411E78CA390073799D /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 		1C7E717D1E78E6760073799D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1C7DB49E1EA7E7E500335046 /* ReadingTypeView.swift */,
 				1C19446A1E7B7D9C002FB321 /* InstrumentStatusView.swift */,
 				1CBE94EA1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift */,
 				1C7E71811E78E7270073799D /* Cells */,
@@ -524,6 +527,7 @@
 				D58B475A1E9D7915007145FB /* DataDetailViewController.swift in Sources */,
 				1CEE4D4F1EA1276900321217 /* Formatters.swift in Sources */,
 				1C7E71871E79035E0073799D /* Reading.swift in Sources */,
+				1C7DB49F1EA7E7E600335046 /* ReadingTypeView.swift in Sources */,
 				1C11C1721EA210BB00AAF534 /* User.swift in Sources */,
 				1CBE94311E7CF74B00F3C8F3 /* SwiftyJSON.swift in Sources */,
 				1CA6871D1E9D894700B8DD7F /* AbsorbanceObject.swift in Sources */,

@@ -9,6 +9,6 @@
 import UIKit
 
 class ProteinDataTableViewCell: DataTableViewCell {
-
-
+    @IBOutlet weak var concentrationLabel: UILabel!
+    
 }

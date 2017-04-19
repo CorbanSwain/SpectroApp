@@ -9,6 +9,6 @@
 import UIKit
 
 class NucDataTableViewCell: DataTableViewCell {
-
+    @IBOutlet weak var calibrationValueLabel: UILabel!
 
 }

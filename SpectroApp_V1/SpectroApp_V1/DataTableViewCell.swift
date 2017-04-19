@@ -11,34 +11,33 @@ import UIKit
 class DataTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var measurementsLabel: UILabel!
     @IBOutlet weak var averageLabel: UILabel!
     @IBOutlet weak var stdLabel: UILabel!
+    @IBOutlet weak var indexLabel: UILabel!
     
     var numberLabels: Set<UILabel> {
-        return [measurementsLabel, averageLabel, stdLabel]
+        return [averageLabel, stdLabel]
     }
     
-    func tabularizeLabel(_ label: UILabel) {
+    func tabularizeLabels(_ labels: Set<UILabel>) {
+        for label in labels {
         let originalDescriptor = label.font.fontDescriptor
-        let figureCaseDict = [
-            UIFontFeatureTypeIdentifierKey: kNumberSpacingType,
-            UIFontFeatureSelectorIdentifierKey: kMonospacedNumbersSelector,
-        ]
-        let attributes = [
-            UIFontDescriptorFeatureSettingsAttribute: [ figureCaseDict ],
-        ]
-        let descriptor = originalDescriptor.addingAttributes(attributes)
+                let descriptor = originalDescriptor.addingAttributes(Formatter.tabularFiguresAttributes)
         let tabularizedFont = UIFont(descriptor: descriptor, size: 0)
         label.font = tabularizedFont
+        }
     }
     
+    func setup(with reading: Reading, index: Int? = nil) {
+//        indexLabel.text = Formatter.intNum.string(fromOptional: index as NSNumber?) ?? "?"
+        titleLabel.text = reading.title ?? "[untitled]"
+        averageLabel.text = Formatter.threeDecNum.string(fromOptional: reading.absorbanceValue as NSNumber?) ?? "???"
+        stdLabel.text = Formatter.threeDecNum.string(fromOptional: reading.stdDev as NSNumber?) ?? "???"
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        for l in numberLabels {
-            tabularizeLabel(l)
-        }
+        tabularizeLabels(numberLabels)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

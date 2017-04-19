@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7q6-yb-OqE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7q6-yb-OqE">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -26,6 +26,9 @@
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ss1-BV-WWC">
                                 <rect key="frame" x="0.0" y="64" width="1024" height="660"/>
+                                <connections>
+                                    <segue destination="oWL-gx-tdI" kind="embed" id="dwt-YS-ocn"/>
+                                </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -113,57 +116,10 @@
                         <barButtonItem width="25" style="plain" systemItem="fixedSpace" id="ieF-ZL-2h5"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="IRi-n8-V1B"/>
                         <barButtonItem width="64" style="plain" systemItem="fixedSpace" id="XmA-I3-wM1"/>
-                        <barButtonItem title="Export" id="rNA-2m-gbH"/>
+                        <barButtonItem title="Plots" width="49" id="rNA-2m-gbH"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="g71-PS-IXR">
-                        <barButtonItem key="leftBarButtonItem" id="1fW-Dc-1pv">
-                            <view key="customView" contentMode="scaleToFill" id="DJV-Rr-pN1" userLabel="Experiment Header View" customClass="ExperimentHeaderView" customModule="SpectroApp_V1" customModuleProvider="target">
-                                <rect key="frame" x="20" y="2" width="332" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CS-X-45 - March 5, 2015" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6EV-GC-nqN">
-                                        <rect key="frame" x="0.0" y="22" width="350" height="14"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Cool Experiment Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9aN-aT-7ry">
-                                        <rect key="frame" x="0.0" y="-3" width="350" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="5aS-cY-Mgw"/>
-                                            <constraint firstAttribute="width" constant="350" id="tN0-Pq-9rj"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="6EV-GC-nqN" firstAttribute="leading" secondItem="DJV-Rr-pN1" secondAttribute="leading" id="5DB-gf-9IS"/>
-                                    <constraint firstAttribute="height" constant="40" id="ED0-OU-Wmc"/>
-                                    <constraint firstItem="6EV-GC-nqN" firstAttribute="top" secondItem="9aN-aT-7ry" secondAttribute="bottom" id="HVu-xq-rLC"/>
-                                    <constraint firstItem="9aN-aT-7ry" firstAttribute="leading" secondItem="DJV-Rr-pN1" secondAttribute="leading" id="f29-sx-Bno"/>
-                                    <constraint firstItem="9aN-aT-7ry" firstAttribute="top" secondItem="DJV-Rr-pN1" secondAttribute="top" constant="-3" id="sAz-HD-nF8"/>
-                                    <constraint firstItem="6EV-GC-nqN" firstAttribute="trailing" secondItem="9aN-aT-7ry" secondAttribute="trailing" id="saJ-5h-cWG"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="mainLabel" destination="9aN-aT-7ry" id="58p-eT-uAu"/>
-                                    <outlet property="subLabel" destination="6EV-GC-nqN" id="W1F-N4-huc"/>
-                                </connections>
-                            </view>
-                        </barButtonItem>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="XrQ-i1-t0d">
-                            <rect key="frame" x="391" y="7" width="242" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="Overview" width="80"/>
-                                <segment title="Data" width="80"/>
-                                <segment title="Plots" width="80"/>
-                            </segments>
-                            <connections>
-                                <action selector="segmentedControllChanged:" destination="gHL-hd-Aeh" eventType="valueChanged" id="njR-J9-2E9"/>
-                            </connections>
-                        </segmentedControl>
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="tbP-YZ-Ikx"/>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="Cw7-Xx-fQw">
                                 <connections>
@@ -174,25 +130,60 @@
                             </barButtonItem>
                             <barButtonItem systemItem="action" id="enj-Mi-66f">
                                 <connections>
-                                    <segue destination="A9Y-9Q-rTs" kind="popoverPresentation" identifier="master.segue.exportPop" popoverAnchorBarButtonItem="enj-Mi-66f" id="sqn-8l-PqM">
+                                    <segue destination="tNe-ry-uWD" kind="popoverPresentation" identifier="master.segue.exportPop" popoverAnchorBarButtonItem="enj-Mi-66f" id="v8e-hA-cQy">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="infoIcon" id="7fB-4V-d6n"/>
                         </rightBarButtonItems>
+                        <connections>
+                            <outlet property="titleView" destination="UGy-tk-5vK" id="gfy-Ez-oen"/>
+                        </connections>
                     </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="ss1-BV-WWC" id="hKX-uE-Nl3"/>
                         <outlet property="exportButton" destination="enj-Mi-66f" id="05c-aY-ewf"/>
-                        <outlet property="headerView" destination="DJV-Rr-pN1" id="c13-1M-r1f"/>
+                        <outlet property="headerView" destination="UGy-tk-5vK" id="7Zn-ir-CV6"/>
                         <outlet property="instrumentAlertView" destination="rse-Qf-Bns" id="zwO-Xc-e8U"/>
                         <outlet property="instrumentButton" destination="b3a-Or-61N" id="OSF-vK-pQI"/>
                         <outlet property="instrumentButtonToAlertViewFixedSpace" destination="b7b-3R-veY" id="Emo-Tg-UAq"/>
-                        <outlet property="segmentedControl" destination="XrQ-i1-t0d" id="QiR-U8-rGf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MNt-DM-G9a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UGy-tk-5vK" userLabel="Experiment Header View" customClass="ExperimentHeaderView" customModule="SpectroApp_V1" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="386" height="40"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CS-X-45 - March 5, 2015" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cgx-dS-B6i">
+                            <rect key="frame" x="0.0" y="26" width="386" height="14"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Cool Experiment Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOz-HF-PCl">
+                            <rect key="frame" x="0.0" y="0.0" width="386" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="XO8-qw-H34"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="19"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="2Bm-0j-DSq"/>
+                        <constraint firstItem="gOz-HF-PCl" firstAttribute="top" secondItem="UGy-tk-5vK" secondAttribute="top" id="Abe-In-qpi"/>
+                        <constraint firstItem="Cgx-dS-B6i" firstAttribute="trailing" secondItem="gOz-HF-PCl" secondAttribute="trailing" id="FSZ-wt-x87"/>
+                        <constraint firstItem="Cgx-dS-B6i" firstAttribute="top" secondItem="gOz-HF-PCl" secondAttribute="bottom" constant="1" id="cwr-us-nRj"/>
+                        <constraint firstAttribute="trailing" secondItem="gOz-HF-PCl" secondAttribute="trailing" id="gvS-Bh-Opt"/>
+                        <constraint firstItem="gOz-HF-PCl" firstAttribute="centerX" secondItem="Cgx-dS-B6i" secondAttribute="centerX" id="oYg-oi-7DP"/>
+                        <constraint firstItem="Cgx-dS-B6i" firstAttribute="leading" secondItem="UGy-tk-5vK" secondAttribute="leading" id="woQ-dL-p6M"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="mainLabel" destination="gOz-HF-PCl" id="xFr-k6-KMJ"/>
+                        <outlet property="subLabel" destination="Cgx-dS-B6i" id="PaM-sM-gaW"/>
+                    </connections>
+                </view>
             </objects>
             <point key="canvasLocation" x="1520.5078125" y="867.96875"/>
         </scene>
@@ -359,7 +350,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PuW-9e-JA1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2714.6484375" y="112.5"/>
+            <point key="canvasLocation" x="3505" y="2444"/>
         </scene>
         <!--Data Master View Controller-->
         <scene sceneID="sWa-7c-qNY">
@@ -370,11 +361,11 @@
                         <viewControllerLayoutGuide type="bottom" id="XIV-gx-uIl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="WQb-rY-Qjy">
-                        <rect key="frame" x="0.0" y="0.0" width="700" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="700" height="660"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BVE-3E-T77">
-                                <rect key="frame" x="0.0" y="0.0" width="700" height="768"/>
+                                <rect key="frame" x="0.0" y="0.0" width="700" height="660"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataCell" rowHeight="50" id="KSD-Kx-yvA" customClass="DataTableViewCell" customModule="SpectroApp_V1" customModuleProvider="target">
@@ -443,7 +434,6 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="averageLabel" destination="4iw-x8-7o2" id="EyF-x5-xV5"/>
-                                            <outlet property="measurementsLabel" destination="Nso-ph-ryP" id="cNc-uS-7FA"/>
                                             <outlet property="stdLabel" destination="rjv-fu-kdz" id="yFY-Xx-PrA"/>
                                             <outlet property="titleLabel" destination="fUa-7q-MnX" id="9GJ-ff-dRs"/>
                                         </connections>
@@ -526,7 +516,7 @@
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="700" height="768"/>
+                    <size key="freeformSize" width="700" height="660"/>
                     <connections>
                         <outlet property="dataTableView" destination="BVE-3E-T77" id="Ce4-EB-FFU"/>
                         <segue destination="gyG-Iw-cR8" kind="showDetail" identifier="showDetailView" id="arH-ct-oTA"/>
@@ -534,7 +524,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="imf-Og-Kkx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3400" y="868"/>
+            <point key="canvasLocation" x="2889" y="866"/>
         </scene>
         <!--Data Detail View Controller-->
         <scene sceneID="hCK-5x-ifF">
@@ -545,11 +535,11 @@
                         <viewControllerLayoutGuide type="bottom" id="cte-oa-6Oc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wKd-vM-Syp">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="660"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eER-hZ-Ado">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="768"/>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="660"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailViewCell" id="DFY-ni-jLW" customClass="DataDetailTableViewCell" customModule="SpectroApp_V1">
@@ -589,14 +579,14 @@
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="300" height="768"/>
+                    <size key="freeformSize" width="300" height="660"/>
                     <connections>
                         <outlet property="detailTableView" destination="eER-hZ-Ado" id="X6T-pN-uJZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Olv-IH-z5B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3696" y="868"/>
+            <point key="canvasLocation" x="3188" y="866"/>
         </scene>
         <!--Data View Controller-->
         <scene sceneID="1Jh-d2-VhI">
@@ -609,41 +599,7 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uIo-fl-b27" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2736" y="868"/>
-        </scene>
-        <!--Plot View Controller-->
-        <scene sceneID="4wY-yy-HAd">
-            <objects>
-                <viewController storyboardIdentifier="PlotViewController" id="kk4-mf-4TY" customClass="PlotViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="lGk-4U-qnO"/>
-                        <viewControllerLayoutGuide type="bottom" id="4qa-cX-okq"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="O88-CX-hWx">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plot View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bD-rB-ziY">
-                                <rect key="frame" x="464" y="373.5" width="96" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="X2d-X2-CZq"/>
-                                    <constraint firstAttribute="width" constant="96" id="YLu-PN-k4d"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="0bD-rB-ziY" firstAttribute="centerX" secondItem="O88-CX-hWx" secondAttribute="centerX" id="ZCy-Rn-uOy"/>
-                            <constraint firstItem="0bD-rB-ziY" firstAttribute="centerY" secondItem="O88-CX-hWx" secondAttribute="centerY" id="iu3-9q-9hZ"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xsD-fj-seL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2736" y="1603"/>
+            <point key="canvasLocation" x="2273" y="868"/>
         </scene>
         <!--New Project-->
         <scene sceneID="zgr-Cj-WMh">
@@ -734,14 +690,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Project" id="cYp-DD-ViS">
-                        <barButtonItem key="leftBarButtonItem" title="Create" style="done" id="KwL-KG-QIu">
-                            <connections>
-                                <action selector="createButtonPressed:" destination="8Yi-r4-228" id="gwU-qi-cfl"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="wCz-ah-9w1">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="wCz-ah-9w1">
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="8Yi-r4-228" id="wlV-dR-mfZ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Create" style="done" id="KwL-KG-QIu">
+                            <connections>
+                                <action selector="createButtonPressed:" destination="8Yi-r4-228" id="gwU-qi-cfl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -751,7 +707,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1bR-9E-LL4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2022.6562499999998" y="2201.5625"/>
+            <point key="canvasLocation" x="2129" y="2330"/>
         </scene>
         <!--Experiment Type-->
         <scene sceneID="8Xs-Hb-OXS">
@@ -816,35 +772,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASm-Fg-rIj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="jgs-jh-n0a" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2022.6562499999998" y="2684.375"/>
+            <point key="canvasLocation" x="2129" y="2940"/>
         </scene>
-        <!--Export Popover View Controller-->
+        <!--Export Data-->
         <scene sceneID="7f2-ur-Mr5">
             <objects>
-                <viewController id="A9Y-9Q-rTs" customClass="ExportPopoverViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="popover.segue.export" id="A9Y-9Q-rTs" customClass="ExportPopoverViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LvN-a6-TsA"/>
                         <viewControllerLayoutGuide type="bottom" id="QBY-wT-sAi"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YfF-hA-paq">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="150"/>
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="File Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VOc-Iz-QmF">
-                                <rect key="frame" x="110" y="40" width="270" height="21"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="File Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VOc-Iz-QmF">
+                                <rect key="frame" x="106" y="84" width="228" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eez-nn-33N">
-                                <rect key="frame" x="174.5" y="86" width="51" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Export"/>
-                                <connections>
-                                    <action selector="writeDataWithSender:" destination="A9Y-9Q-rTs" eventType="touchUpInside" id="RZk-hu-7lL"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="File Name: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyJ-1X-LI2">
-                                <rect key="frame" x="20" y="40" width="85" height="21"/>
+                                <rect key="frame" x="16" y="84" width="85" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="85" id="yAs-hF-pcU"/>
                                 </constraints>
@@ -858,26 +806,27 @@
                             <constraint firstItem="hyJ-1X-LI2" firstAttribute="leading" secondItem="YfF-hA-paq" secondAttribute="leadingMargin" id="103-G8-IhH"/>
                             <constraint firstItem="VOc-Iz-QmF" firstAttribute="trailing" secondItem="YfF-hA-paq" secondAttribute="trailingMargin" id="1bC-YC-c2n"/>
                             <constraint firstItem="hyJ-1X-LI2" firstAttribute="bottom" secondItem="VOc-Iz-QmF" secondAttribute="bottom" id="Euu-Yx-gre"/>
-                            <constraint firstItem="eez-nn-33N" firstAttribute="centerX" secondItem="YfF-hA-paq" secondAttribute="centerX" id="Kf8-3u-J02"/>
                             <constraint firstItem="VOc-Iz-QmF" firstAttribute="leading" secondItem="hyJ-1X-LI2" secondAttribute="trailing" constant="5" id="N72-Ge-gkh"/>
                             <constraint firstItem="VOc-Iz-QmF" firstAttribute="top" secondItem="LvN-a6-TsA" secondAttribute="bottom" constant="40" id="Svn-Cp-Bg2"/>
                             <constraint firstItem="hyJ-1X-LI2" firstAttribute="top" secondItem="VOc-Iz-QmF" secondAttribute="top" id="cq4-lj-iub"/>
-                            <constraint firstItem="eez-nn-33N" firstAttribute="top" secondItem="VOc-Iz-QmF" secondAttribute="bottom" constant="25" id="lue-0f-zRU"/>
                         </constraints>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="400" height="150"/>
+                    <navigationItem key="navigationItem" title="Export Data" id="vQF-Gv-Rt3">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="gma-gI-K9I"/>
+                        <barButtonItem key="rightBarButtonItem" title="Export..." style="done" id="21s-t7-hvY">
+                            <connections>
+                                <action selector="writeDataWithSender:" destination="A9Y-9Q-rTs" id="Nui-pD-5pJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="400" height="150"/>
                     <connections>
                         <outlet property="fileNameText" destination="VOc-Iz-QmF" id="Crm-Ms-CUq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fhi-RZ-hXC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1720.8984375" y="2259.375"/>
+            <point key="canvasLocation" x="1747" y="2252"/>
         </scene>
         <!--Popover Navigation Controller-->
         <scene sceneID="RUU-Kd-FAp">
@@ -905,7 +854,7 @@
             </objects>
             <point key="canvasLocation" x="1017" y="1750"/>
         </scene>
-        <!--Instrument Connection View Controller-->
+        <!--Bluetooth-->
         <scene sceneID="LX4-F0-gCT">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="SgN-cq-ryh" customClass="InstrumentConnectionViewController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
@@ -1030,16 +979,15 @@
                             <constraint firstItem="VUG-4p-lQO" firstAttribute="top" secondItem="b81-Fl-uXY" secondAttribute="bottom" id="xsO-Lj-B4u"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="abe-ve-rGW">
-                        <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="xpe-9z-HgO">
-                            <connections>
-                                <action selector="doneButtonPressed:" destination="SgN-cq-ryh" id="8T0-Yc-jBl"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Scan for Instruments" id="Mcm-Qv-KJW">
+                    <navigationItem key="navigationItem" title="Bluetooth" id="abe-ve-rGW">
+                        <barButtonItem key="leftBarButtonItem" title="Scan" id="Mcm-Qv-KJW">
                             <connections>
                                 <action selector="scanButtonPressed:" destination="SgN-cq-ryh" id="kk9-eS-j6C"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="xpe-9z-HgO">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="SgN-cq-ryh" id="8T0-Yc-jBl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1049,7 +997,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zTr-34-9WT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1016.6015624999999" y="2240.625"/>
+            <point key="canvasLocation" x="1017" y="2350"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tIV-dr-e5S">
@@ -1067,7 +1015,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TcL-av-akC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1017" y="2752"/>
+            <point key="canvasLocation" x="1017" y="2860"/>
         </scene>
         <!--Popover Navigation Controller-->
         <scene sceneID="H9N-IF-qYa">
@@ -1089,7 +1037,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n6Q-KP-CgQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1390" y="1770"/>
+            <point key="canvasLocation" x="1390" y="1750"/>
         </scene>
         <!--Projects Popover View Controller-->
         <scene sceneID="8qh-kc-ZFI">
@@ -1179,17 +1127,17 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="8WA-V9-vMe">
                         <leftBarButtonItems>
-                            <barButtonItem title="Done" style="done" id="gun-q8-wTR">
+                            <barButtonItem systemItem="cancel" id="aZd-8e-tPZ">
                                 <connections>
-                                    <action selector="doneButtonPressed:" destination="Ukr-Ns-5Y3" id="NgW-xh-IsE"/>
+                                    <action selector="cancelButtonPressed:" destination="Ukr-Ns-5Y3" id="5oF-QA-rTj"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title=" " width="40" id="D5A-7d-7Yv"/>
                         </leftBarButtonItems>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="cancel" id="aZd-8e-tPZ">
+                            <barButtonItem title="Done" style="done" id="gun-q8-wTR">
                                 <connections>
-                                    <action selector="cancelButtonPressed:" destination="Ukr-Ns-5Y3" id="5oF-QA-rTj"/>
+                                    <action selector="doneButtonPressed:" destination="Ukr-Ns-5Y3" id="NgW-xh-IsE"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title=" " width="40" id="Ton-0w-XVe"/>
@@ -1212,7 +1160,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
             </objects>
-            <point key="canvasLocation" x="1389.84375" y="2260.9375"/>
+            <point key="canvasLocation" x="1390" y="2370"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DxY-j8-Rvo">
@@ -1236,7 +1184,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vh8-nT-xXm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="574" y="868"/>
+            <point key="canvasLocation" x="786" y="868"/>
         </scene>
         <!--Popover Navigation Controller-->
         <scene sceneID="Hat-xY-Ck0">
@@ -1262,7 +1210,34 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V83-24-3jn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2023" y="1711"/>
+            <point key="canvasLocation" x="2129" y="1711"/>
+        </scene>
+        <!--Popover Navigation Controller-->
+        <scene sceneID="tJN-Es-MjP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tNe-ry-uWD" customClass="PopoverNavigationController" customModule="SpectroApp_V1" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <value key="contentSizeForViewInPopover" type="size" width="350" height="200"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="350" height="200"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LYH-7d-bNh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="xQZ-zy-HH5">
+                        <rect key="frame" x="0.0" y="406" width="350" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="A9Y-9Q-rTs" kind="show" identifier="popover.segue.export" id="x1v-qn-Hne"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hg9-ha-f1h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1747" y="1633"/>
         </scene>
     </scenes>
     <resources>

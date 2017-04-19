@@ -26,6 +26,7 @@ class PopoverNavigationController: UINavigationController {
     }
     
     var delegates: [String:Any] = [:]
+    var project: Project!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("In segue: \(segue.identifier ?? "[no segue ID]")")
@@ -48,7 +49,10 @@ class PopoverNavigationController: UINavigationController {
             let projectsVC = segue.destination as! AddPopoverViewController
             projectsVC.delegate = delegates[projectChangerDelegateKey]! as! ProjectChangerDelegate
             break
-            
+        case "popover.segue.export":
+            let exportVC = segue.destination as! ExportPopoverViewController
+            exportVC.project = project
+            exportVC.documentControllerPresenter = delegates[docControllerPresenterKey] as! DocumentControllerPresenter
         default:
             break
         }

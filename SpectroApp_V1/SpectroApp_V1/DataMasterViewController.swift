@@ -72,11 +72,8 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath) as! DataTableViewCell
         
         let reading = frc.object(at: indexPath)
+        cell.setup(with: reading)
         
-        cell.titleLabel.text = reading.title ?? "[untitled]"
-        cell.measurementsLabel.text = reading.dataPointsStringArray.joined(separator: ", ")
-        cell.averageLabel.text = Formatter.threeDecNum.string(from: (reading.absorbanceValue ?? -1) as NSNumber)
-        cell.stdLabel.text = Formatter.threeDecNum.string(from: (reading.stdDev ?? -1) as NSNumber)
         return cell
     }
     
@@ -131,7 +128,6 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
         
         print("refreshing FRC -- DataMasterVC")
         frc.fetchRequest.predicate = NSPredicate(format: "project = %@", proj)
-//        setupFRC()
         do {
             try frc.performFetch()
             dataTableView.reloadData()
@@ -181,8 +177,6 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
         super.viewDidLoad()
         setupFRC()
         super.tableView = dataTableView
-        dataTableView.delegate = self
-        dataTableView.dataSource = self
         do {
            print("fetching data -- DataMasterVC")
             try frc.performFetch()
@@ -190,6 +184,8 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
         } catch let error as NSError {
             print("Could not perform fetch! -- DataMasterVC\nFETCHING ERROR: \(error), \(error.userInfo)")
         }
+        dataTableView.delegate = self
+        dataTableView.dataSource = self
         // refreshReadingCache()
     }
     

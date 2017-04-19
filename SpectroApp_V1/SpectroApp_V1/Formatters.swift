@@ -48,6 +48,16 @@ class Formatter {
         nf.maximumIntegerDigits = numIntDigits
         return nf
     }
+    
+    static let tabularFiguresDictionary = [
+        UIFontFeatureTypeIdentifierKey: kNumberSpacingType,
+        UIFontFeatureSelectorIdentifierKey: kMonospacedNumbersSelector,
+        ]
+    
+    static let tabularFiguresAttributes = [
+        UIFontDescriptorFeatureSettingsAttribute: [ tabularFiguresDictionary ],
+        ]
+    
 }
 
 extension DateFormatter {
