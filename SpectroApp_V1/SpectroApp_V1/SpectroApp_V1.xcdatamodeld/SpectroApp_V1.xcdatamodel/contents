@@ -40,6 +40,8 @@
         <relationship name="readingsDB" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reading" inverseName="project" inverseEntity="Reading" syncable="YES"/>
     </entity>
     <entity name="Reading" representedClassName="Reading" parentEntity="AbsorbanceObject" syncable="YES" codeGenerationType="category">
+        <attribute name="concentrationDB" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="hasConcentrationDB" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="titleDB" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="typeDB" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="calibrationPointsDB" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DataPoint" inverseName="calibrationReading" inverseEntity="DataPoint" syncable="YES"/>
@@ -58,8 +60,8 @@
         <element name="DataPoint" positionX="214" positionY="-55" width="128" height="178"/>
         <element name="InstrumentDataPoint" positionX="378" positionY="-117" width="128" height="180"/>
         <element name="ManualValue" positionX="376" positionY="101" width="128" height="88"/>
-        <element name="Project" positionX="-137" positionY="-46" width="128" height="178"/>
-        <element name="Reading" positionX="43" positionY="-0" width="128" height="118"/>
+        <element name="Project" positionX="-128" positionY="-117" width="128" height="178"/>
+        <element name="Reading" positionX="43" positionY="-0" width="128" height="148"/>
         <element name="User" positionX="-135" positionY="152" width="128" height="118"/>
     </elements>
 </model>

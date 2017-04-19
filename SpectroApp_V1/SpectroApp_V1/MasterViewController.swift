@@ -112,6 +112,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     var bluetoothManager: CBInstrumentCentralManager!
     
     override func viewDidLoad() {
+        print("at top! \n\t↳ MasterVC.viewDidLoad")
         super.viewDidLoad()
         
         // add the primary view controllers to the ```viewControllers``` array in the same order they appear in the segmented control; using closures here to preserve lazy loading
@@ -180,7 +181,11 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     func add(dataPoint: DataPoint) {
         let reading = Reading(fromDataPoints: [dataPoint])
         reading.project = activeProject
-        reading.title = String(describing: dataPoint.instrumentDataPoint!.pointIndex) + "--Rdng"
+        if let tagType = dataPoint.instrumentDataPoint?.tag.type.description,
+            let tagIndex = dataPoint.instrumentDataPoint?.tag.index {
+            
+            reading.title = "\(tagType)-\(tagIndex)"
+        }
         do {
             try AppDelegate.viewContext.save()
             print("saved \n\t↳ MasterVC.add(dataPoint:)")

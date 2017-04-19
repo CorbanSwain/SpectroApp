@@ -72,6 +72,24 @@ class Reading: AbsorbanceObject {
         }
     }
     
+    var concentration: CGFloat? {
+        get {
+            if hasConcentrationDB {
+                return CGFloat(concentrationDB)
+            } else {
+                return nil
+            }
+        }
+        set {
+            if let val = newValue {
+                concentrationDB = Float(val)
+                hasConcentrationDB = true
+            } else {
+                hasConcentrationDB = false
+            }
+        }
+    }
+    
     var isEmpty: Bool { return dataPoints.count < 1 }
     var hasRepeats: Bool { return dataPoints.count > 1 }
     var absorbanceValue: CGFloat? { return average(ofPoints: dataPoints) }
