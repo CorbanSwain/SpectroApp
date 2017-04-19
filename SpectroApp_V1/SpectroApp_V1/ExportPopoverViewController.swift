@@ -130,6 +130,7 @@ class ExportPopoverViewController: UIViewController, UIDocumentInteractionContro
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fileNameText.becomeFirstResponder()
         fileNameText.text = RemoveWhiteSpace(string: project.title)
         
     }
