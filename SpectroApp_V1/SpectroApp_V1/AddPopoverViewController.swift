@@ -99,6 +99,20 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let id = segue.identifier else {
+            return
+        }
+        
+        switch id {
+        case "add.segue.type":
+            if let expTypeMenuVC = segue.destination as? ExperimentTypeViewController {
+                expTypeMenuVC.type = experimentType
+            }
+        default:
+            break
+        }
+    }
     
     // MARK: picker view functions
     /*

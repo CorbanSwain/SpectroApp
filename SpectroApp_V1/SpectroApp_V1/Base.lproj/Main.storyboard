@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7q6-yb-OqE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7q6-yb-OqE">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -105,22 +106,14 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="SYv-X5-2wf"/>
                         <barButtonItem title="Projects" id="GUW-BU-jhE">
                             <connections>
-                                <segue destination="mRl-yS-SZ2" kind="popoverPresentation" identifier="master.segue.projectsPop" popoverAnchorBarButtonItem="GUW-BU-jhE" id="04p-xP-sHB">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
+                                <segue destination="mRl-yS-SZ2" kind="presentation" identifier="master.segue.projectsPop" modalPresentationStyle="pageSheet" modalTransitionStyle="coverVertical" id="04p-xP-sHB"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="571-wm-bnx"/>
                         <barButtonItem width="25" style="plain" systemItem="fixedSpace" id="ieF-ZL-2h5"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="IRi-n8-V1B"/>
                         <barButtonItem width="64" style="plain" systemItem="fixedSpace" id="XmA-I3-wM1"/>
-                        <barButtonItem title="Export" id="rNA-2m-gbH">
-                            <connections>
-                                <segue destination="A9Y-9Q-rTs" kind="popoverPresentation" identifier="master.segue.exportPop" popoverAnchorBarButtonItem="rNA-2m-gbH" id="QdE-jr-Xwl">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem title="Export" id="rNA-2m-gbH"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="g71-PS-IXR">
                         <barButtonItem key="leftBarButtonItem" id="1fW-Dc-1pv">
@@ -171,17 +164,27 @@
                                 <action selector="segmentedControllChanged:" destination="gHL-hd-Aeh" eventType="valueChanged" id="njR-J9-2E9"/>
                             </connections>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Cw7-Xx-fQw">
-                            <connections>
-                                <segue destination="Exx-dy-jdA" kind="popoverPresentation" identifier="master.segue.addPop" popoverAnchorBarButtonItem="Cw7-Xx-fQw" id="3l5-9H-mWb">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="Cw7-Xx-fQw">
+                                <connections>
+                                    <segue destination="Exx-dy-jdA" kind="popoverPresentation" identifier="master.segue.addPop" popoverAnchorBarButtonItem="Cw7-Xx-fQw" id="3l5-9H-mWb">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="action" id="enj-Mi-66f">
+                                <connections>
+                                    <segue destination="A9Y-9Q-rTs" kind="popoverPresentation" identifier="master.segue.exportPop" popoverAnchorBarButtonItem="enj-Mi-66f" id="sqn-8l-PqM">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="infoIcon" id="7fB-4V-d6n"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="ss1-BV-WWC" id="hKX-uE-Nl3"/>
-                        <outlet property="exportButton" destination="rNA-2m-gbH" id="ym2-8z-dhS"/>
+                        <outlet property="exportButton" destination="enj-Mi-66f" id="05c-aY-ewf"/>
                         <outlet property="headerView" destination="DJV-Rr-pN1" id="c13-1M-r1f"/>
                         <outlet property="instrumentAlertView" destination="rse-Qf-Bns" id="zwO-Xc-e8U"/>
                         <outlet property="instrumentButton" destination="b3a-Or-61N" id="OSF-vK-pQI"/>
@@ -769,11 +772,11 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="experimentTypeCell" editingAccessoryType="checkmark" id="NEu-Vi-iPS" customClass="ExperimentTypeTableViewCell" customModule="SpectroApp_V1" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="400" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NEu-Vi-iPS" id="Rf0-j1-HvS">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="NEu-Vi-iPS" id="Rf0-j1-HvS">
                                             <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zi0-TR-xeT">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zi0-TR-xeT">
                                                     <rect key="frame" x="8" y="11" width="42" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="445" id="Ol0-Pt-dV9"/>
@@ -1102,7 +1105,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zyu-0J-72y">
-                                <rect key="frame" x="0.0" y="0.0" width="550" height="500"/>
+                                <rect key="frame" x="0.0" y="0.0" width="550" height="456"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="projectCell" rowHeight="50" id="Y1w-Aq-iXT" customClass="ProjectTableViewCell" customModule="SpectroApp_V1" customModuleProvider="target">
@@ -1174,18 +1177,29 @@
                             <constraint firstAttribute="trailing" secondItem="Zyu-0J-72y" secondAttribute="trailing" id="oJZ-On-fYy"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="8WA-V9-vMe">
-                        <barButtonItem key="leftBarButtonItem" title="Done" style="done" id="gun-q8-wTR">
-                            <connections>
-                                <action selector="doneButtonPressed:" destination="Ukr-Ns-5Y3" id="NgW-xh-IsE"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="aZd-8e-tPZ">
-                            <connections>
-                                <action selector="cancelButtonPressed:" destination="Ukr-Ns-5Y3" id="5oF-QA-rTj"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem title="Done" style="done" id="gun-q8-wTR">
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="Ukr-Ns-5Y3" id="NgW-xh-IsE"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title=" " width="40" id="D5A-7d-7Yv"/>
+                        </leftBarButtonItems>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="cancel" id="aZd-8e-tPZ">
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="Ukr-Ns-5Y3" id="5oF-QA-rTj"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title=" " width="40" id="Ton-0w-XVe"/>
+                        </rightBarButtonItems>
+                        <connections>
+                            <outlet property="titleView" destination="A7K-S7-2SG" id="BRW-wh-j7X"/>
+                        </connections>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="cancelButton" destination="aZd-8e-tPZ" id="ZhF-ct-683"/>
                         <outlet property="doneButton" destination="gun-q8-wTR" id="lnq-tb-Si2"/>
@@ -1193,8 +1207,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jd3-fW-aho" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search for a Project" id="A7K-S7-2SG">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
             </objects>
-            <point key="canvasLocation" x="1390" y="2261"/>
+            <point key="canvasLocation" x="1389.84375" y="2260.9375"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DxY-j8-Rvo">
@@ -1249,6 +1268,7 @@
     </scenes>
     <resources>
         <image name="checkMarkImage" width="25" height="25"/>
+        <image name="infoIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="arH-ct-oTA"/>

@@ -34,9 +34,11 @@ class ExperimentTypeViewController: UIViewController, UITableViewDataSource, UIT
         // FIXME: this should add a checkmark to the selected type!
         if (labels[indexPath.row] == type.description) {
             print(labels[indexPath.row])
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+//            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            cell.accessoryType = .checkmark
         } else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+//            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+            cell.accessoryType = .none
         }
             
         return cell
@@ -48,6 +50,7 @@ class ExperimentTypeViewController: UIViewController, UITableViewDataSource, UIT
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         type = ExperimentType.allTypes[indexPath.row]
+        tableView.reloadData()
         performSegue(withIdentifier: "unwind.segue.add", sender: self)
     }
     
