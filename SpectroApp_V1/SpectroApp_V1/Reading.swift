@@ -148,6 +148,12 @@ class Reading: AbsorbanceObject {
     var hasRepeatsCalibration: Bool { return calibrationPoints.count > 1 }
     var absorbanceValueCalibration: CGFloat? { return average(ofPoints: calibrationPoints) }
     var stdDevCalibration: CGFloat? { return stdev(ofPoints: calibrationPoints) }
+    var calibrationRatio: CGFloat? {
+        guard let a = absorbanceValue, let b = absorbanceValueCalibration else {
+            return nil
+        }
+        return a / b
+    }
     
     var calibrationPointsStringArray: [String] {
         var result: [String] = []
