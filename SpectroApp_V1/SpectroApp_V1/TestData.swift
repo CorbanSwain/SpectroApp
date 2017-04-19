@@ -33,7 +33,7 @@ class TestDataGenerator {
         //proj.notes = "hi"
         var reading: Reading
         var dp: DataPoint
-        var dps: Set<DataPoint> = []
+        var dps: [DataPoint] = []
         var idp: InstrumentDataPoint
         var val: Int
         var specificVal: Int
@@ -58,7 +58,7 @@ class TestDataGenerator {
                 dp.title = randWords(1)
                 dp.baselineValue = baselineVal
 //                print("     j:\(j) - \(dp)")
-                dps.insert(dp)
+                dps.append(dp)
             }
             
             readingTypeIndices[Int(readingTypeInt)] += 1

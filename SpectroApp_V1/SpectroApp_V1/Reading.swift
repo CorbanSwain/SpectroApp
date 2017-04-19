@@ -24,44 +24,24 @@ class Reading: AbsorbanceObject {
     }
     
     var timestamp: Date? {
-        guard let t1 = dataPointArray[0].timestamp as Date? else { return nil }
+        guard let t1 = dataPoints[0].timestamp as Date? else { return nil }
         return t1
     }
     
-    var dataPoints: Set<DataPoint> {
+    
+    private(set) var dataPoints: [DataPoint] {
         get {
-            guard let points = dataPointsDB as? Set<DataPoint> else {
-                return []
-            }
-            return points
+            return (dataPointsDB?.array as? [DataPoint]) ?? []
         } set {
+            dataPointsDB = []
             for point in newValue {
-                point.reading = self
+                addToDataPointsDB(point)
             }
-            dataPointsDB = newValue as NSSet?
         }
     }
     
-    var dataPointArray: [DataPoint] {
-        get {
-            return dataPoints.sorted(by: {
-                guard let t1 = $0.timestamp, let t2 = $1.timestamp else {
-                    return true
-                }
-                switch t1.compare(t2) {
-                case .orderedDescending:
-                    return true
-                default:
-                    return false
-                }
-            })
-        } set {
-            dataPoints = []
-            for point in newValue {
-                addToDataPointsDB(point)
-                point.reading = self
-            }
-        }
+    func addToDataPoints (dataPoint: DataPoint) {
+        insertIntoDataPointsDB(dataPoint, at: 0)
     }
     
     var type: ReadingType {
@@ -97,7 +77,7 @@ class Reading: AbsorbanceObject {
     
     var dataPointsStringArray: [String] {
         var result: [String] = []
-        for point in dataPointArray {
+        for point in dataPoints {
             guard let val = point.measurementValue as NSNumber? else {
                 continue
             }
@@ -118,7 +98,7 @@ class Reading: AbsorbanceObject {
             for point in newValue {
                 point.reading = self
             }
-            dataPointsDB = newValue as NSSet?
+            calibrationPointsDB = newValue as NSSet?
         }
     }
     
@@ -171,7 +151,7 @@ class Reading: AbsorbanceObject {
         self.init(context: AppDelegate.viewContext)
     }
     
-    convenience init(fromDataPoints dataPoints: Set<DataPoint>) {
+    convenience init(fromDataPoints dataPoints: [DataPoint]) {
         self.init()
         
         self.dataPoints = dataPoints
