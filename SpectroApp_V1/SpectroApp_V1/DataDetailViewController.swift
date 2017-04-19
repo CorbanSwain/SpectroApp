@@ -31,7 +31,7 @@ class DataDetailViewController: UIViewController, UITableViewDataSource, UITable
             var points: [String] = []
             var baselines: [String] = []
             var times: [String] = []
-            for (i,point) in r.dataPointArray.enumerated() {
+            for (i,point) in r.dataPoints.enumerated() {
                 if let val = point.measurementValue {
                     points.append("\(i): " + (Formatter.threeDecNum.string(from: val as NSNumber) ?? "???"))
                 } else {

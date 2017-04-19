@@ -625,7 +625,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ayw-1x-0C6">
-                                                    <rect key="frame" x="8" y="12" width="384" height="20"/>
+                                                    <rect key="frame" x="23" y="12" width="354" height="20"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -633,8 +633,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Ayw-1x-0C6" firstAttribute="centerY" secondItem="Ge4-ci-WHh" secondAttribute="centerY" id="6H7-mT-vAc"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="Ayw-1x-0C6" secondAttribute="leading" id="TgH-uH-P9G"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Ayw-1x-0C6" secondAttribute="trailing" id="gxR-Vb-s28"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="Ayw-1x-0C6" secondAttribute="leading" constant="-15" id="TgH-uH-P9G"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Ayw-1x-0C6" secondAttribute="trailing" constant="15" id="gxR-Vb-s28"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -649,7 +649,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZbE-tN-up6">
-                                                    <rect key="frame" x="8" y="10" width="196" height="21"/>
+                                                    <rect key="frame" x="23" y="10" width="181" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -668,7 +668,7 @@
                                                 <constraint firstItem="ZbE-tN-up6" firstAttribute="centerY" secondItem="8Hb-id-6Z4" secondAttribute="centerY" id="9CA-om-Dja"/>
                                                 <constraint firstItem="Ze0-lK-5KP" firstAttribute="leading" secondItem="ZbE-tN-up6" secondAttribute="trailing" constant="5" id="Ffa-bC-OYG"/>
                                                 <constraint firstItem="Ze0-lK-5KP" firstAttribute="centerY" secondItem="8Hb-id-6Z4" secondAttribute="centerY" id="cQD-57-JkB"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="ZbE-tN-up6" secondAttribute="leading" id="psq-z3-AUj"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="ZbE-tN-up6" secondAttribute="leading" constant="-15" id="psq-z3-AUj"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Ze0-lK-5KP" secondAttribute="trailing" id="ujG-9i-TIY"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -676,6 +676,31 @@
                                             <outlet property="selectedLabel" destination="Ze0-lK-5KP" id="lXU-9u-oT7"/>
                                             <outlet property="titleLabel" destination="ZbE-tN-up6" id="Pgh-Cs-pCG"/>
                                             <segue destination="eFF-2g-b78" kind="show" identifier="add.segue.type" trigger="accessoryAction" id="FAU-gE-Z9T"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addProjectNotesCell" id="thw-YC-GyP" customClass="AddProjectNotesTableViewCell" customModule="SpectroApp_V1" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="112" width="400" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="thw-YC-GyP" id="ivW-ti-MQu">
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1VE-WE-Bzx">
+                                                    <rect key="frame" x="23" y="8" width="354" height="28"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="1VE-WE-Bzx" firstAttribute="leading" secondItem="ivW-ti-MQu" secondAttribute="leadingMargin" constant="15" id="KtU-kk-VCo"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="1VE-WE-Bzx" secondAttribute="trailing" constant="15" id="cRa-MC-ebK"/>
+                                                <constraint firstItem="1VE-WE-Bzx" firstAttribute="centerY" secondItem="ivW-ti-MQu" secondAttribute="centerY" id="yrI-qf-yFL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="textInput" destination="1VE-WE-Bzx" id="PzD-18-Ahs"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -728,15 +753,12 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="experimentTypeCell" editingAccessoryType="checkmark" id="NEu-Vi-iPS" customClass="ExperimentTypeTableViewCell" customModule="SpectroApp_V1" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="400" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="NEu-Vi-iPS" id="Rf0-j1-HvS">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NEu-Vi-iPS" id="Rf0-j1-HvS">
                                             <rect key="frame" x="0.0" y="0.0" width="400" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zi0-TR-xeT">
-                                                    <rect key="frame" x="8" y="11" width="42" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="445" id="Ol0-Pt-dV9"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zi0-TR-xeT">
+                                                    <rect key="frame" x="-7" y="11" width="384" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -744,8 +766,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Zi0-TR-xeT" firstAttribute="centerY" secondItem="Rf0-j1-HvS" secondAttribute="centerY" id="46O-lY-Aiq"/>
-                                                <constraint firstItem="Zi0-TR-xeT" firstAttribute="trailing" secondItem="Rf0-j1-HvS" secondAttribute="trailingMargin" id="al2-yd-xrq"/>
-                                                <constraint firstItem="Zi0-TR-xeT" firstAttribute="leading" secondItem="Rf0-j1-HvS" secondAttribute="leadingMargin" id="rOS-pz-1hV"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Zi0-TR-xeT" secondAttribute="trailing" constant="15" id="LOY-67-bay"/>
+                                                <constraint firstItem="Zi0-TR-xeT" firstAttribute="leading" secondItem="Rf0-j1-HvS" secondAttribute="leadingMargin" constant="-15" id="rOS-pz-1hV"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
