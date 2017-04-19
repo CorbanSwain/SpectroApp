@@ -8,16 +8,16 @@
 
 import UIKit
 
-class AddPopoverViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+class AddPopoverViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var newProjectTableView: UITableView!
+    @IBAction func unwind(segue:UIStoryboardSegue) { }
     
     weak var delegate: ProjectChangerDelegate!
     
-    let labels = ["Project Title", "Notes", "Notebook Reference", "Experiment Type"]
-    
-    // FIXME: don't us indices to get the experiment type
-    var experimentType = 0
+    let firstLabels = ["Project Title", "Notes", "Notebook Reference"]
+    let secondLabels = ["Experiment Type"]
+    var experimentType = ExperimentType.bradford
     
     
     @IBAction func createButtonPressed(_ sender: UIBarButtonItem)  {
@@ -33,7 +33,7 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
         cell =  newProjectTableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! AddProjectTableViewCell
         project.notebookReference = cell.textInput.text!
         
-        project.experimentType = ExperimentType(rawValue: Int16(experimentType))!
+        project.experimentType = experimentType
         
         project.editDate = Date()
         
@@ -59,44 +59,49 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
     // MARK: table view functions
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        let numberOfRowsAtSection: [Int] = [firstLabels.count, secondLabels.count]
+        var rows = 0
+        if section < numberOfRowsAtSection.count {
+            rows = numberOfRowsAtSection[section]
+        }
+        return rows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row != 3 {
+        if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "addProjectCell", for: indexPath) as! AddProjectTableViewCell
-            cell.titleLabel.text = labels[indexPath.row]
+            cell.textInput.placeholder = firstLabels[indexPath.row]
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "addProjectTypeCell", for: indexPath) as! AddProjectTypeTableViewCell
-            cell.titleLabel.text = labels[indexPath.row]
-            
-            cell.experimentTypePicker.delegate = self
-            cell.experimentTypePicker.dataSource = self
-            
+            cell.titleLabel.text = secondLabels[indexPath.row]
+            cell.selectedLabel.text = experimentType.description
             return cell
         }
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row != 3 {
-            return 50
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            performSegue(withIdentifier: "add.segue.type", sender: self)
         }
-        else {
-            return 100
-        }
-
     }
     
     
     // MARK: picker view functions
-    
+    /*
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return ExperimentType.allTypeStrings.count
     }
@@ -127,8 +132,12 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
         
         return label
     }
+    */
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        newProjectTableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -10,7 +10,6 @@ import UIKit
 
 class AddProjectTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textInput: UITextField!
 
     override func awakeFromNib() {

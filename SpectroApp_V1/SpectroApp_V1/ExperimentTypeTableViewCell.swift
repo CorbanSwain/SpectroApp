@@ -1,18 +1,17 @@
 //
-//  AddProjectTypeTableViewCell.swift
+//  ExperimentTypeTableViewCell.swift
 //  SpectroApp_V1
 //
-//  Created by Mary Richardson on 4/15/17.
+//  Created by Mary Richardson on 4/18/17.
 //  Copyright © 2017 CorbanSwain. All rights reserved.
 //
 
 import UIKit
 
-class AddProjectTypeTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var selectedLabel: UILabel!
+class ExperimentTypeTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var titleLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,7 +22,5 @@ class AddProjectTypeTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    
 
 }
