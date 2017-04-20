@@ -21,6 +21,8 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
     
     var selectionIndexPath: IndexPath? = nil
     
+    @IBOutlet weak var headerView: UIView!
+    
     var sortSetting = SortSetting.type {
         didSet {
             guard sortSetting != oldValue else {
@@ -250,6 +252,14 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        headerView.layer.masksToBounds = false
+//        headerView.layer.shadowColor = UIColor.darkGray.cgColor
+        headerView.layer.shadowRadius = 3
+        headerView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        headerView.layer.shadowOpacity = 0.5
+        
+        
         setupFRC()
         super.tableView = dataTableView
         do {

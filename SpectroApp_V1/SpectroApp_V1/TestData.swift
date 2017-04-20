@@ -29,6 +29,7 @@ class TestDataGenerator {
         proj.experimentType = ExperimentType(rawValue: Int16(rand(1,3))) ?? .noType
         proj.editDate = Date().addingTimeInterval(-(Double)(rand(0,20_000_000)))
         proj.notebookReference = "CS-IX-\(rand(10,99))"
+        print("project notebook ref: \(proj.notebookReference ?? "[none]") \n\t↳ TestDataGenerator.createProject()")
         proj.title =  proj.experimentType.description + " " + randWords(3)
         proj.notes = randWords(15, sentence: true) + " " + randWords(10, sentence: true) + " " + randWords(20, sentence: true) + " " + randWords(17, sentence: true)
         //proj.notes = "hi"

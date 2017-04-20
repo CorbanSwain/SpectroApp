@@ -34,7 +34,7 @@ class ProjectViewController: UIViewController, ProjectPresenter {
         experimentTypeLabel.text = p.experimentType.description
         creatorLabel.text = p.creator?.username
         numberOfSamplesLabel.text = String(p.readings.count)
-        notebookReferenceLabel.text = p.notebookReference
+        notebookReferenceLabel.text = p.notebookReference ?? "[none]"
         notesLabel.text = p.notes
         
     }

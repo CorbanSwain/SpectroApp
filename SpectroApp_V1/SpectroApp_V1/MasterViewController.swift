@@ -33,7 +33,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             if let subText1 = Formatter.monDayYr.string(fromOptional: activeProj.editDate) {
                 subText = subText1
             }
-            if let subText2 = activeProj.notebookReferenceDB {
+            if let subText2 = activeProj.notebookReference {
                 if subText == nil {
                     subText = subText2
                 } else {
