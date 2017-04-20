@@ -30,9 +30,9 @@ class Project: AbsorbanceObject {
         }
     }
     
-    var notebookReference: String {
+    var notebookReference: String? {
         get {
-            return notebookReferenceDB ?? "no notebook reference"
+            return notebookReferenceDB
         } set {
             notebookReferenceDB = newValue
         }
@@ -85,6 +85,7 @@ class Project: AbsorbanceObject {
             return ExperimentType(rawValue: experimentTypeDB) ?? .noType
         } set {
             experimentTypeDB = newValue.rawValue
+            experimentTypeStringDB = newValue.description
         }
     }
     

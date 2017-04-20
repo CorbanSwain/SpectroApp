@@ -16,7 +16,7 @@ protocol ProjectChangerDelegate: class {
     func cancelChange()
 }
 
-class ProjectsPopoverViewController: FetchedResultsTableViewController, UITableViewDataSource, UITableViewDelegate {
+class ProjectsPopoverViewController: FetchedResultsTableViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     @IBOutlet weak var projectTableView: UITableView!
 
     
@@ -30,6 +30,7 @@ class ProjectsPopoverViewController: FetchedResultsTableViewController, UITableV
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     
+    @IBOutlet weak var searchBar: UISearchBar!
     
     // MARK: table view functions
     
@@ -47,6 +48,30 @@ class ProjectsPopoverViewController: FetchedResultsTableViewController, UITableV
         } else {
 //            print("no rows!")
             return 0
+        }
+    }
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        let searchStr = searchText
+        if searchStr == "" {
+            print("Search String is empty!\n\t↳ ProjectPopoverVC.searchBar")
+            if frc.fetchRequest.predicate != nil {
+                frc.fetchRequest.predicate = nil
+            }
+        } else {
+            print("New search string: \(searchStr)\n\t↳ ProjectsPopoverVC.searchBarDidBeginEditing(_:)")
+            let predicate = NSPredicate(format: "( titleDB CONTAINS %@ )|| ( experimentTypeStringDB CONTAINS %@ ) || ( notebookReferenceDB CONTAINS %@ )", searchStr, searchStr, searchStr)
+            frc.fetchRequest.predicate = predicate
+        }
+        
+        do {
+            print("fetching data!\n\t↳ ProjectPopoverVC")
+            try frc.performFetch()
+            projectTableView.reloadData()
+        } catch let error as NSError {
+            print("Could not perform fetch!\n\t↳ ProjectPopoverVC\nFETCHING ERROR: \(error), \(error.userInfo)")
         }
     }
     
@@ -70,8 +95,7 @@ class ProjectsPopoverViewController: FetchedResultsTableViewController, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate.prepareChange(to: frc.object(at: indexPath))
         // FIXME: could add animations here
-        cancelButton.isEnabled = true
-        doneButton.title = "Open"
+        doneButton.isEnabled = true
 //        doneButton.tintColor = .green
     }
     
@@ -125,6 +149,7 @@ class ProjectsPopoverViewController: FetchedResultsTableViewController, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         // FIXME: only refresh so often not upon every loading
+        searchBar.delegate = self
         if Project.refreshAllDateSections() {
             do {
                 try AppDelegate.viewContext.save()
@@ -135,7 +160,8 @@ class ProjectsPopoverViewController: FetchedResultsTableViewController, UITableV
         }
         
         tableView = projectTableView
-        cancelButton.isEnabled = false
+        doneButton.title = "Open"
+        doneButton.isEnabled = false
         setupFRC()
         // FIXME: maybe add perroemfetch to its own function...implement in super class?
         do {

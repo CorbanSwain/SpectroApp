@@ -19,18 +19,27 @@ class ExperimentTypeViewController: UIViewController, UITableViewDataSource, UIT
     // MARK: table view functions
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 { return 1 }
         return labels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
+        if indexPath.section == 0 {
+            return tableView.dequeueReusableCell(withIdentifier: "expCell.footerView") ?? UITableViewCell()
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "experimentTypeCell", for: indexPath) as! ExperimentTypeTableViewCell
         cell.titleLabel.text = labels[indexPath.row]
         
+        if indexPath.row == (labels.count - 1) {
+            cell.separatorInset.left = 0
+        }
+    
         // FIXME: this should add a checkmark to the selected type!
         if (labels[indexPath.row] == type.description) {
             print(labels[indexPath.row])
@@ -43,8 +52,13 @@ class ExperimentTypeViewController: UIViewController, UITableViewDataSource, UIT
             
         return cell
     }
+
+
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 35
+        }
         return 50
     }
 
@@ -64,6 +78,7 @@ class ExperimentTypeViewController: UIViewController, UITableViewDataSource, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        experimentTypeTableView.tableFooterView = UIView()
         experimentTypeTableView.delegate = self
         experimentTypeTableView.dataSource = self
 

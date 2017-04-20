@@ -21,6 +21,7 @@
 		1C3896AC1E8EF9BF004E9CD6 /* Plot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3896AB1E8EF9BF004E9CD6 /* Plot.swift */; };
 		1C569FF41E79AA5E00A9FAD4 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C569FF31E79AA5E00A9FAD4 /* DataViewController.swift */; };
 		1C569FF71E7A138C00A9FAD4 /* PlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C569FF61E7A138C00A9FAD4 /* PlotViewController.swift */; };
+		1C66AEBA1EA869880081CBB9 /* ReadingIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C66AEB91EA869880081CBB9 /* ReadingIndexView.swift */; };
 		1C67FFB71E9C213E00B6194E /* Wavelength.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C67FFB61E9C213E00B6194E /* Wavelength.swift */; };
 		1C67FFB91E9C215300B6194E /* ReadingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C67FFB81E9C215300B6194E /* ReadingType.swift */; };
 		1C67FFBB1E9C215E00B6194E /* ExperimentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C67FFBA1E9C215E00B6194E /* ExperimentType.swift */; };
@@ -95,6 +96,7 @@
 		1C3896AB1E8EF9BF004E9CD6 /* Plot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plot.swift; sourceTree = "<group>"; };
 		1C569FF31E79AA5E00A9FAD4 /* DataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
 		1C569FF61E7A138C00A9FAD4 /* PlotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotViewController.swift; sourceTree = "<group>"; };
+		1C66AEB91EA869880081CBB9 /* ReadingIndexView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingIndexView.swift; sourceTree = "<group>"; };
 		1C67FFB61E9C213E00B6194E /* Wavelength.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wavelength.swift; sourceTree = "<group>"; };
 		1C67FFB81E9C215300B6194E /* ReadingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingType.swift; sourceTree = "<group>"; };
 		1C67FFBA1E9C215E00B6194E /* ExperimentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentType.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 		1C7E717D1E78E6760073799D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1C66AEB91EA869880081CBB9 /* ReadingIndexView.swift */,
 				1C7DB49E1EA7E7E500335046 /* ReadingTypeView.swift */,
 				1C19446A1E7B7D9C002FB321 /* InstrumentStatusView.swift */,
 				1CBE94EA1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift */,
@@ -515,6 +518,7 @@
 				1C3175C51E9BF67D008E4DFB /* TestData.swift in Sources */,
 				1CBE94EB1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift in Sources */,
 				D58B47581E9D78E1007145FB /* DataMasterViewController.swift in Sources */,
+				1C66AEBA1EA869880081CBB9 /* ReadingIndexView.swift in Sources */,
 				1CBE94ED1E8126F200F3C8F3 /* MasterNavigationBar.swift in Sources */,
 				1C7E718B1E7904120073799D /* AbsorbanceFunctions.swift in Sources */,
 				1C67FFB71E9C213E00B6194E /* Wavelength.swift in Sources */,

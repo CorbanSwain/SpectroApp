@@ -12,6 +12,7 @@ import UIKit
 class Formatter {
     static var noDateStr = "[no date]"
     
+    static let monDayYrRetHrMin = dateFmtr("MMM dd, YYYY\nhh:mm a")
     static let monDayYr = dateFmtr("MMM dd, YYYY")
     static let monDayYrHrMin = dateFmtr("MMM dd, YYYY hh:mm a")
     static let monDayYrExcel = dateFmtr("MM/dd/YYYY")
@@ -61,11 +62,11 @@ class Formatter {
 }
 
 extension DateFormatter {
-    func string(fromOptional date: Date?) -> String {
+    func string(fromOptional date: Date?) -> String? {
         if let d = date {
-            return  string(from: d)
+            return string(from: d)
         } else {
-            return Formatter.noDateStr
+            return nil
         }
     }
 }

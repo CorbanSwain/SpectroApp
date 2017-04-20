@@ -66,22 +66,24 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
         if section < numberOfRowsAtSection.count {
             rows = numberOfRowsAtSection[section]
         }
+
         return rows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "addProjectCell", for: indexPath) as! AddProjectTableViewCell
-            cell.textInput.placeholder = labels[indexPath.section][indexPath.row]
-            return cell
-        }
-        else if indexPath.section == 1 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "addProjectCell", for: indexPath) as! AddProjectTableViewCell
+                cell.textInput.placeholder = labels[indexPath.section][indexPath.row]
+                cell.separatorInset.left = 0
+                return cell
+        } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "addProjectTypeCell", for: indexPath) as! AddProjectTypeTableViewCell
             cell.titleLabel.text = labels[indexPath.section][indexPath.row]
             cell.selectedLabel.text = experimentType.description
+            cell.separatorInset.left = 0
             return cell
-        }
-        else {
+        } else {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "addProjectCell", for: indexPath) as! AddProjectTableViewCell
                 cell.textInput.placeholder = labels[indexPath.section][indexPath.row]
@@ -90,6 +92,7 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
             else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "addProjectNotesCell", for: indexPath) as! AddProjectNotesTableViewCell
                 cell.textInput.text = labels[indexPath.section][indexPath.row]
+                cell.separatorInset.left = 0
                 //cell.textInput.textColor = UIColor.lightGray
                 return cell
             }
@@ -103,8 +106,22 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
         return 50
     }
     
+
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        if section == 0 {
+            return 35
+        } else {
+            return 35/3
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 2 {
+            return 35
+        } else {
+            return 35/2
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

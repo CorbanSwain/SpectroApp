@@ -9,11 +9,28 @@
 import UIKit
 import CoreData
 
+enum SortSetting {
+    case type
+    case date
+    case name
+}
+
 class DataMasterViewController:  FetchedResultsTableViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var dataTableView: UITableView!
     
     var selectionIndexPath: IndexPath? = nil
+    
+    @IBOutlet weak var headerView: UIView!
+    
+    var sortSetting = SortSetting.type {
+        didSet {
+            guard sortSetting != oldValue else {
+                return
+            }
+            refrechFRCSort()
+        }
+    }
     
     var frc: NSFetchedResultsController<Reading>!
     var didSetupFRC = false
@@ -72,7 +89,11 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath) as! DataTableViewCell
         
         let reading = frc.object(at: indexPath)
-        cell.setup(with: reading)
+        if let i = project?.readingArray.index(of: reading) {
+            cell.setup(with: reading, index: (i + 1))
+        } else {
+            cell.setup(with: reading)
+        }
         
         return cell
     }
@@ -83,16 +104,33 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
 //    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let typeInt = Formatter.intNum.number(from: (frc.sections?[section].name)!)! as! Int16
-        return ReadingType(rawValue: typeInt)?.description ?? ReadingType.noType.description
+        if sortSetting == .type {
+            let typeInt = Formatter.intNum.number(from: (frc.sections?[section].name)!)! as! Int16
+            return ReadingType(rawValue: typeInt)?.description ?? ReadingType.noType.description
+        } else {
+            return nil
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        if sortSetting == .type {
+            if section == 0 {
+                return 40
+            } else {
+                return 15
+            }
+            
+        } else {
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 30
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return frc.sections?.count ?? 0
+        return frc.sections?.count ?? 1
     }
     
     // MARK: segue functions
@@ -116,6 +154,54 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
         detailViewController.reading = frc.object(at: indexPath)
      }
     
+    func refrechFRCSort() {
+        print("refresfing FRC\n\t↳ DataMasterVC")
+        let dateKey = "timestampDB"
+        let dateSort = NSSortDescriptor(key: dateKey, ascending: true, selector: #selector(NSDate.compare(_:)))
+        let titleKey = "titleDB"
+        let titleSort = NSSortDescriptor(key: titleKey, ascending: true, selector: #selector(NSString.compare(_:)))
+        let typeKey = "typeDB"
+        let typeSort =  NSSortDescriptor(key: typeKey,  ascending: true, selector: #selector(NSNumber.compare(_:)))
+        
+        
+        let request: NSFetchRequest<Reading> = Reading.fetchRequest()
+        let keyPath: String?
+        if let proj = project {
+            request.predicate = NSPredicate(format: "project = %@", proj)
+        } else {
+            // FIXME: maybe `nil` project should be handled differently
+        }
+        
+        switch sortSetting {
+        case .type:
+            request.sortDescriptors = [typeSort,dateSort]
+            keyPath = typeKey
+        case .name:
+            request.sortDescriptors = [titleSort,dateSort]
+            keyPath = nil
+        case .date:
+            request.sortDescriptors = [dateSort,titleSort]
+            keyPath = nil
+        }
+        
+        frc = NSFetchedResultsController(
+            fetchRequest        : request,
+            managedObjectContext: AppDelegate.viewContext,
+            sectionNameKeyPath  : keyPath,
+            cacheName           : nil
+        )
+        frc.delegate = self
+        
+        do {
+            print("Attempt at Fetching data!\n\t↳ DataMasterVC")
+            try frc.performFetch()
+            print("Completed Fetch!\n\t↳ DataMasterVC")
+            dataTableView.reloadData()
+        } catch let error as NSError {
+            print("Could not perform fetch!\n\t↳ DataMasterVC\nFETCHING ERROR: \(error), \(error.userInfo)")
+        }
+    }
+    
     func refreshFRC() {
         
         guard didSetupFRC else {
@@ -132,15 +218,6 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
             try frc.performFetch()
             dataTableView.reloadData()
             detailViewController.reading = nil
-            if let indexPath = selectionIndexPath {
-                if indexPath.section < (frc.sections?.count ?? 0) {
-                    if indexPath.row < (frc.sections?[indexPath.section].numberOfObjects  ?? 0) {
-                        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-                        tableView.delegate?.tableView?(tableView, didSelectRowAt: indexPath)
-                    }
-                }
-            }
-            
         } catch let error as NSError {
             print("Could not perform fetch! -- DataMasterVC\nFETCHING ERROR: \(error), \(error.userInfo)")
         }
@@ -175,6 +252,14 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        headerView.layer.masksToBounds = false
+//        headerView.layer.shadowColor = UIColor.darkGray.cgColor
+        headerView.layer.shadowRadius = 3
+        headerView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        headerView.layer.shadowOpacity = 0.5
+        
+        
         setupFRC()
         super.tableView = dataTableView
         do {

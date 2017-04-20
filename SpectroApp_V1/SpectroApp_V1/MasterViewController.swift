@@ -15,7 +15,7 @@ protocol ProjectPresenter {
 
 class MasterViewController: UIViewController, UIPopoverPresentationControllerDelegate, ProjectChangerDelegate, DatabaseDelegate, DocumentControllerPresenter {
     
-    var lastActiveProject: Project? = nil
+    var newProject: Project? = nil
     var activeProject: Project! {
         didSet {
             guard oldValue != activeProject else {
@@ -29,7 +29,19 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             }
             print("Set `activeProject` to: \(activeProj.title)\n\t↳ MasterVC.activeProject-didSet")
             headerView.mainText = activeProj.title
-            headerView.subText = Formatter.monDayYr.string(from: activeProj.creationDate! as Date)
+            var subText: String? = nil
+            if let subText1 = Formatter.monDayYr.string(fromOptional: activeProj.editDate) {
+                subText = subText1
+            }
+            if let subText2 = activeProj.notebookReference {
+                if subText == nil {
+                    subText = subText2
+                } else {
+                    subText = subText! + "  —  " + subText2
+                }
+            }
+            headerView.subText = subText
+            
             guard let projectPresenter = childViewControllers.first as? ProjectPresenter else {
                 print("could not load project presenter\n\t↳ MasterVC.activeProject-didSet")
                 return
@@ -40,23 +52,28 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     
     // FIXME: Maybe implement project/view history so back and forward buttons can be used
     func prepareChange(to project: Project) {
-        print("preparing project change -- MasterVC.preppareChange")
-        if lastActiveProject == nil {
-            lastActiveProject = activeProject
-        }
-        activeProject = project
+        print("Preparing project change!\n\t↳ MasterVC.preppareChange")
+        newProject = project
     }
     
     func commitChange() {
-        print("commiting change -- MasterVC.preppareChange")
-        lastActiveProject = nil
+        print("Commiting project change!\n\t↳ MasterVC.preppareChange")
+        if let p = newProject {
+            activeProject = p
+            newProject = nil
+        } else {
+            return
+        }
     }
     
     func cancelChange() {
         // FIXME: in DataVC need to reslect last selected reading
-        print("cancelng change -- MasterVC.preppareChange")
-        activeProject = lastActiveProject
-        lastActiveProject = nil
+        guard newProject != nil else {
+            print("No project change to cancel!\n\t↳ MasterVC.preppareChange")
+            return
+        }
+        print("Canceling project change!\n\t↳ MasterVC.preppareChange")
+        newProject = nil
     }
     
 //    @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -122,16 +139,16 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
 //        
         //create test data
         TestDataGenerator.initialDate = Date()
-        TestDataGenerator.numReadings = 40
+        TestDataGenerator.numReadings = 200
         let newProject = TestDataGenerator.createProject()
         activeProject = newProject
 
         (childViewControllers.first as! DataViewController).project = activeProject
-//        for _ in 0...150 {
-//            _ = TestDataGenerator.createProject()
-//            // print("\(i): \(p.dateSection.header): --> \(Formatter.monDayYr.string(from: p.editDate))")
-//        }
-//        
+        for _ in 0...1 {
+            _ = TestDataGenerator.createProject()
+            // print("\(i): \(p.dateSection.header): --> \(Formatter.monDayYr.string(from: p.editDate))")
+        }
+
         
         for dateSection in DateSection.sectionArray {
             print("\(dateSection.header) : \(Formatter.monDayYrHrMin.string(from: dateSection.date))")
@@ -178,6 +195,40 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         }
     }
 
+    
+    @IBOutlet weak var sortButton: UIBarButtonItem!
+    
+    @IBAction func sortButtonPressed(_ sender: UIBarButtonItem) {
+       print("`sort...` button pressed! \n\t↳ MasterVC")
+        let pop = UIAlertController(title: nil, message: "Sort the readings by:", preferredStyle: .actionSheet)
+        pop.addAction(UIAlertAction(title: "Type", style: .default, handler: addAction))
+        pop.addAction(UIAlertAction(title: "Date", style: .default, handler: addAction))
+        pop.addAction(UIAlertAction(title: "Name", style: .default, handler: addAction))
+        pop.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        pop.popoverPresentationController?.barButtonItem = sortButton
+        present(pop, animated: true, completion: nil)
+    }
+    
+//    func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
+//        popoverPresentationController.barButtonItem = sortButton
+//    }
+    
+    func addAction(_ action: UIAlertAction) {
+        guard let title = action.title else {
+            return
+        }
+        let dataVC = (childViewControllers.first as! DataViewController).masterVC!
+        switch title {
+        case "Type":
+            dataVC.sortSetting = .type
+        case "Date":
+            dataVC.sortSetting = .date
+        case "Name":
+            dataVC.sortSetting = .name
+        default:
+            break
+        }
+    }
     // MARK: - Database Delegate Functions
     func add(dataPoint: DataPoint) {
         let reading = Reading(fromDataPoints: [dataPoint])
@@ -253,6 +304,11 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             popoverVC.delegates[docControllerPresenterKey] = self as DocumentControllerPresenter
             popoverVC.performSegue(withIdentifier: "popover.segue.export", sender: popoverVC)
             break
+            
+        case "segue.info":
+            let projectVC = segue.destination as! ProjectViewController
+            projectVC.project = activeProject
+            
         default:
             break
         }
