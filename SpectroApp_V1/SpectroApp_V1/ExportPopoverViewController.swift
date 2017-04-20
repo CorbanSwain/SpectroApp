@@ -104,6 +104,9 @@ class ExportPopoverViewController: UIViewController, UIDocumentInteractionContro
         return false
     }
     
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func writeData(sender: UIButton) {
         if writeDataToFile(file: fileNameText.text!) {

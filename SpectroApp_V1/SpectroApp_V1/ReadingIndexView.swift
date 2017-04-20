@@ -17,10 +17,11 @@ class ReadingIndexView: UIView {
         guard !didSetup else {
             return
         }
-        layer.cornerRadius = frame.width / 2
-        layer.borderColor = UIColor.black.cgColor
+        layer.cornerRadius = frame.width / 4
+        layer.borderColor = UIColor.black.withAlphaComponent(0.8).cgColor
         layer.borderWidth = 1
         backgroundColor = .clear
+        indexLabel.textColor = UIColor.black.withAlphaComponent(0.8)
         indexLabel.text = "!"
     }
     

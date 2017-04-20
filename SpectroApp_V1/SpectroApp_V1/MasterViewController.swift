@@ -139,12 +139,12 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
 //        
         //create test data
         TestDataGenerator.initialDate = Date()
-        TestDataGenerator.numReadings = 40
+        TestDataGenerator.numReadings = 200
         let newProject = TestDataGenerator.createProject()
         activeProject = newProject
 
         (childViewControllers.first as! DataViewController).project = activeProject
-        for _ in 0...50 {
+        for _ in 0...1 {
             _ = TestDataGenerator.createProject()
             // print("\(i): \(p.dateSection.header): --> \(Formatter.monDayYr.string(from: p.editDate))")
         }
@@ -200,7 +200,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     
     @IBAction func sortButtonPressed(_ sender: UIBarButtonItem) {
        print("`sort...` button pressed! \n\t↳ MasterVC")
-        let pop = UIAlertController(title: "Sort the readings by:", message: nil, preferredStyle: .actionSheet)
+        let pop = UIAlertController(title: nil, message: "Sort the readings by:", preferredStyle: .actionSheet)
         pop.addAction(UIAlertAction(title: "Type", style: .default, handler: addAction))
         pop.addAction(UIAlertAction(title: "Date", style: .default, handler: addAction))
         pop.addAction(UIAlertAction(title: "Name", style: .default, handler: addAction))

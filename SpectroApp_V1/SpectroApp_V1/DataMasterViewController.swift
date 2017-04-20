@@ -87,7 +87,11 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath) as! DataTableViewCell
         
         let reading = frc.object(at: indexPath)
-        cell.setup(with: reading, index: project?.readingArray.index(of: reading))
+        if let i = project?.readingArray.index(of: reading) {
+            cell.setup(with: reading, index: (i + 1))
+        } else {
+            cell.setup(with: reading)
+        }
         
         return cell
     }
@@ -108,10 +112,19 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if sortSetting == .type {
-            return 40
+            if section == 0 {
+                return 40
+            } else {
+                return 15
+            }
+            
         } else {
             return 0
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 30
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

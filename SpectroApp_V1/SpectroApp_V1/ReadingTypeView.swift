@@ -25,8 +25,8 @@ class ReadingTypeView: UIView {
     
     func setType(_ type: ReadingType) {
        let color = type.color
-        backgroundColor = color.withAlphaComponent(0.3)
-        layer.borderColor = color.cgColor
+        backgroundColor = color.withAlphaComponent(0.2)
+        layer.borderColor = color.withAlphaComponent(0.7).cgColor
         typeLetterLabel.text = String(type.letter)
     }
     
