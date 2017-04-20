@@ -9,8 +9,4 @@
 import UIKit
 
 class DensityDataTableViewCell: DataTableViewCell {
-    @IBOutlet weak var numRepeatsLabel: UILabel!
-    @IBOutlet weak var typeView: ReadingTypeView!
-    @IBOutlet weak var timeLabel: UILabel!
-
 }

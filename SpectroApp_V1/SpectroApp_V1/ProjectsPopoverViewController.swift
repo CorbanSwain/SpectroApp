@@ -70,8 +70,7 @@ class ProjectsPopoverViewController: FetchedResultsTableViewController, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate.prepareChange(to: frc.object(at: indexPath))
         // FIXME: could add animations here
-        cancelButton.isEnabled = true
-        doneButton.title = "Open"
+        doneButton.isEnabled = true
 //        doneButton.tintColor = .green
     }
     
@@ -135,7 +134,8 @@ class ProjectsPopoverViewController: FetchedResultsTableViewController, UITableV
         }
         
         tableView = projectTableView
-        cancelButton.isEnabled = false
+        doneButton.title = "Open"
+        doneButton.isEnabled = false
         setupFRC()
         // FIXME: maybe add perroemfetch to its own function...implement in super class?
         do {

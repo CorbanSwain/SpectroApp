@@ -29,7 +29,19 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             }
             print("Set `activeProject` to: \(activeProj.title)\n\t↳ MasterVC.activeProject-didSet")
             headerView.mainText = activeProj.title
-            headerView.subText = Formatter.monDayYr.string(from: activeProj.creationDate! as Date)
+            var subText: String? = nil
+            if let subText1 = Formatter.monDayYr.string(fromOptional: activeProj.editDate) {
+                subText = subText1
+            }
+            if let subText2 = activeProj.notebookReferenceDB {
+                if subText == nil {
+                    subText = subText2
+                } else {
+                    subText = subText! + "  —  " + subText2
+                }
+            }
+            headerView.subText = subText
+            
             guard let projectPresenter = childViewControllers.first as? ProjectPresenter else {
                 print("could not load project presenter\n\t↳ MasterVC.activeProject-didSet")
                 return
@@ -40,7 +52,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     
     // FIXME: Maybe implement project/view history so back and forward buttons can be used
     func prepareChange(to project: Project) {
-        print("preparing project change -- MasterVC.preppareChange")
+        print("Preparing project change!\n\t↳ MasterVC.preppareChange")
         if lastActiveProject == nil {
             lastActiveProject = activeProject
         }
@@ -48,14 +60,18 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     }
     
     func commitChange() {
-        print("commiting change -- MasterVC.preppareChange")
+        print("Commiting change!\n\t↳ MasterVC.preppareChange")
         lastActiveProject = nil
     }
     
     func cancelChange() {
         // FIXME: in DataVC need to reslect last selected reading
-        print("cancelng change -- MasterVC.preppareChange")
-        activeProject = lastActiveProject
+        print("Cancelng change!\n\t↳ MasterVC.preppareChange")
+        guard let proj = lastActiveProject else {
+            print("No change to cancel!\n\t↳ MasterVC.preppareChange")
+            return
+        }
+        activeProject = proj
         lastActiveProject = nil
     }
     
@@ -253,6 +269,11 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             popoverVC.delegates[docControllerPresenterKey] = self as DocumentControllerPresenter
             popoverVC.performSegue(withIdentifier: "popover.segue.export", sender: popoverVC)
             break
+            
+        case "segue.info":
+            let projectVC = segue.destination as! ProjectViewController
+            projectVC.project = activeProject
+            
         default:
             break
         }

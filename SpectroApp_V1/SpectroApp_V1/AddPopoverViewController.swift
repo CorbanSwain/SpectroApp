@@ -90,6 +90,7 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
             else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "addProjectNotesCell", for: indexPath) as! AddProjectNotesTableViewCell
                 cell.textInput.text = labels[indexPath.section][indexPath.row]
+
                 //cell.textInput.textColor = UIColor.lightGray
                 return cell
             }
@@ -97,7 +98,11 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        if indexPath.row == 1 && indexPath.section == 2 {
+            return 150
+        } else {
+            return 50
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -166,6 +171,8 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        newProjectTableView.tableFooterView = UIView()
+        
         newProjectTableView.delegate = self
         newProjectTableView.dataSource = self
         
