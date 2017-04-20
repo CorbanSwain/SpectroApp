@@ -59,7 +59,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         lastActiveProject = nil
     }
     
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
+//    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     /// Outlet to the container view in which the various view 
     /// controllers will be presented
@@ -73,35 +73,35 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     @IBOutlet weak var instrumentAlertView: InstrumentStatusView!
     
     @IBOutlet weak var instrumentButtonToAlertViewFixedSpace: UIBarButtonItem!
-    /// instance of the project view controller; view controllers are
-    /// implemented with lazy loading to prevent the costs of set up
-    /// if a particular view controller is never used
-    private lazy var projectViewController: ProjectViewController = {
-        // force downcast new view controller instance to ```ProjectViewController```
-        let viewController = self.instantiateViewController(withID: "ProjectViewController") as! ProjectViewController
-        
-        // add view controller as child view controller
-        self.add(asChildViewController: viewController)
-        return viewController
-    }()
-    
-    /// instance of the data view controller; view controllers are
-    /// implemented with lazy loading to prevent the costs of set up
-    /// if a particular view controller is never used
-    private lazy var dataViewController: DataViewController = {
-        let viewController = self.instantiateViewController(withID: "DataViewController") as! DataViewController
-        self.add(asChildViewController: viewController)
-        return viewController
-    }()
-    
-    /// instance of the plot view controller; view controllers are
-    /// implemented with lazy loading to prevent the costs of set up
-    /// if a particular view controller is never used
-    private lazy var plotViewController: PlotViewController = {
-        let viewController = self.instantiateViewController(withID: "PlotViewController") as! PlotViewController
-        self.add(asChildViewController: viewController)
-        return viewController
-    }()
+//    /// instance of the project view controller; view controllers are
+//    /// implemented with lazy loading to prevent the costs of set up
+//    /// if a particular view controller is never used
+//    private lazy var projectViewController: ProjectViewController = {
+//        // force downcast new view controller instance to ```ProjectViewController```
+//        let viewController = self.instantiateViewController(withID: "ProjectViewController") as! ProjectViewController
+//        
+//        // add view controller as child view controller
+//        self.add(asChildViewController: viewController)
+//        return viewController
+//    }()
+//    
+//    /// instance of the data view controller; view controllers are
+//    /// implemented with lazy loading to prevent the costs of set up
+//    /// if a particular view controller is never used
+//    private lazy var dataViewController: DataViewController = {
+//        let viewController = self.instantiateViewController(withID: "DataViewController") as! DataViewController
+//        self.add(asChildViewController: viewController)
+//        return viewController
+//    }()
+//    
+//    /// instance of the plot view controller; view controllers are
+//    /// implemented with lazy loading to prevent the costs of set up
+//    /// if a particular view controller is never used
+//    private lazy var plotViewController: PlotViewController = {
+//        let viewController = self.instantiateViewController(withID: "PlotViewController") as! PlotViewController
+//        self.add(asChildViewController: viewController)
+//        return viewController
+//    }()
     
     /// an array of closures that each return the primary view controllers
     var viewControllers: [()->UIViewController] = []
@@ -115,17 +115,18 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         print("at top! \n\t↳ MasterVC.viewDidLoad")
         super.viewDidLoad()
         
-        // add the primary view controllers to the ```viewControllers``` array in the same order they appear in the segmented control; using closures here to preserve lazy loading
-        viewControllers.append({ return self.projectViewController })
-        viewControllers.append({ return self.dataViewController })
-        viewControllers.append({ return self.plotViewController })
-        
+//        // add the primary view controllers to the ```viewControllers``` array in the same order they appear in the segmented control; using closures here to preserve lazy loading
+//        viewControllers.append({ return self.projectViewController })
+//        viewControllers.append({ return self.dataViewController })
+//        viewControllers.append({ return self.plotViewController })
+//        
         //create test data
         TestDataGenerator.initialDate = Date()
         TestDataGenerator.numReadings = 40
         let newProject = TestDataGenerator.createProject()
         activeProject = newProject
-//
+
+        (childViewControllers.first as! DataViewController).project = activeProject
 //        for _ in 0...150 {
 //            _ = TestDataGenerator.createProject()
 //            // print("\(i): \(p.dateSection.header): --> \(Formatter.monDayYr.string(from: p.editDate))")
@@ -136,13 +137,13 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             print("\(dateSection.header) : \(Formatter.monDayYrHrMin.string(from: dateSection.date))")
         }
         // begin by loading the initial view controller
-        let firstViewIndex = 0 // 0, 1, or 2
-        let firstController = viewControllers[firstViewIndex]()
-        add(asChildViewController: firstController)
-        if let projectPresenter = firstController as? ProjectPresenter {
-            print("loading project into child view controller")
-            projectPresenter.loadProject(activeProject)
-        }
+//        let firstViewIndex = 0 // 0, 1, or 2
+//        let firstController = viewControllers[firstViewIndex]()
+//        add(asChildViewController: firstController)
+//        if let projectPresenter = firstController as? ProjectPresenter {
+//            print("loading project into child view controller")
+//            projectPresenter.loadProject(activeProject)
+//        }
 
         // save test data
         do {
@@ -241,15 +242,16 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             popoverVC.delegates[projectChangerDelegateKey] = self as ProjectChangerDelegate
             popoverVC.performSegue(withIdentifier: "popover.segue.add", sender: popoverVC)
             // FIXME: need to more smoothly gray out the segmented control, figure out how to change passthrough views
-            segmentedControl.isEnabled = false
-            segmentedControl.tintColor = .darkGray
+//            segmentedControl.isEnabled = false
+//            segmentedControl.tintColor = .darkGray
             instrumentAlertView.isGrayedOut = true
             
             break
         case "master.segue.exportPop":
-            let exportVC = segue.destination as! ExportPopoverViewController
-            exportVC.project = activeProject
-            exportVC.documentControllerPresenter = self
+            let popoverVC = segue.destination as! PopoverNavigationController
+            popoverVC.project = activeProject
+            popoverVC.delegates[docControllerPresenterKey] = self as DocumentControllerPresenter
+            popoverVC.performSegue(withIdentifier: "popover.segue.export", sender: popoverVC)
             break
         default:
             break
@@ -259,8 +261,8 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
 //        print("--MasterVC.popoverShouldDismiss")
         instrumentAlertView.isGrayedOut = false
-        segmentedControl.isEnabled = true
-        segmentedControl.tintColor = _UIBlue
+//        segmentedControl.isEnabled = true
+//        segmentedControl.tintColor = _UIBlue
         commitChange()
         return true;
     }

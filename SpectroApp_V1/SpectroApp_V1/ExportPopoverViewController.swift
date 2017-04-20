@@ -14,6 +14,8 @@ extension String {
     }
 }
 
+let docControllerPresenterKey = "docPres"
+
 protocol DocumentControllerPresenter {
     func prepareDocController(withURL url: URL)
     func presentDocController()

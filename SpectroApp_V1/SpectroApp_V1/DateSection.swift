@@ -12,7 +12,7 @@ enum DateSection: Int16 {
     case today = 0
     case yesterday
     case thisWeek
-    case lastWeek
+//    case lastWeek
     case thisMonth
     case lastMonth
     case twoMonthsAgo
@@ -29,16 +29,13 @@ enum DateSection: Int16 {
         case .today:
             let components1 = Calendar.current.dateComponents([.year, .month, .weekOfYear, .weekOfMonth, .day], from: date)
             return Calendar.current.date(from: components1)!
-            //            var midnightToday = Calendar.current.date(bySetting: .hour, value: 0, of: Date())!
-//            midnightToday = Calendar.current.date(bySetting: .minute, value: 0, of: midnightToday)!
-//            return midnightToday
         case .yesterday:
             return DateSection.adjustDate(date: DateSection.today.date, y: 0, mo: 0, d: -1)
         case .thisWeek:
             let components2 = Calendar.current.dateComponents([.year, .month, .weekOfYear, .weekOfMonth], from: date)
             return DateSection.adjustDate(date: Calendar.current.date(from: components2)!, y: 0, mo: 0, d: 0, w: 2)
-        case .lastWeek:
-            return DateSection.adjustDate(date: DateSection.thisWeek.date, y: 0, mo: 0, d: 0, w: -1)
+//        case .lastWeek:
+//            return DateSection.adjustDate(date: DateSection.thisWeek.date, y: 0, mo: 0, d: 0, w: -1)
         case .thisMonth:
             let components3 = Calendar.current.dateComponents([.year, .month], from: date)
             return Calendar.current.date(from: components3)!
@@ -62,7 +59,7 @@ enum DateSection: Int16 {
         }
     }
     
-    static var sectionArray: [DateSection] { return [.today, .yesterday, .thisWeek, .lastWeek, .thisMonth, .lastMonth, .twoMonthsAgo, .threeMonthsAgo, .thisYear, .lastYear, .twoYearsAgo, .older] }
+    static var sectionArray: [DateSection] { return [.today, .yesterday, .thisWeek, /*.lastWeek,*/ .thisMonth, .lastMonth, .twoMonthsAgo, .threeMonthsAgo, .thisYear, .lastYear, .twoYearsAgo, .older] }
     
     static var dateArray: [Date] {
         var dates: [Date] = []
@@ -81,8 +78,8 @@ enum DateSection: Int16 {
             return "Yesterday"
         case .thisWeek:
             return "This Week"
-        case .lastWeek:
-            return"Last Week"
+//        case .lastWeek:
+//            return"Last Week"
         case .thisMonth:
             return "This Month"
         case .lastMonth, .twoMonthsAgo, .threeMonthsAgo:
@@ -120,7 +117,8 @@ enum DateSection: Int16 {
         return newDate
     }
     
-     func compare(_ other: DateSection) -> ComparisonResult {
+    
+    func compare(_ other: DateSection) -> ComparisonResult {
         let v1 = rawValue
         let v2 = other.rawValue
         if v1 < v2 {
