@@ -24,8 +24,14 @@ class Reading: AbsorbanceObject {
     }
     
     var timestamp: Date? {
-        guard let t1 = dataPoints[0].timestamp as Date? else { return nil }
-        return t1
+        get {
+            guard let tstamp = timestampDB as Date? else {
+                return nil
+            }
+            return tstamp
+        } set {
+            timestampDB = newValue as NSDate?
+        }
     }
     
     
@@ -33,15 +39,21 @@ class Reading: AbsorbanceObject {
         get {
             return (dataPointsDB?.array as? [DataPoint]) ?? []
         } set {
+            
             dataPointsDB = []
-            for point in newValue {
+            timestamp = nil
+            for point in newValue.reversed() {
                 addToDataPointsDB(point)
             }
+            timestamp = newValue[0].timestamp
         }
     }
     
     func addToDataPoints (dataPoint: DataPoint) {
         insertIntoDataPointsDB(dataPoint, at: 0)
+        if let ts = dataPoint.timestamp {
+            timestamp = ts
+        }
     }
     
     var type: ReadingType {

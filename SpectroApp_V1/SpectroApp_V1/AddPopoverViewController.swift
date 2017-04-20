@@ -66,19 +66,42 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
         if section < numberOfRowsAtSection.count {
             rows = numberOfRowsAtSection[section]
         }
-        return rows
+        if section == 2 {
+            return rows
+        }
+        if section == 0 {
+            return rows + 2
+        }
+        return rows + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let numberOfRowsAtSection: [Int] = [labels[0].count, labels[1].count, labels[2].count]
+        
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "addProjectCell", for: indexPath) as! AddProjectTableViewCell
-            cell.textInput.placeholder = labels[indexPath.section][indexPath.row]
-            return cell
+            if indexPath.row == 0 {
+                return newProjectTableView.dequeueReusableCell(withIdentifier: "addCell.footerView")!
+            } else if indexPath.row == 1 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "addProjectCell", for: indexPath) as! AddProjectTableViewCell
+                cell.textInput.placeholder = labels[indexPath.section][indexPath.row - 1]
+                cell.separatorInset.left = 0
+                return cell
+            }
         }
+        
+        
+        if indexPath.row >= numberOfRowsAtSection[indexPath.section] && indexPath.section < 2 {
+            return newProjectTableView.dequeueReusableCell(withIdentifier: "addCell.footerView")!
+        }
+        
+       
+        
+        
         else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "addProjectTypeCell", for: indexPath) as! AddProjectTypeTableViewCell
             cell.titleLabel.text = labels[indexPath.section][indexPath.row]
             cell.selectedLabel.text = experimentType.description
+            cell.separatorInset.left = 0
             return cell
         }
         else {
@@ -90,7 +113,7 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
             else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "addProjectNotesCell", for: indexPath) as! AddProjectNotesTableViewCell
                 cell.textInput.text = labels[indexPath.section][indexPath.row]
-
+                cell.separatorInset.left = 0
                 //cell.textInput.textColor = UIColor.lightGray
                 return cell
             }
@@ -101,12 +124,31 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
         if indexPath.row == 1 && indexPath.section == 2 {
             return 150
         } else {
-            return 50
+            let numberOfRowsAtSection: [Int] = [labels[0].count, labels[1].count, labels[2].count]
+            if indexPath.row == 0 && indexPath.section == 0 {
+                return 35
+            }
+            if indexPath.row >= numberOfRowsAtSection[indexPath.section] && indexPath.section < 2 {
+                if indexPath.row == 1 && indexPath.section == 0 {
+                    return 50
+                }
+                return 35
+            } else {
+                return 50
+            }
         }
     }
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return newProjectTableView.dequeueReusableCell(withIdentifier: "addCell.footerView")?.contentView
+    }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -171,8 +213,6 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        newProjectTableView.tableFooterView = UIView()
-        
         newProjectTableView.delegate = self
         newProjectTableView.dataSource = self
         

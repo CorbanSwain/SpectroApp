@@ -85,6 +85,7 @@ class Project: AbsorbanceObject {
             return ExperimentType(rawValue: experimentTypeDB) ?? .noType
         } set {
             experimentTypeDB = newValue.rawValue
+            experimentTypeStringDB = newValue.description
         }
     }
     

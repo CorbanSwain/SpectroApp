@@ -36,7 +36,12 @@ class DataTableViewCell: UITableViewCell {
         typeView.setup()
         
         typeView.setType(reading.type)
-        indexView.indexLabel.text = Formatter.intNum.string(fromOptional: index as NSNumber?) ?? "?"
+        if let i = index {
+            indexView.indexLabel.text = Formatter.intNum.string(from: i as NSNumber)
+        } else {
+            indexView.indexLabel.text = "?"
+        }
+        
         
         if let title = reading.title {
             titleLabel.textColor = .black
