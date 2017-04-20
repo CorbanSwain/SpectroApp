@@ -29,6 +29,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             }
             print("Set `activeProject` to: \(activeProj.title)\n\t↳ MasterVC.activeProject-didSet")
             headerView.mainText = activeProj.title
+            headerView.titleField.text = activeProj.title
             var subText: String? = nil
             if let subText1 = Formatter.monDayYr.string(fromOptional: activeProj.editDate) {
                 subText = subText1
@@ -132,6 +133,8 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         print("at top! \n\t↳ MasterVC.viewDidLoad")
         super.viewDidLoad()
         
+        headerView.backgroundAccent.isHidden = true
+        headerView.titleField.isEnabled = false
 //        // add the primary view controllers to the ```viewControllers``` array in the same order they appear in the segmented control; using closures here to preserve lazy loading
 //        viewControllers.append({ return self.projectViewController })
 //        viewControllers.append({ return self.dataViewController })
@@ -307,6 +310,25 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             
         case "segue.info":
             let projectVC = segue.destination as! ProjectViewController
+            
+            projectVC.popoverPresentationController?.passthroughViews = [headerView, headerView.backgroundAccent, headerView.mainLabel]
+            headerView.titleField.isEnabled = true
+            UIView.transition(
+                with: headerView.backgroundAccent,
+                duration: 0.6,
+                options: UIViewAnimationOptions.transitionCrossDissolve,
+                animations: {
+                    self.headerView.backgroundAccent.isHidden = false
+                    self.headerView.backgroundAccent.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+                    self.headerView.titleField.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+                },
+                completion: {
+                    if $0 {
+                        self.headerView.titleField.becomeFirstResponder()
+                    }
+                }
+            )
+            
             projectVC.project = activeProject
             
         default:
@@ -317,6 +339,27 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
 //        print("--MasterVC.popoverShouldDismiss")
         instrumentAlertView.isGrayedOut = false
+        headerView.titleField.isEnabled = false
+        
+        UIView.transition(
+            with: headerView.backgroundAccent,
+            duration: 0.6,
+            options: UIViewAnimationOptions.transitionCrossDissolve,
+            animations: {
+                self.headerView.backgroundAccent.isHidden = true
+                self.headerView.backgroundAccent.transform = CGAffineTransform(scaleX: 1, y: 1)
+                self.headerView.titleField.transform = CGAffineTransform(scaleX: 1, y: 1)
+            },
+            completion: nil
+        )
+        
+        if let text = headerView.titleField.text {
+            if text != activeProject.title {
+                activeProject.title = text
+                headerView.mainLabel.text = text
+                try? AppDelegate.viewContext.save()
+            }
+        }
 //        segmentedControl.isEnabled = true
 //        segmentedControl.tintColor = _UIBlue
         commitChange()
