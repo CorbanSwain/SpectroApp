@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddPopoverViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AddPopoverViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
 
     @IBOutlet weak var newProjectTableView: UITableView!
     @IBAction func unwind(segue:UIStoryboardSegue) { }
@@ -93,12 +93,50 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
                 let cell = tableView.dequeueReusableCell(withIdentifier: "addProjectNotesCell", for: indexPath) as! AddProjectNotesTableViewCell
                 cell.textInput.text = labels[indexPath.section][indexPath.row]
                 cell.separatorInset.left = 0
-                //cell.textInput.textColor = UIColor.lightGray
+                cell.textInput.textColor = UIColor.lightGray
+                cell.textInput.delegate = self
+                cell.textInput.becomeFirstResponder()
+                cell.textInput.selectedTextRange = cell.textInput.textRange(from: cell.textInput.beginningOfDocument, to: cell.textInput.beginningOfDocument)
                 return cell
             }
         }
     }
     
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        // Combine the textView text and the replacement text to
+        // create the updated text string
+        let currentText = textView.text as NSString?
+        let updatedText = currentText?.replacingCharacters(in: range, with: text)
+        
+        // If updated text view will be empty, add the placeholder
+        // and set the cursor to the beginning of the text view
+        if (updatedText?.isEmpty)! {
+            
+            textView.text = "Notes"
+            textView.textColor = UIColor.lightGray
+            
+            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+            
+            return false
+        }
+        else if textView.textColor == UIColor.lightGray && !text.isEmpty {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+        
+        return true
+    }
+    
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        if self.view.window != nil {
+            if textView.textColor == UIColor.lightGray {
+                textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+            }
+        }
+    }
+    
+        
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 2 && indexPath.row == 1 {
             return 150
@@ -144,40 +182,6 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
             break
         }
     }
-    
-    // MARK: picker view functions
-    /*
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return ExperimentType.allTypeStrings.count
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        // FIXME: use the actual ExperimentTypes
-        experimentType = row + 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var label: UILabel
-        
-        if let view = view as? UILabel {
-            label = view
-        } else {
-            label = UILabel()
-        }
-        
-        label.textColor = .black
-        label.textAlignment = .center
-        label.font = UIFont(name: "SanFranciscoText-Light", size: 15)
-        
-        label.text = ExperimentType.allTypeStrings[row]
-        
-        return label
-    }
-    */
     
     
     override func viewWillAppear(_ animated: Bool) {
