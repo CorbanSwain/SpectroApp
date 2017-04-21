@@ -8,6 +8,14 @@
 
 import UIKit
 
+extension UIColor {
+    
+    class func greyPlaceholderColor() -> UIColor {
+        return UIColor(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)
+    }
+    
+}
+
 class AddPopoverViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
 
     @IBOutlet weak var newProjectTableView: UITableView!
@@ -93,7 +101,7 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
                 let cell = tableView.dequeueReusableCell(withIdentifier: "addProjectNotesCell", for: indexPath) as! AddProjectNotesTableViewCell
                 cell.textInput.text = labels[indexPath.section][indexPath.row]
                 cell.separatorInset.left = 0
-                cell.textInput.textColor = UIColor.lightGray
+                cell.textInput.textColor = UIColor.greyPlaceholderColor()
                 cell.textInput.delegate = self
                 cell.textInput.becomeFirstResponder()
                 cell.textInput.selectedTextRange = cell.textInput.textRange(from: cell.textInput.beginningOfDocument, to: cell.textInput.beginningOfDocument)
@@ -114,13 +122,13 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
         if (updatedText?.isEmpty)! {
             
             textView.text = "Notes"
-            textView.textColor = UIColor.lightGray
+            textView.textColor = UIColor.greyPlaceholderColor()
             
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
             
             return false
         }
-        else if textView.textColor == UIColor.lightGray && !text.isEmpty {
+        else if textView.textColor == UIColor.greyPlaceholderColor() && !text.isEmpty {
             textView.text = nil
             textView.textColor = UIColor.black
         }
@@ -130,7 +138,7 @@ class AddPopoverViewController: UIViewController, UITableViewDataSource, UITable
     
     func textViewDidChangeSelection(_ textView: UITextView) {
         if self.view.window != nil {
-            if textView.textColor == UIColor.lightGray {
+            if textView.textColor == UIColor.greyPlaceholderColor() {
                 textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
             }
         }
