@@ -77,8 +77,6 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         newProject = nil
     }
     
-//    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    
     /// Outlet to the container view in which the various view 
     /// controllers will be presented
     @IBOutlet weak var containerView: UIView!
@@ -91,35 +89,8 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     @IBOutlet weak var instrumentAlertView: InstrumentStatusView!
     
     @IBOutlet weak var instrumentButtonToAlertViewFixedSpace: UIBarButtonItem!
-//    /// instance of the project view controller; view controllers are
-//    /// implemented with lazy loading to prevent the costs of set up
-//    /// if a particular view controller is never used
-//    private lazy var projectViewController: ProjectViewController = {
-//        // force downcast new view controller instance to ```ProjectViewController```
-//        let viewController = self.instantiateViewController(withID: "ProjectViewController") as! ProjectViewController
-//        
-//        // add view controller as child view controller
-//        self.add(asChildViewController: viewController)
-//        return viewController
-//    }()
-//    
-//    /// instance of the data view controller; view controllers are
-//    /// implemented with lazy loading to prevent the costs of set up
-//    /// if a particular view controller is never used
-//    private lazy var dataViewController: DataViewController = {
-//        let viewController = self.instantiateViewController(withID: "DataViewController") as! DataViewController
-//        self.add(asChildViewController: viewController)
-//        return viewController
-//    }()
-//    
-//    /// instance of the plot view controller; view controllers are
-//    /// implemented with lazy loading to prevent the costs of set up
-//    /// if a particular view controller is never used
-//    private lazy var plotViewController: PlotViewController = {
-//        let viewController = self.instantiateViewController(withID: "PlotViewController") as! PlotViewController
-//        self.add(asChildViewController: viewController)
-//        return viewController
-//    }()
+
+    @IBOutlet weak var navItem: UINavigationItem!
     
     /// an array of closures that each return the primary view controllers
     var viewControllers: [()->UIViewController] = []
@@ -129,49 +100,43 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     
     var bluetoothManager: CBInstrumentCentralManager!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+       print("at top! \n\t↳ MasterVC.viewWillAppear")
+        
+        navItem.titleView?.autoresizesSubviews = false
+    }
+    
     override func viewDidLoad() {
         print("at top! \n\t↳ MasterVC.viewDidLoad")
         super.viewDidLoad()
         
         headerView.backgroundAccent.isHidden = true
         headerView.titleField.isEnabled = false
-//        // add the primary view controllers to the ```viewControllers``` array in the same order they appear in the segmented control; using closures here to preserve lazy loading
-//        viewControllers.append({ return self.projectViewController })
-//        viewControllers.append({ return self.dataViewController })
-//        viewControllers.append({ return self.plotViewController })
-//        
+
+        
+        
         //create test data
         TestDataGenerator.initialDate = Date()
-        TestDataGenerator.numReadings = 200
+        TestDataGenerator.numReadings = 10
         let newProject = TestDataGenerator.createProject()
-        activeProject = newProject
-
-        (childViewControllers.first as! DataViewController).project = activeProject
+        
         for _ in 0...1 {
             _ = TestDataGenerator.createProject()
             // print("\(i): \(p.dateSection.header): --> \(Formatter.monDayYr.string(from: p.editDate))")
         }
 
-        
-        for dateSection in DateSection.sectionArray {
-            print("\(dateSection.header) : \(Formatter.monDayYrHrMin.string(from: dateSection.date))")
-        }
-        // begin by loading the initial view controller
-//        let firstViewIndex = 0 // 0, 1, or 2
-//        let firstController = viewControllers[firstViewIndex]()
-//        add(asChildViewController: firstController)
-//        if let projectPresenter = firstController as? ProjectPresenter {
-//            print("loading project into child view controller")
-//            projectPresenter.loadProject(activeProject)
-//        }
-
         // save test data
         do {
             try AppDelegate.viewContext.save()
-            print("saved")
+            print("saved context! \n\t↳ MasterVC.viewDidLoad()")
         } catch let error as NSError {
-            print("Could not save.\nSAVING ERROR: \(error), \(error.userInfo)")
+            print("Could not save.\nSAVING ERROR: \(error), \(error.userInfo) \n\t↳ MasterVC.viewDidLoad()")
         }
+        
+        // set new project as active project
+        activeProject = newProject
+        (childViewControllers.first as! DataViewController).project = activeProject
         
         // instantiate bluetooth manager..begins scanning if BLE is on
         bluetoothManager = CBInstrumentCentralManager(withReporter: instrumentAlertView)
@@ -179,12 +144,6 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         
         // setup instrument alert view
         instrumentAlertView.setup()
-        
-        // set experiment title and subtitle
-//        headerView.mainText = "A Dope Experiment Title"
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "MMMM dd, YYYY"
-//        headerView.subText = formatter.string(from: Date())
         
         // move instrument alert view a bit closer to instrument button
         instrumentButtonToAlertViewFixedSpace.width = -5
@@ -311,14 +270,19 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         case "segue.info":
             let projectVC = segue.destination as! ProjectViewController
             
-            projectVC.popoverPresentationController?.passthroughViews = [headerView, headerView.backgroundAccent, headerView.mainLabel]
+            projectVC.popoverPresentationController?.passthroughViews = [headerView, headerView.backgroundAccent, headerView.titleField]
             headerView.titleField.isEnabled = true
+//            headerView.titleField.backgroundColor = UIColor.white
             UIView.transition(
                 with: headerView.backgroundAccent,
                 duration: 0.6,
                 options: UIViewAnimationOptions.transitionCrossDissolve,
                 animations: {
+                    self.headerView.titleField.borderStyle = .roundedRect
                     self.headerView.backgroundAccent.isHidden = false
+                    self.headerView.backgroundAccent.layer.backgroundColor = UIColor.white.cgColor
+                    self.headerView.backgroundColor = .white
+                    self.headerView.backgroundAccent.layer.cornerRadius = 7
                     self.headerView.backgroundAccent.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
                     self.headerView.titleField.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
                 },
@@ -346,6 +310,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             duration: 0.6,
             options: UIViewAnimationOptions.transitionCrossDissolve,
             animations: {
+                self.headerView.titleField.borderStyle = .none
                 self.headerView.backgroundAccent.isHidden = true
                 self.headerView.backgroundAccent.transform = CGAffineTransform(scaleX: 1, y: 1)
                 self.headerView.titleField.transform = CGAffineTransform(scaleX: 1, y: 1)
@@ -356,7 +321,6 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         if let text = headerView.titleField.text {
             if text != activeProject.title {
                 activeProject.title = text
-                headerView.mainLabel.text = text
                 try? AppDelegate.viewContext.save()
             }
         }
