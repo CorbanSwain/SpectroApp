@@ -40,19 +40,19 @@ class TestDataGenerator {
         var idp: InstrumentDataPoint
         var val: Int
         var specificVal: Int
-        var readingTypeInt: Int16
+        var readingTypeInt: Int
         var tag: (ReadingType, Int)
         var millis: UInt32
         
         for _ in 0..<numReadings {
             
             val = rand(10, baselineVal)
-            readingTypeInt = Int16(rand(0,7))
+            readingTypeInt = rand(0,ReadingType.allTypeArray.count - 1)
             date = proj.editDate!.addingTimeInterval(TimeInterval(rand(0,100_000)))
 //            print("i:\(i) - val:\(val)- ReadingTypeInt:\(readingTypeInt)")
             for _ in 0..<rand(2,6) {
                 specificVal = val + rand(-spread/2, spread/2)
-                tag = (ReadingType(rawValue: readingTypeInt)!, readingTypeIndices[Int(readingTypeInt)])
+                tag = (ReadingType.allTypeArray[readingTypeInt], readingTypeIndices[readingTypeInt])
                 millis = InstrumentTimeConverter.millis(fromDate: initialDate)
                 idp = InstrumentDataPoint(index: index, value: specificVal, tag: tag, uuid: UUID(), timestamp: millis)
 //                print("     j:\(j) - \(idp.customDescription)")
@@ -72,7 +72,7 @@ class TestDataGenerator {
                 dp.reading = reading
             }
             dps = []
-            reading.typeDB = readingTypeInt
+            reading.typeDB = ReadingType.allTypeArray[readingTypeInt].rawValue
             reading.project = proj
             reading.title = randWords(2)
 //            print("i:\(i) \(reading)")
@@ -80,6 +80,46 @@ class TestDataGenerator {
         }
 //        print(proj)
         return proj
+    }
+    
+    
+    static let nonBlankTypes: [ReadingType] = [.control, .known, .standard, .unknown, .wildType, .mutant, .custom]
+    static var lastValue: [ReadingType:Int] = [:]
+    static var typeTagIndex: [ReadingType:Int] = [:]
+    static var instrumentIndex = 0
+    static var instrumentManagerBLE: CBInstrumentCentralManager!
+    
+    static func setupBLESimulation() {
+        instrumentManagerBLE.timeConverter = timeConverter
+    }
+    
+    static func sendIDP(isRepeat: Bool = false, withTag tag: ReadingType? = nil) {
+        
+        let t = tag ?? nonBlankTypes[rand(0,nonBlankTypes.count - 1)]
+        
+        var vIsRepeat: Bool = isRepeat
+        
+        if let i = typeTagIndex[t] {
+            if !vIsRepeat {
+                typeTagIndex[t] = i + 1
+            }
+        } else {
+            typeTagIndex[t] = 0
+            vIsRepeat = false
+        }
+        
+        let val: Int
+        if vIsRepeat {
+            val = lastValue[t]! + rand(-spread / 2, spread / 2)
+        } else {
+            val = rand(0,2800)
+            lastValue[t] = val
+        }
+        
+        let idp = InstrumentDataPoint(index: instrumentIndex, value: val, tag: (t,typeTagIndex[t]!), uuid: UUID(), timestamp: InstrumentTimeConverter.millis(fromDate: initialDate))
+        instrumentIndex += 1
+        
+        instrumentManagerBLE.dataParser(instrumentManagerBLE.dataParser, didRecieveObject: idp, withTag: CBDataParser.ParsingTag.dataPoint, fromPeripheral: nil, fromCharachteristic: nil)
     }
     
     static func rand(_ low: Int = 0, _ high: Int = 100) -> Int {

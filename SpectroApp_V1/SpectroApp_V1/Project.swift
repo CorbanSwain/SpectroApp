@@ -67,8 +67,8 @@ class Project: AbsorbanceObject {
                     return true
                 }
                 switch t1.compare(t2) {
-                case .orderedDescending: return true
-                default: return false
+                case .orderedDescending: return false
+                default: return true
                 }
             })
         } set {

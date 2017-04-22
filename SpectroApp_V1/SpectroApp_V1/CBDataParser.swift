@@ -10,7 +10,7 @@ import UIKit
 import CoreBluetooth
 
 protocol CBDataParserDelegate: class {
-    func dataParser(_ dataParser: CBDataParser, didRecieveObject parsedObject: Any, withTag tag: CBDataParser.ParsingTag, fromPeripheral peripheral: CBPeripheral, fromCharachteristic charachteristic: CBCharacteristic)
+    func dataParser(_ dataParser: CBDataParser, didRecieveObject parsedObject: Any, withTag tag: CBDataParser.ParsingTag, fromPeripheral peripheral: CBPeripheral?, fromCharachteristic charachteristic: CBCharacteristic?)
     func dataParser(_ dataParser: CBDataParser, didBeginParsingObjectWithTag tag: CBDataParser.ParsingTag, FromPeripheral peripheral: CBPeripheral, fromCharachteristic charachteristic: CBCharacteristic)
 }
 

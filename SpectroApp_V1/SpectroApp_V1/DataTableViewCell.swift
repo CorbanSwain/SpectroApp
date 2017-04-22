@@ -42,7 +42,6 @@ class DataTableViewCell: UITableViewCell {
             indexView.indexLabel.text = "?"
         }
         
-        
         if let title = reading.title {
             titleLabel.textColor = .black
             titleLabel.text = title

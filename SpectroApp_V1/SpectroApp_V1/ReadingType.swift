@@ -9,17 +9,22 @@
 import Foundation
 
 enum ReadingType: Int16, CustomStringConvertible {
-    static var numTypes = 9
+    static var numTypes = 8
     
-    case control = 1
-    case standard = 2
-    case unknown = 3
-    case known = 4
-    case wildType = 5
-    case mutant = 6
-    case custom = 7
-    case blank = 8
     case noType = 0
+    
+    case control = 101 // 1
+    case standard = 102// 2
+    
+    case unknown = 201 //3
+    case known = 202   //4
+    
+    case wildType = 301//5
+    case mutant = 302  //6
+    
+    case custom = 401 //7
+    
+    case blank = 901 //8
     
     private var stringValue: String {
         switch self {
@@ -33,6 +38,10 @@ enum ReadingType: Int16, CustomStringConvertible {
         case .noType: return "[no type]"
         case .blank: return "blank"
         }
+    }
+    
+    static var allTypeArray: [ReadingType] {
+        return [.control, .known, .standard, .unknown, .wildType, .mutant, .custom, .blank]
     }
     
     static var allTypes: Set<ReadingType> {

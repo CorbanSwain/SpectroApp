@@ -121,6 +121,7 @@ class ProjectsPopoverViewController: FetchedResultsTableViewController, UITableV
     }
     
     func dismiss() {
+        resignFirstResponder()
         (navigationController as! PopoverNavigationController).dismiss(animated: true, completion: nil)
     }
     

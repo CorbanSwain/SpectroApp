@@ -121,10 +121,10 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         TestDataGenerator.numReadings = 10
         let newProject = TestDataGenerator.createProject()
         
-        for _ in 0...1 {
-            _ = TestDataGenerator.createProject()
-            // print("\(i): \(p.dateSection.header): --> \(Formatter.monDayYr.string(from: p.editDate))")
-        }
+//        for _ in 0...1 {
+//            _ = TestDataGenerator.createProject()
+//            // print("\(i): \(p.dateSection.header): --> \(Formatter.monDayYr.string(from: p.editDate))")
+//        }
 
         // save test data
         do {
@@ -134,6 +134,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             print("Could not save.\nSAVING ERROR: \(error), \(error.userInfo) \n\t↳ MasterVC.viewDidLoad()")
         }
         
+        
         // set new project as active project
         activeProject = newProject
         (childViewControllers.first as! DataViewController).project = activeProject
@@ -141,6 +142,15 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         // instantiate bluetooth manager..begins scanning if BLE is on
         bluetoothManager = CBInstrumentCentralManager(withReporter: instrumentAlertView)
         bluetoothManager.databaseDelegate = self
+        
+        
+        // datapoint simulation
+        TestDataGenerator.instrumentManagerBLE = bluetoothManager
+        TestDataGenerator.setupBLESimulation()
+        Timer.scheduledTimer(withTimeInterval: 4, repeats: true, block: {_ in
+            TestDataGenerator.sendIDP()
+            
+        })
         
         // setup instrument alert view
         instrumentAlertView.setup()

@@ -12,6 +12,14 @@ import CoreData
 @objc(Reading)
 class Reading: AbsorbanceObject {
     
+    static let dateKey = "timestampDB"
+    static let dateSort = NSSortDescriptor(key: dateKey, ascending: true, selector: #selector(NSDate.compare(_:)))
+    static let titleKey = "titleDB"
+    static let titleSort = NSSortDescriptor(key: titleKey, ascending: true, selector: #selector(NSString.compare(_:)))
+    static let typeKey = "typeDB"
+    static let typeSort =  NSSortDescriptor(key: typeKey,  ascending: true, selector: #selector(NSNumber.compare(_:)))
+    
+    
     static var entityDescr: NSEntityDescription { return NSEntityDescription.entity(forEntityName: "Reading", in: AppDelegate.viewContext)! }
     
     var title: String? {

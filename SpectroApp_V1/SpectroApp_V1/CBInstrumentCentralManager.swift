@@ -36,7 +36,7 @@ fileprivate let uartRXCharID = CBUUID(string: "6E400003-B5A3-F393-E0A9-E50E24DCC
 
 
 /// The UUID for the LEGO Spectrophotometer peripheral: the device used for app testing in Spring 2017. The arduino in this device is an [Adafruit Feather M0 Bluefruit LE](https://learn.adafruit.com/adafruit-feather-m0-bluefruit-le/overview).
-fileprivate let legoSpecID = UUID(uuidString: "EF520BC5-9EF2-4801-B395-DA0D146A4B65")
+fileprivate let legoSpecID = UUID(uuidString: "D528C250-91B7-4915-B718-1AEB020FF356")
 
 
 
@@ -215,7 +215,8 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
         }
         print("BLE:_New perepherial found!")
         discoveredPeripherals[id] = peripheral
-        
+        print("Peripheral ID:  \(peripheral.identifier)")
+        print("Lego MiSpec ID: \(legoSpecID!)")
         if rememberedPeripheralUUIDs.contains(where: { $0 == id }) && connectedPeripheral == nil {
             print("BLE:_A known instrument was found!")
             centralManager.stopScan()
@@ -329,7 +330,7 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
         status = (.busy,"Recieving \(tag) …")
     }
     
-    internal func dataParser(_ dataParser: CBDataParser, didRecieveObject parsedObject: Any, withTag tag: CBDataParser.ParsingTag, fromPeripheral peripheral: CBPeripheral, fromCharachteristic charachteristic: CBCharacteristic) {
+    func dataParser(_ dataParser: CBDataParser, didRecieveObject parsedObject: Any, withTag tag: CBDataParser.ParsingTag, fromPeripheral peripheral: CBPeripheral?, fromCharachteristic charachteristic: CBCharacteristic?) {
         switch parsedObject {
         case let instrumentDP as InstrumentDataPoint:
             instrumentDP.connectionSessionID = connectionSessionID ?? UUID(uuid: UUID_NULL)

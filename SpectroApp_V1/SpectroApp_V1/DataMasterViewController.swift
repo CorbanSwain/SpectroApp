@@ -156,12 +156,7 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
     
     func refrechFRCSort() {
         print("refresfing FRC\n\t↳ DataMasterVC")
-        let dateKey = "timestampDB"
-        let dateSort = NSSortDescriptor(key: dateKey, ascending: true, selector: #selector(NSDate.compare(_:)))
-        let titleKey = "titleDB"
-        let titleSort = NSSortDescriptor(key: titleKey, ascending: true, selector: #selector(NSString.compare(_:)))
-        let typeKey = "typeDB"
-        let typeSort =  NSSortDescriptor(key: typeKey,  ascending: true, selector: #selector(NSNumber.compare(_:)))
+
         
         
         let request: NSFetchRequest<Reading> = Reading.fetchRequest()
@@ -174,13 +169,13 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
         
         switch sortSetting {
         case .type:
-            request.sortDescriptors = [typeSort,dateSort]
-            keyPath = typeKey
+            request.sortDescriptors = [Reading.typeSort,Reading.dateSort]
+            keyPath = Reading.typeKey
         case .name:
-            request.sortDescriptors = [titleSort,dateSort]
+            request.sortDescriptors = [Reading.titleSort,Reading.dateSort]
             keyPath = nil
         case .date:
-            request.sortDescriptors = [dateSort,titleSort]
+            request.sortDescriptors = [Reading.dateSort,Reading.titleSort]
             keyPath = nil
         }
         
