@@ -15,6 +15,25 @@ enum SortSetting {
     case name
 }
 
+enum CellViewType {
+    case generalView
+    case nucleicAcidView
+    case bradfordView
+    case cellDensityView
+    init(type:ExperimentType) {
+        switch type {
+        case .bradford:
+            self = .bradfordView
+        case .cellDensity:
+            self = .cellDensityView
+        case .nucleicAcid:
+            self = .nucleicAcidView
+        default:
+            self = .generalView
+        }
+    }
+}
+
 class DataMasterViewController:  FetchedResultsTableViewController, UITableViewDataSource, UITableViewDelegate, DataCellDelegate {
     
     @IBOutlet weak var dataTableView: UITableView!
@@ -31,6 +50,12 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
                 return
             }
             refrechFRCSort()
+        }
+    }
+    
+    var cellViewType = CellViewType.generalView {
+        didSet {
+            // TODO: change the cell view type
         }
     }
     
@@ -88,14 +113,16 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
 //            return cell
 //        }
         
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath) as! DataTableViewCell
         cell.indexPath = indexPath
         cell.delegate = self
         let reading = frc.object(at: indexPath)
+        
         if let i = project?.readingArray.index(of: reading) {
-            cell.setup(with: reading, index: (i + 1))
+            cell.setup(with: reading, index: (i + 1), viewType: cellViewType)
         } else {
-            cell.setup(with: reading)
+            cell.setup(with: reading, viewType: cellViewType)
         }
         
         return cell
@@ -107,6 +134,7 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
 //    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        // TODO: change this to update based on cell view type (i.e. experiment type)
         if sortSetting == .type {
             let typeInt = Formatter.intNum.number(from: (frc.sections?[section].name)!)! as! Int16
             return ReadingType(rawValue: typeInt)?.description ?? ReadingType.noType.description
