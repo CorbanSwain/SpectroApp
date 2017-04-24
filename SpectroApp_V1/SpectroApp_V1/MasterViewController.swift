@@ -277,34 +277,32 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             popoverVC.performSegue(withIdentifier: "popover.segue.export", sender: popoverVC)
             break
             
-        case "segue.info":
-            let projectVC = segue.destination as! ProjectViewController
-            
-            projectVC.popoverPresentationController?.passthroughViews = [headerView, headerView.backgroundAccent, headerView.titleField]
-            headerView.titleField.isEnabled = true
-//            headerView.titleField.backgroundColor = UIColor.white
+        case "master.segue.infoPop":
+            let popoverVC = segue.destination as! PopoverNavigationController
+            popoverVC.project = activeProject
+            self.headerView.backgroundAccent.layer.backgroundColor = UIColor.white.cgColor
+            self.headerView.backgroundAccent.layer.cornerRadius = 7
             UIView.transition(
-                with: headerView.backgroundAccent,
-                duration: 0.6,
+                with: headerView,
+                duration: 0.5,
                 options: UIViewAnimationOptions.transitionCrossDissolve,
                 animations: {
-                    self.headerView.titleField.borderStyle = .roundedRect
+                    self.instrumentAlertView.isGrayedOut = true
                     self.headerView.backgroundAccent.isHidden = false
-                    self.headerView.backgroundAccent.layer.backgroundColor = UIColor.white.cgColor
-                    self.headerView.backgroundColor = .white
-                    self.headerView.backgroundAccent.layer.cornerRadius = 7
+                    self.headerView.subLabel.textColor = .lightGray
                     self.headerView.backgroundAccent.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
                     self.headerView.titleField.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
                 },
                 completion: {
                     if $0 {
-                        self.headerView.titleField.becomeFirstResponder()
+                        self.headerView.titleField.isEnabled = true
+                        
+//                        self.headerView.titleField.becomeFirstResponder()
                     }
                 }
             )
-            
-            projectVC.project = activeProject
-            
+            popoverVC.performSegue(withIdentifier: "popover.segue.info", sender: popoverVC)
+            popoverVC.popoverPresentationController?.passthroughViews = [headerView, headerView.backgroundAccent, headerView.titleField]
         default:
             break
         }
@@ -321,6 +319,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             options: UIViewAnimationOptions.transitionCrossDissolve,
             animations: {
                 self.headerView.titleField.borderStyle = .none
+                self.headerView.subLabel.textColor = .black
                 self.headerView.backgroundAccent.isHidden = true
                 self.headerView.backgroundAccent.transform = CGAffineTransform(scaleX: 1, y: 1)
                 self.headerView.titleField.transform = CGAffineTransform(scaleX: 1, y: 1)

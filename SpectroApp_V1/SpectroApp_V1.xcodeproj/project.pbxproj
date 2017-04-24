@@ -16,6 +16,7 @@
 		1C1944661E7B02DC002FB321 /* ExportPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1944651E7B02DC002FB321 /* ExportPopoverViewController.swift */; };
 		1C1944691E7B42EA002FB321 /* CBInstrumentCentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1944681E7B42EA002FB321 /* CBInstrumentCentralManager.swift */; };
 		1C19446B1E7B7D9D002FB321 /* InstrumentStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19446A1E7B7D9C002FB321 /* InstrumentStatusView.swift */; };
+		1C2C9BA81EAE8BA200AE0FF0 /* HeaderProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2C9BA71EAE8BA200AE0FF0 /* HeaderProjectTableViewCell.swift */; };
 		1C3175C31E96F61F008E4DFB /* InstrumentTimeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3175C21E96F61F008E4DFB /* InstrumentTimeConverter.swift */; };
 		1C3175C51E9BF67D008E4DFB /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3175C41E9BF67D008E4DFB /* TestData.swift */; };
 		1C3896AC1E8EF9BF004E9CD6 /* Plot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3896AB1E8EF9BF004E9CD6 /* Plot.swift */; };
@@ -91,6 +92,7 @@
 		1C1944651E7B02DC002FB321 /* ExportPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportPopoverViewController.swift; sourceTree = "<group>"; };
 		1C1944681E7B42EA002FB321 /* CBInstrumentCentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBInstrumentCentralManager.swift; sourceTree = "<group>"; };
 		1C19446A1E7B7D9C002FB321 /* InstrumentStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentStatusView.swift; sourceTree = "<group>"; };
+		1C2C9BA71EAE8BA200AE0FF0 /* HeaderProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderProjectTableViewCell.swift; sourceTree = "<group>"; };
 		1C3175C21E96F61F008E4DFB /* InstrumentTimeConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentTimeConverter.swift; sourceTree = "<group>"; };
 		1C3175C41E9BF67D008E4DFB /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		1C3896AB1E8EF9BF004E9CD6 /* Plot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plot.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 		1C7E71811E78E7270073799D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				1C2C9BA71EAE8BA200AE0FF0 /* HeaderProjectTableViewCell.swift */,
 				D565E1B51EA2DA3B00864385 /* Add Project Cells */,
 				D58B47631E9D9D8D007145FB /* Project Cells */,
 				1C7E717C1E78E64D0073799D /* Data Cells */,
@@ -515,6 +518,7 @@
 				1CC097B91E857BBE00655A90 /* CBDataParser.swift in Sources */,
 				1C67FFBB1E9C215E00B6194E /* ExperimentType.swift in Sources */,
 				1C7E71751E78E58E0073799D /* NucDataTableViewCell.swift in Sources */,
+				1C2C9BA81EAE8BA200AE0FF0 /* HeaderProjectTableViewCell.swift in Sources */,
 				1C3175C51E9BF67D008E4DFB /* TestData.swift in Sources */,
 				1CBE94EB1E80D6CF00F3C8F3 /* ExperimentHeaderView.swift in Sources */,
 				D58B47581E9D78E1007145FB /* DataMasterViewController.swift in Sources */,

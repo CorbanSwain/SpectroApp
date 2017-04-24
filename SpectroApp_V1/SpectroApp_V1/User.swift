@@ -12,12 +12,31 @@ import CoreData
 @objc(User)
 class User: NSManagedObject {
 
-    var username: String {
+    var username: String? {
         get {
-            return usernameDB ?? "no username"
+            return usernameDB
         } set {
             usernameDB = newValue
         }
     }
+    
+    var firstName: String? {
+        get {
+            return firstNameDB
+        } set {
+            firstNameDB = newValue
+        }
+    }
+    
+    var lastName: String? {
+        get {
+            return lastNameDB
+        } set {
+            lastNameDB = newValue
+        }
+    }
+    
+    
+    
     
 }

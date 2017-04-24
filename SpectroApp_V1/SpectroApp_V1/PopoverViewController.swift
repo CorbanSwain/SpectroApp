@@ -15,15 +15,6 @@
 import UIKit
 
 class PopoverNavigationController: UINavigationController {
-
-    var passThroughViews: [UIView]? {
-        didSet {
-            guard let views = passThroughViews else {
-                return
-            }
-            popoverPresentationController?.passthroughViews = views
-        }
-    }
     
     var delegates: [String:Any] = [:]
     var project: Project!
@@ -53,6 +44,10 @@ class PopoverNavigationController: UINavigationController {
             let exportVC = segue.destination as! ExportPopoverViewController
             exportVC.project = project
             exportVC.documentControllerPresenter = delegates[docControllerPresenterKey] as! DocumentControllerPresenter
+        case "popover.segue.info":
+            print("Preparing for segue to project info popover\n\t↳ ProjectVC.prepare(for:sender:)")
+            let projectVC = segue.destination as! ProjectViewController
+            projectVC.project = project
         default:
             break
         }

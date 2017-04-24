@@ -89,6 +89,7 @@ class DataTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         delegate.dataCell(self, scrollUpTo: indexPath)
+        textField.backgroundColor = UIColor.yellow.withAlphaComponent(0.3)
         return true
     }
     
@@ -100,8 +101,13 @@ class DataTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         reading.title = textField.text
-        // FIXME: - not handling a thrown error
-        try? AppDelegate.viewContext.save()
+        textField.backgroundColor = UIColor.clear
+        do {
+            try AppDelegate.viewContext.save()
+            print("Saved context! \n\t↳ DataTableViewCell.textFieldDidEndEditing(_:)")
+        } catch let error as NSError {
+            print("Could not save.\nSAVING ERROR: \(error.debugDescription) \n\t↳ DataTableViewCell.textFieldDidEndEditing(_:)")
+        }
     }
     
     override func awakeFromNib() {

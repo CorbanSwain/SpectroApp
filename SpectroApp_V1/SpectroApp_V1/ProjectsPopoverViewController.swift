@@ -62,7 +62,7 @@ class ProjectsPopoverViewController: FetchedResultsTableViewController, UITableV
             }
         } else {
             print("New search string: \(searchStr)\n\t↳ ProjectsPopoverVC.searchBarDidBeginEditing(_:)")
-            let predicate = NSPredicate(format: "( titleDB CONTAINS %@ )|| ( experimentTypeStringDB CONTAINS %@ ) || ( notebookReferenceDB CONTAINS %@ )", searchStr, searchStr, searchStr)
+            let predicate = NSPredicate(format: "( titleDB CONTAINS [c] %@ )|| ( experimentTypeStringDB CONTAINS [c] %@ ) || ( notebookReferenceDB CONTAINS [c] %@ )", searchStr, searchStr, searchStr)
             frc.fetchRequest.predicate = predicate
         }
         
@@ -89,6 +89,8 @@ class ProjectsPopoverViewController: FetchedResultsTableViewController, UITableV
         cell.titleLabel?.text = obj.title
         cell.typeLabel?.text = obj.experimentType.description
         cell.dateLabel?.text = Formatter.monDayYr.string(fromOptional: obj.editDate)
+        cell.numReadsLabel?.text = (Formatter.intNum.string(from: obj.readings.count as NSNumber) ?? "no") + " readings"
+        cell.referenceLabel?.text = obj.notebookReference ?? ""
         return cell
     }
     

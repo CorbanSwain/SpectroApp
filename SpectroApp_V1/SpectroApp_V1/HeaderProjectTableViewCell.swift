@@ -1,21 +1,18 @@
 //
-//  ProjectTableViewCell.swift
+//  HeaderProjectTableViewCell.swift
 //  SpectroApp_V1
 //
-//  Created by Corban Swain on 3/14/17.
+//  Created by Corban Swain on 4/24/17.
 //  Copyright © 2017 CorbanSwain. All rights reserved.
 //
 
 import UIKit
 
-class ProjectTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var typeLabel: UILabel!
-    @IBOutlet weak var numReadsLabel: UILabel!
-    @IBOutlet weak var referenceLabel: UILabel!
+class HeaderProjectTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var header: UILabel!
+    @IBOutlet weak var textInput: UITextField!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

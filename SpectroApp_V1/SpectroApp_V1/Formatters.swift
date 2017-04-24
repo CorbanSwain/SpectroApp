@@ -15,6 +15,7 @@ class Formatter {
     static let monDayYrRetHrMin = dateFmtr("MMM dd, YYYY\nhh:mm a")
     static let monDayYr = dateFmtr("MMM dd, YYYY")
     static let monDayYrHrMin = dateFmtr("MMM dd, YYYY hh:mm a")
+    static let fullLongDate = dateFmtr("MMMM dd, YYYY h:mm a")
     static let monDayYrExcel = dateFmtr("MM/dd/YYYY")
     static let monDayYrHrMinExcel = dateFmtr("MM/dd/YYYY HH:mm")
     static let hrMin = dateFmtr("hh:mm a")

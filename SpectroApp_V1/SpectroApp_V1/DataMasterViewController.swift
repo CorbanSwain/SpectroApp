@@ -129,7 +129,12 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 30
+        if section == ((frc.sections?.count ?? 0) - 1) {
+            print("Section \(section + 1) of \(frc.sections?.count ?? -1) --> returning 610 \n\t↳ DataMasterVC.tableView(_:heightForFooterInSection:")
+            return 570
+        } else {
+            return 30
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
