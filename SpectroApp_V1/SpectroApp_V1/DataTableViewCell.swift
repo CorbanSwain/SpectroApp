@@ -14,6 +14,7 @@ protocol DataCellDelegate {
 
 class DataTableViewCell: UITableViewCell, UITextFieldDelegate {
     
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var typeView: ReadingTypeView!
     @IBOutlet weak var averageLabel: UILabel!
@@ -40,51 +41,51 @@ class DataTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     var reading: Reading!
     
-    func setup(with reading: Reading, index: Int? = nil) {
-        indexView.setup()
-        typeView.setup()
+    func setup(with reading: Reading, index: Int? = nil, viewType: CellViewType) {
+        // every view has num repeats, type, title
         self.reading = reading
         
+        setTitle()
+        
+        typeView.setup()
         typeView.setType(reading.type)
-        if let i = index {
-            indexView.indexLabel.text = Formatter.intNum.string(from: i as NSNumber)
-        } else {
-            indexView.indexLabel.text = "?"
-        }
-        
-        if let title = reading.title {
-            titleField.textColor = .black
-            titleField.text = title
-        } else {
-            titleField.textColor = .gray
-            titleField.text = "Unnamed"
-        }
-        
-        if let average = Formatter.threeDecNum.string(fromOptional: reading.absorbanceValue as NSNumber?) {
-            averageLabel.textColor = .black
-            averageLabel.text =  average
-        } else {
-            averageLabel.textColor = .gray
-            averageLabel.text = "???"
-        }
-        
-        if let stdDev = Formatter.threeDecNum.string(fromOptional: reading.stdDev as NSNumber?)  {
-            stdLabel.textColor = .black
-            stdLabel.text =  stdDev
-        } else {
-            stdLabel.textColor = .gray
-            stdLabel.text = "???"
-        }
         
         let numRepeats = reading.dataPoints.count
         repeatImageView.image = DataTableViewCell.getRepeatImage(from: numRepeats)
         
-        timeLabel.text = ""
-        if numRepeats > 0 {
-            let date = reading.dataPoints[0].timestamp
-            timeLabel.text = Formatter.monDayYrRetHrMin.string(fromOptional: date) ?? "undated"
+        switch viewType {
+        case .bradfordView:
+            // index, concentration
+            setIndex(index: index)
+            setConcentration()
+            // TODO: hide calibration ratio view
+            timeLabel.isHidden = true
+            averageLabel.isHidden = true
+            stdLabel.isHidden = true
+        case .cellDensityView:
+            // avg, std dev, time stamp
+            setAverage()
+            setStandardDeviation()
+            setTimestamp(numRepeats: numRepeats)
+            // TODO: hide calibration ratio and concentration views
+            indexView.isHidden = true
+        case .nucleicAcidView:
+            // avg, std dev, index, calibration ratio
+            setAverage()
+            setStandardDeviation()
+            setIndex(index: index)
+            setCalibrationRatio()
+            // TODO: hide concentration views
+            timeLabel.isHidden = true
+        default:
+            // avg, std dev, index, time stamp
+            setAverage()
+            setStandardDeviation()
+            setIndex(index: index)
+            setTimestamp(numRepeats: numRepeats)
+            // TODO: hide calibratio ratio and concentration views
+            
         }
-        
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -137,6 +138,62 @@ class DataTableViewCell: UITableViewCell, UITextFieldDelegate {
         case 6: return #imageLiteral(resourceName: "six")
         default: return #imageLiteral(resourceName: "six")
         }
+    }
+    
+    // helper methods
+    func setIndex(index: Int? = nil) {
+        indexView.setup()
+        if let i = index {
+            indexView.indexLabel.text = Formatter.intNum.string(from: i as NSNumber)
+        } else {
+            indexView.indexLabel.text = "?"
+        }
+    }
+    
+    func setTitle() {
+        if let title = reading.title {
+            titleField.textColor = .black
+            titleField.text = title
+        } else {
+            titleField.textColor = .gray
+            titleField.text = "Unnamed"
+        }
+    }
+    
+    func setAverage() {
+        if let average = Formatter.threeDecNum.string(fromOptional: reading.absorbanceValue as NSNumber?) {
+            averageLabel.textColor = .black
+            averageLabel.text =  average
+        } else {
+            averageLabel.textColor = .gray
+            averageLabel.text = "???"
+        }
+    }
+    
+    func setStandardDeviation() {
+        if let stdDev = Formatter.threeDecNum.string(fromOptional: reading.stdDev as NSNumber?)  {
+            stdLabel.textColor = .black
+            stdLabel.text =  stdDev
+        } else {
+            stdLabel.textColor = .gray
+            stdLabel.text = "???"
+        }
+    }
+    
+    func setTimestamp(numRepeats: Int) {
+        timeLabel.text = ""
+        if numRepeats > 0 {
+            let date = reading.dataPoints[0].timestamp
+            timeLabel.text = Formatter.monDayYrRetHrMin.string(fromOptional: date) ?? "undated"
+        }
+    }
+    
+    func setConcentration() {
+        // TODO: set concentration label
+    }
+    
+    func setCalibrationRatio() {
+        // TODO: set calibration ratio
     }
 
 }
