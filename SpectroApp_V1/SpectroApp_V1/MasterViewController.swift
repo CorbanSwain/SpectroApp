@@ -118,10 +118,10 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         
         //create test data
         TestDataGenerator.initialDate = Date()
-        TestDataGenerator.numReadings = 10
+        TestDataGenerator.numReadings = 150
         let newProject = TestDataGenerator.createProject()
         
-//        for _ in 0...1 {
+//        for _ in 0...50 {
 //            _ = TestDataGenerator.createProject()
 //            // print("\(i): \(p.dateSection.header): --> \(Formatter.monDayYr.string(from: p.editDate))")
 //        }
@@ -147,11 +147,11 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         // datapoint simulation
         TestDataGenerator.instrumentManagerBLE = bluetoothManager
         TestDataGenerator.setupBLESimulation()
-        Timer.scheduledTimer(withTimeInterval: 4, repeats: true, block: {_ in
-            TestDataGenerator.sendIDP()
-            
-        })
-        
+//        Timer.scheduledTimer(withTimeInterval: 4, repeats: true, block: {_ in
+//            TestDataGenerator.sendIDP()
+//            
+//        })
+//        
         // setup instrument alert view
         instrumentAlertView.setup()
         

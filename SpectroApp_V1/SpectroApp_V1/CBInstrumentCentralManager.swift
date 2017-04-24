@@ -335,10 +335,10 @@ class CBInstrumentCentralManager: NSObject, CBCentralManagerDelegate, CBPeripher
         case let instrumentDP as InstrumentDataPoint:
             instrumentDP.connectionSessionID = connectionSessionID ?? UUID(uuid: UUID_NULL)
             instrumentDP.instrumentID = connectedPeripheral?.identifier ?? UUID(uuid: UUID_NULL)
-            print("BLE:_Just got a data point! --> \(instrumentDP)\n\t↳ CBInstrumentCentraolManager.dataParser(_:didRecieveObject:...)")
+            print("BLE:_Just got a data point!\n\t↳ CBInstrumentCentraolManager.dataParser(_:didRecieveObject:...)")
             if let tc = timeConverter {
                 let dp = DataPoint(fromIDP: instrumentDP, usingTimeConverter: tc)
-                print("BLE:_Just converted instrumentDP to DataPoint! --> \(dp)\n\t↳ CBInstrumentCentraolManager.dataParser(_:didRecieveObject:...)")
+                print("BLE:_Just converted instrumentDP to DataPoint!\n\t↳ CBInstrumentCentraolManager.dataParser(_:didRecieveObject:...)")
                 if let delegate = databaseDelegate {
                     delegate.add(dataPoint: dp)
                 } else {

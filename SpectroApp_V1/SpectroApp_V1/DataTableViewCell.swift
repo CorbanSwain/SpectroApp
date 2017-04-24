@@ -8,15 +8,22 @@
 
 import UIKit
 
-class DataTableViewCell: UITableViewCell {
+protocol DataCellDelegate {
+    func dataCell(_ dataCell: DataTableViewCell, scrollUpTo indexPath: IndexPath)
+}
+
+class DataTableViewCell: UITableViewCell, UITextFieldDelegate {
     
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var typeView: ReadingTypeView!
     @IBOutlet weak var averageLabel: UILabel!
     @IBOutlet weak var stdLabel: UILabel!
     @IBOutlet weak var indexView: ReadingIndexView!
     @IBOutlet weak var repeatImageView: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
+    
+    var indexPath: IndexPath!
+    var delegate: DataCellDelegate!
     
     var numberLabels: Set<UILabel> {
         return [averageLabel, stdLabel]
@@ -31,9 +38,12 @@ class DataTableViewCell: UITableViewCell {
         }
     }
     
+    var reading: Reading!
+    
     func setup(with reading: Reading, index: Int? = nil) {
         indexView.setup()
         typeView.setup()
+        self.reading = reading
         
         typeView.setType(reading.type)
         if let i = index {
@@ -43,11 +53,11 @@ class DataTableViewCell: UITableViewCell {
         }
         
         if let title = reading.title {
-            titleLabel.textColor = .black
-            titleLabel.text = title
+            titleField.textColor = .black
+            titleField.text = title
         } else {
-            titleLabel.textColor = .gray
-            titleLabel.text = "Unnamed"
+            titleField.textColor = .gray
+            titleField.text = "Unnamed"
         }
         
         if let average = Formatter.threeDecNum.string(fromOptional: reading.absorbanceValue as NSNumber?) {
@@ -77,8 +87,26 @@ class DataTableViewCell: UITableViewCell {
         
     }
     
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        delegate.dataCell(self, scrollUpTo: indexPath)
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        resignFirstResponder()
+        textField.endEditing(true)
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        reading.title = textField.text
+        // FIXME: - not handling a thrown error
+        try? AppDelegate.viewContext.save()
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        titleField.delegate = self
         tabularizeLabels(numberLabels)
     }
 

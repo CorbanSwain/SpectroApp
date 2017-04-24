@@ -438,7 +438,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="700" height="660"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="BVE-3E-T77">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="BVE-3E-T77">
                                 <rect key="frame" x="0.0" y="25" width="700" height="635"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
@@ -477,7 +477,7 @@
                                                             </connections>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bv7-nw-iXY" userLabel="Sample Type View" customClass="ReadingTypeView" customModule="SpectroApp_V1" customModuleProvider="target">
-                                                            <rect key="frame" x="74" y="0.0" width="33.5" height="33.5"/>
+                                                            <rect key="frame" x="71" y="0.0" width="33.5" height="33.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="K" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4l-gI-szL">
                                                                     <rect key="frame" x="0.0" y="0.0" width="33" height="33.5"/>
@@ -501,17 +501,17 @@
                                                                 <outlet property="typeLetterLabel" destination="V4l-gI-szL" id="otE-fh-2aB"/>
                                                             </connections>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample Name name name name name name Name." lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="fUa-7q-MnX">
-                                                            <rect key="frame" x="148" y="0.0" width="150" height="33.5"/>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Reading Title" minimumFontSize="10" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="AJQ-Wj-DMw">
+                                                            <rect key="frame" x="142" y="0.0" width="165" height="33.5"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="150" id="7z0-He-dRu"/>
+                                                                <constraint firstAttribute="width" constant="165" id="Vm3-1s-7Ov"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="19"/>
                                                             <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                        </textField>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="firstBaseline" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="GBl-fE-B9c" userLabel="Value View">
-                                                            <rect key="frame" x="338.5" y="0.0" width="127" height="33.5"/>
+                                                            <rect key="frame" x="344.5" y="0.0" width="127" height="33.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.234" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iw-x8-7o2">
                                                                     <rect key="frame" x="0.0" y="0.0" width="65" height="33.5"/>
@@ -549,7 +549,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Snf-R3-dct">
-                                                            <rect key="frame" x="506" y="0.0" width="33.5" height="33.5"/>
+                                                            <rect key="frame" x="509" y="0.0" width="33.5" height="33.5"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="four" translatesAutoresizingMaskIntoConstraints="NO" id="hUJ-kE-nYU" userLabel="Repeat View">
                                                                     <rect key="frame" x="1" y="1" width="31.5" height="31.5"/>
@@ -579,7 +579,6 @@
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="UFG-Qh-glS" secondAttribute="bottom" id="Oq7-lc-nDe"/>
                                                         <constraint firstItem="UFG-Qh-glS" firstAttribute="top" secondItem="LrI-Rb-rQU" secondAttribute="top" id="cjQ-lo-p5N"/>
-                                                        <constraint firstItem="fUa-7q-MnX" firstAttribute="centerY" secondItem="LrI-Rb-rQU" secondAttribute="centerY" id="lSg-1e-Ng7"/>
                                                         <constraint firstItem="UFG-Qh-glS" firstAttribute="leading" secondItem="LrI-Rb-rQU" secondAttribute="leading" id="zKr-cZ-Tlt"/>
                                                     </constraints>
                                                 </stackView>
@@ -598,7 +597,7 @@
                                             <outlet property="repeatImageView" destination="hUJ-kE-nYU" id="BRN-en-q48"/>
                                             <outlet property="stdLabel" destination="rjv-fu-kdz" id="yFY-Xx-PrA"/>
                                             <outlet property="timeLabel" destination="awM-A4-R7F" id="q5w-Db-OqM"/>
-                                            <outlet property="titleLabel" destination="fUa-7q-MnX" id="9GJ-ff-dRs"/>
+                                            <outlet property="titleField" destination="AJQ-Wj-DMw" id="65V-BF-xDx"/>
                                             <outlet property="typeView" destination="bv7-nw-iXY" id="9rk-d2-fGM"/>
                                         </connections>
                                     </tableViewCell>
@@ -771,6 +770,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="700" height="660"/>
                     <connections>
+                        <outlet property="bottomTableViewConstraint" destination="hsT-td-D5M" id="265-1d-6QZ"/>
                         <outlet property="dataTableView" destination="BVE-3E-T77" id="Ce4-EB-FFU"/>
                         <outlet property="headerView" destination="4x1-yG-QPM" id="6Bb-uU-oNq"/>
                         <segue destination="gyG-Iw-cR8" kind="showDetail" identifier="showDetailView" id="arH-ct-oTA"/>
@@ -796,56 +796,34 @@
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="660"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailViewCell" id="DFY-ni-jLW" customClass="DataDetailTableViewCell" customModule="SpectroApp_V1">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="detailViewCell" id="NLd-I0-Zzn" customClass="DataDetailTableViewCell" customModule="SpectroApp_V1" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DFY-ni-jLW" id="bff-tr-Pkr" customClass="DataDetailTableViewCell" customModule="SpectroApp_V1" customModuleProvider="target">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NLd-I0-Zzn" id="xVG-xo-zAz">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2D-3b-gkH">
-                                                    <rect key="frame" x="15" y="8" width="277" height="27.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJV-1Q-scq">
+                                                    <rect key="frame" x="15" y="0.0" width="285" height="43.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxW-F9-o8e">
+                                                            <rect key="frame" x="0.0" y="0.0" width="285" height="43.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="P2D-3b-gkH" firstAttribute="leading" secondItem="bff-tr-Pkr" secondAttribute="leading" constant="15" id="1hT-jf-cqW"/>
-                                                <constraint firstItem="P2D-3b-gkH" firstAttribute="centerY" secondItem="bff-tr-Pkr" secondAttribute="centerY" id="NC1-he-n7r"/>
-                                                <constraint firstItem="P2D-3b-gkH" firstAttribute="top" secondItem="bff-tr-Pkr" secondAttribute="topMargin" id="TNy-lW-dlq"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="P2D-3b-gkH" secondAttribute="bottom" id="ZoD-xB-Y37"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="P2D-3b-gkH" secondAttribute="trailing" id="fHd-1x-8xM"/>
+                                                <constraint firstItem="zJV-1Q-scq" firstAttribute="top" secondItem="xVG-xo-zAz" secondAttribute="top" id="Byr-To-bBy"/>
+                                                <constraint firstAttribute="trailing" secondItem="zJV-1Q-scq" secondAttribute="trailing" id="DKw-51-Gw3"/>
+                                                <constraint firstItem="zJV-1Q-scq" firstAttribute="leading" secondItem="xVG-xo-zAz" secondAttribute="leading" constant="15" id="M41-hN-Ya7"/>
+                                                <constraint firstAttribute="bottom" secondItem="zJV-1Q-scq" secondAttribute="bottom" id="rtY-qE-3dA"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="titleLabel" destination="P2D-3b-gkH" id="y1k-Ou-Qkz"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell.dataPoint" id="iBT-kd-ZX0" customClass="DataDetailTableViewCell" customModule="SpectroApp_V1">
-                                        <rect key="frame" x="0.0" y="99.5" width="300" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iBT-kd-ZX0" id="Bma-Uc-62Z" customClass="DataDetailTableViewCell" customModule="SpectroApp_V1" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWa-vC-uTa">
-                                                    <rect key="frame" x="15" y="8" width="277" height="27.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="JWa-vC-uTa" secondAttribute="bottom" id="7Ng-vn-TKu"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="JWa-vC-uTa" secondAttribute="trailing" id="QIH-9y-QLy"/>
-                                                <constraint firstItem="JWa-vC-uTa" firstAttribute="centerY" secondItem="Bma-Uc-62Z" secondAttribute="centerY" id="fjM-QV-ekk"/>
-                                                <constraint firstItem="JWa-vC-uTa" firstAttribute="leading" secondItem="Bma-Uc-62Z" secondAttribute="leading" constant="15" id="hEp-1I-fOf"/>
-                                                <constraint firstItem="JWa-vC-uTa" firstAttribute="top" secondItem="Bma-Uc-62Z" secondAttribute="topMargin" id="nRN-bJ-P9A"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="titleLabel" destination="JWa-vC-uTa" id="RcK-zs-r0Q"/>
+                                            <outlet property="titleLabel" destination="hxW-F9-o8e" id="Pga-hv-Spw"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

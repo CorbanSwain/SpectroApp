@@ -15,10 +15,12 @@ enum SortSetting {
     case name
 }
 
-class DataMasterViewController:  FetchedResultsTableViewController, UITableViewDataSource, UITableViewDelegate {
+class DataMasterViewController:  FetchedResultsTableViewController, UITableViewDataSource, UITableViewDelegate, DataCellDelegate {
     
     @IBOutlet weak var dataTableView: UITableView!
     
+    @IBOutlet weak var bottomTableViewConstraint: NSLayoutConstraint!
+
     var selectionIndexPath: IndexPath? = nil
     
     @IBOutlet weak var headerView: UIView!
@@ -87,7 +89,8 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
 //        }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath) as! DataTableViewCell
-        
+        cell.indexPath = indexPath
+        cell.delegate = self
         let reading = frc.object(at: indexPath)
         if let i = project?.readingArray.index(of: reading) {
             cell.setup(with: reading, index: (i + 1))
@@ -241,6 +244,12 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
         )
         frc.delegate = self
         
+    }
+    
+    
+    func dataCell(_ dataCell: DataTableViewCell, scrollUpTo indexPath: IndexPath) {
+//        tableView.setContentOffset(CGPoint.zero, animated: true)
+        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
     }
     
     // MARK: default functions
