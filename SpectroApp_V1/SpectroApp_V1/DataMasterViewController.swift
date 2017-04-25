@@ -55,7 +55,12 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
     
     var cellViewType = CellViewType.generalView {
         didSet {
-            // TODO: change the cell view type
+            // TODO: refresh table header and the table data
+            guard cellViewType != oldValue else {
+                return
+            }
+            // or refrechFRCSort() ?
+            dataTableView.reloadData()
         }
     }
     
