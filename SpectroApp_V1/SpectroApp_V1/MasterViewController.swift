@@ -117,7 +117,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         headerView.titleField.isEnabled = false
 
         let notifCenter = NotificationCenter.default
-        let _ = notifCenter.addObserver(forName: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil, queue: OperationQueue.main, using: {
+        let _ = notifCenter.addObserver(forName: Notification.Name.NSManagedObjectContextDidSave, object: nil, queue: OperationQueue.main, using: {
             note in
             print("in notification...Context did save...\n\t↳ NotificationCenter")
             guard let activeProj = self.activeProject else {
