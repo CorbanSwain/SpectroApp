@@ -8,13 +8,24 @@
 
 import UIKit
 
-class AddProjectNotesTableViewCell: UITableViewCell {
+class AddProjectNotesTableViewCell: UITableViewCell,  UITextViewDelegate {
     
     @IBOutlet weak var textInput: UITextView!
+    var editorRef = "notesDB"
+    var project: Project!
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if let t = textView.text as NSString? {
+            project.setValue(t, forKey: editorRef)
+        }
+        if AppDelegate.viewContext.hasChanges {
+            try? AppDelegate.viewContext.save()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        textInput.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

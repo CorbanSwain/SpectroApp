@@ -12,10 +12,11 @@ class AddProjectTypeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var selectedLabel: UILabel!
+    @IBOutlet weak var stackView: UIStackView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

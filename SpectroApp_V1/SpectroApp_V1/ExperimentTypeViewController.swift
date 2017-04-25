@@ -14,7 +14,7 @@ class ExperimentTypeViewController: UIViewController, UITableViewDataSource, UIT
     
     let labels = ExperimentType.allTypeStrings
     var type = ExperimentType.bradford
-    
+    var editorRef: String?
     
     // MARK: table view functions
     
@@ -56,6 +56,7 @@ class ExperimentTypeViewController: UIViewController, UITableViewDataSource, UIT
         type = ExperimentType.allTypes[indexPath.row]
         tableView.reloadData()
         performSegue(withIdentifier: "unwind.segue.add", sender: self)
+        navigationController?.popViewController(animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -63,6 +64,7 @@ class ExperimentTypeViewController: UIViewController, UITableViewDataSource, UIT
             let addVC = segue.destination as! AddPopoverViewController
             addVC.experimentType = type
         }
+        
     }
 
     

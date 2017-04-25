@@ -36,7 +36,12 @@ class User: NSManagedObject {
         }
     }
     
-    
+    convenience init(first: String, last: String, username: String) {
+        self.init(context: AppDelegate.viewContext)
+        firstName = first
+        lastName = last
+        self.username = username
+    }
     
     
 }

@@ -11,6 +11,7 @@ import UIKit
 class ExperimentTypeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
+    var project: Project!
 
     override func awakeFromNib() {
         super.awakeFromNib()

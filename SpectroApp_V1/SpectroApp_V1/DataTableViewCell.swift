@@ -90,8 +90,11 @@ class DataTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         delegate.dataCell(self, scrollUpTo: indexPath)
-        textField.backgroundColor = UIColor.yellow.withAlphaComponent(0.3)
         return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.backgroundColor = UIColor.yellow.withAlphaComponent(0.18)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

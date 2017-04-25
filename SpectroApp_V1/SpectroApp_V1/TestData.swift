@@ -11,6 +11,7 @@ import Darwin
 
 class TestDataGenerator {
     static private let words = ["Lorem", "Ipsum", "Dolor", "Sit", "Amet", "Sciency", "Measure", "Test", "Kanye", "Lift", "Spectral", "Graphene", "Nano", "Ribolyse", "Pitch", "Read", "Corral"]
+    static private let names = ["Johnny", "Cash", "William", "Bradley", "Mary", "Pooja", "Samson", "Wilson", "Adam", "Tyler"]
     static var index = 0
     static var initialDate = Date()
     static var numPointsPerReading = 5
@@ -32,7 +33,9 @@ class TestDataGenerator {
         print("project notebook ref: \(proj.notebookReference ?? "[none]") \n\t↳ TestDataGenerator.createProject()")
         proj.title =  proj.experimentType.description + " " + randWords(3)
         proj.notes = randWords(15, sentence: true) + " " + randWords(10, sentence: true) + " " + randWords(20, sentence: true) + " " + randWords(17, sentence: true)
-        //proj.notes = "hi"
+        let first = names[rand(0,names.count - 1)]
+        let last = names[rand(0, names.count - 1)]
+        proj.creator = User(first: first, last: last, username: first.lowercased() + last.lowercased() + Formatter.numFmtr(numIntDigits: 2).string(from: rand(10,99) as NSNumber)!)
         var reading: Reading
         var date: Date
         var dp: DataPoint
