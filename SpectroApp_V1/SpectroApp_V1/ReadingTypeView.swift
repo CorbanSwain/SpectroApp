@@ -19,6 +19,7 @@ class ReadingTypeView: UIView {
         }
         layer.cornerRadius = frame.width / 2
         layer.borderWidth = 1
+        layer.backgroundColor = UIColor.white.cgColor
         backgroundColor = .clear
         typeLetterLabel.text = "!"
     }

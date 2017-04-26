@@ -53,7 +53,7 @@ class DataPoint: AbsorbanceObject {
             if let manualVal = manualValue, manualVal.isSet {
                 return manualVal.measurementValue
             } else if let v = instrumentDataPoint?.measurementValue {
-                return CGFloat(v) / CGFloat(baselineValue)
+                return 1 - (CGFloat(v) / CGFloat(baselineValue))
             } else {
                 return nil
             }

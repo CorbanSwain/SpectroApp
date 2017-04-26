@@ -10,6 +10,9 @@ import Foundation
 import Darwin
 
 class TestDataGenerator {
+    
+    
+    
     static private let words = ["Lorem", "Ipsum", "Dolor", "Sit", "Amet", "Sciency", "Measure", "Test", "Kanye", "Lift", "Spectral", "Graphene", "Nano", "Ribolyse", "Pitch", "Read", "Corral"]
     static private let names = ["Johnny", "Cash", "William", "Bradley", "Mary", "Pooja", "Samson", "Wilson", "Adam", "Tyler"]
     static var index = 0
@@ -92,6 +95,16 @@ class TestDataGenerator {
     static var instrumentIndex = 0
     static var instrumentManagerBLE: CBInstrumentCentralManager!
     
+    static let scheduleReadingTimer = { Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: {_ in
+        TestDataGenerator.sendIDP(isRepeat: Bool.init(TestDataGenerator.rand(0,1) as NSNumber))
+    }) }
+    static let scheduleBlankTimer = { Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: {_ in
+        TestDataGenerator.sendIDP(isRepeat: false, withTag: .blank)
+        TestDataGenerator.sendIDP(isRepeat: true, withTag: .blank)
+        TestDataGenerator.sendIDP(isRepeat: true, withTag: .blank)
+    }) }
+    
+    
     static func setupBLESimulation() {
         instrumentManagerBLE.timeConverter = timeConverter
     }
@@ -112,11 +125,15 @@ class TestDataGenerator {
         }
         
         let val: Int
-        if vIsRepeat {
-            val = lastValue[t]! + rand(-spread / 2, spread / 2)
+        if t == .blank {
+            val = 2800 + rand(-spread / 2, spread / 2)
         } else {
-            val = rand(0,2800)
-            lastValue[t] = val
+            if vIsRepeat {
+                val = lastValue[t]! + rand(-spread / 2, spread / 2)
+            } else {
+                val = rand(0,2800)
+                lastValue[t] = val
+            }
         }
         
         let idp = InstrumentDataPoint(index: instrumentIndex, value: val, tag: (t,typeTagIndex[t]!), uuid: UUID(), timestamp: InstrumentTimeConverter.millis(fromDate: initialDate))

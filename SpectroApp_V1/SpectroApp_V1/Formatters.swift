@@ -18,7 +18,8 @@ class Formatter {
     static let fullLongDate = dateFmtr("MMMM dd, YYYY h:mm a")
     static let monDayYrExcel = dateFmtr("MM/dd/YYYY")
     static let monDayYrHrMinExcel = dateFmtr("MM/dd/YYYY HH:mm")
-    static let hrMin = dateFmtr("hh:mm a")
+    static let hrMin = dateFmtr("h:mm a")
+    static let hrMinSec = dateFmtr("MM/d/YY h:mm:ss a")
     static let sorting = dateFmtr("YYYYMMddHHmm")
     
     static func dateFmtr(_ format: String) -> DateFormatter {

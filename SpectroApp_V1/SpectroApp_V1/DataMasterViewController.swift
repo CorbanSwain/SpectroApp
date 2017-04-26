@@ -68,6 +68,7 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
                 return
             }
             // or refrechFRCSort() ?
+            setHeaderView()
             dataTableView.reloadData()
         }
     }
@@ -106,6 +107,9 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
     // MARK: table view functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard project != nil else {
+            return 0
+        }
         return frc.sections?[section].numberOfObjects ?? 0
     }
     
@@ -118,6 +122,10 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard project != nil else {
+            return UITableViewCell()
+        }
+        
 //        guard let rs = readingCache else {
 //            // FIXME: return some "no data" table cell
 //            print("Attempting to load table when project has no data - DataMasterVC")
@@ -147,6 +155,10 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
 //    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard project != nil else {
+            return nil
+        }
+        
         if sortSetting == .type {
             let typeInt = Formatter.intNum.number(from: (frc.sections?[section].name)!)! as! Int16
             return ReadingType(rawValue: typeInt)?.description ?? ReadingType.noType.description
@@ -156,6 +168,10 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard project != nil else {
+            return 0
+        }
+        
         if sortSetting == .type {
             if section == 0 {
                 return 40
@@ -169,8 +185,12 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        guard project != nil else {
+            return 0
+        }
+        
         if section == ((frc.sections?.count ?? 0) - 1) {
-            print("Section \(section + 1) of \(frc.sections?.count ?? -1) --> returning 610 \n\t↳ DataMasterVC.tableView(_:heightForFooterInSection:")
+//            print("Section \(section + 1) of \(frc.sections?.count ?? -1) --> returning 610 \n\t↳ DataMasterVC.tableView(_:heightForFooterInSection:)")
             return 570
         } else {
             return 30
@@ -178,6 +198,9 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        guard project != nil else {
+            return 0
+        }
         return frc.sections?.count ?? 1
     }
     
@@ -331,7 +354,7 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
     
     func setTableViewCellType() {
         if let proj = project {
-            cellViewType = CellViewType(type: proj.experimentType)
+            cellViewType =  CellViewType(type: proj.experimentType)
         } else {
             // TODO: handle error
         }

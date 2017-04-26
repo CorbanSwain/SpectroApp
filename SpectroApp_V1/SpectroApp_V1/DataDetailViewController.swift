@@ -12,28 +12,30 @@ class DataDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var detailTableView: UITableView!
     
+    var observer: NSObjectProtocol?
+    
     var reading: Reading? {
         didSet {
-            dataCache = nil
-            print("reloading table! -- DataDetailVC")
+            tableInfoCache = nil
+            print("reloading table! \n\t↳ DataDetailVC.reading[didSet]")
             detailTableView?.reloadData()
         }
     }
 
     var tableInfo: [(header: String?, rows: [(String?, String)])] {
-        if let cache = dataCache {
+        if let cache = tableInfoCache {
             return cache
         } else {
             guard let r = reading else {
                 return []
             }
             let info = r.tableInfo
-            dataCache = info
+            tableInfoCache = info
             return info
         }
             
     }
-    var dataCache: [(header: String?, rows: [(String?, String)])]?
+    var tableInfoCache: [(header: String?, rows: [(String?, String)])]? = nil
     
     // MARK: table view functions
     
@@ -44,19 +46,30 @@ class DataDetailViewController: UIViewController, UITableViewDataSource, UITable
         }
         
         if indexPath.section == tableInfo.count {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell.detail.dataPoint", for: indexPath) as! DataPointTableViewCell
+            let cell = detailTableView.dequeueReusableCell(withIdentifier: "cell.detail.dataPoint", for: indexPath) as! DataPointTableViewCell
             cell.setup(with: r.dataPoints[indexPath.row], index: indexPath.row + 1)
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell.detail.header", for: indexPath) as! HeaderDetailTableViewCell
-            cell.mainLabel.text = tableInfo[indexPath.section].rows[indexPath.row].1
             if let headerText = tableInfo[indexPath.section].rows[indexPath.row].0 {
-                cell.headerLabel.isHidden = false
+                let cell = detailTableView.dequeueReusableCell(withIdentifier: "cell.detail.header", for: indexPath) as! HeaderDetailTableViewCell
+                cell.mainLabel.text = tableInfo[indexPath.section].rows[indexPath.row].1
                 cell.headerLabel.text = headerText
+                return cell
             } else {
-                cell.headerLabel.isHidden = true
+                let cell = UITableViewCell()
+                cell.textLabel?.text = tableInfo[indexPath.section].rows[indexPath.row].1
+                cell.textLabel?.font = UIFont(name: "System", size: 19)
+                return cell
             }
-            return cell
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == tableInfo.count {
+            return 221
+        } else {
+            return 44
         }
     }
     
@@ -85,17 +98,30 @@ class DataDetailViewController: UIViewController, UITableViewDataSource, UITable
         }
         
         if section == tableInfo.count {
-            return "Repeated Values"
+            return "Repeated Measurements"
         } else {
             return tableInfo[section].header
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         detailTableView.delegate = self
         detailTableView.dataSource = self
+        
+        if let o = observer {
+            NotificationCenter.default.removeObserver(o)
+        }
+        
+        observer = NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil, queue: OperationQueue.main, using: { note in
+            
+            print("Notification sent...\n\t↳ DataDetailVC.viewDidLoad()")
+            guard let cell = self.detailTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? HeaderDetailTableViewCell, let r = self.reading else {
+                
+                return
+            }
+            cell.mainLabel.text = r.title
+        })
     }
     
     override func didReceiveMemoryWarning() {
@@ -107,28 +133,36 @@ class DataDetailViewController: UIViewController, UITableViewDataSource, UITable
 extension Reading {
     var tableInfo: [(header: String?, rows: [(String?, String)])] {
         let titleSec: [(String?, String)] = [
-            (nil, title ?? "untitled"),
+            ("Description:", title ?? "untitled"),
             ("Type:", type.description),
             ("Timestamp:", Formatter.monDayYr.string(fromOptional: timestamp) ?? "undated"),
         ]
         
         let absorbanceSec = [
             (nil, Formatter.numFmtr(numDecimals: 5).string(fromOptional: absorbanceValue as NSNumber?) ?? "no abs. value"),
-            ("Std Dev:", "± " + (Formatter.numFmtr(numDecimals: 5).string(fromOptional: stdDev as NSNumber?) ?? "no abs. value")),
+            ("Std. Dev.:", "± " + (Formatter.numFmtr(numDecimals: 5).string(fromOptional: stdDev as NSNumber?) ?? "N/A")),
+            ("# Repeats:", Formatter.intNum.string(from: dataPoints.count as NSNumber) ?? "0"),
         ]
         // FIXME: also include calibration points
         
-        let concentrationSec: [(String?, String)] = [
-            ("Has Conc?:", hasConcentration ? "Yes" : "No"),
-            ("Concentation:", Formatter.numFmtr(numDecimals: 5).string(fromOptional: concentration as NSNumber?) ?? "no value"),
-            ("Units:", "mM")
-        ]
+        if hasConcentration {
+            let concentrationSec: [(String?, String)] = [
+                ("Has Conc?:", hasConcentration ? "Yes" : "No"),
+                ("Concentation:", Formatter.numFmtr(numDecimals: 5).string(fromOptional: concentration as NSNumber?) ?? "no value"),
+                ("Units:", "mM")
+            ]
+            return [
+                ("Title", titleSec),
+                ("Absorbance", absorbanceSec),
+                ("Concentration", concentrationSec),
+            ]
+        } else {
+            return [
+                ("Reading Info", titleSec),
+                ("Absorbance", absorbanceSec),
+            ]
+        }
     
-        return [
-            ("Title", titleSec),
-            ("Absorbance", absorbanceSec),
-            ("Concentration", concentrationSec),
-        ]
         
     }
 }

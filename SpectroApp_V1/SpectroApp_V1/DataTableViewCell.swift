@@ -109,6 +109,14 @@ class DataTableViewCell: UITableViewCell, UITextFieldDelegate {
         return true
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text {
+            let newStr = NSString(string: text).replacingCharacters(in: range, with: string)
+            reading.title = newStr
+        }
+        return true
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         reading.title = textField.text
         textField.backgroundColor = UIColor.clear
@@ -127,9 +135,56 @@ class DataTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+       
+        var actions: () -> Void
+        if selected {
+            actions = {
+                self.contentView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
+                self.titleField.font = UIFont.boldSystemFont(ofSize: self.titleField.font?.pointSize ?? 17)
+                self.contentView.layer.borderWidth = 1
+                self.contentView.layer.borderColor = UIColor.black.cgColor
+                self.indexView.backgroundColor = .black
+                self.indexView.indexLabel.textColor = .white
+            }
+        } else {
+            actions = {
+                self.contentView.backgroundColor = .clear
+                self.titleField.font = UIFont.systemFont(ofSize: self.titleField.font?.pointSize ?? 17)
+                self.contentView.layer.borderWidth = 0
+                self.contentView.layer.borderColor = UIColor.clear.cgColor
+                self.indexView.backgroundColor = .white
+                self.indexView.indexLabel.textColor = .black
+            }
+        }
+        
+        if animated {
+            UIView.transition(with: self, duration: 0.3, options: .transitionCrossDissolve, animations: actions, completion: nil)
+//            UIView.animate(withDuration: 0.1, animations: actions)
+        } else {
+            actions()
+        }
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        
+        var actions: () -> Void
+        
+        if highlighted {
+            actions = {
+                self.contentView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
+            }
+        } else {
+            actions = {
+                self.contentView.backgroundColor = UIColor.white
+            }
+        }
+        
+        if animated {
+            UIView.transition(with: self, duration: 0.1, options: .transitionCrossDissolve, animations: actions, completion: nil)
+//            UIView.animate(withDuration: 0.1, animations: actions)
+        } else {
+            actions()
+        }
     }
     
     
@@ -205,25 +260,34 @@ class DataTableViewCell: UITableViewCell, UITextFieldDelegate {
     func setConcentration() {
         averageLabel.isHidden = false
         // TODO: set concentration label
-//        if let concentration = Formatter.threeDecNum.string(fromOptional: reading.concentration as NSNumber?) {
+        if let concentration = Formatter.threeDecNum.string(fromOptional: reading.concentration as NSNumber?) {
             // concentrationLabel.textColor = .black
             // concentrationLabel.text = concentration
-//        } else {
+             averageLabel.textColor = .black
+             averageLabel.text = concentration
+        } else {
             // concentrationLabel.textColor = .gray
             // concentrationLabel.text = "???"
-//        }
+             averageLabel.textColor = .gray
+             averageLabel.text = "???"
+        }
     }
     
     func setCalibrationRatio() {
         averageLabel.isHidden = false
         // TODO: set calibration ratio
-//        if let calibrationRatio = Formatter.threeDecNum.string(fromOptional: reading.calibrationRatio as NSNumber?) {
+        if let calibrationRatio = Formatter.threeDecNum.string(fromOptional: reading.calibrationRatio as NSNumber?) {
             // calibrationRatioLabel.textColor = .black
             // calibrationRatioLabel.text = calibrationRatio
-//        } else {
+             averageLabel.textColor = .black
+             averageLabel.text = calibrationRatio
+            
+        } else {
             // calibrationRatioLabel.textColor = .gray
             // calibrationRatioLabel.text = "???"
-//        }
+             averageLabel.textColor = .gray
+             averageLabel.text = "???"
+        }
     }
 
 }

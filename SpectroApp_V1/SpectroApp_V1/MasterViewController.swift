@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreBluetooth
+import CoreData
 
 protocol ProjectPresenter {
     func loadProject(_ project: Project)
@@ -119,7 +120,7 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         let notifCenter = NotificationCenter.default
         let _ = notifCenter.addObserver(forName: Notification.Name.NSManagedObjectContextDidSave, object: nil, queue: OperationQueue.main, using: {
             note in
-            print("in notification...Context did save...\n\t↳ NotificationCenter")
+//            print("in notification...Context did save...\n\t↳ NotificationCenter")
             guard let activeProj = self.activeProject else {
                 return
             }
@@ -141,8 +142,8 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         
         //create test data
         TestDataGenerator.initialDate = Date()
-        TestDataGenerator.numReadings = 150
-        let newProject = TestDataGenerator.createProject()
+        TestDataGenerator.numReadings = 1
+//        let newProject = TestDataGenerator.createProject()
         
 //        for _ in 0...50 {
 //            _ = TestDataGenerator.createProject()
@@ -150,17 +151,17 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
 //        }
 
         // save test data
-        do {
-            try AppDelegate.viewContext.save()
-            print("saved context! \n\t↳ MasterVC.viewDidLoad()")
-        } catch let error as NSError {
-            print("Could not save.\nSAVING ERROR: \(error), \(error.userInfo) \n\t↳ MasterVC.viewDidLoad()")
-        }
+//        do {
+//            try AppDelegate.viewContext.save()
+//            print("saved context! \n\t↳ MasterVC.viewDidLoad()")
+//        } catch let error as NSError {
+//            print("Could not save.\nSAVING ERROR: \(error), \(error.userInfo) \n\t↳ MasterVC.viewDidLoad()")
+//        }
         
         
         // set new project as active project
-        activeProject = newProject
-        (childViewControllers.first as! DataViewController).project = activeProject
+//        activeProject = newProject
+//        (childViewControllers.first as! DataViewController).project = activeProject
         
         // instantiate bluetooth manager..begins scanning if BLE is on
         bluetoothManager = CBInstrumentCentralManager(withReporter: instrumentAlertView)
@@ -170,11 +171,8 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         // datapoint simulation
         TestDataGenerator.instrumentManagerBLE = bluetoothManager
         TestDataGenerator.setupBLESimulation()
-//        Timer.scheduledTimer(withTimeInterval: 4, repeats: true, block: {_ in
-//            TestDataGenerator.sendIDP()
-//            
-//        })
-//        
+
+        
         // setup instrument alert view
         instrumentAlertView.setup()
         
@@ -194,13 +192,26 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     @IBOutlet weak var sortButton: UIBarButtonItem!
     
     @IBAction func sortButtonPressed(_ sender: UIBarButtonItem) {
-       print("`sort...` button pressed! \n\t↳ MasterVC")
+       print("`sort` button pressed! \n\t↳ MasterVC")
         let pop = UIAlertController(title: nil, message: "Sort the readings by:", preferredStyle: .actionSheet)
         pop.addAction(UIAlertAction(title: "Type", style: .default, handler: addAction))
         pop.addAction(UIAlertAction(title: "Date", style: .default, handler: addAction))
         pop.addAction(UIAlertAction(title: "Name", style: .default, handler: addAction))
         pop.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         pop.popoverPresentationController?.barButtonItem = sortButton
+        present(pop, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func layoutButtonPressed(_ sender: UIBarButtonItem) {
+        print("`layout` button pressed! \n\t↳ MasterVC")
+        let pop = UIAlertController(title: nil, message: "Show Data Specific To:", preferredStyle: .actionSheet)
+        pop.addAction(UIAlertAction(title: "Bradford Assay", style: .default, handler: addAction))
+        pop.addAction(UIAlertAction(title: "Cell Density", style: .default, handler: addAction))
+        pop.addAction(UIAlertAction(title: "Nucleic Acid", style: .default, handler: addAction))
+        pop.addAction(UIAlertAction(title: "General", style: .default, handler: addAction))
+        pop.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        pop.popoverPresentationController?.barButtonItem = sender
         present(pop, animated: true, completion: nil)
     }
     
@@ -220,28 +231,119 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             dataVC.sortSetting = .date
         case "Name":
             dataVC.sortSetting = .name
+        case "Bradford Assay":
+            dataVC.cellViewType = .bradfordView
+        case "Cell Density":
+            dataVC.cellViewType = .cellDensityView
+        case "General":
+            dataVC.cellViewType = .generalView
+        case "Nucleic Acid":
+            dataVC.cellViewType = .nucleicAcidView
         default:
             break
         }
     }
     // MARK: - Database Delegate Functions
     func add(dataPoint: DataPoint) {
-        let reading = Reading(fromDataPoints: [dataPoint])
-        reading.project = activeProject
-        if let tagType = dataPoint.instrumentDataPoint?.tag.type.description,
-            let tagIndex = dataPoint.instrumentDataPoint?.tag.index {
-            
-            reading.title = "\(tagType)-\(tagIndex)"
+        var reading: Reading
+        let makeNewReading: () -> Reading = {
+            let reading = Reading(fromDataPoints: [dataPoint])
+            reading.project = self.activeProject
+            if let tagType = dataPoint.instrumentDataPoint?.tag.type.description,
+                let tagIndex = dataPoint.instrumentDataPoint?.tag.index {
+                reading.title = "\(tagType)-\(tagIndex)"
+            }
+            return reading
         }
+
+        if let idp = dataPoint.instrumentDataPoint, let sessionID = idp.connectionSessionIDDB {
+
+            let request: NSFetchRequest<DataPoint> = DataPoint.fetchRequest()
+
+            let predicate = NSPredicate(
+                format: "(instrumentDataPoint.connectionSessionIDDB MATCHES %@) && (instrumentDataPoint.tagTypeDB == %@) && (instrumentDataPoint.tagIndexDB == %@) && (reading.project == %@)",
+                sessionID,
+                idp.tagTypeDB as NSNumber,
+                idp.tagIndexDB as NSNumber,
+                activeProject
+            )
+        
+            let sort = NSSortDescriptor(key: "timestampDB", ascending: false, selector: #selector(NSDate.compare(_:)))
+    
+            request.predicate = predicate
+      
+            request.sortDescriptors = [sort]
+            do {
+          
+                let result: [DataPoint] = try AppDelegate.viewContext.fetch(request)
+        
+                if result.count > 0 {
+                    print("Adding a repeat reading! \n\t↳ MasterVC.add(datapoint:)")
+                    result[0].reading?.addToDataPoints(dataPoint: dataPoint)
+                    reading = result[0].reading ?? makeNewReading()
+                } else {
+                    print("No repeats found, adding a new reading! \n\t↳ MasterVC.add(datapoint:)")
+                    reading = makeNewReading()
+                }
+            } catch {
+                print("ERROR: Could not fetch!\n\t↳ MasterVC.add(datapoint:)")
+                reading = makeNewReading()
+            }
+        } else {
+            print("ERROR: something was nil.... \n\t↳ MasterVC.add(datapoint:)")
+            reading = makeNewReading()
+        }
+        
+        if reading.type == .blank {
+            updateBlank(with: reading)
+        } else {
+            dataPoint.baselineValue = activeProject.baselineValue ?? 0
+        }
+        
         do {
             try AppDelegate.viewContext.save()
-            print("saved \n\t↳ MasterVC.add(dataPoint:)")
+            print("Saved context. \n\t↳ MasterVC.add(dataPoint:)")
         } catch let error as NSError {
             print("Could not save.\nSAVING ERROR: \(error), \(error.userInfo)")
         }
         
     }
     //------------------------------------
+    
+    func updateBlank(with reading: Reading) {
+        guard reading.type == .blank, let val = reading.rawValue else {
+            print("Cannot update blank with a reading of non-blank type or with no points. \n\t↳ MasterVC.updateBlank(with:)")
+            return
+        }
+        
+        if let p = reading.project {
+            let request: NSFetchRequest<DataPoint> = DataPoint.fetchRequest()
+            // FIXME: be more selective
+            let predicate = NSPredicate(format: "(reading.project == %@) && (baselineValueDB == %@)", p, NSNumber(value: 0))
+            request.predicate = predicate
+            do {
+                let result: [DataPoint] = try AppDelegate.viewContext.fetch(request)
+                if result.count > 0 {
+                    print("BLAAAAAAAAAANK: Setting new blank for points in the project w/o a blank! \n\t↳ MasterVC.updateBlank(with:)")
+                    for point in result {
+                        point.baselineValue = val
+                    }
+                    (childViewControllers.first as? DataViewController)?.masterVC?.dataTableView.reloadData()
+                    do {
+                        try AppDelegate.viewContext.save()
+                        print("Saved context. \n\t↳ MasterVC.updateBlank(with:)")
+                    } catch let error as NSError {
+                        print("ERROR: Could not save. Error description: \(error.debugDescription)\n\t↳ MasterVC.updateBlank(with:)")
+                    }
+                    
+                } else {
+                    print("Cound not find points in project! \n\t↳ MasterVC.updateBlabk(with:)")
+                }
+            } catch {
+                print("ERROR: Could not fetch!\n\t↳ MasterVC.updateBlank(with:)")
+            }
+        }
+    }
     
     
     override func didReceiveMemoryWarning() {

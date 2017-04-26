@@ -45,7 +45,6 @@
 		1C7E71871E79035E0073799D /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E71861E79035E0073799D /* Reading.swift */; };
 		1C7E71891E7903790073799D /* DataPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E71881E7903790073799D /* DataPoint.swift */; };
 		1C7E718B1E7904120073799D /* AbsorbanceFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E718A1E7904120073799D /* AbsorbanceFunctions.swift */; };
-		1C9CA1BA1EB0171400E28975 /* ExtraStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C9CA1B91EB0171300E28975 /* ExtraStoryboard.storyboard */; };
 		1C9CA1BC1EB017C800E28975 /* DataPointTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9CA1BB1EB017C800E28975 /* DataPointTableViewCell.swift */; };
 		1C9CA1BE1EB0291700E28975 /* HeaderDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9CA1BD1EB0291700E28975 /* HeaderDetailTableViewCell.swift */; };
 		1CA6871D1E9D894700B8DD7F /* AbsorbanceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA6871C1E9D894700B8DD7F /* AbsorbanceObject.swift */; };
@@ -130,7 +129,6 @@
 		1C7E71861E79035E0073799D /* Reading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reading.swift; sourceTree = "<group>"; };
 		1C7E71881E7903790073799D /* DataPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPoint.swift; sourceTree = "<group>"; };
 		1C7E718A1E7904120073799D /* AbsorbanceFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsorbanceFunctions.swift; sourceTree = "<group>"; };
-		1C9CA1B91EB0171300E28975 /* ExtraStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ExtraStoryboard.storyboard; sourceTree = "<group>"; };
 		1C9CA1BB1EB017C800E28975 /* DataPointTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPointTableViewCell.swift; sourceTree = "<group>"; };
 		1C9CA1BD1EB0291700E28975 /* HeaderDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderDetailTableViewCell.swift; sourceTree = "<group>"; };
 		1CA6871C1E9D894700B8DD7F /* AbsorbanceObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsorbanceObject.swift; sourceTree = "<group>"; };
@@ -296,7 +294,6 @@
 			isa = PBXGroup;
 			children = (
 				1C7E71431E78CA390073799D /* Main.storyboard */,
-				1C9CA1B91EB0171300E28975 /* ExtraStoryboard.storyboard */,
 				1C7E714B1E78CA390073799D /* LaunchScreen.storyboard */,
 			);
 			name = Storyboards;
@@ -497,7 +494,6 @@
 			files = (
 				1C7E714D1E78CA390073799D /* LaunchScreen.storyboard in Resources */,
 				1C7E714A1E78CA390073799D /* Assets.xcassets in Resources */,
-				1C9CA1BA1EB0171400E28975 /* ExtraStoryboard.storyboard in Resources */,
 				1C7E71451E78CA390073799D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

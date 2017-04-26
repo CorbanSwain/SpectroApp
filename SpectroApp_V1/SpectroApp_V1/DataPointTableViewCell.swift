@@ -23,8 +23,8 @@ class DataPointTableViewCell: UITableViewCell {
     func setup(with dataPoint: DataPoint, index: Int? = nil) {
         blankValueLabel.text = Formatter.fourDigNum.string(fromOptional: dataPoint.baselineValue as NSNumber?)
         rawValueLabel.text = Formatter.fourDigNum.string(fromOptional: dataPoint.instrumentDataPoint?.measurementValue as NSNumber?)
-        absValueLabel.text = Formatter.numFmtr(numDecimals: 5).string(fromOptional: dataPoint.measurementValue as NSNumber?)
-        timestampLabel.text = Formatter.hrMin.string(fromOptional: dataPoint.timestamp) ?? "undated"
+        absValueLabel.text = "= " + (Formatter.numFmtr(numDecimals: 5).string(fromOptional: dataPoint.measurementValue as NSNumber?) ?? "unknown")
+        timestampLabel.text = Formatter.hrMinSec.string(fromOptional: dataPoint.timestamp) ?? "undated"
         if let idp = dataPoint.instrumentDataPoint {
             tagLabel.textColor = .black
             tagLabel.text = "\(idp.tag.type.description) - \(idp.tag.index)"

@@ -103,6 +103,18 @@ class Reading: AbsorbanceObject {
     var absorbanceValue: CGFloat? { return average(ofPoints: dataPoints) }
     var stdDev: CGFloat? { return stdev(ofPoints: dataPoints) }
     
+    var rawValue: Int? {
+        var count = 0
+        var val = 0
+        for point in dataPoints {
+            if let idp = point.instrumentDataPoint {
+                count += 1
+                val += idp.measurementValue
+            }
+        }
+        return count > 0 ? val / count : nil
+    }
+    
     var dataPointsStringArray: [String] {
         var result: [String] = []
         for point in dataPoints {

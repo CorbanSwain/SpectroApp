@@ -43,7 +43,7 @@ func getVals(fromPoints points: Set<DataPoint>) -> Set<CGFloat> {
 }
 
 func average(ofFloats floats: [CGFloat]) -> CGFloat? {
-    guard floats.count > 1 else {
+    guard floats.count > 0 else {
         return nil
     }
     var sum: CGFloat = 0
@@ -54,7 +54,7 @@ func average(ofFloats floats: [CGFloat]) -> CGFloat? {
 }
 
 func average(ofFloats floats: Set<CGFloat>) -> CGFloat? {
-    guard floats.count > 1 else {
+    guard floats.count > 0 else {
         return nil
     }
     var sum: CGFloat = 0

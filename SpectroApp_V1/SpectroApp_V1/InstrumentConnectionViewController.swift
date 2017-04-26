@@ -21,9 +21,12 @@ class InstrumentConnectionViewController: UIViewController {
     
     weak var delegate: InstrummentConnectionViewControllerDelegate!
     @IBOutlet weak var instrumentAlertView: InstrumentStatusView!
+    @IBOutlet weak var simulateSwitch: UISwitch!
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        simulateSwitch.setOn(InstrumentConnectionViewController.beganSimulating, animated: false)
         instrumentAlertView.setup(isFirstTime: false)
         delegate.addReporter(instrumentAlertView)
     }
@@ -38,5 +41,26 @@ class InstrumentConnectionViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         delegate.popReporter()
+    }
+    
+    static var beganSimulating = false
+    static var timers: [Timer] = []
+    
+    @IBAction func simulateSwitched(_ sender: UISwitch) {
+        guard sender.isOn != InstrumentConnectionViewController.beganSimulating else {
+            return
+        }
+        
+        if InstrumentConnectionViewController.beganSimulating {
+            for timer in InstrumentConnectionViewController.timers {
+                timer.invalidate()
+            }
+            InstrumentConnectionViewController.timers = []
+            InstrumentConnectionViewController.beganSimulating = false
+        } else {
+            InstrumentConnectionViewController.timers.append(TestDataGenerator.scheduleBlankTimer())
+            InstrumentConnectionViewController.timers.append(TestDataGenerator.scheduleReadingTimer())
+            InstrumentConnectionViewController.beganSimulating = true
+        }
     }
 }

@@ -32,8 +32,16 @@ class FetchedResultsTableViewController: UIViewController, NSFetchedResultsContr
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .fade)
         case .update:
+            if let cell = tableView.cellForRow(at: indexPath!) as? DataTableViewCell, cell.titleField.isEditing {
+                print("returning before reloading row!\n\t↳ FetchedResultsTableVC.controller(...didChange)")
+                return
+            }
             tableView.reloadRows(at: [indexPath!], with: .fade)
         case .move:
+            if let cell = tableView.cellForRow(at: indexPath!) as? DataTableViewCell, cell.titleField.isEditing {
+                print("returning before moving row!\n\t↳ FetchedResultsTableVC.controller(...didChange)")
+                return
+            }
             tableView.deleteRows(at: [indexPath!], with: .fade)
             tableView.insertRows(at: [newIndexPath!], with: .fade)
         }

@@ -14,6 +14,31 @@ class Project: AbsorbanceObject {
     
     static var entityDescr: NSEntityDescription { return NSEntityDescription.entity(forEntityName: "Project", in: AppDelegate.viewContext)! }
     
+    var baselineValue: Int? {
+        let request: NSFetchRequest<Reading> = Reading.fetchRequest()
+        let predicate = NSPredicate(
+            format: "(project == %@) && (typeDB == %@)",
+            self,
+            ReadingType.blank.rawValue as NSNumber
+        )
+        request.predicate = predicate
+        let sort = NSSortDescriptor(key: "timestampDB", ascending: false, selector: #selector(NSDate.compare(_:)))
+        request.sortDescriptors = [sort]
+        do {
+            let result: [Reading] = try AppDelegate.viewContext.fetch(request)
+            if result.count > 0 {
+                print("Blank reading found in project! \n\t↳ MasterVC.add(datapoint:)")
+                return result[0].rawValue
+            } else {
+                print("No blank readings found! \n\t↳ MasterVC.add(datapoint:)")
+                return nil
+            }
+        } catch {
+            print("ERROR: Could not fetch!\n\t↳ MasterVC.add(datapoint:)")
+            return nil
+        }
+    }
+    
     var dateSection: DateSection {
         get {
             return DateSection(rawValue: dateSectionDB) ?? .undated
