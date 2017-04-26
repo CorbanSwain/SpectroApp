@@ -21,6 +21,8 @@ class DataViewController: UISplitViewController, ProjectPresenter {
     var project: Project! {
         didSet {
             masterVC?.refreshFRC()
+            masterVC?.setTableViewCellType()
+            masterVC?.setHeaderView()
         }
     }
 
