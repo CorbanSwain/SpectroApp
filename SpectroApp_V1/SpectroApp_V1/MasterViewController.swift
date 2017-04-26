@@ -16,6 +16,9 @@ protocol ProjectPresenter {
 
 class MasterViewController: UIViewController, UIPopoverPresentationControllerDelegate, ProjectChangerDelegate, DatabaseDelegate, DocumentControllerPresenter {
     
+    @IBOutlet weak var createImage: UIImageView!
+    @IBOutlet weak var editImage: UIImageView!
+    
     var newProject: Project? = nil
     var activeProject: Project! {
         didSet {
@@ -26,8 +29,13 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
 //            print("didSet active project -- MasterVC")
             guard let activeProj = activeProject else {
                 print("WARNING: just set the active project to nil. --MasterVC")
+                createImage.isHidden = false
+                editImage.isHidden = false
                 return
             }
+            
+            createImage.isHidden = true
+            editImage.isHidden = true
             print("Set `activeProject` to: \(activeProj.title)\n\t↳ MasterVC.activeProject-didSet")
             headerView.mainText = activeProj.title
             headerView.titleField.text = activeProj.title
@@ -185,6 +193,15 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             } catch let error as NSError {
                 print("Could not save.\nSAVING ERROR: \(error), \(error.userInfo)")
             }
+        }
+        
+        
+        if activeProject == nil {
+            createImage.isHidden = false
+            editImage.isHidden = false
+        } else {
+            createImage.isHidden = true
+            editImage.isHidden = true
         }
     }
 

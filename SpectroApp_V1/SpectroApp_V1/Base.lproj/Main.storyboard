@@ -30,14 +30,32 @@
                                     <segue destination="oWL-gx-tdI" kind="embed" id="dwt-YS-ocn"/>
                                 </connections>
                             </containerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Open" translatesAutoresizingMaskIntoConstraints="NO" id="Y5t-Rf-sBj">
+                                <rect key="frame" x="312" y="516" width="400" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="CXg-jL-Wuj"/>
+                                    <constraint firstAttribute="width" constant="400" id="FR8-SW-4d2"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Create" translatesAutoresizingMaskIntoConstraints="NO" id="0y4-VN-QlS">
+                                <rect key="frame" x="818" y="64" width="206" height="177"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="177" id="816-BT-Bhp"/>
+                                    <constraint firstAttribute="width" constant="206" id="Cxd-r9-bfa"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="v5U-6W-TNi" firstAttribute="top" secondItem="Y5t-Rf-sBj" secondAttribute="bottom" constant="8" id="2aN-B7-Vt1"/>
+                            <constraint firstItem="Y5t-Rf-sBj" firstAttribute="centerX" secondItem="gR9-lv-ZEG" secondAttribute="centerX" id="3Ai-1T-U7s"/>
                             <constraint firstItem="v5U-6W-TNi" firstAttribute="top" secondItem="ss1-BV-WWC" secondAttribute="bottom" id="7r8-qo-CJ2"/>
+                            <constraint firstItem="0y4-VN-QlS" firstAttribute="top" secondItem="53P-Uy-CHe" secondAttribute="bottom" id="SWx-ik-hYj"/>
                             <constraint firstAttribute="trailing" secondItem="ss1-BV-WWC" secondAttribute="trailing" id="bis-la-KNz"/>
                             <constraint firstItem="ss1-BV-WWC" firstAttribute="top" secondItem="53P-Uy-CHe" secondAttribute="bottom" id="dmR-pD-dxx"/>
                             <constraint firstItem="ss1-BV-WWC" firstAttribute="leading" secondItem="gR9-lv-ZEG" secondAttribute="leading" id="iD6-bl-ZVS"/>
+                            <constraint firstAttribute="trailing" secondItem="0y4-VN-QlS" secondAttribute="trailing" id="oqu-2Z-0Ui"/>
                         </constraints>
                     </view>
                     <toolbarItems>
@@ -254,6 +272,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="ss1-BV-WWC" id="hKX-uE-Nl3"/>
+                        <outlet property="createImage" destination="0y4-VN-QlS" id="L5z-Nm-5qf"/>
+                        <outlet property="editImage" destination="Y5t-Rf-sBj" id="xhg-gm-t9O"/>
                         <outlet property="exportButton" destination="enj-Mi-66f" id="05c-aY-ewf"/>
                         <outlet property="headerView" destination="UGy-tk-5vK" id="7Zn-ir-CV6"/>
                         <outlet property="instrumentAlertView" destination="rse-Qf-Bns" id="zwO-Xc-e8U"/>
@@ -1946,6 +1966,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Create" width="1000" height="964"/>
+        <image name="Open" width="1380" height="1000"/>
         <image name="checkMarkImage" width="25" height="25"/>
         <image name="four" width="50" height="50"/>
         <image name="infoIcon" width="25" height="25"/>
