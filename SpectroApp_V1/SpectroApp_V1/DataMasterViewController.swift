@@ -44,6 +44,14 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
     
     @IBOutlet weak var headerView: UIView!
     
+    @IBOutlet var indexView: ReadingIndexView!
+    @IBOutlet var sampleTypeView: ReadingTypeView!
+    @IBOutlet var descriptionView: UILabel!
+    @IBOutlet var valueView: UIStackView!
+    @IBOutlet var numRepeatsView: UIView!
+    @IBOutlet var timestampLabel: UILabel!
+    @IBOutlet var averageLabel: UILabel!
+    
     var sortSetting = SortSetting.type {
         didSet {
             guard sortSetting != oldValue else {
@@ -139,7 +147,6 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
 //    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        // TODO: change this to update based on cell view type (i.e. experiment type)
         if sortSetting == .type {
             let typeInt = Formatter.intNum.number(from: (frc.sections?[section].name)!)! as! Int16
             return ReadingType(rawValue: typeInt)?.description ?? ReadingType.noType.description
@@ -274,6 +281,7 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
         } else {
             // FIXME: maybe `nil` project should be handled differently
         }
+        
         frc = NSFetchedResultsController(
             fetchRequest        : request,
             managedObjectContext: AppDelegate.viewContext,
@@ -319,6 +327,59 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setTableViewCellType() {
+        if let proj = project {
+            cellViewType = CellViewType(type: proj.experimentType)
+        } else {
+            // TODO: handle error
+        }
+    }
+    
+    func setHeaderView() {
+        // FIXME: eventually, we should get rid of this so that there's no need to adjust the header view
+        // and cell view together
+        switch cellViewType {
+        case .bradfordView:
+            // index, concentration
+            indexView.isHidden = false
+            averageLabel.text = "Concen."
+            timestampLabel.isHidden = true
+            
+            // hide +/- and std dev
+            valueView.arrangedSubviews[1].isHidden = true
+            valueView.arrangedSubviews[2].isHidden = true
+        case .cellDensityView:
+            // avg, std dev, time stamp
+            timestampLabel.isHidden = false
+            indexView.isHidden = true
+            averageLabel.text = "Absorb."
+            
+            // unhide +/- and std dev
+            valueView.arrangedSubviews[1].isHidden = false
+            valueView.arrangedSubviews[2].isHidden = false
+        case .nucleicAcidView:
+            // index, calibration ratio
+            // for now, forget about avg and std dev
+            averageLabel.text = "Calib. ratio"
+            indexView.isHidden = false
+            timestampLabel.isHidden = true
+            
+            // hide +/- and std dev
+            valueView.arrangedSubviews[1].isHidden = true
+            valueView.arrangedSubviews[2].isHidden = true
+        default:
+            // general
+            // avg, std dev, index, time stamp
+            indexView.isHidden = false
+            timestampLabel.isHidden = false
+            averageLabel.text = "Absorb."
+
+            // unhide +/- and std dev
+            valueView.arrangedSubviews[1].isHidden = false
+            valueView.arrangedSubviews[2].isHidden = false
+        }
     }
     
 }

@@ -22,6 +22,7 @@ class DataTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var indexView: ReadingIndexView!
     @IBOutlet weak var repeatImageView: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var valueView: UIStackView!
     
     var indexPath: IndexPath!
     var delegate: DataCellDelegate!
@@ -58,33 +59,38 @@ class DataTableViewCell: UITableViewCell, UITextFieldDelegate {
             // index, concentration
             setIndex(index: index)
             setConcentration()
-            // TODO: hide calibration ratio view
+            
             timeLabel.isHidden = true
             averageLabel.isHidden = true
             stdLabel.isHidden = true
+            
+            // hide +/- and std dev
+            valueView.arrangedSubviews[1].isHidden = true
+            valueView.arrangedSubviews[2].isHidden = true
         case .cellDensityView:
             // avg, std dev, time stamp
             setAverage()
             setStandardDeviation()
             setTimestamp(numRepeats: numRepeats)
-            // TODO: hide calibration ratio and concentration views
+            
             indexView.isHidden = true
         case .nucleicAcidView:
-            // avg, std dev, index, calibration ratio
-            setAverage()
-            setStandardDeviation()
+            // index, calibration ratio
+            // don't set avg and std dev because we have a calibration ratio
             setIndex(index: index)
             setCalibrationRatio()
-            // TODO: hide concentration views
+
             timeLabel.isHidden = true
+            
+            // hide +/- and std dev
+            valueView.arrangedSubviews[1].isHidden = true
+            valueView.arrangedSubviews[2].isHidden = true
         default:
-            // avg, std dev, index, time stamp
+            // avg, std dev, index, timestamp
             setAverage()
             setStandardDeviation()
             setIndex(index: index)
             setTimestamp(numRepeats: numRepeats)
-            // TODO: hide calibratio ratio and concentration views
-            
         }
     }
     
@@ -146,6 +152,7 @@ class DataTableViewCell: UITableViewCell, UITextFieldDelegate {
     // helper methods
     func setIndex(index: Int? = nil) {
         indexView.setup()
+        indexView.isHidden = false
         if let i = index {
             indexView.indexLabel.text = Formatter.intNum.string(from: i as NSNumber)
         } else {
@@ -154,6 +161,7 @@ class DataTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func setTitle() {
+        titleField.isHidden = false
         if let title = reading.title {
             titleField.textColor = .black
             titleField.text = title
@@ -164,6 +172,7 @@ class DataTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func setAverage() {
+        averageLabel.isHidden = false
         if let average = Formatter.threeDecNum.string(fromOptional: reading.absorbanceValue as NSNumber?) {
             averageLabel.textColor = .black
             averageLabel.text =  average
@@ -174,6 +183,7 @@ class DataTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func setStandardDeviation() {
+        stdLabel.isHidden = false
         if let stdDev = Formatter.threeDecNum.string(fromOptional: reading.stdDev as NSNumber?)  {
             stdLabel.textColor = .black
             stdLabel.text =  stdDev
@@ -184,6 +194,7 @@ class DataTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func setTimestamp(numRepeats: Int) {
+        timeLabel.isHidden = false
         timeLabel.text = ""
         if numRepeats > 0 {
             let date = reading.dataPoints[0].timestamp
@@ -192,24 +203,35 @@ class DataTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func setConcentration() {
+        averageLabel.isHidden = false
         // TODO: set concentration label
         if let concentration = Formatter.threeDecNum.string(fromOptional: reading.concentration as NSNumber?) {
             // concentrationLabel.textColor = .black
             // concentrationLabel.text = concentration
+             averageLabel.textColor = .black
+             averageLabel.text = concentration
         } else {
             // concentrationLabel.textColor = .gray
             // concentrationLabel.text = "???"
+             averageLabel.textColor = .gray
+             averageLabel.text = "???"
         }
     }
     
     func setCalibrationRatio() {
+        averageLabel.isHidden = false
         // TODO: set calibration ratio
         if let calibrationRatio = Formatter.threeDecNum.string(fromOptional: reading.calibrationRatio as NSNumber?) {
             // calibrationRatioLabel.textColor = .black
             // calibrationRatioLabel.text = calibrationRatio
+             averageLabel.textColor = .black
+             averageLabel.text = calibrationRatio
+            
         } else {
             // calibrationRatioLabel.textColor = .gray
             // calibrationRatioLabel.text = "???"
+             averageLabel.textColor = .gray
+             averageLabel.text = "???"
         }
     }
 
