@@ -19,6 +19,30 @@ class DataPointTableViewCell: UITableViewCell {
     @IBOutlet weak var connectionIDLabel: UILabel!
     @IBOutlet weak var repeatNumberLabel: UILabel!
     
+    
+    func setup(with dataPoint: DataPoint, index: Int? = nil) {
+        blankValueLabel.text = Formatter.fourDigNum.string(fromOptional: dataPoint.baselineValue as NSNumber?)
+        rawValueLabel.text = Formatter.fourDigNum.string(fromOptional: dataPoint.instrumentDataPoint?.measurementValue as NSNumber?)
+        absValueLabel.text = Formatter.numFmtr(numDecimals: 5).string(fromOptional: dataPoint.measurementValue as NSNumber?)
+        timestampLabel.text = Formatter.hrMin.string(fromOptional: dataPoint.timestamp) ?? "undated"
+        if let idp = dataPoint.instrumentDataPoint {
+            tagLabel.textColor = .black
+            tagLabel.text = "\(idp.tag.type.description) - \(idp.tag.index)"
+            instrumentIDLabel.textColor = .black
+            instrumentIDLabel.text = idp.instrumentID.uuidString
+            connectionIDLabel.textColor = .black
+            connectionIDLabel.text = idp.connectionSessionID.uuidString
+        } else {
+            tagLabel.textColor = .lightGray
+            tagLabel.text = "no tag"
+            instrumentIDLabel.textColor = .lightGray
+            instrumentIDLabel.text = "no instrument"
+            connectionIDLabel.textColor = .lightGray
+            connectionIDLabel.text = "N/A"
+        }
+        repeatNumberLabel.text = "REPEAT " + (Formatter.intNum.string(fromOptional: index as NSNumber?) ?? "")
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

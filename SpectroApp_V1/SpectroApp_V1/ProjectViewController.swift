@@ -189,7 +189,7 @@ enum ProjectInfoCellType {
         switch self {
         case .menu(let tags):
             let headerStr = tags.0
-            let editorRef = tags.1
+//            let editorRef = tags.1
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell.project.select") as! AddProjectTypeTableViewCell
             cell.titleLabel?.text = string
             if let h = headerStr {

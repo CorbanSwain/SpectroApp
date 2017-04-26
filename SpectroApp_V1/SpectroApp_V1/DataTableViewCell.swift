@@ -193,24 +193,24 @@ class DataTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     func setConcentration() {
         // TODO: set concentration label
-        if let concentration = Formatter.threeDecNum.string(fromOptional: reading.concentration as NSNumber?) {
+//        if let concentration = Formatter.threeDecNum.string(fromOptional: reading.concentration as NSNumber?) {
             // concentrationLabel.textColor = .black
             // concentrationLabel.text = concentration
-        } else {
+//        } else {
             // concentrationLabel.textColor = .gray
             // concentrationLabel.text = "???"
-        }
+//        }
     }
     
     func setCalibrationRatio() {
         // TODO: set calibration ratio
-        if let calibrationRatio = Formatter.threeDecNum.string(fromOptional: reading.calibrationRatio as NSNumber?) {
+//        if let calibrationRatio = Formatter.threeDecNum.string(fromOptional: reading.calibrationRatio as NSNumber?) {
             // calibrationRatioLabel.textColor = .black
             // calibrationRatioLabel.text = calibrationRatio
-        } else {
+//        } else {
             // calibrationRatioLabel.textColor = .gray
             // calibrationRatioLabel.text = "???"
-        }
+//        }
     }
 
 }

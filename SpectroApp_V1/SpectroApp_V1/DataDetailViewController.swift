@@ -33,28 +33,62 @@ class DataDetailViewController: UIViewController, UITableViewDataSource, UITable
         }
             
     }
-    var dataCache: [(header: String?, rows: [(String?, String)])]
+    var dataCache: [(header: String?, rows: [(String?, String)])]?
     
     // MARK: table view functions
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "detailViewCell", for: indexPath) as! DataDetailTableViewCell
         
-        cell.titleLabel?.text = data[indexPath.section][indexPath.row]
+        guard let r = reading else {
+            return UITableViewCell()
+        }
         
-        return cell
+        if indexPath.section == tableInfo.count {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell.detail.dataPoint", for: indexPath) as! DataPointTableViewCell
+            cell.setup(with: r.dataPoints[indexPath.row], index: indexPath.row + 1)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell.detail.header", for: indexPath) as! HeaderDetailTableViewCell
+            cell.mainLabel.text = tableInfo[indexPath.section].rows[indexPath.row].1
+            if let headerText = tableInfo[indexPath.section].rows[indexPath.row].0 {
+                cell.headerLabel.isHidden = false
+                cell.headerLabel.text = headerText
+            } else {
+                cell.headerLabel.isHidden = true
+            }
+            return cell
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return tableInfo.count
+        guard reading != nil else {
+            return 0
+        }
+        return tableInfo.count + 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.tableInfo[section].rows.count
+        guard let r = reading else {
+            return 0
+        }
+        
+        if section == tableInfo.count {
+            return r.dataPoints.count
+        } else {
+            return tableInfo[section].rows.count
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return tableInfo[section].header
+        guard reading != nil else {
+            return nil
+        }
+        
+        if section == tableInfo.count {
+            return "Repeated Values"
+        } else {
+            return tableInfo[section].header
+        }
     }
     
     
