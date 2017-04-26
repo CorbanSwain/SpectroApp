@@ -72,6 +72,14 @@ class Reading: AbsorbanceObject {
         }
     }
     
+    var hasConcentration: Bool {
+        get {
+            return hasConcentrationDB
+        } set {
+            hasConcentrationDB = newValue
+        }
+    }
+    
     var concentration: CGFloat? {
         get {
             if hasConcentrationDB {
@@ -176,7 +184,7 @@ class Reading: AbsorbanceObject {
         
         self.dataPoints = dataPoints
         
-        // parse out most cmmon type tag from instrument datapoints
+        // parse out most c0mmon type tag from instrument datapoints
         var dict: [ReadingType:Int] = [:]
         for point in dataPoints {
             if let t = point.instrumentDataPoint?.tag.type {

@@ -88,6 +88,7 @@ class DataPoint: AbsorbanceObject {
         self.init()
         instrumentDataPoint = idp
         idp.dataPoint = self
+        title = "\(idp.tag.type.description)-\(idp.tag.index)"
         timestamp = timeConverter.createDate(fromInstrumentMillis: idp.instrumentMillis)
     }
 }

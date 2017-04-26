@@ -20,40 +20,20 @@ class DataDetailViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
 
-    let sections = ["NAME", "TYPE", "POINTS", "BASELINES", "TIMES"]
-    var data: Array<[String]> {
-        if dataCache == nil {
+    var tableInfo: [(header: String?, rows: [(String?, String)])] {
+        if let cache = dataCache {
+            return cache
+        } else {
             guard let r = reading else {
                 return []
             }
-            let name = r.title ?? "[untitled]"
-            let type = r.type.description
-            var points: [String] = []
-            var baselines: [String] = []
-            var times: [String] = []
-            for (i,point) in r.dataPoints.enumerated() {
-                if let val = point.measurementValue {
-                    points.append("\(i): " + (Formatter.threeDecNum.string(from: val as NSNumber) ?? "???"))
-                } else {
-                    points.append("\(i): " + "???")
-                }
-                baselines.append("\(i): " + (Formatter.fourDigNum.string(from: point.baselineValue as NSNumber) ?? "???"))
-                if let ts = point.timestamp {
-                    times.append("\(i): " + (Formatter.hrMin.string(from: ts as Date)))
-                } else {
-                    times.append("\(i): " + "[no date]")
-                }
-                
-            }
-            dataCache = [[name],[type],points,baselines,times]
+            let info = r.tableInfo
+            dataCache = info
+            return info
         }
-        guard let cache = dataCache else {
-            print("dataCache somehow still nil after loading in a reading. --DataDetailVC")
-            return []
-        }
-        return cache
+            
     }
-    var dataCache: Array<[String]>?
+    var dataCache: [(header: String?, rows: [(String?, String)])]
     
     // MARK: table view functions
     
@@ -66,15 +46,15 @@ class DataDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.data.count
+        return tableInfo.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.data[section].count
+        return self.tableInfo[section].rows.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.sections[section]
+        return tableInfo[section].header
     }
     
     
@@ -88,6 +68,33 @@ class DataDetailViewController: UIViewController, UITableViewDataSource, UITable
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+}
+
+extension Reading {
+    var tableInfo: [(header: String?, rows: [(String?, String)])] {
+        let titleSec: [(String?, String)] = [
+            (nil, title ?? "untitled"),
+            ("Type:", type.description),
+            ("Timestamp:", Formatter.monDayYr.string(fromOptional: timestamp) ?? "undated"),
+        ]
+        
+        let absorbanceSec = [
+            (nil, Formatter.numFmtr(numDecimals: 5).string(fromOptional: absorbanceValue as NSNumber?) ?? "no abs. value"),
+            ("Std Dev:", "± " + (Formatter.numFmtr(numDecimals: 5).string(fromOptional: stdDev as NSNumber?) ?? "no abs. value")),
+        ]
+        // FIXME: also include calibration points
+        
+        let concentrationSec: [(String?, String)] = [
+            ("Has Conc?:", hasConcentration ? "Yes" : "No"),
+            ("Concentation:", Formatter.numFmtr(numDecimals: 5).string(fromOptional: concentration as NSNumber?) ?? "no value"),
+            ("Units:", "mM")
+        ]
     
-    
+        return [
+            ("Title", titleSec),
+            ("Absorbance", absorbanceSec),
+            ("Concentration", concentrationSec),
+        ]
+        
+    }
 }
