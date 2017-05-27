@@ -91,6 +91,8 @@ class DataTableViewCell: UITableViewCell, UITextFieldDelegate {
             setStandardDeviation()
             setIndex(index: index)
             setTimestamp(numRepeats: numRepeats)
+            valueView.arrangedSubviews[1].isHidden = false
+            valueView.arrangedSubviews[2].isHidden = false
         }
     }
     

@@ -22,6 +22,8 @@ class DataDetailViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
 
+    
+    
     var tableInfo: [(header: String?, rows: [(String?, String)])] {
         if let cache = tableInfoCache {
             return cache
@@ -108,7 +110,7 @@ class DataDetailViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         detailTableView.delegate = self
         detailTableView.dataSource = self
-        
+        detailTableView.contentInset = UIEdgeInsets(top: 58 + 20, left: 0, bottom: 44, right: 0)
         if let o = observer {
             NotificationCenter.default.removeObserver(o)
         }

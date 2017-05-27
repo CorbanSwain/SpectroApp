@@ -52,6 +52,7 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
     @IBOutlet var timestampLabel: UILabel!
     @IBOutlet var averageLabel: UILabel!
     
+    
     var sortSetting = SortSetting.type {
         didSet {
             guard sortSetting != oldValue else {
@@ -145,7 +146,7 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
         } else {
             cell.setup(with: reading, viewType: cellViewType)
         }
-        
+
         return cell
     }
     
@@ -344,6 +345,7 @@ class DataMasterViewController:  FetchedResultsTableViewController, UITableViewD
         }
         dataTableView.delegate = self
         dataTableView.dataSource = self
+        dataTableView.contentInset = UIEdgeInsets(top: 58 + 25 + 20, left: 0, bottom: 44, right: 0)
         // refreshReadingCache()
     }
     

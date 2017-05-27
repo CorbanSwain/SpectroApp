@@ -19,6 +19,10 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
     @IBOutlet weak var createImage: UIImageView!
     @IBOutlet weak var editImage: UIImageView!
     
+    var dataViewController: DataViewController? {
+        return childViewControllers.first as? DataViewController
+    }
+    
     var newProject: Project? = nil
     var activeProject: Project! {
         didSet {
@@ -122,6 +126,8 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
         print("at top! \n\t↳ MasterVC.viewDidLoad")
         super.viewDidLoad()
         
+        print(navigationController?.navigationBar.frame ?? CGRect())
+        
         headerView.backgroundAccent.isHidden = true
         headerView.titleField.isEnabled = false
 
@@ -203,6 +209,8 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
             createImage.isHidden = true
             editImage.isHidden = true
         }
+        
+//        dataViewController = childViewControllers.first as? DataViewController
     }
 
     
@@ -298,31 +306,45 @@ class MasterViewController: UIViewController, UIPopoverPresentationControllerDel
                     print("Adding a repeat reading! \n\t↳ MasterVC.add(datapoint:)")
                     result[0].reading?.addToDataPoints(dataPoint: dataPoint)
                     reading = result[0].reading ?? makeNewReading()
+//                    dataViewController?.lastUpdatedReading = reading
                 } else {
                     print("No repeats found, adding a new reading! \n\t↳ MasterVC.add(datapoint:)")
                     reading = makeNewReading()
+//                    dataViewController?.lastUpdatedReading = reading
                 }
             } catch {
                 print("ERROR: Could not fetch!\n\t↳ MasterVC.add(datapoint:)")
                 reading = makeNewReading()
+//                dataViewController?.lastUpdatedReading = reading
             }
         } else {
-            print("ERROR: something was nil.... \n\t↳ MasterVC.add(datapoint:)")
+            print("ERROR: the dataPoint's instrumentDP or connectionSessionID was nil... \n\t↳ MasterVC.add(datapoint:)")
             reading = makeNewReading()
+//            dataViewController?.lastUpdatedReading = reading
         }
         
         if reading.type == .blank {
             updateBlank(with: reading)
+            
         } else {
             dataPoint.baselineValue = activeProject.baselineValue ?? 0
         }
+//
+//        Timer.scheduledTimer(withTimeInterval: 4, repeats: false, block: {
+//            _ in
+//            
+//        })
+        
         
         do {
             try AppDelegate.viewContext.save()
             print("Saved context. \n\t↳ MasterVC.add(dataPoint:)")
+            self.dataViewController?.lastUpdatedReading = reading
         } catch let error as NSError {
             print("Could not save.\nSAVING ERROR: \(error), \(error.userInfo)")
         }
+        
+        
         
     }
     //------------------------------------

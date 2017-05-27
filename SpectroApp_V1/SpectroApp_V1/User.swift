@@ -43,5 +43,4 @@ class User: NSManagedObject {
         self.username = username
     }
     
-    
 }

@@ -18,11 +18,43 @@ class DataViewController: UISplitViewController, ProjectPresenter {
         return masterVC
     }
     
+    var lastUpdatedReading: Reading? = nil {
+        didSet {
+            print("didset")
+            guard  let update = lastUpdatedReading else {
+                print("nil!")
+                return
+            }
+            if let indexPath = masterVC?.frc.indexPath(forObject: update), let tableView = masterVC?.dataTableView  {
+//                tableView.reloadData()
+                print("ip")
+                tableView.reloadData()
+                tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+//                masterVC?.tableView(tableView, didSelectRowAt: indexPath)
+                detailVC?.reading = update
+            }
+            print("fail?")
+        }
+    }
+    
+    
+    func selectMostRecent() {
+        
+    }
+    
+    var detailVC: DataDetailViewController? {
+        guard let detailVC = viewControllers[1] as? DataDetailViewController else {
+            print("could not load detail VC -- Data VC")
+            return nil
+        }
+        return detailVC
+    }
+    
     var project: Project! {
         didSet {
             masterVC?.refreshFRC()
-            masterVC?.setTableViewCellType()
-            masterVC?.setHeaderView()
+//            masterVC?.setTableViewCellType()
+//            masterVC?.setHeaderView()
         }
     }
 
@@ -47,6 +79,8 @@ class DataViewController: UISplitViewController, ProjectPresenter {
         super.viewDidLoad()
         preferredPrimaryColumnWidthFraction = 0.7
         maximumPrimaryColumnWidth = 700
+//        masterVC?.dataTableView.contentInset = UIEdgeInsets(top: 58 + 25, left: 0, bottom: 44, right: 0)
+//        detailVC?.detailTableView.contentInset = UIEdgeInsets(top: 58 + 25, left: 0, bottom: 44, right: 0)
     }
 
     override func didReceiveMemoryWarning() {
