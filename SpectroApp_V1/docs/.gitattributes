@@ -1,0 +1,3 @@
+# ignore docs folder for linguist
+* linguist-vendored
+/* linguist-vendored
